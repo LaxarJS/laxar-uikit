@@ -1,0 +1,14 @@
+@charset "UTF-8";
+// Important:
+// The declaration for the encding has to be in the first line!
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#encodings
+
+@import "variables_color_scheme";
+@import "variables_font_awesome";
+@import "variables_bootstrap";
+@import "variables_laxar";
+
+@import "laxar_uikit";
+
+// Theme Specific Styles
+// @import "additional/";

@@ -1,0 +1,83 @@
+{
+   "de": {
+      "SYNTAX_TYPE_DATE": "Bitte geben Sie ein gültiges Datum im Format DD.MM.JJJJ an.",
+      "SYNTAX_TYPE_TIME": "Bitte geben Sie eine gültige Zeit im Format SS:MM an.",
+      "SYNTAX_TYPE_INTEGER": "Bitte geben Sie einen ganzzahligen Wert an.",
+      "SYNTAX_TYPE_DECIMAL": "Bitte geben Sie einen Dezimalwert an.",
+      
+      "SEMANTIC_LENGTH_STRING": "Bitte geben Sie höchstens [maximumLength] Zeichen ein.",
+      
+      "SEMANTIC_REQUIRED": "Bitte geben Sie einen Wert an.",
+      
+      "SEMANTIC_MINIMUM_DATE": "Bitte geben Sie [minimumValue] oder ein späteres Datum an.",
+      "SEMANTIC_MINIMUM_DATE_NOW": "Bitte geben Sie einen Wert in der Zukunft an.",
+      "SEMANTIC_MINIMUM_TIME": "Bitte geben Sie [minimumValue] oder eine spätere Zeit an.",
+      "SEMANTIC_MINIMUM_DECIMAL": "Bitte geben Sie mindestens [minimumValue] an.",
+      "SEMANTIC_MINIMUM_INTEGER": "Bitte geben Sie mindestens [minimumValue] an.",
+
+      "SEMANTIC_MAXIMUM_DATE": "Bitte geben Sie [maximumValue] oder ein früheres Datum an.",
+      "SEMANTIC_MAXIMUM_DATE_NOW": "Bitte geben Sie einen Wert in der Vergangenheit an.",
+      "SEMANTIC_MAXIMUM_TIME": "Bitte geben Sie [maximumValue] oder eine frühere Zeit an.",
+      "SEMANTIC_MAXIMUM_DECIMAL": "Bitte geben Sie höchstens [maximumValue] an.",
+      "SEMANTIC_MAXIMUM_INTEGER": "Bitte geben Sie höchstens [maximumValue] an.",
+
+      "SEMANTIC_RANGE_DATE": "Bitte geben Sie ein Datum zwischen [minimumValue] und [maximumValue] an.",
+      "SEMANTIC_RANGE_TIME": "Bitte geben Sie eine Zeit zwischen [minimumValue] und [maximumValue] an.",
+      "SEMANTIC_RANGE_DECIMAL": "Bitte geben Sie einen Wert zwischen [minimumValue] und [maximumValue] an.",
+      "SEMANTIC_RANGE_INTEGER": "Bitte geben Sie einen Wert zwischen [minimumValue] und [maximumValue] an."
+   },
+   "en": {
+      "SYNTAX_TYPE_DATE": "Please enter a valid date in the form MM/DD/YYYY.",
+      "SYNTAX_TYPE_TIME": "Please enter a valid time in the form h:mm A.",
+      "SYNTAX_TYPE_INTEGER": "Please enter an integer number.",
+      "SYNTAX_TYPE_DECIMAL": "Please enter a decimal number.",
+
+      "SEMANTIC_LENGTH_STRING": "Please enter at most [maximumLength] characters.",
+
+      "SEMANTIC_REQUIRED": "Please enter a value.",
+
+      "SEMANTIC_MINIMUM_DATE": "Please enter [minimumValue] or a later date.",
+      "SEMANTIC_MINIMUM_DATE_NOW": "Please enter a date in the future.",
+      "SEMANTIC_MINIMUM_TIME": "Please enter [minimumValue] or a later time.",
+      "SEMANTIC_MINIMUM_DECIMAL": "Please enter at least [minimumValue].",
+      "SEMANTIC_MINIMUM_INTEGER": "Please enter at least [minimumValue].",
+
+      "SEMANTIC_MAXIMUM_DATE": "Please enter [maximumValue] or an earlier date.",
+      "SEMANTIC_MAXIMUM_DATE_NOW": "Please enter a date in the past.",
+      "SEMANTIC_MAXIMUM_TIME": "Please enter [maximumValue] or an earlier time.",
+      "SEMANTIC_MAXIMUM_DECIMAL": "Please enter at most [maximumValue].",
+      "SEMANTIC_MAXIMUM_INTEGER": "Please enter at most [maximumValue].",
+
+      "SEMANTIC_RANGE_DATE": "Please enter a date between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_TIME": "Please enter a time between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_DECIMAL": "Please enter a value between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_INTEGER": "Please enter a value between [minimumValue] and [maximumValue]."
+   },
+   "en_GB": {
+      "SYNTAX_TYPE_DATE": "Please enter a valid date in the form DD/MM/YYYY.",
+      "SYNTAX_TYPE_TIME": "Please enter a valid time in the form HH:mm.",
+      "SYNTAX_TYPE_INTEGER": "Please enter an integer number.",
+      "SYNTAX_TYPE_DECIMAL": "Please enter a decimal number.",
+
+      "SEMANTIC_LENGTH_STRING": "Please enter at most [maximumLength] characters.",
+
+      "SEMANTIC_REQUIRED": "Please enter a value.",
+
+      "SEMANTIC_MINIMUM_DATE": "Please enter [minimumValue] or a later date.",
+      "SEMANTIC_MINIMUM_DATE_NOW": "Please enter a date in the future.",
+      "SEMANTIC_MINIMUM_TIME": "Please enter [minimumValue] or a later time.",
+      "SEMANTIC_MINIMUM_DECIMAL": "Please enter at least [minimumValue].",
+      "SEMANTIC_MINIMUM_INTEGER": "Please enter at least [minimumValue].",
+
+      "SEMANTIC_MAXIMUM_DATE": "Please enter [maximumValue] or an earlier date.",
+      "SEMANTIC_MAXIMUM_DATE_NOW": "Please enter a date in the past.",
+      "SEMANTIC_MAXIMUM_TIME": "Please enter [maximumValue] or an earlier time.",
+      "SEMANTIC_MAXIMUM_DECIMAL": "Please enter at most [maximumValue].",
+      "SEMANTIC_MAXIMUM_INTEGER": "Please enter at most [maximumValue].",
+
+      "SEMANTIC_RANGE_DATE": "Please enter a date between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_TIME": "Please enter a time between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_DECIMAL": "Please enter a value between [minimumValue] and [maximumValue].",
+      "SEMANTIC_RANGE_INTEGER": "Please enter a value between [minimumValue] and [maximumValue]."
+   }
+}

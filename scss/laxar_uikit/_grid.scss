@@ -1,0 +1,228 @@
+
+@mixin ax-custom-grid($columns, $column-width, $gutter-width) {
+
+   #ax-grid-visualization {
+      background: url(../images/grid_pattern.png) ($gutter-width / 2) top;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0.6;
+   }
+
+   [class|="col-lg"] {
+      @extend %col-lg-left;
+      margin-left: $gutter-width;
+
+      // To avoid collapsing width of an empty col
+      min-height: 1px;
+
+      &.first,
+      &:first-child {
+         margin-left: 0;
+      }
+   }
+
+   [class|="col-lg-push"],
+   [class|="col-lg-pull"],
+   [class|="col-lg-offset"] {
+      position:relative;
+   }
+
+   // Sometimes (f.e. CommandBarWidget) we want to hide an area
+   .col-lg-0 {
+      display: none !important;
+      width: 0 !important;
+   }
+
+   @for $i from 1 through $columns {
+      .col-lg-#{$i} {
+         width: (($column-width * $i) + ($gutter-width * ($i - 1)));
+      }
+   }
+
+   @for $i from 1 through $columns - 1 {
+      .col-lg-push-#{$i} {
+         left: ($column-width + $gutter-width) * $i;
+      }
+   }
+
+   @for $i from 1 through $columns - 1 {
+      .col-lg-pull-#{$i} {
+         right: ($column-width + $gutter-width) * $i;
+      }
+   }
+
+   @for $i from 1 through $columns - 1 {
+      .col-lg-offset-#{$i} {
+         margin-left: ($column-width + $gutter-width) * $i;
+      }
+   }
+}
+
+@include ax-custom-grid( $ax-grid-columns, $ax-grid-column-width, $ax-grid-gutter-width );
+
+.row {
+   // display: table;
+   // width: 100%;
+   @include clearfix;
+}
+
+%col-lg-left {
+   float: left;
+}
+
+// IE8 don't understand "last-child", for this reason the declaration has to stand alone.
+
+[class|="col-lg"] {
+   &:last-child {
+      float: right;
+      margin-left: 0;
+   }
+}
+[class|="col-lg"] {
+   &.last {
+      float: right;
+      margin-left: 0;
+   }
+}
+
+[class|="col-lg"] {
+   &:first-child:last-child {
+      float: none;
+   }
+}
+[class|="col-lg"] {
+   &.first.last {
+      float: none;
+   }
+}
+
+//
+// Vertical alignment of content in a col
+// -----------------------------------------------------------------------------------------------------------
+
+// <div class="row ax-align-col-content-vertical-middle">
+//    <div class="col-lg-7 first"></div>
+//    <div class="col-lg-3"></div>
+//    <div class="col-lg-2 last"></div>
+// </div>
+
+%ax-align-cols {
+
+   display: table;
+
+   > [class|=col] {
+      float: none !important;
+
+      display: table-cell;
+      vertical-align: middle;
+
+      box-sizing: content-box;
+
+      padding: 0 ($ax-grid-gutter-width / 2);
+
+      &.first,
+      &:first-child {
+         padding-left: 0 !important;
+      }
+
+      // IE8 don't understand "last-child", for this reason the declaration has to stand alone.
+      &.last {
+         text-align: right;
+         padding-right: 0 !important;
+      }
+      &:last-child {
+         text-align: right;
+         padding-right: 0 !important;
+      }
+   }
+}
+
+.ax-align-col-content-vertical-middle {
+   @extend %ax-align-cols;
+
+   > [class|=col] {
+      vertical-align: middle;
+   }
+}
+.ax-align-col-content-vertical-bottom {
+   @extend %ax-align-cols;
+
+   > [class|=col] {
+      vertical-align: bottom;
+   }
+}
+
+//
+// Equal hight of columns
+// -----------------------------------------------------------------------------------------------------------
+
+// Important:
+// The columns should be inside a parent wrapper with 'position: relative' in order for absolute positioning
+// to work.
+
+// <div class="row ax-equal-col-height">
+//    <div class="col-lg-6 first">
+//       ...
+//    </div>
+//    <div class="col-lg-6 last">
+//       ...
+//    </div>
+// </div>
+
+@mixin ax-equal-col-height( $ax-col-width: 50px ) {
+
+   .ax-equal-col-height {
+      position: relative;
+
+      > [class|=col] {
+         &:before {
+            content:'';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            width: $ax-col-width;
+            // Assign the background-style in the specific layout theme
+         }
+      }
+   }
+}
+
+
+//
+// Indent content of columns
+// -----------------------------------------------------------------------------------------------------------
+
+@mixin calulate-indent ( $ax-indent-level: 1 ) {
+   &.first,
+   &:first-child {
+      margin-left:  floor( $ax-grid-gutter-width / 2 ) * ( -1 );
+      padding-left: floor( $ax-grid-gutter-width / 2 ) * $ax-indent-level;
+   }
+
+   // IE8 don't understand "last-child", for this reason the declaration has to stand alone.
+   &.last {
+      margin-right:  floor( $ax-grid-gutter-width / 2 ) * ( -1 );
+      padding-right: floor( $ax-grid-gutter-width / 2 ) * $ax-indent-level;
+   }
+   &:last-child {
+      margin-right:  floor( $ax-grid-gutter-width / 2 ) * ( -1 );
+      padding-right: floor( $ax-grid-gutter-width / 2 ) * $ax-indent-level;
+   }
+}
+
+.ax-indent-first-last-col [class|=col] {
+   @include calulate-indent;
+}
+
+.ax-indent-first-last-col-2x [class|=col] {
+   @include calulate-indent( 2 );
+}
+
+.ax-indent-first-last-col-3x [class|=col] {
+   @include calulate-indent( 3 );
+}

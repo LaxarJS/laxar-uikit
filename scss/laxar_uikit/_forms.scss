@@ -1,0 +1,69 @@
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+   @extend .form-control;
+
+   &.ax-readonly {
+      background: $ax-state-readonly-background;
+      border-color: $ax-state-readonly-border-color;
+   }
+
+   &.ax-disabled {
+      background: $ax-state-disabled-background;
+      border-color: $ax-state-disabled-border-color;
+   }
+
+   &.ax-error {
+      color: $ax-state-error-color !important;
+      border-color: $ax-state-error-border-color !important;
+   }
+}
+
+select,
+input[type="radio"],
+input[type="checkbox"] {
+   cursor: pointer;
+
+   &.ax-readonly,
+   &.ax-disabled {
+      cursor: default;
+   }
+}
+
+//
+// Labels with Radiobutton or Checkbox
+// -----------------------------------------------------------------------------------------------------------
+
+.ax-label-with-input {
+
+   padding-left: 20px;
+
+   > span:first-child {
+      display: inline-block;
+      width: 0px;
+   }
+
+   input[type="radio"],
+   input[type="checkbox"] {
+      margin-left: -20px;
+      margin-right: 0;
+   }
+}
+
+label {
+   font-weight: $ax-label-font-weight;
+}

@@ -1,0 +1,55 @@
+//
+// Bootstrap status
+// -----------------------------------------------------------------------------------------------------------
+
+// Form control feedback states
+// ----------------------------
+// .has-warning
+// .has-error
+// .has-success
+
+
+// Toggling content
+// ----------------
+// .hide
+// .show
+// .invisible
+// .text-hide
+
+
+// .active
+// .disabled
+// [disabled]
+// [readonly]
+
+//
+// LaxarJS status
+// -----------------------------------------------------------------------------------------------------------
+
+// LaxarJS also defines status classes. To use an unique class name pattern we map bootstrap status classes to LaxarJS ones.
+.ax-show { @extend .show; }
+.ax-hide { @extend .hidden; }
+.ax-active { @extend .active; }
+.ax-omitted { @extend .hidden; }
+.ax-text-hide { @extend .text-hide; }
+.ax-invisible { @extend .invisible; }
+
+.ax-disabled {
+   @extend .disabled;
+   cursor: default !important;
+   pointer-events: none;
+   color: $ax-state-disabled-color !important;
+}
+
+.ax-invisible {
+   visibility: hidden !important;
+}
+
+.ax-readonly {
+   color: $ax-state-readonly-color !important;
+}
+.ax-busy {}
+.ax-error {}
+.ax-dragging {}
+.ax-scrolling {}
+.ax-not-scrolling {}

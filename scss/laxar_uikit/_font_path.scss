@@ -1,0 +1,23 @@
+/* FONT PATH
+ * -------------------------- */
+
+@font-face {
+   font-family:'FontAwesome';
+   /* IE < 9
+      The two src data are needed to circumvent a bug in IE for the rendering of the text.
+      IE9+ supports the type format *.woff. */
+   src: url('#{$fa-font-path}/fontawesome-webfont.eot?v=#{$fa-version}'); /* IE9 Compat Modes */
+   src: url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'); /* IE6-IE8 */
+   src: url('#{$fa-font-path}/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg'), /* Windows Chrome */
+        url('#{$fa-font-path}/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'), /* Modern Browsers */
+        url('#{$fa-font-path}/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'); /* Safari, Android, iOS */
+
+   /* To avoid a bug in Webkit-Browsers set all font-* properties to normal. */
+   font-weight: normal;
+   font-style: normal;
+   font-variant: normal;
+}
+
+[class|=fa] {
+   @extend .fa;
+}

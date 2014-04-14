@@ -1,0 +1,93 @@
+
+// Inverse button was removed with bootstrap3, but we have to support it further
+.btn-inverse {
+  @include button-variant($ax-btn-inverse-color, $ax-btn-inverse-background, $ax-btn-inverse-border);
+}
+
+[class|=fa],
+[class|=ax-icon] {
+   display: inline-block;
+   position: relative;
+
+}
+
+%btn-icon-setup {
+   &:before {
+      display: block;
+      width: $font-size-base;
+      line-height: 1;
+   }
+}
+
+.btn-lg {
+   [class|=fa],
+   [class|=ax-icon] {
+      @extend %btn-icon-setup;
+      &:before {
+         width: $font-size-large;
+      }
+   }
+}
+.btn-sm,
+.btn-xs {
+   [class|=fa],
+   [class|=ax-icon] {
+      @extend %btn-icon-setup;
+      &:before {
+         width: $font-size-small;
+      }
+   }
+}
+
+.cssanimations {
+   .ax-busy {
+      [class|=fa],
+      [class|=ax-icon] {
+
+
+         &:before {
+            @include ax-spin-animation;
+            content: $ax-icon-busy;
+            z-index: 1;
+         }
+
+         &:after {
+            @include ax-pulse;
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            height: $font-size-base;
+            width: $font-size-base;
+            border-width: $ax-state-busy-border-width;
+            border-style: solid;
+            border-color: $ax-state-busy-border-color;
+            border-radius: $font-size-base;
+         }
+      }
+
+      &.btn-lg {
+         [class|=fa],
+         [class|=ax-icon] {
+            &:after {
+               height: $font-size-large;
+               width: $font-size-large;
+               border-radius: $font-size-large;
+            }
+         }
+      }
+      &.btn-sm,
+      &.btn-xs {
+         [class|=fa],
+         [class|=ax-icon] {
+            &:after {
+               height: $font-size-small;
+               width: $font-size-small;
+               border-radius: $font-size-small;
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,70 @@
+@import "variables_all";
+@import "laxar_uikit/jquery_ui";
+
+.ui-accordion {
+
+   margin: $ui-accordion-margin;
+
+   .ax-accordion-group {
+      margin-bottom: $ui-accordion-group-margin-bottom;
+   }
+
+   .ui-icon:after {
+      margin: $ui-accordion-state-icon-margin;
+   }
+
+   .ui-state-default .ui-icon:after {
+      @include ax-set-icon( $ui-accordion-state-default-icon )
+   }
+   .ui-state-active .ui-icon:after {
+      @include ax-set-icon( $ui-accordion-state-active-icon )
+   }
+
+   .ui-accordion-header {
+      cursor: pointer;
+      position: relative;
+      padding: $ui-accordion-header-padding;
+
+      color: $ui-accordion-header-color;
+      background: $ui-accordion-header-background;
+
+      font-size:   $ui-accordion-header-font-size;
+      font-weight: $ui-accordion-header-font-weight;
+      font-family: $ui-accordion-header-font-family;
+
+      border: $ui-accordion-header-border;
+      border-radius: $ui-accordion-header-border-radius;
+
+      outline: 0;
+
+      &:focus {
+         border-color: $ui-accordion-header-focus-border-color;
+      }
+
+      &:hover {
+         color: $ui-accordion-header-hover-color;
+         background-color: $ui-accordion-header-hover-background;
+      }
+   }
+
+   .ui-accordion-header-active,
+   .ui-accordion-header-active:hover {
+      cursor: default;
+
+      color: $ui-accordion-header-active-color;
+      background: $ui-accordion-header-active-background;
+
+      border-color: $ui-accordion-header-active-border-color;
+      border-radius: $ui-accordion-header-active-border-radius;
+   }
+
+   .ui-accordion-header-active:focus {
+      border-color: $ui-accordion-header-active-focus-border-color;
+   }
+
+   .ui-accordion-content {
+      padding: $ui-accordion-content-padding;
+      border: $ui-accordion-content-border;
+      border-radius: $ui-accordion-content-border-radius;
+   }
+}

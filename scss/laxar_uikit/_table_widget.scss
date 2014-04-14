@@ -1,0 +1,12 @@
+.table-widget {
+
+   > table {
+      > .ax-table-lead-in,
+      > .ax-table-lead-out {
+         > tr > td {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+         }
+      }
+   }
+}

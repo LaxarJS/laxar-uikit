@@ -1,0 +1,53 @@
+//
+// Pulse
+// -----------------------------------------------------------------------------------------------------------
+
+@keyframes ax-pulse {
+   0% {
+      opacity: 0;
+      transform: scale(0.7);
+   }
+   1% {
+      opacity: 0.1;
+      transform: scale(0.7);
+   }
+   20% {
+      opacity: 0.5;
+   }
+   60% {
+      opacity: 0;
+      transform: scale(2.2);
+   }
+   100% {
+      opacity: 0;
+      transform: scale(0.7);
+   }
+}
+
+@mixin ax-pulse {
+   opacity: 0;
+   animation-name: ax-pulse;
+   animation-duration: 3s;
+   animation-iteration-count: infinite;
+   animation-timing-function: ease-in-out;
+   animation-delay: 1s;
+}
+
+//
+// Rotate
+// -----------------------------------------------------------------------------------------------------------
+
+@keyframes ax-spin-around {
+   from { transform: rotate( 0deg ); }
+   to { transform: rotate( 360deg ); }
+}
+
+@mixin ax-spin-animation {
+   // It is very important to set the display to block, otherwise the rotate animation will not work.
+   display: block;
+   animation-name: ax-spin-around;
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   animation-delay: 0s;
+}

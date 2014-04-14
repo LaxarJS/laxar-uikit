@@ -1,0 +1,52 @@
+$ax-grid-base-px: 16;
+
+@function to-rems() {
+   @return (1 / $ax-grid-base-px) + 0rem;
+}
+
+@function to-ems() {
+   @return (1 / $ax-grid-base-px) + 0em;
+}
+
+$ax-grid-default-width: 1248px;
+$ax-grid-default-col-span: 1;
+$ax-grid-default-col-count: 12;
+$ax-grid-default-col-padding: ($ax-grid-gutter-width / 2);
+$ax-grid-default-gutter-width: $ax-grid-gutter-width;
+
+.ax-row {
+   display: table;
+   table-layout: fixed;
+   width: 100%;
+}
+
+@mixin ax-col( $col-span:    $ax-grid-default-col-span,
+               $col-count:   $ax-grid-default-col-count,
+               $col-padding: $ax-grid-default-col-padding,
+               $grid-gutter: $ax-grid-default-gutter-width ) {
+   width: $col-span * ( 100 / $col-count ) + 0%;
+   float: left;
+   padding-left: $grid-gutter;
+
+   &:first-child {
+      padding-left: 0;
+   }
+}
+
+.ax-application {
+   max-width: $ax-grid-default-width;
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 $ax-grid-margin;
+
+   @if $ax-grid-visible {
+      background: url(../img/grid_pattern.png) ($ax-grid-default-gutter-width / 2) top;
+   }
+}
+
+@for $i from 1 through $ax-grid-default-col-count {
+   .ax-col-#{$i} {
+      @include ax-col( $i,
+                       $ax-grid-default-col-count );
+   }
+}

@@ -1,0 +1,22 @@
+// Name mapping
+
+//
+// Commandbar
+// -----------------------------------------------------------------------------------------------------------
+
+.ax-icon-previous:before         { @include ax-set-icon( $ax-icon-previous ); }
+.ax-icon-previous-primary:before { @include ax-set-icon( $ax-icon-previous-primary ); }
+.ax-icon-next:before             { @include ax-set-icon( $ax-icon-next ); }
+.ax-icon-next-primary:before     { @include ax-set-icon( $ax-icon-next-primary ); }
+.ax-icon-add:before              { @include ax-set-icon( $ax-icon-add ); }
+.ax-icon-delete:before           { @include ax-set-icon( $ax-icon-delete ); }
+.ax-icon-ok:before               { @include ax-set-icon( $ax-icon-ok  ); }
+.ax-icon-apply:before            { @include ax-set-icon( $ax-icon-apply ); }
+.ax-icon-cancel:before           { @include ax-set-icon( $ax-icon-cancel ); }
+.ax-icon-yes:before              { @include ax-set-icon( $ax-icon-yes ); }
+.ax-icon-no:before               { @include ax-set-icon( $ax-icon-no ); }
+.ax-icon-finish:before           { @include ax-set-icon( $ax-icon-finish ); }
+.ax-icon-info:before             { @include ax-set-icon( $ax-icon-info ); }
+.ax-icon-warn:before          { @include ax-set-icon( $ax-icon-warn ); }
+.ax-icon-help:before             { @include ax-set-icon( $ax-icon-help ); }
+.ax-icon-print:before            { @include ax-set-icon( $ax-icon-print ); }

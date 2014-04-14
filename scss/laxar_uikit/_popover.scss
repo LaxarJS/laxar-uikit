@@ -1,0 +1,79 @@
+//
+// Popovers
+// -------------------------
+
+
+.popover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: $zindex-popover;
+   display: none;
+   width: $ax-popover-width;
+   max-width: $ax-popover-max-width;
+   padding: $ax-popover-padding;
+   background-color: $popover-bg;
+
+   border: $ax-popover-border-width solid $popover-fallback-border-color;
+   border: $ax-popover-border-width solid $popover-border-color;
+   border-radius: $ax-popover-border-radius;
+
+   box-shadow: $ax-popover-box-shadow;
+
+   // This filter take better account of the popover nose
+   // -webkit-filter: drop-shadow($ax-popover-box-shadow);
+   // filter: drop-shadow($ax-popover-box-shadow);
+
+   // filter: $dropShadowFilter; // svg file
+
+   // Offset the popover to account for the popover arrow
+   &.top     { margin-top:   -$ax-popover-arrow-width; }
+   &.right   { margin-left:  ($ax-popover-arrow-width + $ax-popover-offset); }
+   &.bottom  { margin-top:   ($ax-popover-arrow-width + $ax-popover-offset); }
+   &.left    { margin-left: -($ax-popover-arrow-width + $ax-popover-offset); }
+}
+
+// Targeting firefox browser only
+// @-moz-document url-prefix() {
+//    .popover {
+//       box-shadow: $ax-popover-box-shadow;
+//    }
+// }
+
+.popover-title {
+   margin: 0; // reset heading margin
+   padding: $ax-unit-vertical $ax-unit-horizontal;
+   font-size: $ax-popover-title-font-size;
+   font-weight: $ax-popover-title-font-weight;
+   line-height: $ax-popover-tilte-line-height;
+   background-color: $ax-popover-title-background;
+   border-bottom: $ax-popover-title-border;
+   border-radius: $ax-popover-border-radius $ax-popover-border-radius 0 0;
+}
+
+.popover-content {
+   padding: $ax-unit-vertical $ax-unit-horizontal;
+}
+
+.popover {
+
+   + .arrow {
+      position: absolute;
+      z-index: $zindex-popover;
+   }
+
+   // NEEDS FIX B:
+   // http://stackoverflow.com/questions/3350441/dynamic-elements-are-not-appearing-in-ie8-until-there-is-a-mouse-click or mouse-move
+   &.top + .arrow {
+      @include ax-arrow-box(bottom, $popover-bg, $ax-popover-arrow-width, $popover-border-color, $ax-popover-border-width);
+   }
+   &.right + .arrow {
+      @include ax-arrow-box(left, $popover-bg, $ax-popover-arrow-width, $popover-border-color, $ax-popover-border-width);
+   }
+   &.bottom + .arrow {
+      @include ax-arrow-box(top, $popover-bg, $ax-popover-arrow-width, $popover-border-color, $ax-popover-border-width);
+   }
+   &.left + .arrow {
+      @include ax-arrow-box(right, $popover-bg, $ax-popover-arrow-width, $popover-border-color, $ax-popover-border-width);
+   }
+}

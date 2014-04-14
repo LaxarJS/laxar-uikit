@@ -1,0 +1,64 @@
+//
+// Application
+// -----------------------------------------------------------------------------------------------------------
+
+@mixin ax-application {
+
+   width: $ax-application-width;
+   margin: 0 auto;
+   padding: 0 $ax-grid-margin;
+
+   box-sizing: content-box;
+   position: relative;
+}
+
+//
+// Icons
+// -----------------------------------------------------------------------------------------------------------
+
+%ax-font-awesome {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Use this mixin to set the icon within an other css rule
+// Sass does not allow to extend
+@mixin ax-set-icon( $ax-icon-code ) {
+   @extend %ax-font-awesome;
+   content: $ax-icon-code;
+}
+
+
+//
+// Disable Foxus Border
+// -----------------------------------------------------------------------------------------------------------
+
+@mixin ax-disable-focus-style {
+   a,
+   a i,
+   a i:after,
+   a:focus,
+   a:active,
+   a:focus i,
+   a:active i {
+
+      outline: none;
+      border: none;
+      box-shadow: none;
+   }
+}
+
+//
+// Text ellipsis for a single line (Don't work with multiple lines!)
+// ------------------------------------------------------
+@mixin ax-text-ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
