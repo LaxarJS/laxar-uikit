@@ -17,6 +17,17 @@
 .ax-icon-no:before               { @include ax-set-icon( $ax-icon-no ); }
 .ax-icon-finish:before           { @include ax-set-icon( $ax-icon-finish ); }
 .ax-icon-info:before             { @include ax-set-icon( $ax-icon-info ); }
-.ax-icon-warn:before          { @include ax-set-icon( $ax-icon-warn ); }
+.ax-icon-warn:before             { @include ax-set-icon( $ax-icon-warn ); }
 .ax-icon-help:before             { @include ax-set-icon( $ax-icon-help ); }
 .ax-icon-print:before            { @include ax-set-icon( $ax-icon-print ); }
+
+
+//
+// Status Colors
+// -----------------------------------------------------------------------------------------------------------
+
+.ax-icon-primary { color: $brand-primary; }
+.ax-icon-success { color: $brand-success; }
+.ax-icon-info    { color: $brand-info; }
+.ax-icon-warning { color: $brand-warning; }
+.ax-icon-danger  { color: $brand-danger; }

@@ -8028,13 +8028,19 @@ button.close {
 }
 
 #ax-grid-visualization {
+  width: 1222px;
+  margin: 0 auto;
+  padding: 0 13px;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  position: relative;
   background: url(../images/grid_pattern.png) 13px top;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 100;
   opacity: 0.6;
 }
 
@@ -8505,7 +8511,9 @@ button.close {
 }
 
 a:hover,
-.btn-link:hover {
+a:focus,
+.btn-link:hover,
+.btn-link:focus {
   text-decoration: none;
 }
 
@@ -8585,6 +8593,26 @@ a:hover,
 
 .ax-icon-print:before {
   content: "\f02f";
+}
+
+.ax-icon-primary {
+  color: #428bca;
+}
+
+.ax-icon-success {
+  color: #5cb85c;
+}
+
+.ax-icon-info {
+  color: #5bc0de;
+}
+
+.ax-icon-warning {
+  color: #ffbf21;
+}
+
+.ax-icon-danger {
+  color: #e8273b;
 }
 
 .btn-inverse {
