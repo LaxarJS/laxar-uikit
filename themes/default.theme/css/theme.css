@@ -6221,7 +6221,7 @@ input[type="button"].btn-block {
 .breadcrumb > li + li:before {
   content: "/\00a0";
   padding: 0 5px;
-  color: #cccccc;
+  color: #999999;
 }
 
 .breadcrumb > .active,
