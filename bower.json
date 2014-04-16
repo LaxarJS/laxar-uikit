@@ -1,10 +1,10 @@
 {
    "name": "laxar_uikit",
-   "version": "0.0.0",
+   "version": "0.9.0-pre",
    "description": "Standard UI controls and stylesheets for LaxarJS widgets",
    "authors": [],
    "license": "MIT",
-   "main": "dist/laxar.js",
+   "main": "laxar_uikit.js",
    "ignore": [
       ".*",
       "Gruntfile.js",
@@ -15,8 +15,8 @@
    "dependencies": {
       "bootstrap-sass-official": "twbs/bootstrap-sass#3.1.x",
       "font-awesome": "FortAwesome/Font-Awesome#4.0.x",
-      "jquery_ui": "LaxarJS/jquery_ui#*",
-      "laxar": "LaxarJS/laxar#*",
+      "jquery_ui": "LaxarJS/jquery_ui#1.10.x",
+      "laxar": "LaxarJS/laxar#0.x",
       "moment": "moment/moment#2.3.x",
       "underscore": "jashkenas/underscore#1.5.x"
    },
