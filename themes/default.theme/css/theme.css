@@ -8686,18 +8686,14 @@ fieldset[disabled] .btn-inverse.ax-active {
   position: relative;
 }
 
+.btn [class|=fa]:before,
+.btn [class|=ax-icon]:before,
 .btn-lg [class|=fa]:before,
-.btn-group-lg > .btn [class|=fa]:before,
 .btn-lg [class|=ax-icon]:before,
-.btn-group-lg > .btn [class|=ax-icon]:before,
 .btn-sm [class|=fa]:before,
-.btn-group-sm > .btn [class|=fa]:before,
 .btn-sm [class|=ax-icon]:before,
-.btn-group-sm > .btn [class|=ax-icon]:before,
 .btn-xs [class|=fa]:before,
-.btn-group-xs > .btn [class|=fa]:before,
-.btn-xs [class|=ax-icon]:before,
-.btn-group-xs > .btn [class|=ax-icon]:before {
+.btn-xs [class|=ax-icon]:before {
   display: block;
   width: 14px;
   line-height: 1;
