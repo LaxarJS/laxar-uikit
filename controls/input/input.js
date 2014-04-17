@@ -6,12 +6,13 @@
 define( [
    'jquery',
    'laxar',
+   'bootstrap-tooltip',
    '../../lib/i18n',
    './formatters',
    './parsers',
    './helpers',
    'json!./messages.json'
-], function( $, ax, i18n, formatters, parsers, helpers, messages ) {
+], function( $, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, messages ) {
    'use strict';
 
    var assert = ax.assert;
