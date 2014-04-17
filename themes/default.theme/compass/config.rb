@@ -2,6 +2,12 @@
 # -----
 require 'autoprefixer-rails'
 
+# Sets the number of digits of precision
+# For example, if this is 3,
+# 3.1415926 will be printed as 3.142
+# Bootstrap needs a precision of ten!
+Sass::Script::Number.precision=10
+
 # Added post-compile hook for autorpefxier
 # ----------------------------------------
 
@@ -28,7 +34,6 @@ on_stylesheet_saved do |file|
    css = File.read(file)
    File.open(file, 'w') { |io| io << AutoprefixerRails.compile(css, browsers) }
 end
-
 
 # Variable
 base_dir = File.dirname(__FILE__) + '/..'

@@ -10,6 +10,9 @@
 // @import "../bootstrap/variables"; // We assign the variables in _modules_variables
 @import "bootstrap/mixins";
 
+// Overwrite mixins from bootstrap if necessary
+@import "mixins_overwrite_bootstrap_ones";
+
 // Reset
 @import "bootstrap/normalize";
 @import "bootstrap/print";
