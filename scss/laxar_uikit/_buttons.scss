@@ -19,6 +19,13 @@
    }
 }
 
+.btn {
+   [class|=fa],
+   [class|=ax-icon] {
+      @extend %btn-icon-setup;
+  }
+}
+
 .btn-lg {
    [class|=fa],
    [class|=ax-icon] {
