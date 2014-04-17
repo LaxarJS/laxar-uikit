@@ -1,0 +1,4 @@
+// Remove the unit from a value and return the integer.
+@function ax-parse-int( $n ){
+   @return $n / ( $n * 0 + 1 );
+}
