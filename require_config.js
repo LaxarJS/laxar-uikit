@@ -74,6 +74,7 @@ var require = {
       'angular-sanitize': 'bower_components/angular-sanitize/angular-sanitize',
       'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
       angular: 'bower_components/angular/angular',
+      trunk8: 'bower_components/trunk8/trunk8',
       jquery_ui: 'bower_components/jquery_ui',
       q_mock: 'bower_components/q_mock/q',
 
