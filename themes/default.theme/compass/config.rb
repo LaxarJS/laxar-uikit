@@ -35,17 +35,26 @@ on_stylesheet_saved do |file|
    File.open(file, 'w') { |io| io << AutoprefixerRails.compile(css, browsers) }
 end
 
+
 # Variable
-base_dir = File.dirname(__FILE__) + '/..'
+base_dir = File.dirname(__FILE__) + '/../'
+
+
+bower_dir = base_dir + '../../../'
+# Respect theme-local bower installation if there ist one:
+if File.directory? (base_dir + '../../bower_components/')
+   bower_dir = base_dir + '../../bower_components/'
+end
+
 # Find SCSS in theme (from widgets, controls and layouts)
-add_import_path base_dir + '/scss/'
+add_import_path base_dir + 'scss/'
 # Find UIKit SCSS
-add_import_path base_dir + '/../../scss/'
+add_import_path base_dir + '../../scss/'
 # Find Third party SCSS
 # - Bootstrap
-add_import_path base_dir + '/../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/'
+add_import_path bower_dir + 'bootstrap-sass-official/vendor/assets/stylesheets/'
 # - Font Awesome (use bower_components directory so that imports have a prefix)
-add_import_path base_dir + '/../../bower_components/'
+add_import_path bower_dir
 
 
 
