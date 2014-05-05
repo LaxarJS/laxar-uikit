@@ -162,10 +162,10 @@
 // -----------------------------------------------------------------------------------------------------------
 
 // Important:
-// The columns should be inside a parent wrapper with 'position: relative' in order for absolute positioning
-// to work.
+// The columns should be inside a parent wrapper (f.e. the class row) with 'position: relative'
+// in order for absolute positioning to work.
 
-// <div class="row ax-equal-col-height">
+// <div class="row">
 //    <div class="col-lg-6 first">
 //       ...
 //    </div>
@@ -174,31 +174,28 @@
 //    </div>
 // </div>
 
-@mixin ax-equal-col-height( $ax-col-width: 50px ) {
+@mixin ax-equal-col-height( $ax-col-width: $col-lg-3 ) {
 
-   .ax-equal-col-height {
-      position: relative;
+   position: relative;
 
-      > [class|=col] {
-         &:before {
-            content:'';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            z-index: -1;
-            width: $ax-col-width;
-            // Assign the background-style in the specific layout theme
-         }
+   > [class|=col] {
+      &:before {
+         content:'';
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         z-index: -1;
+         width: $ax-col-width;
+         // Assign the background-style in the specific layout theme
       }
    }
 }
-
 
 //
 // Indent content of columns
 // -----------------------------------------------------------------------------------------------------------
 
-@mixin calulate-indent ( $ax-indent-level: 1 ) {
+@mixin calculate-indent ( $ax-indent-level: 1 ) {
    &.first,
    &:first-child {
       margin-left:  floor( $ax-grid-gutter-width / 2 ) * ( -1 );
@@ -217,13 +214,13 @@
 }
 
 .ax-indent-first-last-col [class|=col] {
-   @include calulate-indent;
+   @include calculate-indent;
 }
 
 .ax-indent-first-last-col-2x [class|=col] {
-   @include calulate-indent( 2 );
+   @include calculate-indent( 2 );
 }
 
 .ax-indent-first-last-col-3x [class|=col] {
-   @include calulate-indent( 3 );
+   @include calculate-indent( 3 );
 }
