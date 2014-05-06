@@ -15,11 +15,9 @@ define( [
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    var directive = [ function() {
-      console.log( 'provide text ellipsis' );
       return {
          restrict: 'A',
          link: function link( scope, iElement, iAttrs ) {
-            console.log( 'link text ellipsis' );
             var $subject = $( iElement[ 0 ] );
             if( iAttrs.axTextEllipsis ) {
                var config = scope.$eval( iAttrs.axTextEllipsis );

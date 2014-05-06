@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#5](https://github.com/LaxarJS/laxar_uikit/issues/5): Removed console.log statements from text-ellipsis control.
 
 ## v0.9.3
 - [#4](https://github.com/LaxarJS/laxar_uikit/issues/4): Fixed table style with form elements.
