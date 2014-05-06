@@ -34,6 +34,7 @@
 .ax-text-hide { @extend .text-hide; }
 .ax-invisible { @extend .invisible; }
 
+[disabled],
 .ax-disabled {
    @extend .disabled;
    cursor: default !important;
@@ -45,6 +46,7 @@
    visibility: hidden !important;
 }
 
+[readonly],
 .ax-readonly {
    color: $ax-state-readonly-color !important;
 }

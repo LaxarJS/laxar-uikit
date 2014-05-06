@@ -277,39 +277,88 @@ td {
       }
    }
 
-   select,
-   textarea,
-   input[type="text"],
-   input[type="password"],
-   input[type="datetime"],
-   input[type="datetime-local"],
-   input[type="date"],
-   input[type="month"],
-   input[type="time"],
-   input[type="week"],
-   input[type="number"],
-   input[type="email"],
-   input[type="url"],
-   input[type="search"],
-   input[type="tel"],
-   input[type="color"],
-   .btn {
-      margin-top: $ax-table-input-offset-top;
-      margin-bottom: $ax-table-input-offset-bottom;
+
+   [class*="ax-form"] {
+      position: relative;
+      padding-top: $ax-form-padding-top !important;
+      padding-bottom: $ax-form-padding-bottom !important;
+
+      span {
+         display: inline-block;
+         height: $input-height-base;
+         line-height: $line-height-base;
+         padding-top: $padding-base-vertical;
+         padding-right: $ax-form-input-padding-right;
+         padding-bottom: $padding-base-vertical;
+         padding-left: $padding-base-horizontal;
+         border-width: $ax-form-input-border-width;
+         border-color: transparent;
+         border-style: solid;
+      }
+
+      .ax-unit {
+         position: absolute;
+         top: 1px;
+         right: $ax-form-input-padding-right;
+         padding-left: 0;
+         padding-right: 0;
+      }
+
+      .btn-sm {
+         margin-top: $ax-form-button-sm-margin-top;
+      }
+
+      .btn-xs {
+         margin-top: $ax-form-button-xs-margin-top;
+      }
    }
 
-   input[readonly] {
-      color: $ax-tbody-color;
+   .ax-form-amount,
+   .ax-form-amount input {
+      text-align: right;
+      padding-right: $ax-form-input-padding-right;
+   }
 
+   .checkbox,
+   .radiobutton {
+      margin-top: 0;
+      margin-bottom: 0;
+   }
+
+   // input[type="text"],
+   // input[type="password"],
+   // input[type="datetime"],
+   // input[type="datetime-local"],
+   // input[type="date"],
+   // input[type="month"],
+   // input[type="time"],
+   // input[type="week"],
+   // input[type="number"],
+   // input[type="email"],
+   // input[type="url"],
+   // input[type="search"],
+   // input[type="tel"],
+   // input[type="color"]{
+   // }
+
+   input.ax-readonly,
+   input.ax-disabled,
+   input[readonly],
+   input[disabled] {
+      color: $ax-tbody-color !important;
       font-size: $ax-tbody-font-size;
       font-weight: $ax-tbody-font-weight;
       font-family: $ax-tbody-font-family;
       border-color: transparent;
       background-color: transparent;
+      box-shadow: none;
    }
 
-   tfoot input[readonly] {
-      color: $ax-tfoot-color;
+   tfoot input.ax-readonly,
+   tfoot input.ax-disabled,
+   tfoot input[readonly],
+   tfoot input[disabled] {
+      color: $ax-tfoot-color !important;
       font-size: $ax-tfoot-font-size;
       font-weight: $ax-tfoot-font-weight;
       font-family: $ax-tfoot-font-family;
