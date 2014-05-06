@@ -157,6 +157,9 @@ $ax-table-icon-expanded  : $fa-var-caret-down !default;
 $ax-table-input-offset-top   : -2px !default;
 $ax-table-input-offset-bottom: -2px !default;
 
+// $input-height-base contains the border-width allready!
+$ax-calculate-vertical-padding: floor( ( $input-height-base - $line-height-computed ) / 2 )  !default;
+
 
 // Table Header
 // ------------
@@ -167,9 +170,9 @@ $ax-thead-font-weight                  : bold !default;
 $ax-thead-font-family                  : $font-family-base !default;
 $ax-thead-line-height                  : $line-height-base !default;
 
-$ax-thead-padding-top                  : floor( $ax-unit-vertical / 2 ) !default;
+$ax-thead-padding-top                  : $ax-calculate-vertical-padding !default;
 $ax-thead-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
-$ax-thead-padding-bottom               : floor( $ax-unit-vertical / 2 ) !default;
+$ax-thead-padding-bottom               : $ax-calculate-vertical-padding !default;
 $ax-thead-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
 
 $ax-thead-border-width                 : 0px !default;
@@ -193,9 +196,9 @@ $ax-tbody-font-weight                  : normal !default;
 $ax-tbody-font-family                  : $font-family-base !default;
 $ax-tbody-line-height                  : $line-height-base !default;
 
-$ax-tbody-padding-top                  : floor( $ax-unit-vertical / 2 ) !default;
+$ax-tbody-padding-top                  : $ax-calculate-vertical-padding !default;
 $ax-tbody-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
-$ax-tbody-padding-bottom               : floor( $ax-unit-vertical / 2 ) !default;
+$ax-tbody-padding-bottom               : $ax-calculate-vertical-padding !default;
 $ax-tbody-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
 
 $ax-tbody-border-width                 : 0px !default;
@@ -232,8 +235,8 @@ $ax-tbody-level-2-color                : $text-color !default;
 $ax-tbody-level-2-background           : lighten( $ax-thead-background, 12%) !default;
 $ax-tbody-level-2-border-top-width     : $ax-base-border-width !default;
 $ax-tbody-level-2-border-top-style     : solid !default;
-$ax-tbody-level-2-border-top-color     : $text-color !default;
-$ax-tbody-level-2-first-child-border-top-width: $ax-tbody-level-2-border-top-width !default;
+$ax-tbody-level-2-border-top-color     : $ax-tbody-border-top-color !default;
+$ax-tbody-level-2-first-child-border-top-width: 0 !default;
 
 $ax-tbody-odd-color                    : $text-color !default;
 $ax-tbody-odd-background               : transparent !default;
@@ -261,6 +264,8 @@ $ax-tbody-selected-background          : lighten( adjust-hue( $ax-mint, -10% ), 
 
 // Table Footer
 // ------------
+
+
 $ax-tfoot-color                        : $ax-thead-color !default;
 $ax-tfoot-background                   : $ax-thead-background !default;
 $ax-tfoot-font-size                    : $font-size-base !default;
@@ -268,9 +273,9 @@ $ax-tfoot-font-weight                  : bold !default;
 $ax-tfoot-font-family                  : $font-family-base !default;
 $ax-tfoot-line-height                  : $line-height-base !default;
 
-$ax-tfoot-padding-top                  : floor( $ax-unit-vertical / 2 ) !default;
+$ax-tfoot-padding-top                  : $ax-calculate-vertical-padding !default;
 $ax-tfoot-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
-$ax-tfoot-padding-bottom               : floor( $ax-unit-vertical / 2 ) !default;
+$ax-tfoot-padding-bottom               : $ax-calculate-vertical-padding !default;
 $ax-tfoot-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
 
 $ax-tfoot-border-width                 : 0px !default;
@@ -285,6 +290,20 @@ $ax-tfoot-border-left-color            : $ax-table-border-color !default;
 
 $ax-tfoot-first-child-border-left-width: $ax-tfoot-border-width !default;
 $ax-tfoot-first-child-border-top-width : $ax-tfoot-border-width !default;
+
+// Cell (.ax-form) contains an form element like input, select, button, ...
+$ax-form-padding-top: 1px;
+$ax-form-padding-right: 0px;
+$ax-form-padding-bottom: 1px;
+$ax-form-padding-left: 0px;
+$ax-form-input-border-width: 1px !default;
+
+// We need some space for the unit sign
+$ax-form-input-padding-right: $padding-base-horizontal + $ax-form-input-border-width * 2 !default;
+
+$ax-form-button-sm-margin-top: 2px !default;
+$ax-form-button-xs-margin-top: 6px !default;
+
 
 //
 // Headlines
