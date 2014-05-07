@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#6](https://github.com/LaxarJS/laxar_uikit/issues/6): Now the margin-top for a button variant (sm, xs) will calculate depending on bootstrap variables.
 
 ## v0.9.4
 - [#5](https://github.com/LaxarJS/laxar_uikit/issues/5): Removed console.log statements from text-ellipsis control.
