@@ -1,6 +1,8 @@
 # Changelog
 
 ## Last Changes
+
+## v0.9.5
 - [#7](https://github.com/LaxarJS/laxar_uikit/issues/7): Fixed grid depends on position of class col-lg in attribute.
 - [#6](https://github.com/LaxarJS/laxar_uikit/issues/6): Now the margin-top for a button variant (sm, xs) will calculate depending on bootstrap variables.
 
