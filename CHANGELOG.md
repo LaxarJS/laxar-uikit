@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#6](https://github.com/LaxarJS/laxar_uikit/issues/6): Now the margin-top for a button variant (sm, xs) will calculate depending on bootstrap variants.
 - [#5](https://github.com/LaxarJS/laxar_uikit/issues/5): Removed console.log statements from text-ellipsis control.
 - [#4](https://github.com/LaxarJS/laxar_uikit/issues/4): Fixed table style with form elements.
 - [#3](https://github.com/LaxarJS/laxar_uikit/issues/3): Fixed spelling in grid classes.
