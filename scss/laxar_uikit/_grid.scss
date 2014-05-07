@@ -13,7 +13,7 @@
       opacity: 0.6;
    }
 
-   [class|="col-lg"] {
+   .col {
       @extend %col-lg-left;
       margin-left: $gutter-width;
 
@@ -26,9 +26,9 @@
       }
    }
 
-   [class|="col-lg-push"],
-   [class|="col-lg-pull"],
-   [class|="col-lg-offset"] {
+   [class*="col-lg-push"],
+   [class*="col-lg-pull"],
+   [class*="col-lg-offset"] {
       position:relative;
    }
 
@@ -77,25 +77,25 @@
 
 // IE8 don't understand "last-child", for this reason the declaration has to stand alone.
 
-[class|="col-lg"] {
+.col {
    &:last-child {
       float: right;
       margin-left: 0;
    }
 }
-[class|="col-lg"] {
+.col {
    &.last {
       float: right;
       margin-left: 0;
    }
 }
 
-[class|="col-lg"] {
+.col {
    &:first-child:last-child {
       float: none;
    }
 }
-[class|="col-lg"] {
+.col {
    &.first.last {
       float: none;
    }
@@ -115,7 +115,7 @@
 
    display: table;
 
-   > [class|=col] {
+   > .col {
       float: none !important;
 
       display: table-cell;
@@ -145,14 +145,14 @@
 .ax-align-col-content-vertical-middle {
    @extend %ax-align-cols;
 
-   > [class|=col] {
+   > .col {
       vertical-align: middle;
    }
 }
 .ax-align-col-content-vertical-bottom {
    @extend %ax-align-cols;
 
-   > [class|=col] {
+   > .col {
       vertical-align: bottom;
    }
 }
@@ -178,7 +178,7 @@
 
    position: relative;
 
-   > [class|=col] {
+   > .col {
       &:before {
          content:'';
          position: absolute;
@@ -213,14 +213,14 @@
    }
 }
 
-.ax-indent-first-last-col [class|=col] {
+.ax-indent-first-last-col .col {
    @include calculate-indent;
 }
 
-.ax-indent-first-last-col-2x [class|=col] {
+.ax-indent-first-last-col-2x .col {
    @include calculate-indent( 2 );
 }
 
-.ax-indent-first-last-col-3x [class|=col] {
+.ax-indent-first-last-col-3x .col {
    @include calculate-indent( 3 );
 }
