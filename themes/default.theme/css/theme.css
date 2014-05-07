@@ -8447,19 +8447,19 @@ button.close {
   opacity: 0.6;
 }
 
-[class|="col-lg"] {
+.col {
   margin-left: 26px;
   min-height: 1px;
 }
 
-[class|="col-lg"].first,
-[class|="col-lg"]:first-child {
+.col.first,
+.col:first-child {
   margin-left: 0;
 }
 
-[class|="col-lg-push"],
-[class|="col-lg-pull"],
-[class|="col-lg-offset"] {
+[class*="col-lg-push"],
+[class*="col-lg-pull"],
+[class*="col-lg-offset"] {
   position: relative;
 }
 
@@ -8658,25 +8658,25 @@ button.close {
   clear: both;
 }
 
-[class|="col-lg"] {
+.col {
   float: left;
 }
 
-[class|="col-lg"]:last-child {
+.col:last-child {
   float: right;
   margin-left: 0;
 }
 
-[class|="col-lg"].last {
+.col.last {
   float: right;
   margin-left: 0;
 }
 
-[class|="col-lg"]:first-child:last-child {
+.col:first-child:last-child {
   float: none;
 }
 
-[class|="col-lg"].first.last {
+.col.first.last {
   float: none;
 }
 
@@ -8685,8 +8685,8 @@ button.close {
   display: table;
 }
 
-.ax-align-col-content-vertical-middle > [class|=col],
-.ax-align-col-content-vertical-bottom > [class|=col] {
+.ax-align-col-content-vertical-middle > .col,
+.ax-align-col-content-vertical-bottom > .col {
   float: none !important;
   display: table-cell;
   vertical-align: middle;
@@ -8695,77 +8695,77 @@ button.close {
   padding: 0 13px;
 }
 
-.ax-align-col-content-vertical-middle > [class|=col].first,
-.ax-align-col-content-vertical-bottom > [class|=col].first,
-.ax-align-col-content-vertical-middle > [class|=col]:first-child,
-.ax-align-col-content-vertical-bottom > [class|=col]:first-child {
+.ax-align-col-content-vertical-middle > .col.first,
+.ax-align-col-content-vertical-bottom > .col.first,
+.ax-align-col-content-vertical-middle > .col:first-child,
+.ax-align-col-content-vertical-bottom > .col:first-child {
   padding-left: 0 !important;
 }
 
-.ax-align-col-content-vertical-middle > [class|=col].last,
-.ax-align-col-content-vertical-bottom > [class|=col].last {
+.ax-align-col-content-vertical-middle > .col.last,
+.ax-align-col-content-vertical-bottom > .col.last {
   text-align: right;
   padding-right: 0 !important;
 }
 
-.ax-align-col-content-vertical-middle > [class|=col]:last-child,
-.ax-align-col-content-vertical-bottom > [class|=col]:last-child {
+.ax-align-col-content-vertical-middle > .col:last-child,
+.ax-align-col-content-vertical-bottom > .col:last-child {
   text-align: right;
   padding-right: 0 !important;
 }
 
-.ax-align-col-content-vertical-middle > [class|=col] {
+.ax-align-col-content-vertical-middle > .col {
   vertical-align: middle;
 }
 
-.ax-align-col-content-vertical-bottom > [class|=col] {
+.ax-align-col-content-vertical-bottom > .col {
   vertical-align: bottom;
 }
 
-.ax-indent-first-last-col [class|=col].first,
-.ax-indent-first-last-col [class|=col]:first-child {
+.ax-indent-first-last-col .col.first,
+.ax-indent-first-last-col .col:first-child {
   margin-left: -13px;
   padding-left: 13px;
 }
 
-.ax-indent-first-last-col [class|=col].last {
+.ax-indent-first-last-col .col.last {
   margin-right: -13px;
   padding-right: 13px;
 }
 
-.ax-indent-first-last-col [class|=col]:last-child {
+.ax-indent-first-last-col .col:last-child {
   margin-right: -13px;
   padding-right: 13px;
 }
 
-.ax-indent-first-last-col-2x [class|=col].first,
-.ax-indent-first-last-col-2x [class|=col]:first-child {
+.ax-indent-first-last-col-2x .col.first,
+.ax-indent-first-last-col-2x .col:first-child {
   margin-left: -13px;
   padding-left: 26px;
 }
 
-.ax-indent-first-last-col-2x [class|=col].last {
+.ax-indent-first-last-col-2x .col.last {
   margin-right: -13px;
   padding-right: 26px;
 }
 
-.ax-indent-first-last-col-2x [class|=col]:last-child {
+.ax-indent-first-last-col-2x .col:last-child {
   margin-right: -13px;
   padding-right: 26px;
 }
 
-.ax-indent-first-last-col-3x [class|=col].first,
-.ax-indent-first-last-col-3x [class|=col]:first-child {
+.ax-indent-first-last-col-3x .col.first,
+.ax-indent-first-last-col-3x .col:first-child {
   margin-left: -13px;
   padding-left: 39px;
 }
 
-.ax-indent-first-last-col-3x [class|=col].last {
+.ax-indent-first-last-col-3x .col.last {
   margin-right: -13px;
   padding-right: 39px;
 }
 
-.ax-indent-first-last-col-3x [class|=col]:last-child {
+.ax-indent-first-last-col-3x .col:last-child {
   margin-right: -13px;
   padding-right: 39px;
 }
