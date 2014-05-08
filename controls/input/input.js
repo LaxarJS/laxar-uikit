@@ -196,7 +196,7 @@ define( [
 
             function updateFormatting( newValue, oldValue ) {
                if( newValue === oldValue ) { return; }
-               var formattingOptions = getFormattingOptions( scope, attrs );
+               formattingOptions = getFormattingOptions( scope, attrs );
                axInputController.initialize( valueType, formattingOptions );
                ngModelController.$render();
             }
@@ -279,9 +279,11 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            var focusFormat =
-               formatters.create( valueType, ax.object.options( { groupingSeparator: '' }, formattingOptions ) );
             function removeGroupingAndKeepCursorPosition() {
+               var focusFormat = formatters.create( valueType, ax.object.options( {
+                  groupingSeparator: ''
+               }, formattingOptions ) );
+
                // We need to do this asynchronously because of Google Chrome.
                setTimeout( function() {
                   var selection = helpers.getSelectionRange( element[0] );
