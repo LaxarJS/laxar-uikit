@@ -44,6 +44,36 @@ input[type="checkbox"] {
    }
 }
 
+// Bootstrap only apply these rules for viewports that are at least 768px wide.
+// We want to use them for larger one too.
+.form-inline {
+   .form-group,
+   .radio,
+   .checkbox{
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+   }
+   .radio,
+   .checkbox {
+      margin-top: 0;
+      padding-left: 0;
+
+      label {
+         padding-left: 0;
+         padding-right: $ax-unit-horizontal;
+      }
+   }
+   .btn {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+   }
+}
+
+.form-inline + .form-inline {
+   margin-top: $ax-unit-vertical;
+}
+
 //
 // Labels with Radiobutton or Checkbox
 // -----------------------------------------------------------------------------------------------------------
