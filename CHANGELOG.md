@@ -2,6 +2,7 @@
 
 ## Last Changes
 - [#9](https://github.com/LaxarJS/laxar_uikit/issues/9): Update Bower from ~1.2.8 to ~1.3.3.
+- [#8](https://github.com/LaxarJS/laxar_uikit/issues/8): The axInput control now respects the scope locale for on-focus formatting.
 
 ## v0.9.5
 - [#7](https://github.com/LaxarJS/laxar_uikit/issues/7): Fixed grid depends on position of class col-lg in attribute.
