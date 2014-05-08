@@ -9275,6 +9275,46 @@ input[type="checkbox"].ax-disabled {
   cursor: default;
 }
 
+.form-inline .form-group,
+.navbar-form .form-group,
+.form-inline .radio,
+.navbar-form .radio,
+.form-inline .checkbox,
+.navbar-form .checkbox {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.form-inline .radio,
+.navbar-form .radio,
+.form-inline .checkbox,
+.navbar-form .checkbox {
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.form-inline .radio label,
+.navbar-form .radio label,
+.form-inline .checkbox label,
+.navbar-form .checkbox label {
+  padding-left: 0;
+  padding-right: 13px;
+}
+
+.form-inline .btn,
+.navbar-form .btn {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.form-inline + .form-inline,
+.navbar-form + .form-inline,
+.form-inline + .navbar-form,
+.navbar-form + .navbar-form {
+  margin-top: 10px;
+}
+
 .ax-label-with-input {
   padding-left: 20px;
 }
