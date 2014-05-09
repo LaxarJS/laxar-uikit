@@ -36,10 +36,14 @@ on_stylesheet_saved do |file|
 end
 
 
+
+# Import Path
+# -----------
+
 # Variable
 base_dir = File.dirname(__FILE__) + '/../'
 
-
+# Assume that we are installed as a bower component:
 bower_dir = base_dir + '../../../'
 # Respect theme-local bower installation if there ist one:
 if File.directory? (base_dir + '../../bower_components/')
@@ -58,11 +62,15 @@ add_import_path bower_dir
 
 
 
+# Project directories
+# -------------------
+
 # Sass/Scss Directory
 sass_dir = "scss"
 
 # Image Directory For Sprites
 sprite_load_path = ["."]
+
 
 
 # Output
@@ -71,7 +79,6 @@ sprite_load_path = ["."]
 css_dir = "css"
 images_dir = "images"
 fonts_dir = "fonts"
-
 
 # Indicates whether the compass helper functions should generate relative urls from the generated css to assets, or absolute urls using the http path for that asset type.
 relative_assets = true
