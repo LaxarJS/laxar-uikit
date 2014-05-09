@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#13](https://github.com/LaxarJS/laxar_uikit/issues/12): Code formatting, added license for font-awesome and removed max-width for popovers.
 - [#12](https://github.com/LaxarJS/laxar_uikit/issues/12): Moved colors form default.theme to laxar_uikit
 - [#11](https://github.com/LaxarJS/laxar_uikit/issues/11): Fixed bootstrap limit of form-inline rules for view-ports.
 - [#9](https://github.com/LaxarJS/laxar_uikit/issues/9): Update Bower from ~1.2.8 to ~1.3.3.
