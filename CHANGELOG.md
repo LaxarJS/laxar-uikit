@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#13](https://github.com/LaxarJS/laxar_uikit/issues/12): Code formatting, added license for font-awesome and removed max-width for popovers.
 
 # v0.9.6
 - [#12](https://github.com/LaxarJS/laxar_uikit/issues/12): Moved colors form default.theme to laxar_uikit
