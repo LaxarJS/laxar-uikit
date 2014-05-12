@@ -80,6 +80,8 @@ define( [
    var ERROR_KEY_SYNTAX = 'syntax';
    var ERROR_KEY_SEMANTIC = 'semantic';
 
+   var EVENT_VALIDATE = 'axInput.validate';
+
    var DEFAULT_FORMATTING = {
       groupingSeparator: ',',
       decimalSeparator: '.',
@@ -204,7 +206,18 @@ define( [
 
             var valueType = element[0].nodeName.toLowerCase() === 'select' ?
                'select' : attrs[ directiveName ] || 'string';
+
             axInputController.initialize( valueType, formattingOptions );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            scope.$on( EVENT_VALIDATE, function() {
+               // force re-validation by running all parsers
+               var value = ngModelController.$viewValue;
+               ngModelController.$parsers.forEach( function( f ) {
+                  value = f( value );
+               } );
+            } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -420,6 +433,10 @@ define( [
                   return message( scope, msgKey );
                }
             );
+
+            scope.$watch( attrs[ requiredDirectiveName ], function() {
+               scope.$broadcast( EVENT_VALIDATE );
+            } );
          }
       };
    } ];
