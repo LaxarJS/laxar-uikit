@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#17](https://github.com/LaxarJS/laxar_uikit/issues/17): Fixed boostrap horizontal form is not compatible with laxar uikit grid.
 - [#15](https://github.com/LaxarJS/laxar_uikit/issues/15): Fixed incomplete refresh of $viewValue after format change.
 - [#14](https://github.com/LaxarJS/laxar_uikit/issues/14): Fixed selection required error message for select boxes.
 - [#13](https://github.com/LaxarJS/laxar_uikit/issues/13): Code formatting, added license for font-awesome and removed max-width for popovers.
