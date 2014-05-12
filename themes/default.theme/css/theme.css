@@ -8987,6 +8987,19 @@ input[type="checkbox"].ax-disabled {
   margin-top: 10px;
 }
 
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-horizontal span.ax-readonly {
+  color: #333333 !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: inline-block;
+  padding-top: 7px;
+}
+
 .ax-label-with-input {
   padding-left: 20px;
 }
