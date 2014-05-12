@@ -411,7 +411,13 @@ define( [
                   var required = scope.$eval( attrs[ requiredDirectiveName ] );
                   return !required || ( value != null && (''+value).trim() !== '' );
                },
-               function( value ) { return message( scope, 'SEMANTIC_REQUIRED' ); }
+               function( value ) {
+                  var msgKey = 'SEMANTIC_REQUIRED';
+                  if( axInputController.valueType === 'select' ) {
+                     msgKey += '_' + axInputController.valueType.toUpperCase();
+                  }
+                  return message( scope, msgKey );
+               }
             );
          }
       };
