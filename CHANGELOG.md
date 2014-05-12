@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#18](https://github.com/LaxarJS/laxar_uikit/issues/18): Fixed handling of axInputMinimum and axInputMaximum for empty field.
 - [#16](https://github.com/LaxarJS/laxar_uikit/issues/16): Fixed handling of axInputRequire by triggering re-validation on change.
 - [#17](https://github.com/LaxarJS/laxar_uikit/issues/17): Fixed boostrap horizontal form is not compatible with laxar uikit grid.
 - [#15](https://github.com/LaxarJS/laxar_uikit/issues/15): Fixed incomplete refresh of $viewValue after format change.
