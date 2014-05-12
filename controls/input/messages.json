@@ -4,11 +4,12 @@
       "SYNTAX_TYPE_TIME": "Bitte geben Sie eine gültige Zeit im Format SS:MM an.",
       "SYNTAX_TYPE_INTEGER": "Bitte geben Sie einen ganzzahligen Wert an.",
       "SYNTAX_TYPE_DECIMAL": "Bitte geben Sie einen Dezimalwert an.",
-      
+
       "SEMANTIC_LENGTH_STRING": "Bitte geben Sie höchstens [maximumLength] Zeichen ein.",
-      
+
       "SEMANTIC_REQUIRED": "Bitte geben Sie einen Wert an.",
-      
+      "SEMANTIC_REQUIRED_SELECT": "Bitte treffen Sie eine Auswahl.",
+
       "SEMANTIC_MINIMUM_DATE": "Bitte geben Sie [minimumValue] oder ein späteres Datum an.",
       "SEMANTIC_MINIMUM_DATE_NOW": "Bitte geben Sie einen Wert in der Zukunft an.",
       "SEMANTIC_MINIMUM_TIME": "Bitte geben Sie [minimumValue] oder eine spätere Zeit an.",
@@ -35,6 +36,7 @@
       "SEMANTIC_LENGTH_STRING": "Please enter at most [maximumLength] characters.",
 
       "SEMANTIC_REQUIRED": "Please enter a value.",
+      "SEMANTIC_REQUIRED_SELECT": "Please make a selection.",
 
       "SEMANTIC_MINIMUM_DATE": "Please enter [minimumValue] or a later date.",
       "SEMANTIC_MINIMUM_DATE_NOW": "Please enter a date in the future.",
@@ -62,6 +64,7 @@
       "SEMANTIC_LENGTH_STRING": "Please enter at most [maximumLength] characters.",
 
       "SEMANTIC_REQUIRED": "Please enter a value.",
+      "SEMANTIC_REQUIRED_SELECT": "Please make a selection.",
 
       "SEMANTIC_MINIMUM_DATE": "Please enter [minimumValue] or a later date.",
       "SEMANTIC_MINIMUM_DATE_NOW": "Please enter a date in the future.",
