@@ -198,6 +198,7 @@ define( [
                if( newValue === oldValue ) { return; }
                formattingOptions = getFormattingOptions( scope, attrs );
                axInputController.initialize( valueType, formattingOptions );
+               ngModelController.$viewValue = axInputController.format( ngModelController.$modelValue );
                ngModelController.$render();
             }
 
@@ -411,7 +412,7 @@ define( [
                   var required = scope.$eval( attrs[ requiredDirectiveName ] );
                   return !required || ( value != null && (''+value).trim() !== '' );
                },
-               function( value ) {
+               function() {
                   var msgKey = 'SEMANTIC_REQUIRED';
                   if( axInputController.valueType === 'select' ) {
                      msgKey += '_' + axInputController.valueType.toUpperCase();
@@ -442,7 +443,7 @@ define( [
             var isSmallerOrEqual = helpers.isSmallerOrEqual.bind( helpers, axInputController.valueType );
             axInputController.addSemanticValidator(
                function( value ) { return isSmallerOrEqual( maximum(), value ); },
-               function( value ) {
+               function() {
                   var msgKey = 'SEMANTIC_MAXIMUM_' + axInputController.valueType.toUpperCase();
                   if( axInputController.valueType === 'date' && maximum().toLowerCase() === 'now' ) {
                      msgKey += '_NOW';
@@ -476,7 +477,7 @@ define( [
             var isGreaterOrEqual = helpers.isGreaterOrEqual.bind( helpers, axInputController.valueType );
             axInputController.addSemanticValidator(
                function( value ) { return isGreaterOrEqual( minimum(), value ); },
-               function( value ) {
+               function() {
                   var msgKey = 'SEMANTIC_MINIMUM_' + axInputController.valueType.toUpperCase();
                   if( axInputController.valueType === 'date' && minimum().toLowerCase() === 'now' ) {
                      msgKey += '_NOW';
@@ -525,7 +526,7 @@ define( [
                   var currentRange = range();
                   return isInRange( currentRange.from, currentRange.to, value );
                },
-               function( value ) {
+               function() {
                   return helpers.substitute(
                      message( scope, 'SEMANTIC_RANGE_' + axInputController.valueType.toUpperCase() ), {
                         minimumValue: axInputController.format( range().from ),
@@ -556,7 +557,7 @@ define( [
 
             axInputController.addSemanticValidator(
                function( value ) { return value.length <= maximumLength(); },
-               function( value ) {
+               function() {
                   return helpers.substitute(
                      message( scope, 'SEMANTIC_LENGTH_STRING' ),
                      { maximumLength: axInputController.format( maximumLength() ) }
