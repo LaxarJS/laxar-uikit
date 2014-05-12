@@ -459,7 +459,9 @@ define( [
 
             var isSmallerOrEqual = helpers.isSmallerOrEqual.bind( helpers, axInputController.valueType );
             axInputController.addSemanticValidator(
-               function( value ) { return isSmallerOrEqual( maximum(), value ); },
+               function( value ) {
+                  return value === null || isSmallerOrEqual( maximum(), value );
+               },
                function() {
                   var msgKey = 'SEMANTIC_MAXIMUM_' + axInputController.valueType.toUpperCase();
                   if( axInputController.valueType === 'date' && maximum().toLowerCase() === 'now' ) {
@@ -493,7 +495,9 @@ define( [
 
             var isGreaterOrEqual = helpers.isGreaterOrEqual.bind( helpers, axInputController.valueType );
             axInputController.addSemanticValidator(
-               function( value ) { return isGreaterOrEqual( minimum(), value ); },
+               function( value ) {
+                  return value === null || isGreaterOrEqual( minimum(), value );
+               },
                function() {
                   var msgKey = 'SEMANTIC_MINIMUM_' + axInputController.valueType.toUpperCase();
                   if( axInputController.valueType === 'date' && minimum().toLowerCase() === 'now' ) {
