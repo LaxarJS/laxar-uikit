@@ -3,12 +3,28 @@
 // The declaration for the encding has to be in the first line!
 // http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#encodings
 
+
+//
+// Import variables and overwrite default ones
+// -----------------------------------------------------------------------------------------------------------
+
 @import "variables_color_scheme";
-@import "variables_font_awesome";
+
 @import "variables_bootstrap";
+@import "bootstrap/variables";
+
+@import "font-awesome/scss/variables";
+@import "variables_font_awesome";
+
+@import "laxar_uikit/variables";
 @import "variables_laxar";
+
+//
+// Laxar UiKit
+// -----------------------------------------------------------------------------------------------------------
 
 @import "laxar_uikit";
 
+//
 // Theme Specific Styles
-// @import "additional/";
+// -----------------------------------------------------------------------------------------------------------
