@@ -195,6 +195,11 @@ define( [
                   }
 
                   element.datepicker( 'option', $.datepicker.regional[ language ] );
+                  // datepicker resets view value on initialization:
+                  if( ngModel.$modelValue ) {
+                     element.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
+                  }
+
                   // changing the locale re-renders the button and thus deletes all manually set css classes.
                   // Hence we add them again here.
                   wrapper.children( 'button' ).addClass( MISSING_BUTTON_CLASSES );
