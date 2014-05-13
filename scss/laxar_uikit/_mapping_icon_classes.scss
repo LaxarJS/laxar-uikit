@@ -4,22 +4,32 @@
 // Commandbar
 // -----------------------------------------------------------------------------------------------------------
 
-.ax-icon-previous:before         { @include ax-set-icon( $ax-icon-previous ); }
-.ax-icon-previous-primary:before { @include ax-set-icon( $ax-icon-previous-primary ); }
-.ax-icon-next:before             { @include ax-set-icon( $ax-icon-next ); }
-.ax-icon-next-primary:before     { @include ax-set-icon( $ax-icon-next-primary ); }
-.ax-icon-add:before              { @include ax-set-icon( $ax-icon-add ); }
-.ax-icon-delete:before           { @include ax-set-icon( $ax-icon-delete ); }
-.ax-icon-ok:before               { @include ax-set-icon( $ax-icon-ok  ); }
-.ax-icon-apply:before            { @include ax-set-icon( $ax-icon-apply ); }
-.ax-icon-cancel:before           { @include ax-set-icon( $ax-icon-cancel ); }
-.ax-icon-yes:before              { @include ax-set-icon( $ax-icon-yes ); }
-.ax-icon-no:before               { @include ax-set-icon( $ax-icon-no ); }
-.ax-icon-finish:before           { @include ax-set-icon( $ax-icon-finish ); }
-.ax-icon-info:before             { @include ax-set-icon( $ax-icon-info ); }
-.ax-icon-warn:before             { @include ax-set-icon( $ax-icon-warn ); }
-.ax-icon-help:before             { @include ax-set-icon( $ax-icon-help ); }
-.ax-icon-print:before            { @include ax-set-icon( $ax-icon-print ); }
+.ax-icon {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ax-icon-previous:before         { content: $ax-icon-previous; }
+.ax-icon-previous-primary:before { content: $ax-icon-previous-primary; }
+.ax-icon-next:before             { content: $ax-icon-next; }
+.ax-icon-next-primary:before     { content: $ax-icon-next-primary; }
+.ax-icon-add:before              { content: $ax-icon-add; }
+.ax-icon-delete:before           { content: $ax-icon-delete; }
+.ax-icon-ok:before               { content: $ax-icon-ok; }
+.ax-icon-apply:before            { content: $ax-icon-apply; }
+.ax-icon-cancel:before           { content: $ax-icon-cancel; }
+.ax-icon-yes:before              { content: $ax-icon-yes; }
+.ax-icon-no:before               { content: $ax-icon-no; }
+.ax-icon-finish:before           { content: $ax-icon-finish; }
+.ax-icon-info:before             { content: $ax-icon-info; }
+.ax-icon-warn:before             { content: $ax-icon-warn; }
+.ax-icon-help:before             { content: $ax-icon-help; }
+.ax-icon-print:before            { content: $ax-icon-print; }
 
 
 //
