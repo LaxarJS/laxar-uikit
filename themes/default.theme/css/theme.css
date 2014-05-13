@@ -6540,21 +6540,21 @@ input[type="button"].btn-block {
 }
 
 .label-warning {
-  background-color: #ffbf21;
+  background-color: #f0ad4e;
 }
 
 .label-warning[href]:hover,
 .label-warning[href]:focus {
-  background-color: #eda900;
+  background-color: #ec971f;
 }
 
 .label-danger {
-  background-color: #e8273b;
+  background-color: #d9534f;
 }
 
 .label-danger[href]:hover,
 .label-danger[href]:focus {
-  background-color: #c71528;
+  background-color: #c9302c;
 }
 
 .badge {
@@ -6772,7 +6772,7 @@ a.thumbnail.ax-active {
 }
 
 .progress-bar-warning {
-  background-color: #ffbf21;
+  background-color: #f0ad4e;
 }
 
 .progress-striped .progress-bar-warning {
@@ -6782,7 +6782,7 @@ a.thumbnail.ax-active {
 }
 
 .progress-bar-danger {
-  background-color: #e8273b;
+  background-color: #d9534f;
 }
 
 .progress-striped .progress-bar-danger {
@@ -7311,75 +7311,75 @@ a.list-group-item-danger.ax-active:focus {
 }
 
 .panel-success {
-  border-color: #a3d48e;
+  border-color: #d6e9c6;
 }
 
 .panel-success > .panel-heading {
-  color: #449d44;
+  color: #3c763d;
   background-color: #dff0d8;
-  border-color: #a3d48e;
+  border-color: #d6e9c6;
 }
 
 .panel-success > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #a3d48e;
+  border-top-color: #d6e9c6;
 }
 
 .panel-success > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #a3d48e;
+  border-bottom-color: #d6e9c6;
 }
 
 .panel-info {
-  border-color: #85c5e5;
+  border-color: #bce8f1;
 }
 
 .panel-info > .panel-heading {
-  color: #28a1c5;
+  color: #31708f;
   background-color: #d9edf7;
-  border-color: #85c5e5;
+  border-color: #bce8f1;
 }
 
 .panel-info > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #85c5e5;
+  border-top-color: #bce8f1;
 }
 
 .panel-info > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #85c5e5;
+  border-bottom-color: #bce8f1;
 }
 
 .panel-warning {
-  border-color: #ffc141;
+  border-color: #faebcc;
 }
 
 .panel-warning > .panel-heading {
-  color: #eda900;
-  background-color: #fff9da;
-  border-color: #ffc141;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 
 .panel-warning > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #ffc141;
+  border-top-color: #faebcc;
 }
 
 .panel-warning > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #ffc141;
+  border-bottom-color: #faebcc;
 }
 
 .panel-danger {
-  border-color: #e59b9b;
+  border-color: #ebccd1;
 }
 
 .panel-danger > .panel-heading {
-  color: #de182c;
-  background-color: #faecec;
-  border-color: #e59b9b;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }
 
 .panel-danger > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #e59b9b;
+  border-top-color: #ebccd1;
 }
 
 .panel-danger > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #e59b9b;
+  border-bottom-color: #ebccd1;
 }
 
 .well {
@@ -7475,58 +7475,58 @@ button.close {
 
 .alert-success {
   background-color: #dff0d8;
-  border-color: #a3d48e;
-  color: #449d44;
+  border-color: #d6e9c6;
+  color: #3c763d;
 }
 
 .alert-success hr {
-  border-top-color: #93cd7c;
+  border-top-color: #c9e2b3;
 }
 
 .alert-success .alert-link {
-  color: #357935;
+  color: #2b542c;
 }
 
 .alert-info {
   background-color: #d9edf7;
-  border-color: #85c5e5;
-  color: #28a1c5;
+  border-color: #bce8f1;
+  color: #31708f;
 }
 
 .alert-info hr {
-  border-top-color: #70bbe1;
+  border-top-color: #a6e1ec;
 }
 
 .alert-info .alert-link {
-  color: #1f7e9a;
+  color: #245269;
 }
 
 .alert-warning {
-  background-color: #fff9da;
-  border-color: #ffc141;
-  color: #eda900;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
 }
 
 .alert-warning hr {
-  border-top-color: #ffb828;
+  border-top-color: #f7e1b5;
 }
 
 .alert-warning .alert-link {
-  color: #ba8500;
+  color: #66512c;
 }
 
 .alert-danger {
-  background-color: #faecec;
-  border-color: #e59b9b;
-  color: #de182c;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
 }
 
 .alert-danger hr {
-  border-top-color: #df8787;
+  border-top-color: #e4b9c0;
 }
 
 .alert-danger .alert-link {
-  color: #b01323;
+  color: #843534;
 }
 
 .tooltip {
