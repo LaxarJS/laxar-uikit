@@ -12,18 +12,12 @@ $fa-font-path: "../fonts" !default;
 // Link font awesome and bootstrap sources with laxar
 // -----------------------------------------------------------------------------------------------------------
 
-// Default variables for third party modules and LaxarJS UIKit
-@import "font-awesome/scss/variables";
-@import "bootstrap/variables";
-@import "laxar_uikit/variables_colors";
-@import "laxar_uikit/variables";
-
-
 // Third party modules
 @import "compass";
 @import "laxar_uikit/modules_font_awesome";
 @import "laxar_uikit/modules_bootstrap";
 
+@import "laxar_uikit/functions";
 @import "laxar_uikit/mixins";
 @import "laxar_uikit/mixin_popover_arrow";
 @import "laxar_uikit/grid";
