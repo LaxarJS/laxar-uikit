@@ -4,8 +4,8 @@
   @include button-variant($ax-btn-inverse-color, $ax-btn-inverse-background, $ax-btn-inverse-border);
 }
 
-[class|=fa],
-[class|=ax-icon] {
+.fa,
+.ax-icon {
    display: inline-block;
    position: relative;
 
@@ -20,15 +20,15 @@
 }
 
 .btn {
-   [class|=fa],
-   [class|=ax-icon] {
+   .fa,
+   .ax-icon {
       @extend %btn-icon-setup;
   }
 }
 
 .btn-lg {
-   [class|=fa],
-   [class|=ax-icon] {
+   .fa,
+   .ax-icon {
       @extend %btn-icon-setup;
       &:before {
          width: $font-size-large;
@@ -37,8 +37,8 @@
 }
 .btn-sm,
 .btn-xs {
-   [class|=fa],
-   [class|=ax-icon] {
+   .fa,
+   .ax-icon {
       @extend %btn-icon-setup;
       &:before {
          width: $font-size-small;
@@ -48,10 +48,8 @@
 
 .cssanimations {
    .ax-busy {
-      [class|=fa],
-      [class|=ax-icon] {
-
-
+      .fa,
+      .ax-icon {
          &:before {
             @include ax-spin-animation;
             content: $ax-icon-busy;
@@ -76,8 +74,8 @@
       }
 
       &.btn-lg {
-         [class|=fa],
-         [class|=ax-icon] {
+         .fa,
+         .ax-icon {
             &:after {
                height: $font-size-large;
                width: $font-size-large;
@@ -87,8 +85,8 @@
       }
       &.btn-sm,
       &.btn-xs {
-         [class|=fa],
-         [class|=ax-icon] {
+         .fa,
+         .ax-icon {
             &:after {
                height: $font-size-small;
                width: $font-size-small;

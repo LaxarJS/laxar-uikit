@@ -16,6 +16,8 @@
 // Icons
 // -----------------------------------------------------------------------------------------------------------
 
+// Deprecated:
+// See https://github.com/LaxarJS/laxar_uikit/issues/22
 %ax-font-awesome {
   display: inline-block;
   font-family: FontAwesome;
@@ -28,6 +30,8 @@
 
 // Use this mixin to set the icon within an other css rule
 // Sass does not allow to extend
+// Deprecated:
+// See https://github.com/LaxarJS/laxar_uikit/issues/22
 @mixin ax-set-icon( $ax-icon-code ) {
    @extend %ax-font-awesome;
    content: $ax-icon-code;
