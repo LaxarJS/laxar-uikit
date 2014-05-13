@@ -175,6 +175,16 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+   function isRadio( element ) {
+      return element[0].nodeName.toLowerCase() === 'input' && element[0].type === 'radio';
+   }
+
+   function isSelect( element ) {
+      return element[0].nodeName.toLowerCase() === 'select';
+   }
+
+
    var directiveName = 'axInput';
    var directive = [ function() {
 
@@ -204,8 +214,7 @@ define( [
                ngModelController.$render();
             }
 
-            var valueType = element[0].nodeName.toLowerCase() === 'select' ?
-               'select' : attrs[ directiveName ] || 'string';
+            var valueType = ( isRadio( element ) || isSelect( element ) ) ? 'select' : attrs[ directiveName ] || 'string';
 
             axInputController.initialize( valueType, formattingOptions );
 
@@ -238,11 +247,9 @@ define( [
                hasFocus = false;
                element.tooltip( 'hide' );
                if( valueType === 'select' ) {
-                  // Prevent reformatting of the value for select boxes as this is already taken care of by
-                  // angular's selectDirective.
+                  // Prevent reformatting of the value for select/radio because AngularJS takes care of them.
                   return;
                }
-
                if( !ngModelController.$error[ ERROR_KEY_SYNTAX ] ) {
                   element.val( axInputController.format( ngModelController.$modelValue ) );
                }
@@ -326,7 +333,23 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function toggleErrorClass( value ) {
-               element.toggleClass( ERROR_CLASS, ngModelController.$invalid );
+               function getLabel( element ) {
+                  var label = element.parents( 'label' );
+                  if ( element.id ) {
+                     label.add( 'label[for="' + element.id + '"]' );
+                  }
+                  return label;
+               }
+
+               if( isRadio( element ) ) {
+                  radioGroup().each( function( i, button ) {
+                     getLabel( $( button ) ).toggleClass( ERROR_CLASS, ngModelController.$invalid );
+                  } );
+               }
+               else {
+                  element.toggleClass( ERROR_CLASS, ngModelController.$invalid );
+               }
+
                return value;
             }
 
@@ -336,6 +359,9 @@ define( [
 
             var tooltipVisible = false;
             function toggleTooltip( value ) {
+               if( isRadio( element ) && radioGroup()[ 0 ] === element[ 0 ] ) {
+                  element.focus();
+               }
                if( ngModelController.$invalid && hasFocus ) {
                   if( !tooltipVisible || previousValidationMessage !== validationMessage ) {
                      element.tooltip( 'show' );
@@ -354,7 +380,7 @@ define( [
                .tooltip( {
                   animation: true,
                   trigger: 'manual',
-                  placement: valueType === 'select' ? 'top' : 'bottom',
+                  placement: isSelect( element ) ? 'top' : 'bottom',
                   template:
                      '<div id="' + tooltipId + '" class="tooltip error">' +
                      '<div class="tooltip-arrow"></div>' +
@@ -389,6 +415,12 @@ define( [
                element = null;
             } );
 
+            function radioGroup() {
+               var selector = [ 'ng\\:model', 'x-ng-model', 'ng-model', 'data-ng-model' ].map( function( attribute ) {
+                  return 'input[type="radio"][' + attribute + '="' + attrs.ngModel + '"]';
+               } ).join( ', ' );
+               return $( selector );
+            }
          }
       };
 
