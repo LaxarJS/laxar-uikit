@@ -9012,7 +9012,11 @@ input[type="checkbox"].ax-disabled {
 }
 
 label {
-  font-weight: normal;
+  font-weight: bold;
+}
+
+label.ax-error {
+  color: #de182c !important;
 }
 
 .ax-media {
