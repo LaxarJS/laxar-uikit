@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#20](https://github.com/LaxarJS/laxar_uikit/issues/20): Reduced complexity to overwrite variables.
 - [#19](https://github.com/LaxarJS/laxar_uikit/issues/19): Made axInputRequired work for radio buttons.
 - [#18](https://github.com/LaxarJS/laxar_uikit/issues/18): Fixed handling of axInputMinimum and axInputMaximum for empty field.
 - [#16](https://github.com/LaxarJS/laxar_uikit/issues/16): Fixed handling of axInputRequire by triggering re-validation on change.
