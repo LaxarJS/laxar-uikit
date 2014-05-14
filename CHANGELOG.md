@@ -1,6 +1,8 @@
 # Changelog
 
 ## Last Changes
+
+## v0.9.7
 - [#22](https://github.com/LaxarJS/laxar_uikit/issues/22): Fixed icons depends on position of class ax-icon- or fa- in attribute.
 - [#23](https://github.com/LaxarJS/laxar_uikit/issues/23): Fixed datepicker on axInput with changing locale.
 - [#21](https://github.com/LaxarJS/laxar_uikit/issues/21): Reduced complexity to overwrite variables.
