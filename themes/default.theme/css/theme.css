@@ -8415,6 +8415,22 @@ button.close {
   padding-right: 39px;
 }
 
+.col:not(.first) .col.first,
+.col:not(:first-child) .col:first-child {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.col:not(.last) .col.last {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.col:not(:last-child) .col:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+
 @-webkit-keyframes ax-pulse {
   0% {
     opacity: 0;
