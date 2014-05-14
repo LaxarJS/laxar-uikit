@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#24](https://github.com/LaxarJS/laxar_uikit/issues/24): Fixed incorrect col indent for nested layouts.
 
 ## v0.9.7
 - [#22](https://github.com/LaxarJS/laxar_uikit/issues/22): Fixed icons depends on position of class ax-icon- or fa- in attribute.
