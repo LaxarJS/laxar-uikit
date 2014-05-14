@@ -166,10 +166,10 @@
 // in order for absolute positioning to work.
 
 // <div class="row">
-//    <div class="col-lg-6 first">
+//    <div class="col col-lg-6 first">
 //       ...
 //    </div>
-//    <div class="col-lg-6 last">
+//    <div class="col col-lg-6 last">
 //       ...
 //    </div>
 // </div>
@@ -194,6 +194,17 @@
 //
 // Indent content of columns
 // -----------------------------------------------------------------------------------------------------------
+
+// <div class="ax-indent-first-last-col">
+//    <div class="row">
+//       <div class="col col-lg-6 first">
+//          ...
+//       </div>
+//       <div class="col col-lg-6 last">
+//          ...
+//       </div>
+//    </div>
+// </div>
 
 @mixin calculate-indent ( $ax-indent-level: 1 ) {
    &.first,
@@ -223,4 +234,23 @@
 
 .ax-indent-first-last-col-3x .col {
    @include calculate-indent( 3 );
+}
+
+//
+// Nested layouts
+// -----------------------------------------------------------------------------------------------------------
+
+.col:not(.first) .col.first,
+.col:not(:first-child) .col:first-child {
+      margin-left: 0;
+      padding-left: 0;
+}
+
+.col:not(.last) .col.last {
+      margin-right: 0;
+      padding-right: 0;
+}
+.col:not(:last-child) .col:last-child {
+      margin-right: 0;
+      padding-right: 0;
 }
