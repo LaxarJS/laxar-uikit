@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#25](https://github.com/LaxarJS/laxar_uikit/issues/25): Updated font awesome (4.1)
 - [#24](https://github.com/LaxarJS/laxar_uikit/issues/24): Fixed incorrect col indent for nested layouts
 - [#23](https://github.com/LaxarJS/laxar_uikit/issues/23): Fixed datepicker on axInput with changing locale.
 - [#22](https://github.com/LaxarJS/laxar_uikit/issues/22): Fixed icons depends on position of class ax-icon- or fa- in attribute.
