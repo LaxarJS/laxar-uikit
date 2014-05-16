@@ -42,6 +42,12 @@ $ax-unit-vertical         : round( $line-height-computed / 2) !default;
 $ax-unit-vertical-half    : round( $line-height-computed / 4) !default;
 
 //
+// Grid rows
+// -----------------------------------------------------------------------------------------------------------
+
+$ax-row-space-top: $ax-unit-vertical-double !default;
+
+//
 // Base Style
 // ===========================================================================================================
 
