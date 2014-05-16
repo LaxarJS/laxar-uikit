@@ -1,11 +1,13 @@
 # Changelog
 
 ## Last Changes
+- [#27](https://github.com/LaxarJS/laxar_uikit/issues/27): axDatePicker now warns if yearRange is used without minDate and maxDate
 - [#26](https://github.com/LaxarJS/laxar_uikit/issues/26): Added new css class to add space between two rows.
 - [#25](https://github.com/LaxarJS/laxar_uikit/issues/25): Updated font awesome (4.1).
 - [#24](https://github.com/LaxarJS/laxar_uikit/issues/24): Fixed incorrect col indent for nested layouts.
 
 ## v0.9.7
+=======
 - [#22](https://github.com/LaxarJS/laxar_uikit/issues/22): Fixed icons depends on position of class ax-icon- or fa- in attribute.
 - [#23](https://github.com/LaxarJS/laxar_uikit/issues/23): Fixed datepicker on axInput with changing locale.
 - [#21](https://github.com/LaxarJS/laxar_uikit/issues/21): Reduced complexity to overwrite variables.
