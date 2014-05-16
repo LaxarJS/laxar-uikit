@@ -71,6 +71,14 @@
    @include clearfix;
 }
 
+// Additional space between two grid rows
+// <div class="row"></div>
+// <div class="row ax-row-space-top"></div>
+
+.ax-row-space-top {
+   margin-top: $ax-row-space-top;
+}
+
 %col-lg-left {
    float: left;
 }
