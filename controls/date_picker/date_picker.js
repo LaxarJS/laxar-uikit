@@ -109,6 +109,14 @@ define( [
                }
             } );
 
+            if( options.yearRange && !options.minDate && !options.maxDate ) {
+               ax.log.warn(
+                  'axDatePicker: option yearRange requires minDate and maxDate! scope=[0], model=[1]',
+                  scope.id(''),
+                  attrs.ngModel
+               );
+            }
+
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             if( !axInput ) {
