@@ -65,6 +65,16 @@
 
 @include ax-custom-grid( $ax-grid-columns, $ax-grid-column-width, $ax-grid-gutter-width );
 
+// Sometimes we want regardless of the popup/popover width a two column layout.
+// To simplify the process you can apply this css class to both columns without the knowledge
+// of the exact popup/popover dimensions.
+.ax-col-50-percent {
+   width: 50%;
+
+   &:first-child { padding-right: $ax-grid-gutter-width / 2; };
+   &:last-child  { padding-left:  $ax-grid-gutter-width / 2; };
+}
+
 .row {
    // display: table;
    // width: 100%;
