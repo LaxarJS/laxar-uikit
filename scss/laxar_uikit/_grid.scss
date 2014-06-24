@@ -255,6 +255,27 @@
 }
 
 //
+// Increased space between columns (IE9+)
+// -----------------------------------------------------------------------------------------------------------
+
+.ax-increased-space-between-cols .col {
+   &.first,
+   &:first-child {
+      padding-right: floor( $ax-grid-gutter-width / 2 );
+   }
+
+   & + .col:not(:last-child) {
+      padding-left: floor( $ax-grid-gutter-width / 2 );
+      padding-right: floor( $ax-grid-gutter-width / 2 );
+   }
+
+   &.last,
+   &:last-child {
+      padding-left: floor( $ax-grid-gutter-width / 2 );
+   }
+}
+
+//
 // Nested layouts
 // -----------------------------------------------------------------------------------------------------------
 

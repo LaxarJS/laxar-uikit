@@ -9061,6 +9061,21 @@ button.close {
   padding-right: 39px;
 }
 
+.ax-increased-space-between-cols .col.first,
+.ax-increased-space-between-cols .col:first-child {
+  padding-right: 13px;
+}
+
+.ax-increased-space-between-cols .col + .col:not(:last-child) {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.ax-increased-space-between-cols .col.last,
+.ax-increased-space-between-cols .col:last-child {
+  padding-left: 13px;
+}
+
 .col:not(.first) .col.first,
 .col:not(:first-child) .col:first-child {
   margin-left: 0;
