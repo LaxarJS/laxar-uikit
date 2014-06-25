@@ -42,6 +42,11 @@ define( [
     *   to $minimum AND below or equal to $maximum
     * * `ax-input-maximum-length="$maximumLength"` (string only): requires the string's length to be below or
     *   equal to $maximumLength
+    * * `ax-input-display-errors-immediately="$immediately"`: If $immediately evaluates to `true`, validation
+    *   errors are presented to the user immediately by CSS styling and tooltip. Otherwise, errors are only
+    *   shown when the field has been changed (ngModelController.$dirty) or when the event `axInput.validate`
+    *   has been received. The default is `true` but will be changed to `false` in future major releases. It
+    *   can be changed using the configuration 'lib.laxar_uikit.controls.input.displayErrorsImmediately'.
     *
     * Writing an own semantic validator is as easy as writing a directive requiring the axInputController and
     * calling `addSemanticValidator` with the validator function as first argument and an error message
@@ -79,10 +84,16 @@ define( [
 
 
    var ERROR_CLASS = 'ax-error';
+   var ERROR_PENDING_CLASS = 'ax-error-pending';
    var ERROR_KEY_SYNTAX = 'syntax';
    var ERROR_KEY_SEMANTIC = 'semantic';
 
    var EVENT_VALIDATE = 'axInput.validate';
+   var EVENT_REFRESH = 'axInput._refresh';
+
+   var DEFAULT_DISPLAY_ERRORS_IMMEDIATELY = ax.configuration.get(
+      'lib.laxar_uikit.controls.input.displayErrorsImmediately', true
+   );
 
    var DEFAULT_FORMATTING = {
       groupingSeparator: ',',
@@ -213,6 +224,7 @@ define( [
                formattingOptions = getFormattingOptions( scope, attrs );
                axInputController.initialize( valueType, formattingOptions );
                ngModelController.$viewValue = axInputController.format( ngModelController.$modelValue );
+               runFormatters();
                ngModelController.$render();
             }
 
@@ -222,7 +234,49 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
+            var displayErrorsImmediately;
+            var displayErrorsImmediatelyBinding = attrs.axInputDisplayErrorsImmediately;
+            if( displayErrorsImmediatelyBinding ) {
+               displayErrorsImmediately = scope.$eval( displayErrorsImmediatelyBinding );
+               scope.$watch( displayErrorsImmediatelyBinding, function( newValue, oldValue ) {
+                  if( newValue === oldValue ) { return; }
+                  displayErrorsImmediately = newValue;
+                  axInputController.validationPending = !newValue;
+                  runFormatters();
+               } );
+            }
+            else {
+               displayErrorsImmediately = DEFAULT_DISPLAY_ERRORS_IMMEDIATELY;
+            }
+            axInputController.validationPending = !displayErrorsImmediately;
+
             scope.$on( EVENT_VALIDATE, function() {
+               if( !axInputController.validationPending ) { return; }
+               axInputController.validationPending = false;
+               runFormatters();
+            } );
+
+            // Override $setPristine to make sure tooltip and css classes are reset when form is reset
+            var ngSetPristine = ngModelController.$setPristine.bind( ngModelController );
+            ngModelController.$setPristine = function() {
+               ngSetPristine();
+               axInputController.validationPending = !displayErrorsImmediately;
+               runFormatters();
+            };
+
+            function mustDisplayErrors() {
+               return ngModelController.$dirty || !axInputController.validationPending;
+            }
+
+            function runFormatters() {
+               ngModelController.$formatters.reduceRight( function( acc, f ) {
+                  return f( acc );
+               }, ngModelController.$modelValue );
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            scope.$on( EVENT_REFRESH, function() {
                // force re-validation by running all parsers
                var value = ngModelController.$viewValue;
                ngModelController.$parsers.forEach( function( f ) {
@@ -235,7 +289,7 @@ define( [
             var hasFocus = false;
             element.on( 'focusin', function() {
                hasFocus = true;
-               if( ngModelController.$invalid ) {
+               if( ngModelController.$invalid && mustDisplayErrors() ) {
                   element.tooltip( 'show' );
                }
 
@@ -335,9 +389,13 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function toggleErrorClass( value ) {
+               var displayErrors = mustDisplayErrors();
+               var axErrorState = ngModelController.$invalid && displayErrors;
+               var axErrorPendingState = ngModelController.$invalid && !displayErrors;
+
                function getLabel( element ) {
                   var label = element.parents( 'label' );
-                  if ( element.id ) {
+                  if( element.id ) {
                      label.add( 'label[for="' + element.id + '"]' );
                   }
                   return label;
@@ -345,11 +403,13 @@ define( [
 
                if( isRadio( element ) ) {
                   radioGroup().each( function( i, button ) {
-                     getLabel( $( button ) ).toggleClass( ERROR_CLASS, ngModelController.$invalid );
+                     getLabel( $( button ) ).toggleClass( ERROR_CLASS, axErrorState );
+                     getLabel( $( button ) ).toggleClass( ERROR_PENDING_CLASS, axErrorPendingState );
                   } );
                }
                else {
-                  element.toggleClass( ERROR_CLASS, ngModelController.$invalid );
+                  element.toggleClass( ERROR_CLASS, axErrorState );
+                  element.toggleClass( ERROR_PENDING_CLASS, axErrorPendingState );
                }
 
                return value;
@@ -364,7 +424,7 @@ define( [
                if( isRadio( element ) && radioGroup()[ 0 ] === element[ 0 ] ) {
                   element.focus();
                }
-               if( ngModelController.$invalid && hasFocus ) {
+               if( ngModelController.$invalid && hasFocus && mustDisplayErrors() ) {
                   if( !tooltipVisible || previousValidationMessage !== validationMessage ) {
                      element.tooltip( 'show' );
                   }
@@ -469,7 +529,7 @@ define( [
             );
 
             scope.$watch( attrs[ requiredDirectiveName ], function() {
-               scope.$broadcast( EVENT_VALIDATE );
+               scope.$broadcast( EVENT_REFRESH );
             } );
          }
       };
