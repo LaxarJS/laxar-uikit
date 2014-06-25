@@ -1,6 +1,8 @@
 # Changelog
 
 ## Last Changes
+- [#29](https://github.com/LaxarJS/laxar_uikit/issues/29): Added additional css class to increase space between cols
+- [#28](https://github.com/LaxarJS/laxar_uikit/issues/28): Added additional css class for two column layout
 - [#27](https://github.com/LaxarJS/laxar_uikit/issues/27): axDatePicker now warns if yearRange is used without minDate and maxDate
 - [#26](https://github.com/LaxarJS/laxar_uikit/issues/26): Added new css class to add space between two rows
 - [#25](https://github.com/LaxarJS/laxar_uikit/issues/25): Updated font awesome (4.1)
