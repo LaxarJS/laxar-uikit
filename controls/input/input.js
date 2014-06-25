@@ -11,7 +11,9 @@ define( [
    './formatters',
    './parsers',
    './helpers',
-   'json!./messages.json'
+   // Overly specific import to avoid conflict with relative json-imports:
+   // https://github.com/LaxarJS/laxar_uikit/issues/30
+   'json!../input/messages.json'
 ], function( $, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, messages ) {
    'use strict';
 
