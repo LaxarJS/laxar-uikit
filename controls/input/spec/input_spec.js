@@ -247,7 +247,7 @@ define( [
          beforeEach( function() {
             scope = $rootScope.$new();
 
-            $element = $compile( '<input ax-input="integer" ng-model="someValue" ax-input-minimum-value="1000"/>' )( scope );
+            $element = $compile( '<input ax-input="integer" ng-model="someValue" data-ax-input-display-errors-immediately="showImmediately" ax-input-minimum-value="1000"/>' )( scope );
             $element.appendTo( 'body' );
             scope.$apply( function() {
                scope.someValue = 12;
@@ -262,51 +262,169 @@ define( [
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-         it( 'shows a tooltip on focus', function() {
-            $.fn.tooltip.reset();
-
-            $element.focus();
-            expect( $.fn.tooltip ).toHaveBeenCalledWith( 'show' );
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         it( 'sets the class "error" on the input field', function() {
-            expect( $element.hasClass( 'ax-error' ) ).toBe( true );
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         it( 'hides the tooltip on blur', function() {
-            $element.focus();
-            $.fn.tooltip.reset();
-
-            $element.blur();
-            expect( $.fn.tooltip ).toHaveBeenCalledWith( 'hide' );
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         describe( 'and the field becomes valid again', function() {
+         describe( 'and errors must be displayed immediately', function() {
 
             beforeEach( function() {
-               $element.focus();
-               $.fn.tooltip.reset();
                scope.$apply( function() {
-                  scope.someValue = 1200;
+                  scope.showImmediately = true;
                } );
             } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            it( 'removes the class "error" from the input field', function() {
-               expect( $element.hasClass( 'false' ) ).toBe( false );
+            it( 'shows a tooltip on focus', function() {
+               $.fn.tooltip.reset();
+
+               $element.focus();
+               expect( $.fn.tooltip ).toHaveBeenCalledWith( 'show' );
             } );
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            it( 'hides the tooltip', function() {
+            it( 'sets the class "ax-error" on the input field', function() {
+               expect( $element.hasClass( 'ax-error-pending' ) ).toBe( false );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'clears the validation-pending flag', function() {
+               expect( $element.controller( 'axInput' ).validationPending ).toBe( false );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'hides the tooltip on blur', function() {
+               $element.focus();
+               $.fn.tooltip.reset();
+               $element.blur();
                expect( $.fn.tooltip ).toHaveBeenCalledWith( 'hide' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            describe( 'and the field becomes valid again', function() {
+
+               beforeEach( function() {
+                  $element.focus();
+                  $.fn.tooltip.reset();
+                  scope.$apply( function() {
+                     scope.someValue = 1200;
+                  } );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'removes the class "ax-error" from the input field', function() {
+                  expect( $element.hasClass( 'false' ) ).toBe( false );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'hides the tooltip', function() {
+                  expect( $.fn.tooltip ).toHaveBeenCalledWith( 'hide' );
+               } );
+
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'and errors must not be displayed immediately', function() {
+
+            beforeEach( function() {
+               scope.$apply( function() {
+                  scope.showImmediately = false;
+               } );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'does not show a tooltip on focus', function() {
+               $.fn.tooltip.reset();
+               $element.focus();
+               expect( $.fn.tooltip ).not.toHaveBeenCalledWith( 'show' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'sets the class "ax-error-pending" on the input field', function() {
+               expect( $element.hasClass( 'ax-error-pending' ) ).toBe( true );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'sets the validation-pending flag', function() {
+               expect( $element.controller( 'axInput' ).validationPending ).toBe( true );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            describe( 'and validation is requested', function() {
+
+               beforeEach( function() {
+                  scope.$apply( function() {
+                     scope.$broadcast( 'axInput.validate' );
+                  } );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'shows a tooltip on focus', function() {
+                  $.fn.tooltip.reset();
+                  $element.focus();
+                  expect( $.fn.tooltip ).toHaveBeenCalledWith( 'show' );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'sets the class "ax-error" on the input field', function() {
+                  expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+                  expect( $element.hasClass( 'ax-error-pending' ) ).toBe( false );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'clears the validation-pending flag', function() {
+                  expect( $element.controller( 'axInput' ).validationPending ).toBe( false );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               describe( 'and then the form is reset ', function() {
+
+                  beforeEach( function() {
+                     scope.$apply( function() {
+                        $element.controller( 'ngModel' ).$setPristine();
+                     } );
+                  } );
+
+
+                  ////////////////////////////////////////////////////////////////////////////////////////////
+
+                  it( 'does not show a tooltip on focus', function() {
+                     $.fn.tooltip.reset();
+                     $element.focus();
+                     expect( $.fn.tooltip ).not.toHaveBeenCalledWith( 'show' );
+                  } );
+
+                  ////////////////////////////////////////////////////////////////////////////////////////////
+
+                  it( 'sets the class "ax-error-pending" on the input field', function() {
+                     expect( $element.hasClass( 'ax-error-pending' ) ).toBe( true );
+                     expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+                  } );
+
+                  ////////////////////////////////////////////////////////////////////////////////////////////
+
+                  it( 'sets the validation-pending flag', function() {
+                     expect( $element.controller( 'axInput' ).validationPending ).toBe( true );
+                  } );
+
+               } );
+
             } );
 
          } );

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Last Changes
+- [#31](https://github.com/LaxarJS/laxar_uikit/issues/31): Added new validation behavior: display of errors to the user can now be deferred.
+  NEW FEATURE: see ticket for details
 - [#30](https://github.com/LaxarJS/laxar_uikit/issues/30): Fix relative json messages imports (workaround for bug in requirejs-json plugin)
 - [#29](https://github.com/LaxarJS/laxar_uikit/issues/29): Added additional css class to increase space between cols
 - [#28](https://github.com/LaxarJS/laxar_uikit/issues/28): Added additional css class for two column layout
