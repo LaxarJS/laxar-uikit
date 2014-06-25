@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#30](https://github.com/LaxarJS/laxar_uikit/issues/30): Fix relative json messages imports (workaround for bug in requirejs-json plugin)
 
 ## v0.9.9
 - [#29](https://github.com/LaxarJS/laxar_uikit/issues/29): Added additional css class to increase space between cols
