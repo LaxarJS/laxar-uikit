@@ -91,10 +91,6 @@ define( [
    var EVENT_VALIDATE = 'axInput.validate';
    var EVENT_REFRESH = 'axInput._refresh';
 
-   var DEFAULT_DISPLAY_ERRORS_IMMEDIATELY = ax.configuration.get(
-      'lib.laxar_uikit.controls.input.displayErrorsImmediately', true
-   );
-
    var DEFAULT_FORMATTING = {
       groupingSeparator: ',',
       decimalSeparator: '.',
@@ -106,6 +102,12 @@ define( [
    };
 
    var KNOWN_TYPES = [ 'date', 'time', 'decimal', 'integer', 'string', 'select' ];
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   function configValue( key, fallback ) {
+      return ax.configuration.get( 'lib.laxar_uikit.controls.input.' + key, fallback );
+   }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -188,20 +190,32 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+   function isText( element ) {
+      var el = element[0];
+      return el.nodeName.toLowerCase() === 'input' && el.type === 'text' || !el.type;
+   }
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function isRadio( element ) {
       return element[0].nodeName.toLowerCase() === 'input' && element[0].type === 'radio';
    }
 
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
    function isSelect( element ) {
       return element[0].nodeName.toLowerCase() === 'select';
    }
 
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    var directiveName = 'axInput';
    var directive = [ function() {
 
       var idCounter = 0;
+
+      var defaultDisplayErrorsImmediately = configValue( 'displayErrorsImmediately', true );
+      var defaultNgModelOptions = configValue( 'ngModelOptions', {} );
 
       return {
          restrict: 'A',
@@ -232,47 +246,9 @@ define( [
 
             axInputController.initialize( valueType, formattingOptions );
 
-            //////////////////////////////////////////////////////////////////////////////////////////////////
+            initializeDisplayErrors();
 
-            var displayErrorsImmediately;
-            var displayErrorsImmediatelyBinding = attrs.axInputDisplayErrorsImmediately;
-            if( displayErrorsImmediatelyBinding ) {
-               displayErrorsImmediately = scope.$eval( displayErrorsImmediatelyBinding );
-               scope.$watch( displayErrorsImmediatelyBinding, function( newValue, oldValue ) {
-                  if( newValue === oldValue ) { return; }
-                  displayErrorsImmediately = newValue;
-                  axInputController.validationPending = !newValue;
-                  runFormatters();
-               } );
-            }
-            else {
-               displayErrorsImmediately = DEFAULT_DISPLAY_ERRORS_IMMEDIATELY;
-            }
-            axInputController.validationPending = !displayErrorsImmediately;
-
-            scope.$on( EVENT_VALIDATE, function() {
-               if( !axInputController.validationPending ) { return; }
-               axInputController.validationPending = false;
-               runFormatters();
-            } );
-
-            // Override $setPristine to make sure tooltip and css classes are reset when form is reset
-            var ngSetPristine = ngModelController.$setPristine.bind( ngModelController );
-            ngModelController.$setPristine = function() {
-               ngSetPristine();
-               axInputController.validationPending = !displayErrorsImmediately;
-               runFormatters();
-            };
-
-            function mustDisplayErrors() {
-               return ngModelController.$dirty || !axInputController.validationPending;
-            }
-
-            function runFormatters() {
-               ngModelController.$formatters.reduceRight( function( acc, f ) {
-                  return f( acc );
-               }, ngModelController.$modelValue );
-            }
+            initializeNgModelOptions();
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -283,6 +259,87 @@ define( [
                   value = f( value );
                } );
             } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function initializeDisplayErrors() {
+               var displayErrorsImmediately;
+               var displayErrorsImmediatelyBinding = attrs.axInputDisplayErrorsImmediately;
+               if( displayErrorsImmediatelyBinding ) {
+                  displayErrorsImmediately = scope.$eval( displayErrorsImmediatelyBinding );
+                  scope.$watch( displayErrorsImmediatelyBinding, function( newValue, oldValue ) {
+                     if( newValue === oldValue ) { return; }
+                     displayErrorsImmediately = newValue;
+                     axInputController.validationPending = !newValue;
+                     runFormatters();
+                  } );
+               }
+               else {
+                  displayErrorsImmediately = defaultDisplayErrorsImmediately;
+               }
+               axInputController.validationPending = !displayErrorsImmediately;
+
+               scope.$on( EVENT_VALIDATE, function() {
+                  if( !axInputController.validationPending ) { return; }
+                  axInputController.validationPending = false;
+                  runFormatters();
+               } );
+
+               // Override $setPristine to make sure tooltip and css classes are reset when form is reset
+               var ngSetPristine = ngModelController.$setPristine.bind( ngModelController );
+               ngModelController.$setPristine = function() {
+                  ngSetPristine();
+                  axInputController.validationPending = !displayErrorsImmediately;
+                  runFormatters();
+               };
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function runFormatters() {
+               ngModelController.$formatters.reduceRight( function( acc, f ) {
+                  return f( acc );
+               }, ngModelController.$modelValue );
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function mustDisplayErrors() {
+               return !axInputController.waitingForBlur && (
+                  ngModelController.$dirty || !axInputController.validationPending
+               );
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // interpret ngModelOptions.updateOn
+            // when moving to AngularJS 1.3, this should be changed to just apply the configuration and let
+            // the ngModelOptionsDirective do the rest.
+            function initializeNgModelOptions() {
+               if( !isText( element ) ) {
+                  return;
+               }
+
+               var ON_UPDATE_DEFAULT_MATCHER = /(\s+|^)default(\s+|$)/;
+
+               var key = 'ngModelOptions';
+               var ngModelOptions = ax.object.options( scope.$eval( attrs[ key ] ), defaultNgModelOptions );
+               var updateOn = ngModelOptions.updateOn;
+               if( updateOn && updateOn !== 'default' ) {
+                  if( !ON_UPDATE_DEFAULT_MATCHER.test( updateOn ) ) {
+                     element.unbind( 'input' ).unbind( 'keydown' ).unbind( 'change' );
+                  }
+                  else {
+                     updateOn = updateOn.replace( ON_UPDATE_DEFAULT_MATCHER, ' ' );
+                  }
+
+                  element.bind( updateOn, function() {
+                     scope.$apply( function() {
+                        ngModelController.$setViewValue( element.val() );
+                     } );
+                  } );
+               }
+            }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 

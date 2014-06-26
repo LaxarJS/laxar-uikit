@@ -4,12 +4,13 @@
  * http://laxarjs.org/license
  */
 define( [
+   'laxar/laxar_testing',
    'laxar_uikit/controls/input',
    'laxar_uikit/controls/input/parsers',
    'laxar_uikit/controls/input/helpers',
    'angular-mocks',
    'jquery'
-], function( inputModule, parsers, helpers, angularMocks, $ ) {
+], function( ax, inputModule, parsers, helpers, angularMocks, $ ) {
    'use strict';
 
    describe( 'An axInput control', function() {
@@ -25,7 +26,7 @@ define( [
          $rootScope.i18n = {
             locale: 'default',
             tags: {
-               default: 'de_DE'
+               'default': 'de_DE'
             }
          };
 
@@ -37,16 +38,16 @@ define( [
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       it( 'needs a model controller', function() {
-         expect( function() { $compile( '<input ax-input/>' )( $rootScope.$new() ); } )
+         expect( function() { $compile( '<input data-ax-input/>' )( $rootScope.$new() ); } )
             .toThrow();
-         expect( function() { $compile( '<input ax-input ng-model="something"/>' )( $rootScope.$new() ); } )
+         expect( function() { $compile( '<input data-ax-input data-ng-model="something"/>' )( $rootScope.$new() ); } )
             .not.toThrow();
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       it( 'creates an axInputController instance', function() {
-         var $element = $compile( '<input ax-input ng-model="something"/>' )( $rootScope.$new() );
+         var $element = $compile( '<input data-ax-input ng-model="something"/>' )( $rootScope.$new() );
          var controller = $element.controller( 'axInput' );
 
          expect( controller.initialize ).toBeDefined();
@@ -65,7 +66,7 @@ define( [
          var axInputController;
 
          beforeEach( function() {
-            var $element = $compile( '<input ax-input="decimal" ng-model="something"/>' )( $rootScope.$new() );
+            var $element = $compile( '<input data-ax-input="decimal" data-ng-model="something"/>' )( $rootScope.$new() );
             ngModelController = $element.controller( 'ngModel' );
             axInputController = $element.controller( 'axInput' );
 
@@ -170,7 +171,7 @@ define( [
          beforeEach( function() {
             var scope = $rootScope.$new();
 
-            $element = $compile( '<input ax-input="integer" ng-model="someValue"/>' )( scope );
+            $element = $compile( '<input data-ax-input="integer" data-ng-model="someValue"/>' )( scope );
             $element.appendTo( 'body' );
             scope.$apply( function() {
                scope.someValue = 1231442;
@@ -239,6 +240,153 @@ define( [
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+      describe( 'when configured with ngModelOptions', function() {
+
+         var $element;
+         var scope;
+         var html = '<input data-ax-input="integer" data-ng-model="someValue" ' +
+                    'data-ng-model-options="{ \'updateOn\': \'NG_MODEL_OPTIONS\' }"' +
+                    'data-ax-input-display-errors-immediately="true" ax-input-minimum-value="100"/>';
+
+         beforeEach( function() {
+            scope = $rootScope.$new();
+            scope.someValue = 200;
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         afterEach( function() {
+            $element.remove();
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with updateOn set to "default"', function() {
+
+            beforeEach( function() {
+               $element = $compile( html.replace( /NG_MODEL_OPTIONS/, 'default' ) )( scope );
+               $element.appendTo( 'body' );
+            } );
+
+            it( 'updates its validation state on change', function() {
+               $element[0].value = '50';
+               $element.trigger( 'change' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            } );
+
+            // event does not work in MSIE8
+            xit( 'updates its validation state on input', function() {
+               $element[0].value = '50';
+               $element.trigger( 'input' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            } );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with updateOn set to "keypress"', function() {
+
+            beforeEach( function() {
+               $element = $compile( html.replace( /NG_MODEL_OPTIONS/, 'keypress' ) )( scope );
+               $element.appendTo( 'body' );
+            } );
+
+            it( 'updates its validation state on keypress', function() {
+               $element[0].value = '50';
+               $element.trigger( 'focusout' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+
+               $element[0].value = '50';
+               $element.trigger( 'keypress' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with updateOn set to "focusout"', function() {
+
+            beforeEach( function() {
+               $element = $compile( html.replace( /NG_MODEL_OPTIONS/, 'focusout' ) )( scope );
+               $element.appendTo( 'body' );
+            } );
+
+            it( 'updates its validation state on focusout', function() {
+               $element[0].value = '50';
+               $element.trigger( 'keydown' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+
+               $element.trigger( 'focusout' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'set through configuration', function() {
+
+            var html = '<input data-ax-input="integer" data-ng-model="someValue" ' +
+                       'data-ax-input-display-errors-immediately="true" ax-input-minimum-value="100"/>';
+
+            var configKey = 'lib.laxar_uikit.controls.input.ngModelOptions';
+            var configValue;
+
+            beforeEach( function() {
+               var origGet = ax.configuration.get;
+               spyOn( ax.configuration, 'get' ).andCallFake( function( key, fallback ) {
+                  /* :TODO: Delete */ console.log( 'get spy', key, key === configKey, configValue );
+                  return key === configKey ? configValue : origGet( key, fallback );
+               } );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            describe( 'with updateOn set to "focusout"', function() {
+
+               beforeEach( function() {
+                  configValue = { 'updateOn': 'focusout' };
+                  $element = $compile( html )( scope );
+                  $element.appendTo( 'body' );
+               } );
+
+               it( 'updates its validation state on focusout', function() {
+                  $element[0].value = '50';
+                  $element.trigger( 'keydown' );
+                  expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+
+                  $element.trigger( 'focusout' );
+                  expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+               } );
+
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with updateOn not set at all', function() {
+
+            var html = '<input data-ax-input="integer" data-ng-model="someValue" ' +
+                       'data-ax-input-display-errors-immediately="true" ax-input-minimum-value="100"/>';
+
+            beforeEach( function() {
+               $element = $compile( html )( scope );
+               $element.appendTo( 'body' );
+            } );
+
+            it( 'updates on every change', function() {
+               $element[0].value = '150';
+               $element.trigger( 'change' );
+               expect( $element.hasClass( 'ax-error' ) ).toBe( false );
+            } );
+
+         } );
+      } );
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       describe( 'when the value is erroneous', function() {
 
          var $element;
@@ -275,7 +423,7 @@ define( [
             it( 'shows a tooltip on focus', function() {
                $.fn.tooltip.reset();
 
-               $element.focus();
+               $element.trigger( 'focusin' );
                expect( $.fn.tooltip ).toHaveBeenCalledWith( 'show' );
             } );
 
@@ -295,9 +443,9 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'hides the tooltip on blur', function() {
-               $element.focus();
+               $element.trigger( 'focusin' );
                $.fn.tooltip.reset();
-               $element.blur();
+               $element.trigger( 'blur' );
                expect( $.fn.tooltip ).toHaveBeenCalledWith( 'hide' );
             } );
 
@@ -343,7 +491,7 @@ define( [
 
             it( 'does not show a tooltip on focus', function() {
                $.fn.tooltip.reset();
-               $element.focus();
+               $element.trigger( 'focusin' );
                expect( $.fn.tooltip ).not.toHaveBeenCalledWith( 'show' );
             } );
 
@@ -374,7 +522,7 @@ define( [
 
                it( 'shows a tooltip on focus', function() {
                   $.fn.tooltip.reset();
-                  $element.focus();
+                  $element.trigger( 'focusin' );
                   expect( $.fn.tooltip ).toHaveBeenCalledWith( 'show' );
                } );
 
