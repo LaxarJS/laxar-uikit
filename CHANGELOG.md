@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#33](https://github.com/LaxarJS/laxar_uikit/issues/33): Improved styling of an input field with an unit sign
 - [#31](https://github.com/LaxarJS/laxar_uikit/issues/31): Added new validation behavior: display of errors to the user can now be deferred.
   NEW FEATURE: see ticket for details
 - [#30](https://github.com/LaxarJS/laxar_uikit/issues/30): Fix relative json messages imports (workaround for bug in requirejs-json plugin)

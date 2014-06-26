@@ -9528,6 +9528,26 @@ fieldset[disabled] .btn-inverse.ax-active {
   border-radius: 12px;
 }
 
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 select.ax-readonly,
 textarea.ax-readonly,
 input[type="text"].ax-readonly,
@@ -9601,6 +9621,27 @@ input[type="radio"].ax-disabled,
 input[type="checkbox"].ax-readonly,
 input[type="checkbox"].ax-disabled {
   cursor: default;
+}
+
+.ax-amount {
+  text-align: right;
+}
+
+.ax-form-amount {
+  display: table;
+  width: 100%;
+}
+
+.ax-form-amount > * {
+  display: table-cell;
+}
+
+.ax-form-amount .ax-unit {
+  padding-left: 3px;
+}
+
+.ax-form-amount .ax-value {
+  text-align: right;
 }
 
 .form-inline .form-group,
@@ -9926,47 +9967,32 @@ td.ax-amount {
   padding-right: 12px;
 }
 
-.table [class*="ax-form"] {
+.table .ax-form {
   position: relative;
   padding-top: 1px !important;
   padding-bottom: 1px !important;
 }
 
-.table [class*="ax-form"] span {
-  display: inline-block;
-  height: 34px;
-  line-height: 1.428571429;
-  padding-top: 6px;
-  padding-right: 14px;
-  padding-bottom: 6px;
-  padding-left: 12px;
-  border-width: 1px;
-  border-color: transparent;
-  border-style: solid;
-}
-
-.table [class*="ax-form"] .ax-unit {
-  position: absolute;
-  top: 1px;
-  right: 14px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.table [class*="ax-form"] .btn-sm,
-.table [class*="ax-form"] .btn-group-sm > .btn {
+.table .ax-form .btn-sm,
+.table .ax-form .btn-group-sm > .btn {
   margin-top: 2px;
 }
 
-.table [class*="ax-form"] .btn-xs,
-.table [class*="ax-form"] .btn-group-xs > .btn {
+.table .ax-form .btn-xs,
+.table .ax-form .btn-group-xs > .btn {
   margin-top: 6px;
 }
 
-.table .ax-form-amount,
-.table .ax-form-amount input {
-  text-align: right;
-  padding-right: 14px;
+.table .ax-amount .ax-value {
+  padding-right: 6px;
+}
+
+.table .ax-unit {
+  padding-left: 3px;
+}
+
+.table .ax-unit:empty {
+  padding-left: 0;
 }
 
 .table .checkbox,

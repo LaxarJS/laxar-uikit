@@ -277,32 +277,10 @@ td {
       }
    }
 
-
-   [class*="ax-form"] {
+   .ax-form {
       position: relative;
       padding-top: $ax-form-padding-top !important;
       padding-bottom: $ax-form-padding-bottom !important;
-
-      span {
-         display: inline-block;
-         height: $input-height-base;
-         line-height: $line-height-base;
-         padding-top: $padding-base-vertical;
-         padding-right: $ax-form-input-padding-right;
-         padding-bottom: $padding-base-vertical;
-         padding-left: $padding-base-horizontal;
-         border-width: $ax-form-input-border-width;
-         border-color: transparent;
-         border-style: solid;
-      }
-
-      .ax-unit {
-         position: absolute;
-         top: 1px;
-         right: $ax-form-input-padding-right;
-         padding-left: 0;
-         padding-right: 0;
-      }
 
       .btn-sm {
          margin-top: $ax-form-button-sm-margin-top;
@@ -313,10 +291,18 @@ td {
       }
    }
 
-   .ax-form-amount,
-   .ax-form-amount input {
-      text-align: right;
-      padding-right: $ax-form-input-padding-right;
+   .ax-amount {
+      .ax-value {
+         padding-right: $ax-input-padding-right + $ax-base-border-width;
+      }
+   }
+
+   .ax-unit {
+      padding-left: 3px;
+
+      &:empty {
+         padding-left: 0;
+      }
    }
 
    .checkbox,
@@ -324,22 +310,6 @@ td {
       margin-top: 0;
       margin-bottom: 0;
    }
-
-   // input[type="text"],
-   // input[type="password"],
-   // input[type="datetime"],
-   // input[type="datetime-local"],
-   // input[type="date"],
-   // input[type="month"],
-   // input[type="time"],
-   // input[type="week"],
-   // input[type="number"],
-   // input[type="email"],
-   // input[type="url"],
-   // input[type="search"],
-   // input[type="tel"],
-   // input[type="color"]{
-   // }
 
    input.ax-readonly,
    input.ax-disabled,
@@ -365,8 +335,4 @@ td {
       line-height: $ax-tfoot-line-height;
    }
 
-   // input[type=checkbox],
-   // input[type=radio] {
-   //    vertical-align: top;
-   // }
 }
