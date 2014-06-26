@@ -17,6 +17,9 @@ input[type="tel"],
 input[type="color"] {
    @extend .form-control;
 
+   padding-left: $ax-input-padding-left;
+   padding-right: $ax-input-padding-right;
+
    &.ax-readonly {
       background: $ax-state-readonly-background;
       border-color: $ax-state-readonly-border-color;
@@ -43,6 +46,46 @@ input[type="checkbox"] {
       cursor: default;
    }
 }
+
+//
+// Input with amount and unit
+// -----------------------------------------------------------------------------------------------------------
+
+.ax-amount {
+   text-align: right;
+
+   // .ax-unit {
+   //    padding-left: 7px;
+   // }
+}
+
+
+//
+// Input Field with unit sight
+// -----------------------------------------------------------------------------------------------------------
+
+// <div class="ax-form-amount">
+//    <input class="ax-value"
+//           type="text"><span class="ax-unit">..</span>
+// </div>
+
+.ax-form-amount{
+   display: table;
+   width: 100%;
+
+   > * {
+      display: table-cell;
+   }
+
+   .ax-unit {
+      padding-left: 3px;
+   }
+
+   .ax-value {
+      text-align: right;
+   }
+}
+
 
 // Bootstrap only apply these rules for viewports that are at least 768px wide.
 // We want to use them for larger one too.
