@@ -51,12 +51,17 @@ input[type="checkbox"] {
 // Input with amount and unit
 // -----------------------------------------------------------------------------------------------------------
 
-.ax-amount {
+.ax-amount,
+.ax-value {
    text-align: right;
+}
 
-   // .ax-unit {
-   //    padding-left: 7px;
-   // }
+.ax-unit {
+   padding-left: 3px;
+
+   &:empty {
+      padding-left: 0;
+   }
 }
 
 
@@ -69,20 +74,13 @@ input[type="checkbox"] {
 //           type="text"><span class="ax-unit">..</span>
 // </div>
 
-.ax-form-amount{
+.ax-form-amount {
    display: table;
    width: 100%;
 
    > * {
       display: table-cell;
-   }
-
-   .ax-unit {
-      padding-left: 3px;
-   }
-
-   .ax-value {
-      text-align: right;
+      vertical-align: middle;
    }
 }
 
