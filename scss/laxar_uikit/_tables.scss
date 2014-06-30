@@ -46,10 +46,6 @@ td {
       .ax-expanded:after  { @include ax-set-icon($ax-table-icon-expanded); }
    }
 
-   .ax-amount {
-      text-align: right;
-   }
-
    > thead > tr {
 
       > th {
@@ -292,17 +288,19 @@ td {
    }
 
    .ax-amount {
+      text-align: right;
+
       .ax-value {
          padding-right: $ax-input-padding-right + $ax-base-border-width;
       }
+
+      .ax-form-amount {
+         margin-top: ( $ax-tbody-padding-top * (-1) + $ax-form-padding-top );
+      }
    }
 
-   .ax-unit {
-      padding-left: 3px;
-
-      &:empty {
-         padding-left: 0;
-      }
+   select + select {
+      margin-top: $ax-unit-vertical-half;
    }
 
    .checkbox,
