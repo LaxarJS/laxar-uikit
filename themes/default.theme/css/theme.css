@@ -9623,8 +9623,17 @@ input[type="checkbox"].ax-disabled {
   cursor: default;
 }
 
-.ax-amount {
+.ax-amount,
+.ax-value {
   text-align: right;
+}
+
+.ax-unit {
+  padding-left: 3px;
+}
+
+.ax-unit:empty {
+  padding-left: 0;
 }
 
 .ax-form-amount {
@@ -9634,14 +9643,7 @@ input[type="checkbox"].ax-disabled {
 
 .ax-form-amount > * {
   display: table-cell;
-}
-
-.ax-form-amount .ax-unit {
-  padding-left: 3px;
-}
-
-.ax-form-amount .ax-value {
-  text-align: right;
+  vertical-align: middle;
 }
 
 .form-inline .form-group,
@@ -9775,10 +9777,6 @@ td.ax-amount {
 
 .table .ax-expander .ax-expanded:after {
   content: "\f0d7";
-}
-
-.table .ax-amount {
-  text-align: right;
 }
 
 .table > thead > tr > th {
@@ -9983,16 +9981,20 @@ td.ax-amount {
   margin-top: 6px;
 }
 
+.table .ax-amount {
+  text-align: right;
+}
+
 .table .ax-amount .ax-value {
   padding-right: 6px;
 }
 
-.table .ax-unit {
-  padding-left: 3px;
+.table .ax-amount .ax-form-amount {
+  margin-top: -7px;
 }
 
-.table .ax-unit:empty {
-  padding-left: 0;
+.table select + select {
+  margin-top: 5px;
 }
 
 .table .checkbox,
