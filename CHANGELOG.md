@@ -1,6 +1,9 @@
 # Changelog
 
 ## Last Changes
+
+## v0.10.0
+
 - [#33](https://github.com/LaxarJS/laxar_uikit/issues/33): Improved styling of an input field with an unit sign
 - [#31](https://github.com/LaxarJS/laxar_uikit/issues/31): Added new validation behavior: display of errors to the user can now be deferred.
   NEW FEATURE: see ticket for details
