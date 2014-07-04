@@ -2,6 +2,7 @@
 
 ## Last Changes
 - [#32](https://github.com/LaxarJS/laxar_uikit/issues/32): axInput: Allow to validate on focusout instead of on keypress
+  NEW FEATURE: see ticket for details
 - [#34](https://github.com/LaxarJS/laxar_uikit/issues/34): Fixed `axDatepicker`, which was breaking MSIE8 by trying to set the type attribute.
 
 ## v0.10.0
