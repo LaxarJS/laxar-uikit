@@ -275,11 +275,11 @@ define( [
             } );
 
             // event does not work in MSIE8
-            xit( 'updates its validation state on input', function() {
-               $element[0].value = '50';
-               $element.trigger( 'input' );
-               expect( $element.hasClass( 'ax-error' ) ).toBe( true );
-            } );
+            // xit( 'updates its validation state on input', function() {
+            //    $element[0].value = '50';
+            //    $element.trigger( 'input' );
+            //    expect( $element.hasClass( 'ax-error' ) ).toBe( true );
+            // } );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -336,7 +336,6 @@ define( [
             beforeEach( function() {
                var origGet = ax.configuration.get;
                spyOn( ax.configuration, 'get' ).andCallFake( function( key, fallback ) {
-                  /* :TODO: Delete */ console.log( 'get spy', key, key === configKey, configValue );
                   return key === configKey ? configValue : origGet( key, fallback );
                } );
             } );
