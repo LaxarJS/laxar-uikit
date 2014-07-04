@@ -87,7 +87,6 @@ define( [
 
             var wrapper = $( '<div class="ax-date-picker input-group"></div>' ).insertBefore( element );
             element.detach().appendTo( wrapper ).addClass( 'form-control' );
-            element.detach().appendTo( wrapper ).attr('type', 'text');
 
             var ngModel = controllers[0];
             var axInput = controllers[1] || null;
