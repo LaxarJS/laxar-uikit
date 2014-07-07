@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#34](https://github.com/LaxarJS/laxar_uikit/issues/34): Fixed `axDatepicker`, which was breaking MSIE8 by trying to set the type attribute.
 
 ## v0.10.0
