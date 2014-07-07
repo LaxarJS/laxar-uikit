@@ -9630,10 +9630,12 @@ input[type="checkbox"].ax-disabled {
 
 .ax-unit {
   padding-left: 3px;
+  width: 1em;
+  white-space: nowrap;
 }
 
 .ax-unit:empty {
-  padding-left: 0;
+  display: none;
 }
 
 .ax-form-amount {
@@ -9989,16 +9991,12 @@ td.ax-amount {
   padding-right: 6px;
 }
 
-.table .ax-amount .ax-form-amount {
-  margin-top: -7px;
-}
-
 .table select + select {
   margin-top: 5px;
 }
 
-.table .checkbox,
-.table .radiobutton {
+.table .radio,
+.table .checkbox {
   margin-top: 0;
   margin-bottom: 0;
 }
