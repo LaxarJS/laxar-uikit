@@ -1,7 +1,3 @@
-// Laxar uses not all modules of bootstrap
-//
-//
-
 
 // Compass utilities
 @import "compass";
@@ -11,7 +7,7 @@
 @import "bootstrap/mixins";
 
 // Overwrite mixins from bootstrap if necessary
-@import "mixins_overwrite_bootstrap_ones";
+@import "../mixins_overwrite_bootstrap_ones";
 
 // Reset
 @import "bootstrap/normalize";

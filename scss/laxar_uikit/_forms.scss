@@ -58,9 +58,11 @@ input[type="checkbox"] {
 
 .ax-unit {
    padding-left: 3px;
+   width: 1em;
+   white-space: nowrap;
 
    &:empty {
-      padding-left: 0;
+      display: none;
    }
 }
 
