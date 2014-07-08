@@ -286,8 +286,11 @@ $ax-tbody-warning-background           : $state-warning-bg !default;
 $ax-tbody-error-color                  : $state-danger-text !default;
 $ax-tbody-error-background             : $state-danger-bg !default;
 
-$ax-tbody-selected-color               : $text-color !default;
-$ax-tbody-selected-background          : lighten( adjust-hue( $ax-mint, -10% ), 20%) !default;
+$ax-tbody-selected-color               : white !default;
+$ax-tbody-selected-background          : lighten( $ax-blue, 20%) !default;
+
+$ax-tbody-hover-color                  : white !default;
+$ax-tbody-hover-background             : $ax-blue !default;
 
 // Table Footer
 // ------------
