@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#37](https://github.com/LaxarJS/laxar_uikit/issues/37): Added support for bootstrap table classes
 - [#36](https://github.com/LaxarJS/laxar_uikit/issues/36): axInput: documented configuration options under docs/manuals/configuration.md
 - [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#32](https://github.com/LaxarJS/laxar_uikit/issues/32): axInput: Allow to validate on focusout instead of on keypress
