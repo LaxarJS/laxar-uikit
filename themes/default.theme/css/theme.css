@@ -10031,6 +10031,50 @@ td.ax-amount {
   padding-bottom: 0 !important;
 }
 
+.table-widget > table > tbody > tr[data-table-selection] > td {
+  color: white;
+  background: #92bce0;
+}
+
+.table-condensed > thead > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > th,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > th,
+.table-condensed > tfoot > tr > td {
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.table-bordered {
+  border: 1px solid #dddddd;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > th,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > tfoot > tr > td {
+  border: 1px solid #dddddd;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+  background-color: #eeeeee;
+}
+
+.table.table-hover > tbody > tr:hover > td,
+.table.table-hover > tbody > tr:hover > th {
+  color: white;
+  background-color: #428bca;
+}
+
 .well {
   padding: 10px 13px;
 }
