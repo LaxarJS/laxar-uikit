@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#38](https://github.com/LaxarJS/laxar_uikit/issues/38): axInput: fixed spec test in MSIE8
 - [#37](https://github.com/LaxarJS/laxar_uikit/issues/37): Added support for bootstrap table classes
 - [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
