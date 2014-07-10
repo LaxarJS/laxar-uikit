@@ -26,7 +26,7 @@ define( [
          $rootScope.i18n = {
             locale: 'default',
             tags: {
-               default: 'de_DE'
+               'default': 'de_DE'
             }
          };
          scope = $rootScope.$new();
