@@ -25,9 +25,9 @@ td {
 .table {
 
    width: 100%;
-   margin-bottom: $line-height-computed;
+   margin-bottom: $ax-table-margin-bottom;
 
-   border: 1px solid $ax-table-border-color;
+   border: $ax-table-border-width solid $ax-table-border-color;
    border-radius: $ax-table-border-radius;
    border-collapse: $ax-table-border-collapse;
 
