@@ -34,12 +34,12 @@ $col-lg-16: (($ax-grid-column-width * 16) + ($ax-grid-gutter-width * 15 )) !defa
 // -----------------------------------------------------------------------------------------------------------
 
 $ax-unit-horizontal-double: $ax-grid-gutter-width !default;
-$ax-unit-horizontal       : round( $ax-grid-gutter-width / 2) !default;
-$ax-unit-horizontal-half  : round( $ax-grid-gutter-width / 4) !default;
+$ax-unit-horizontal       : round( $ax-unit-horizontal-double / 2) !default;
+$ax-unit-horizontal-half  : round( $ax-unit-horizontal-double / 4) !default;
 
 $ax-unit-vertical-double  : $line-height-computed !default;
-$ax-unit-vertical         : round( $line-height-computed / 2) !default;
-$ax-unit-vertical-half    : round( $line-height-computed / 4) !default;
+$ax-unit-vertical         : round( $ax-unit-vertical-double / 2) !default;
+$ax-unit-vertical-half    : round( $ax-unit-vertical-double / 4) !default;
 
 //
 // Grid rows
@@ -146,6 +146,8 @@ $ax-link-hover-text-decoration: none !default;
 // Tables
 // -----------------------------------------------------------------------------------------------------------
 
+$ax-table-margin-bottom: $line-height-computed !default;
+
 $ax-table-border-width   : 1px !default;
 $ax-table-border-color   : $ax-base-border-color !default;
 $ax-table-border-radius  : $border-radius-base $border-radius-base 0 0 !default;
@@ -162,10 +164,10 @@ $ax-input-padding-left: 5px !default;
 $ax-input-padding-right: 5px !default;
 
 // Cell (.ax-form*) contains an form element like input, select, button, ...
-$ax-form-padding-top: 1px;
-$ax-form-padding-right: 0px;
-$ax-form-padding-bottom: 1px;
-$ax-form-padding-left: 0px;
+$ax-form-padding-top: 1px !default;
+$ax-form-padding-right: 0px !default;
+$ax-form-padding-bottom: 1px !default;
+$ax-form-padding-left: 0px !default;
 $ax-form-input-border-width: 1px !default;
 
 // $input-height-base contains the border-width of form elements allready!
@@ -262,6 +264,7 @@ $ax-tbody-level-2-color                : $text-color !default;
 $ax-tbody-level-2-background           : lighten( $ax-thead-background, 12%) !default;
 $ax-tbody-level-2-border-top-width     : $ax-base-border-width !default;
 $ax-tbody-level-2-border-top-style     : solid !default;
+$ax-tbody-level-2-border-top-color     : $ax-tbody-border-top-color !default;
 $ax-tbody-level-2-border-top-color     : $ax-tbody-border-top-color !default;
 $ax-tbody-level-2-first-child-border-top-width: 0 !default;
 
