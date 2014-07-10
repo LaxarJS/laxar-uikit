@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#39](https://github.com/LaxarJS/laxar_uikit/issues/39): Styling table: Fixed some variables can not be overwritten 
 - [#38](https://github.com/LaxarJS/laxar_uikit/issues/38): axInput: fixed spec test in MSIE8
 - [#37](https://github.com/LaxarJS/laxar_uikit/issues/37): Added support for bootstrap table classes
 - [#36](https://github.com/LaxarJS/laxar_uikit/issues/36): axInput: documented configuration options under docs/manuals/configuration.md
