@@ -9967,19 +9967,29 @@ td.ax-amount {
   padding-right: 12px;
 }
 
-.table .ax-form {
+.table .ax-form,
+.table .table-row-button-widget,
+.table [data-table-column="DELETE_COLUMN"] {
   position: relative;
   padding-top: 1px !important;
   padding-bottom: 1px !important;
 }
 
 .table .ax-form .btn-sm,
-.table .ax-form .btn-group-sm > .btn {
+.table .ax-form .btn-group-sm > .btn,
+.table .table-row-button-widget .btn-sm,
+.table .table-row-button-widget .btn-group-sm > .btn,
+.table [data-table-column="DELETE_COLUMN"] .btn-sm,
+.table [data-table-column="DELETE_COLUMN"] .btn-group-sm > .btn {
   margin-top: 2px;
 }
 
 .table .ax-form .btn-xs,
-.table .ax-form .btn-group-xs > .btn {
+.table .ax-form .btn-group-xs > .btn,
+.table .table-row-button-widget .btn-xs,
+.table .table-row-button-widget .btn-group-xs > .btn,
+.table [data-table-column="DELETE_COLUMN"] .btn-xs,
+.table [data-table-column="DELETE_COLUMN"] .btn-group-xs > .btn {
   margin-top: 6px;
 }
 
