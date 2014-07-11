@@ -273,7 +273,9 @@ td {
       }
    }
 
-   .ax-form {
+   .ax-form,
+   .table-row-button-widget,
+   [data-table-column="DELETE_COLUMN"] {
       position: relative;
       padding-top: $ax-form-padding-top !important;
       padding-bottom: $ax-form-padding-bottom !important;
