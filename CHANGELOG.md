@@ -1,10 +1,11 @@
 # Changelog
 
 ## Last Changes
+
+## v0.10.1
 - [#39](https://github.com/LaxarJS/laxar_uikit/issues/39): Styling table: Fixed some variables can not be overwritten
 - [#38](https://github.com/LaxarJS/laxar_uikit/issues/38): axInput: fixed spec test in MSIE8
 - [#37](https://github.com/LaxarJS/laxar_uikit/issues/37): Added support for bootstrap table classes
-- [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#34](https://github.com/LaxarJS/laxar_uikit/issues/34): Fixed `axDatepicker`, which was breaking MSIE8 by trying to set the type attribute.
 
