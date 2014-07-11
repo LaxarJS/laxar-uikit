@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#40](https://github.com/LaxarJS/laxar_uikit/issues/40): Styling table: Fixed vertical alignment of buttons in a table cell
 
 ## v0.10.1
 - [#39](https://github.com/LaxarJS/laxar_uikit/issues/39): Styling table: Fixed some variables can not be overwritten
