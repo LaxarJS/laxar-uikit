@@ -175,6 +175,9 @@ $ax-form-input-border-width: 1px !default;
 $ax-cell-base-height: $input-height-base + $ax-form-padding-top + $ax-form-padding-bottom !default;
 $ax-cell-base-vertical-padding: floor( ( $ax-cell-base-height - $line-height-computed ) / 2 )  !default;
 
+$ax-cell-base-padding-left:  floor( $ax-unit-horizontal / 2 )!default;
+$ax-cell-base-padding-right: floor( $ax-unit-horizontal / 2 )!default;
+
 // We need some space for the unit sign
 $ax-form-input-padding-right: $padding-base-horizontal + $ax-form-input-border-width * 2 !default;
 
@@ -200,9 +203,9 @@ $ax-thead-font-family                  : $font-family-base !default;
 $ax-thead-line-height                  : $line-height-base !default;
 
 $ax-thead-padding-top                  : $ax-cell-base-vertical-padding !default;
-$ax-thead-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
+$ax-thead-padding-right                : $ax-cell-base-padding-right !default;
 $ax-thead-padding-bottom               : $ax-cell-base-vertical-padding !default;
-$ax-thead-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
+$ax-thead-padding-left                 : $ax-cell-base-padding-left !default;
 
 $ax-thead-border-width                 : 0px !default;
 
@@ -217,6 +220,11 @@ $ax-thead-border-left-color            : $ax-table-border-color !default;
 $ax-thead-first-child-border-left-width: $ax-thead-border-width !default;
 $ax-thead-first-child-border-top-width : $ax-thead-border-width !default;
 
+$ax-thead-sub-row-border-top-width     : $ax-thead-border-top-width !default;
+$ax-thead-sub-row-border-top-style     : $ax-thead-border-top-style !default;
+$ax-thead-sub-row-border-top-color     : $ax-thead-border-top-color !default;
+
+
 // Table Body
 // ----------
 
@@ -226,9 +234,9 @@ $ax-tbody-font-family                  : $font-family-base !default;
 $ax-tbody-line-height                  : $line-height-base !default;
 
 $ax-tbody-padding-top                  : $ax-cell-base-vertical-padding !default;
-$ax-tbody-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
+$ax-tbody-padding-right                : $ax-cell-base-padding-right !default;
 $ax-tbody-padding-bottom               : $ax-cell-base-vertical-padding !default;
-$ax-tbody-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
+$ax-tbody-padding-left                 : $ax-cell-base-padding-left !default;
 
 $ax-tbody-border-width                 : 0px !default;
 
@@ -295,6 +303,10 @@ $ax-tbody-selected-background          : lighten( $ax-blue, 20%) !default;
 $ax-tbody-hover-color                  : white !default;
 $ax-tbody-hover-background             : $ax-blue !default;
 
+$ax-tbody-sub-row-border-top-width     : $ax-tbody-border-top-width !default;
+$ax-tbody-sub-row-border-top-style     : $ax-tbody-border-top-style !default;
+$ax-tbody-sub-row-border-top-color     : $ax-tbody-border-top-color !default;
+
 // Table Footer
 // ------------
 
@@ -307,9 +319,9 @@ $ax-tfoot-font-family                  : $font-family-base !default;
 $ax-tfoot-line-height                  : $line-height-base !default;
 
 $ax-tfoot-padding-top                  : $ax-cell-base-vertical-padding !default;
-$ax-tfoot-padding-right                : floor( $ax-unit-horizontal / 2 )!default;
+$ax-tfoot-padding-right                : $ax-cell-base-padding-right !default;
 $ax-tfoot-padding-bottom               : $ax-cell-base-vertical-padding !default;
-$ax-tfoot-padding-left                 : floor( $ax-unit-horizontal / 2 )!default;
+$ax-tfoot-padding-left                 : $ax-cell-base-padding-left !default;
 
 $ax-tfoot-border-width                 : 0px !default;
 
@@ -323,6 +335,10 @@ $ax-tfoot-border-left-color            : $ax-table-border-color !default;
 
 $ax-tfoot-first-child-border-left-width: $ax-tfoot-border-width !default;
 $ax-tfoot-first-child-border-top-width : $ax-tfoot-border-width !default;
+
+$ax-tfoot-sub-row-border-top-width     : $ax-tfoot-border-top-width !default;
+$ax-tfoot-sub-row-border-top-style     : $ax-tfoot-border-top-style !default;
+$ax-tfoot-sub-row-border-top-color     : $ax-tfoot-border-top-color !default;
 
 //
 // Headlines

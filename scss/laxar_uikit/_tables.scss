@@ -261,18 +261,6 @@ td {
       }
    }
 
-   > thead > tr > th,
-   > tbody > tr > td,
-   > tfoot > tr > td {
-      &:first-child {
-         padding-left: $ax-unit-horizontal - $ax-table-border-width;
-      }
-      &.last,
-      &:last-child {
-         padding-right: $ax-unit-horizontal - $ax-table-border-width;
-      }
-   }
-
    .ax-form,
    .table-row-button-widget,
    [data-table-column="DELETE_COLUMN"] {

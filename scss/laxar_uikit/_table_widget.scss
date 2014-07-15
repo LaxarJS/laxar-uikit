@@ -1,17 +1,31 @@
 .table-widget {
 
-   > table {
-      > .ax-table-lead-in,
-      > .ax-table-lead-out {
-         > tr > td {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-         }
+   .ax-table-lead-in,
+   .ax-table-lead-out {
+      > tr > td {
+         padding-top: 0 !important;
+         padding-bottom: 0 !important;
       }
    }
 
-   > table > tbody > tr[data-table-selection] > td {
+   tr[data-table-selection] > td {
       color: $ax-tbody-selected-color;
       background: $ax-tbody-selected-background;
+   }
+
+   thead > tr[data-table-render-row] > th {
+      border-top-width: $ax-thead-sub-row-border-top-width;
+      border-top-style: $ax-thead-sub-row-border-top-style;
+      border-top-color: $ax-thead-sub-row-border-top-color;
+   }
+   tbody > tr[data-table-render-row] > td {
+      border-top-width: $ax-tbody-sub-row-border-top-width;
+      border-top-style: $ax-tbody-sub-row-border-top-style;
+      border-top-color: $ax-tbody-sub-row-border-top-color;
+   }
+   tfoot > tr[data-table-render-row] > td {
+      border-top-width: $ax-tfoot-sub-row-border-top-width;
+      border-top-style: $ax-tfoot-sub-row-border-top-style;
+      border-top-color: $ax-tfoot-sub-row-border-top-color;
    }
 }
