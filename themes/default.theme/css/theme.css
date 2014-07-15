@@ -9952,21 +9952,6 @@ td.ax-amount {
   border-radius: 0 0 4px 4px 0 0-1px 0;
 }
 
-.table > thead > tr > th:first-child,
-.table > tbody > tr > td:first-child,
-.table > tfoot > tr > td:first-child {
-  padding-left: 12px;
-}
-
-.table > thead > tr > th.last,
-.table > thead > tr > th:last-child,
-.table > tbody > tr > td.last,
-.table > tbody > tr > td:last-child,
-.table > tfoot > tr > td.last,
-.table > tfoot > tr > td:last-child {
-  padding-right: 12px;
-}
-
 .table .ax-form,
 .table .table-row-button-widget,
 .table [data-table-column="DELETE_COLUMN"] {
@@ -10035,15 +10020,33 @@ td.ax-amount {
   line-height: 1.428571429;
 }
 
-.table-widget > table > .ax-table-lead-in > tr > td,
-.table-widget > table > .ax-table-lead-out > tr > td {
+.table-widget .ax-table-lead-in > tr > td,
+.table-widget .ax-table-lead-out > tr > td {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
-.table-widget > table > tbody > tr[data-table-selection] > td {
+.table-widget tr[data-table-selection] > td {
   color: white;
   background: #92bce0;
+}
+
+.table-widget thead > tr[data-table-render-row] > th {
+  border-top-width: 0px;
+  border-top-style: solid;
+  border-top-color: #dddddd;
+}
+
+.table-widget tbody > tr[data-table-render-row] > td {
+  border-top-width: 0px;
+  border-top-style: solid;
+  border-top-color: #dddddd;
+}
+
+.table-widget tfoot > tr[data-table-render-row] > td {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: white;
 }
 
 .table-condensed > thead > tr > th,
