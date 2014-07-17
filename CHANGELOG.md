@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#44](https://github.com/LaxarJS/laxar_uikit/issues/44): axInput: added support for checkboxes.
 - [#42](https://github.com/LaxarJS/laxar_uikit/issues/42): Styling global IE10: Fixed layout problems with input clear button
 - [#43](https://github.com/LaxarJS/laxar_uikit/issues/43): jshintrc: disabled enforcement of dot notation for object property access.
 - [#41](https://github.com/LaxarJS/laxar_uikit/issues/41): Styling table: Added border style support for sub rows

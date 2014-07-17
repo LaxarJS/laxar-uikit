@@ -11,10 +11,11 @@ define( [
    './formatters',
    './parsers',
    './helpers',
+   './builtin_validators',
    // Overly specific import to avoid conflict with relative json-imports:
    // https://github.com/LaxarJS/laxar_uikit/issues/30
    'json!../input/messages.json'
-], function( $, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, messages ) {
+], function( $, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, builtinValidators, messages ) {
    'use strict';
 
    var assert = ax.assert;
@@ -89,6 +90,7 @@ define( [
    var ERROR_KEY_SEMANTIC = 'semantic';
 
    var EVENT_VALIDATE = 'axInput.validate';
+   // this currently is duplicated in builtin_validators.js. Thus when changing this here, remember to change it there ...
    var EVENT_REFRESH = 'axInput._refresh';
 
    var DEFAULT_FORMATTING = {
@@ -190,25 +192,6 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   function isText( element ) {
-      var el = element[0];
-      return el.nodeName.toLowerCase() === 'input' && el.type === 'text' || !el.type;
-   }
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   function isRadio( element ) {
-      return element[0].nodeName.toLowerCase() === 'input' && element[0].type === 'radio';
-   }
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   function isSelect( element ) {
-      return element[0].nodeName.toLowerCase() === 'select';
-   }
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
    var directiveName = 'axInput';
    var directive = [ function() {
 
@@ -242,7 +225,8 @@ define( [
                ngModelController.$render();
             }
 
-            var valueType = ( isRadio( element ) || isSelect( element ) ) ? 'select' : attrs[ directiveName ] || 'string';
+            var valueType = ( isCheckbox( element ) || isRadio( element ) || isSelect( element ) ) ?
+               'select' : attrs[ directiveName ] || 'string';
 
             axInputController.initialize( valueType, formattingOptions );
 
@@ -464,6 +448,10 @@ define( [
                      getLabel( $( button ) ).toggleClass( ERROR_PENDING_CLASS, axErrorPendingState );
                   } );
                }
+               else if( isCheckbox( element ) ) {
+                  getLabel( element ).toggleClass( ERROR_CLASS, axErrorState );
+                  getLabel( element ).toggleClass( ERROR_PENDING_CLASS, axErrorPendingState );
+               }
                else {
                   element.toggleClass( ERROR_CLASS, axErrorState );
                   element.toggleClass( ERROR_PENDING_CLASS, axErrorPendingState );
@@ -563,196 +551,27 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var requiredDirectiveName = 'axInputRequired';
-   var requiredDirective = [ function() {
-      return {
-         restrict: 'A',
-         priority: 9, // ensure linking after axInput but before other validators
-         require: 'axInput',
-         link: function( scope, element, attrs, axInputController ) {
-
-            axInputController.addSemanticValidator(
-               function( value ) {
-                  var required = scope.$eval( attrs[ requiredDirectiveName ] );
-                  return !required || ( value != null && (''+value).trim() !== '' );
-               },
-               function() {
-                  var msgKey = 'SEMANTIC_REQUIRED';
-                  if( axInputController.valueType === 'select' ) {
-                     msgKey += '_' + axInputController.valueType.toUpperCase();
-                  }
-                  return message( scope, msgKey );
-               }
-            );
-
-            scope.$watch( attrs[ requiredDirectiveName ], function() {
-               scope.$broadcast( EVENT_REFRESH );
-            } );
-         }
-      };
-   } ];
+   function isText( element ) {
+      var el = element[0];
+      return el.nodeName.toLowerCase() === 'input' && el.type === 'text' || !el.type;
+   }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var maximumDirectiveName = 'axInputMaximumValue';
-   var maximumDirective = [ function() {
-      return {
-         restrict: 'A',
-         require: 'axInput',
-         priority: 10, // ensure linking after axInput and required validation
-         link: function( scope, element, attrs, axInputController ) {
-
-            function maximum() {
-               return scope.$eval( attrs[ maximumDirectiveName ] );
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            var isSmallerOrEqual = helpers.isSmallerOrEqual.bind( helpers, axInputController.valueType );
-            axInputController.addSemanticValidator(
-               function( value ) {
-                  return value === null || isSmallerOrEqual( maximum(), value );
-               },
-               function() {
-                  var msgKey = 'SEMANTIC_MAXIMUM_' + axInputController.valueType.toUpperCase();
-                  if( axInputController.valueType === 'date' && maximum().toLowerCase() === 'now' ) {
-                     msgKey += '_NOW';
-                  }
-                  return helpers.substitute(
-                     message( scope, msgKey ),
-                     { maximumValue: axInputController.format( maximum() ) }
-                  );
-               }
-            );
-         }
-      };
-   } ];
+   function isRadio( element ) {
+      return element[0].nodeName.toLowerCase() === 'input' && element[0].type === 'radio';
+   }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var minimumDirectiveName = 'axInputMinimumValue';
-   var minimumDirective = [ function() {
-      return {
-         restrict: 'A',
-         require: 'axInput',
-         priority: 10, // ensure linking after axInput and required validation
-         link: function( scope, element, attrs, axInputController ) {
-
-            function minimum() {
-               return scope.$eval( attrs[ minimumDirectiveName ] );
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            var isGreaterOrEqual = helpers.isGreaterOrEqual.bind( helpers, axInputController.valueType );
-            axInputController.addSemanticValidator(
-               function( value ) {
-                  return value === null || isGreaterOrEqual( minimum(), value );
-               },
-               function() {
-                  var msgKey = 'SEMANTIC_MINIMUM_' + axInputController.valueType.toUpperCase();
-                  if( axInputController.valueType === 'date' && minimum().toLowerCase() === 'now' ) {
-                     msgKey += '_NOW';
-                  }
-                  return helpers.substitute(
-                     message( scope, msgKey ),
-                     { minimumValue: axInputController.format( minimum() ) }
-                  );
-               }
-            );
-         }
-      };
-   } ];
+   function isCheckbox( element ) {
+      return element[0].nodeName.toLowerCase() === 'input' && element[0].type === 'checkbox';
+   }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var rangeDirectiveName = 'axInputRange';
-   var rangeDirective = [ function() {
-      return {
-         restrict: 'A',
-         require: 'axInput',
-         priority: 10, // ensure linking after axInput and required validation
-         link: function( scope, element, attrs, axInputController ) {
-
-            function range() {
-               var rangeString = scope.$eval( attrs[ rangeDirectiveName ] );
-               var rangeParts = rangeString.split( ',' ).map( function( part ) { return part.trim(); } );
-
-               if( rangeParts.length === 2 ) {
-                  return {
-                     from: rangeParts[0],
-                     to: rangeParts[1]
-                  };
-               }
-               else if( rangeString ) {
-                  throw new Error( 'A range must consist of two values of correct type separated by comma. ' +
-                     'Instead got: ' + rangeString );
-               }
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            var isInRange = helpers.isInRange.bind( helpers, axInputController.valueType );
-            axInputController.addSemanticValidator(
-               function( value ) {
-                  var currentRange = range();
-                  return isInRange( currentRange.from, currentRange.to, value );
-               },
-               function() {
-                  return helpers.substitute(
-                     message( scope, 'SEMANTIC_RANGE_' + axInputController.valueType.toUpperCase() ), {
-                        minimumValue: axInputController.format( range().from ),
-                        maximumValue: axInputController.format( range().to )
-                     }
-                  );
-               }
-            );
-         }
-      };
-   } ];
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   var maximumLengthDirectiveName = 'axInputMaximumLength';
-   var maximumLengthDirective = [ function() {
-      return {
-         restrict: 'A',
-         require: 'axInput',
-         priority: 10, // ensure linking after axInput and required validation
-         link: function( scope, element, attrs, axInputController ) {
-
-            function maximumLength() {
-               return parseInt( scope.$eval( attrs[ maximumLengthDirectiveName ] ), 10 );
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            axInputController.addSemanticValidator(
-               function( value ) { return value.length <= maximumLength(); },
-               function() {
-                  return helpers.substitute(
-                     message( scope, 'SEMANTIC_LENGTH_STRING' ),
-                     { maximumLength: axInputController.format( maximumLength() ) }
-                  );
-               }
-            );
-         }
-      };
-   } ];
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   function message( scope, key ) {
-      var languageTag = i18n.languageTagFromScope( scope );
-      var messagesForLanguage = ax.i18n.localizeRelaxed( languageTag, messages );
-      if( !messagesForLanguage ) {
-         return 'No translations found for language tag "' + languageTag + '" (Translating "' + key + '").';
-      }
-      if( !messagesForLanguage.hasOwnProperty( key ) ) {
-         return 'No message found for language tag "' + languageTag + '" and key "' + key + '".';
-      }
-
-      return messagesForLanguage[ key ];
+   function isSelect( element ) {
+      return element[0].nodeName.toLowerCase() === 'select';
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -761,11 +580,8 @@ define( [
       createForModule: function( module ) {
          module.controller( controllerName, controller );
          module.directive( directiveName, directive );
-         module.directive( requiredDirectiveName, requiredDirective );
-         module.directive( maximumDirectiveName, maximumDirective );
-         module.directive( minimumDirectiveName, minimumDirective );
-         module.directive( rangeDirectiveName, rangeDirective );
-         module.directive( maximumLengthDirectiveName, maximumLengthDirective );
+
+         builtinValidators.createForModule( module );
       }
    };
 
