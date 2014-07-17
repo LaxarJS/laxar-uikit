@@ -9623,6 +9623,10 @@ input[type="checkbox"].ax-disabled {
   cursor: default;
 }
 
+input::-ms-clear {
+  display: none;
+}
+
 .ax-amount,
 .ax-value {
   text-align: right;
