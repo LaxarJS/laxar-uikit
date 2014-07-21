@@ -1,6 +1,8 @@
 # Changelog
 
 ## Last Changes
+
+## v0.11.0
 - [#46](https://github.com/LaxarJS/laxar_uikit/issues/46): axDatePicker: Fixed wrong regional settings in Internet Explorer.
 - [#44](https://github.com/LaxarJS/laxar_uikit/issues/44): axInput: added support for checkboxes.
 - [#42](https://github.com/LaxarJS/laxar_uikit/issues/42): Styling global IE10: Fixed layout problems with input clear button
