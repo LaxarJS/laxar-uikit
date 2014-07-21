@@ -243,15 +243,25 @@ define( [
 
          var deferred = $q.defer();
          require( [ 'jquery_ui/datepicker-' + currentTag ], function() {
+            if( !( currentTag in $.datepicker.regional ) ) {
+               // Fix for IE: Although IE could not load the file, it claims to have done so. We know that IE
+               // is a liar, if the language tag is not present in the region map
+               // (https://github.com/LaxarJS/laxar_uikit/issues/46)
+               return languageNotFound();
+            }
+
             deferred.resolve( currentTag );
-         }, function() {
+         }, languageNotFound );
+
+         function languageNotFound() {
             if( tagParts.length > 1 ) {
                tagParts.pop();
                deferred.resolve( loadLanguage( tagParts ) );
                return;
             }
             deferred.reject();
-         } );
+         }
+
          return deferred.promise;
       }
 
