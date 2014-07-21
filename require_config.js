@@ -68,6 +68,8 @@ var require = {
       underscore: 'bower_components/underscore/underscore',
       text: 'bower_components/requirejs-plugins/lib/text',
       requirejs: 'bower_components/requirejs/require',
+      jjv: 'bower_components/jjv/lib/jjv',
+      jjve: 'bower_components/jjve/jjve',
       json: 'bower_components/requirejs-plugins/src/json',
       jquery: 'bower_components/jquery/dist/jquery',
       'angular-route': 'bower_components/angular-route/angular-route',
