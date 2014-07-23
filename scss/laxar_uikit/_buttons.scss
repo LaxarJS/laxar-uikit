@@ -14,7 +14,7 @@
 %btn-icon-setup {
    &:before {
       display: block;
-      width: $font-size-base;
+      width: $ax-icon-font-size-base;
       line-height: 1;
    }
 }
@@ -31,7 +31,7 @@
    .ax-icon {
       @extend %btn-icon-setup;
       &:before {
-         width: $font-size-large;
+         width: $ax-icon-font-size-large;
       }
    }
 }
@@ -41,7 +41,7 @@
    .ax-icon {
       @extend %btn-icon-setup;
       &:before {
-         width: $font-size-small;
+         width: $ax-icon-font-size-small;
       }
    }
 }
