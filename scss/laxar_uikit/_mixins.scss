@@ -37,6 +37,13 @@
    content: $ax-icon-code;
 }
 
+// Addiitonal icons for font-awesome, or to overwrite some fa icons.
+@mixin ax-set-icon-font-additional {
+   font-family: $ax-icon-font;
+   font-size: $ax-icon-font-size-base;
+   width: $ax-icon-font-size-base;
+}
+
 
 //
 // Disable Foxus Border

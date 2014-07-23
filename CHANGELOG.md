@@ -1,8 +1,8 @@
 # Changelog
 
 ## Last Changes
-
-- [#47](https://github.com/LaxarJS/laxar_patterns/issues/47): added missing require path mapping for jjv and jjve.
+- [#48](https://github.com/LaxarJS/laxar_uikit/issues/48): Styling icons: customized icon size independent from font size
+- [#47](https://github.com/LaxarJS/laxar_uikit/issues/47): added missing require path mapping for jjv and jjve.
 
 ## v0.11.0
 - [#46](https://github.com/LaxarJS/laxar_uikit/issues/46): axDatePicker: Fixed wrong regional settings in Internet Explorer.
