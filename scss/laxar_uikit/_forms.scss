@@ -19,32 +19,12 @@ input[type="color"] {
 
    padding-left: $ax-input-padding-left;
    padding-right: $ax-input-padding-right;
-
-   &.ax-readonly {
-      background: $ax-state-readonly-background;
-      border-color: $ax-state-readonly-border-color;
-   }
-
-   &.ax-disabled {
-      background: $ax-state-disabled-background;
-      border-color: $ax-state-disabled-border-color;
-   }
-
-   &.ax-error {
-      color: $ax-state-error-color !important;
-      border-color: $ax-state-error-border-color !important;
-   }
 }
 
 select,
 input[type="radio"],
 input[type="checkbox"] {
    cursor: pointer;
-
-   &.ax-readonly,
-   &.ax-disabled {
-      cursor: default;
-   }
 }
 
 input::-ms-clear {

@@ -72,3 +72,37 @@
    text-overflow: ellipsis;
    white-space: nowrap;
 }
+
+//
+// Equal hight of columns
+// -----------------------------------------------------------------------------------------------------------
+
+// Important:
+// The columns should be inside a parent wrapper (f.e. the class row) with 'position: relative'
+// in order for absolute positioning to work.
+
+// <div class="row">
+//    <div class="col col-lg-6 first">
+//       ...
+//    </div>
+//    <div class="col col-lg-6 last">
+//       ...
+//    </div>
+// </div>
+
+@mixin ax-equal-col-height( $ax-col-width: $col-lg-3 ) {
+
+   position: relative;
+
+   > .col {
+      &:before {
+         content:'';
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         z-index: -1;
+         width: $ax-col-width;
+         // Assign the background-style in the specific layout theme
+      }
+   }
+}
