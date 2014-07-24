@@ -34,26 +34,86 @@
 .ax-text-hide { @extend .text-hide; }
 .ax-invisible { @extend .invisible; }
 
-[disabled],
-.ax-disabled {
-   @extend .disabled;
-   cursor: default !important;
-   pointer-events: none;
-   color: $ax-state-disabled-color !important;
-}
-
 .ax-invisible {
    visibility: hidden !important;
 }
-
-[readonly],
-.ax-readonly {
-   color: $ax-state-readonly-color !important;
-}
 .ax-busy {}
-.ax-error {}
 .ax-dragging {}
 .ax-scrolling {}
 .ax-not-scrolling {}
 
 // See f.e. forms for concret implementing these classes
+
+%font {
+   font-size: inherit;
+   font-weight: inherit;
+}
+
+[readonly],
+.ax-readonly {
+   @extend %font;
+   color: $ax-state-readonly-color;
+   cursor: default !important;
+}
+
+[disabled],
+.ax-disabled {
+   @extend .disabled;
+   @extend %font;
+   cursor: default !important;
+   pointer-events: none;
+   color: $ax-state-disabled-color;
+}
+
+.ax-error {
+   @extend %font;
+   color: $ax-state-error-color !important;
+}
+
+select,
+textarea,
+input[type="text"] {
+
+   &[readonly],
+   &.ax-readonly {
+      background: $ax-state-readonly-background;
+      border-color: $ax-state-readonly-border-color;
+   }
+
+   &[disabled],
+   &.ax-disabled {
+      background: $ax-state-disabled-background;
+      border-color: $ax-state-disabled-border-color;
+   }
+
+   &.ax-error {
+      background: transparent;
+      border-color: $ax-state-error-color;
+   }
+}
+
+.table {
+   [readonly],
+   .ax-readonly,
+   [disabled],
+   .ax-disabled {
+      color: inherit !important;
+      background-color: inherit !important;
+   }
+
+   .ax-error {
+      color: $ax-state-error-color !important;
+   }
+
+   input[type="text"] {
+      &[readonly],
+      &.ax-readonly,
+      &[disabled],
+      &.ax-disabled {
+         &,
+         .ax-error {
+            border-color: transparent !important;
+         }
+      }
+   }
+}

@@ -295,28 +295,7 @@ td {
       margin-bottom: 0;
    }
 
-   input.ax-readonly,
-   input.ax-disabled,
-   input[readonly],
-   input[disabled] {
-      color: $ax-tbody-color !important;
-      font-size: $ax-tbody-font-size;
-      font-weight: $ax-tbody-font-weight;
-      font-family: $ax-tbody-font-family;
-      border-color: transparent;
-      background-color: transparent;
+   input{
       box-shadow: none;
    }
-
-   tfoot input.ax-readonly,
-   tfoot input.ax-disabled,
-   tfoot input[readonly],
-   tfoot input[disabled] {
-      color: $ax-tfoot-color !important;
-      font-size: $ax-tfoot-font-size;
-      font-weight: $ax-tfoot-font-weight;
-      font-family: $ax-tfoot-font-family;
-      line-height: $ax-tfoot-line-height;
-   }
-
 }

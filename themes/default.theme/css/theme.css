@@ -9242,20 +9242,84 @@ a:focus,
   text-decoration: none;
 }
 
-[disabled],
-.ax-disabled {
-  cursor: default !important;
-  pointer-events: none;
-  color: #cccccc !important;
-}
-
 .ax-invisible {
   visibility: hidden !important;
 }
 
 [readonly],
+.ax-readonly,
+[disabled],
+.ax-disabled,
+.ax-error {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+[readonly],
 .ax-readonly {
-  color: #cccccc !important;
+  color: #cccccc;
+  cursor: default !important;
+}
+
+[disabled],
+.ax-disabled {
+  cursor: default !important;
+  pointer-events: none;
+  color: #cccccc;
+}
+
+.ax-error {
+  color: #de182c !important;
+}
+
+select[readonly],
+select.ax-readonly,
+textarea[readonly],
+textarea.ax-readonly,
+input[type="text"][readonly],
+input[type="text"].ax-readonly {
+  background: #dddddd;
+  border-color: #cccccc;
+}
+
+select[disabled],
+select.ax-disabled,
+textarea[disabled],
+textarea.ax-disabled,
+input[type="text"][disabled],
+input[type="text"].ax-disabled {
+  background: #dddddd;
+  border-color: #cccccc;
+}
+
+select.ax-error,
+textarea.ax-error,
+input[type="text"].ax-error {
+  background: transparent;
+  border-color: #de182c;
+}
+
+.table [readonly],
+.table .ax-readonly,
+.table [disabled],
+.table .ax-disabled {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+.table .ax-error {
+  color: #de182c !important;
+}
+
+.table input[type="text"][readonly],
+.table input[type="text"][readonly] .ax-error,
+.table input[type="text"].ax-readonly,
+.table input[type="text"].ax-readonly .ax-error,
+.table input[type="text"][disabled],
+.table input[type="text"][disabled] .ax-error,
+.table input[type="text"].ax-disabled,
+.table input[type="text"].ax-disabled .ax-error {
+  border-color: transparent !important;
 }
 
 .ax-icon {
@@ -9548,79 +9612,10 @@ input[type="color"] {
   padding-right: 5px;
 }
 
-select.ax-readonly,
-textarea.ax-readonly,
-input[type="text"].ax-readonly,
-input[type="password"].ax-readonly,
-input[type="datetime"].ax-readonly,
-input[type="datetime-local"].ax-readonly,
-input[type="date"].ax-readonly,
-input[type="month"].ax-readonly,
-input[type="time"].ax-readonly,
-input[type="week"].ax-readonly,
-input[type="number"].ax-readonly,
-input[type="email"].ax-readonly,
-input[type="url"].ax-readonly,
-input[type="search"].ax-readonly,
-input[type="tel"].ax-readonly,
-input[type="color"].ax-readonly {
-  background: #dddddd;
-  border-color: #cccccc;
-}
-
-select.ax-disabled,
-textarea.ax-disabled,
-input[type="text"].ax-disabled,
-input[type="password"].ax-disabled,
-input[type="datetime"].ax-disabled,
-input[type="datetime-local"].ax-disabled,
-input[type="date"].ax-disabled,
-input[type="month"].ax-disabled,
-input[type="time"].ax-disabled,
-input[type="week"].ax-disabled,
-input[type="number"].ax-disabled,
-input[type="email"].ax-disabled,
-input[type="url"].ax-disabled,
-input[type="search"].ax-disabled,
-input[type="tel"].ax-disabled,
-input[type="color"].ax-disabled {
-  background: #dddddd;
-  border-color: #cccccc;
-}
-
-select.ax-error,
-textarea.ax-error,
-input[type="text"].ax-error,
-input[type="password"].ax-error,
-input[type="datetime"].ax-error,
-input[type="datetime-local"].ax-error,
-input[type="date"].ax-error,
-input[type="month"].ax-error,
-input[type="time"].ax-error,
-input[type="week"].ax-error,
-input[type="number"].ax-error,
-input[type="email"].ax-error,
-input[type="url"].ax-error,
-input[type="search"].ax-error,
-input[type="tel"].ax-error,
-input[type="color"].ax-error {
-  color: #de182c !important;
-  border-color: #de182c !important;
-}
-
 select,
 input[type="radio"],
 input[type="checkbox"] {
   cursor: pointer;
-}
-
-select.ax-readonly,
-select.ax-disabled,
-input[type="radio"].ax-readonly,
-input[type="radio"].ax-disabled,
-input[type="checkbox"].ax-readonly,
-input[type="checkbox"].ax-disabled {
-  cursor: default;
 }
 
 input::-ms-clear {
@@ -10000,28 +9995,8 @@ td.ax-amount {
   margin-bottom: 0;
 }
 
-.table input.ax-readonly,
-.table input.ax-disabled,
-.table input[readonly],
-.table input[disabled] {
-  color: #333333 !important;
-  font-size: 14px;
-  font-weight: normal;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-color: transparent;
-  background-color: transparent;
+.table input {
   box-shadow: none;
-}
-
-.table tfoot input.ax-readonly,
-.table tfoot input.ax-disabled,
-.table tfoot input[readonly],
-.table tfoot input[disabled] {
-  color: #333333 !important;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.428571429;
 }
 
 .table-widget .ax-table-lead-in > tr > td,
