@@ -1,0 +1,10 @@
+.ax-confirm-placeholder {
+  visibility: hidden;
+  border-right-width: 0;
+}
+
+.ax-confirm-helper {
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
