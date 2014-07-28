@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+- [#50](https://github.com/LaxarJS/laxar_uikit/issues/50): Removed expensive layout polling from axConfirmButton
 - [#49](https://github.com/LaxarJS/laxar_uikit/issues/49): Styling status classes: Refactored 
 - [#48](https://github.com/LaxarJS/laxar_uikit/issues/48): Styling icons: customized icon size independent from font size
 - [#47](https://github.com/LaxarJS/laxar_uikit/issues/47): added missing require path mapping for jjv and jjve.
