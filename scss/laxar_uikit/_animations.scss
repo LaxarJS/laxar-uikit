@@ -44,7 +44,7 @@
 
 @mixin ax-spin-animation {
    // It is very important to set the display to block, otherwise the rotate animation will not work.
-   display: block;
+   // display: block;
    animation-name: ax-spin-around;
    animation-duration: 1s;
    animation-iteration-count: infinite;

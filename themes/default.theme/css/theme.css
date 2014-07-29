@@ -9257,7 +9257,7 @@ a:focus,
 
 [readonly],
 .ax-readonly {
-  color: #cccccc;
+  color: #cccccc !important;
   cursor: default !important;
 }
 
@@ -9265,7 +9265,7 @@ a:focus,
 .ax-disabled {
   cursor: default !important;
   pointer-events: none;
-  color: #cccccc;
+  color: #cccccc !important;
 }
 
 .ax-error {
@@ -9485,6 +9485,20 @@ fieldset[disabled] .btn-inverse.ax-active {
   position: relative;
 }
 
+.btn .fa,
+.btn .ax-icon,
+.btn-lg .fa,
+.btn-lg .ax-icon,
+.btn-sm .fa,
+.btn-sm .ax-icon,
+.btn-xs .fa,
+.btn-xs .ax-icon {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .btn .fa:before,
 .btn .ax-icon:before,
 .btn-lg .fa:before,
@@ -9493,32 +9507,38 @@ fieldset[disabled] .btn-inverse.ax-active {
 .btn-sm .ax-icon:before,
 .btn-xs .fa:before,
 .btn-xs .ax-icon:before {
-  display: block;
-  width: 14px;
-  line-height: 1;
+  display: inline-block;
 }
 
-.btn-lg .fa:before,
-.btn-group-lg > .btn .fa:before,
-.btn-lg .ax-icon:before,
-.btn-group-lg > .btn .ax-icon:before {
+.btn-lg .fa,
+.btn-group-lg > .btn .fa,
+.btn-lg .ax-icon,
+.btn-group-lg > .btn .ax-icon {
   width: 18px;
+  height: 18px;
+  font-size: 18px;
 }
 
-.btn-sm .fa:before,
-.btn-group-sm > .btn .fa:before,
-.btn-sm .ax-icon:before,
-.btn-group-sm > .btn .ax-icon:before,
-.btn-xs .fa:before,
-.btn-group-xs > .btn .fa:before,
-.btn-xs .ax-icon:before,
-.btn-group-xs > .btn .ax-icon:before {
+.btn-sm .fa,
+.btn-group-sm > .btn .fa,
+.btn-sm .ax-icon,
+.btn-group-sm > .btn .ax-icon {
   width: 12px;
+  height: 12px;
+  font-size: 12px;
 }
 
-.cssanimations .ax-busy .fa:before,
-.cssanimations .ax-busy .ax-icon:before {
-  display: block;
+.btn-xs .fa,
+.btn-group-xs > .btn .fa,
+.btn-xs .ax-icon,
+.btn-group-xs > .btn .ax-icon {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+}
+
+.cssanimations .ax-busy .fa,
+.cssanimations .ax-busy .ax-icon {
   -webkit-animation-name: ax-spin-around;
   -moz-animation-name: ax-spin-around;
   animation-name: ax-spin-around;
@@ -9534,8 +9554,18 @@ fieldset[disabled] .btn-inverse.ax-active {
   -webkit-animation-delay: 0s;
   -moz-animation-delay: 0s;
   animation-delay: 0s;
+}
+
+.cssanimations .ax-busy .fa:before,
+.cssanimations .ax-busy .fa:after,
+.cssanimations .ax-busy .ax-icon:before,
+.cssanimations .ax-busy .ax-icon:after {
   content: "\f021";
-  z-index: 1;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+  vertical-align: top;
 }
 
 .cssanimations .ax-busy .fa:after,
@@ -9557,38 +9587,55 @@ fieldset[disabled] .btn-inverse.ax-active {
   -moz-animation-delay: 1s;
   animation-delay: 1s;
   content: '';
-  display: block;
   position: absolute;
   z-index: 0;
-  top: 0;
-  left: 0;
-  height: 14px;
-  width: 14px;
+  top: 0px;
+  left: 0px;
   border-width: 2px;
   border-style: solid;
   border-color: inherit;
   border-radius: 14px;
 }
 
+.cssanimations .ax-busy.btn-lg .fa:before,
+.cssanimations .btn-group-lg > .ax-busy.btn .fa:before,
 .cssanimations .ax-busy.btn-lg .fa:after,
 .cssanimations .btn-group-lg > .ax-busy.btn .fa:after,
+.cssanimations .ax-busy.btn-lg .ax-icon:before,
+.cssanimations .btn-group-lg > .ax-busy.btn .ax-icon:before,
 .cssanimations .ax-busy.btn-lg .ax-icon:after,
 .cssanimations .btn-group-lg > .ax-busy.btn .ax-icon:after {
-  height: 18px;
+  font-size: 18px;
   width: 18px;
+  height: 18px;
   border-radius: 18px;
 }
 
+.cssanimations .ax-busy.btn-sm .fa:before,
+.cssanimations .btn-group-sm > .ax-busy.btn .fa:before,
 .cssanimations .ax-busy.btn-sm .fa:after,
 .cssanimations .btn-group-sm > .ax-busy.btn .fa:after,
+.cssanimations .ax-busy.btn-sm .ax-icon:before,
+.cssanimations .btn-group-sm > .ax-busy.btn .ax-icon:before,
 .cssanimations .ax-busy.btn-sm .ax-icon:after,
-.cssanimations .btn-group-sm > .ax-busy.btn .ax-icon:after,
+.cssanimations .btn-group-sm > .ax-busy.btn .ax-icon:after {
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+}
+
+.cssanimations .ax-busy.btn-xs .fa:before,
+.cssanimations .btn-group-xs > .ax-busy.btn .fa:before,
 .cssanimations .ax-busy.btn-xs .fa:after,
 .cssanimations .btn-group-xs > .ax-busy.btn .fa:after,
+.cssanimations .ax-busy.btn-xs .ax-icon:before,
+.cssanimations .btn-group-xs > .ax-busy.btn .ax-icon:before,
 .cssanimations .ax-busy.btn-xs .ax-icon:after,
 .cssanimations .btn-group-xs > .ax-busy.btn .ax-icon:after {
-  height: 12px;
+  font-size: 12px;
   width: 12px;
+  height: 12px;
   border-radius: 12px;
 }
 
