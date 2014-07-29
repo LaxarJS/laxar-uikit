@@ -52,7 +52,7 @@
 [readonly],
 .ax-readonly {
    @extend %font;
-   color: $ax-state-readonly-color;
+   color: $ax-state-readonly-color !important;
    cursor: default !important;
 }
 
@@ -62,7 +62,7 @@
    @extend %font;
    cursor: default !important;
    pointer-events: none;
-   color: $ax-state-disabled-color;
+   color: $ax-state-disabled-color !important;
 }
 
 .ax-error {

@@ -1,7 +1,7 @@
 # Changelog
 
 ## Last Changes
-
+- [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling buttons: refactored animation for busy state
 - [#51](https://github.com/LaxarJS/laxar_uikit/issues/51): Remove some obsolete NPM `devDependencies`.
 - [#50](https://github.com/LaxarJS/laxar_uikit/issues/50): Removed expensive layout polling from axConfirmButton
 - [#49](https://github.com/LaxarJS/laxar_uikit/issues/49): Styling status classes: Refactored 
