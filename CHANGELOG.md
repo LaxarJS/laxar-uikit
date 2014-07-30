@@ -1,6 +1,7 @@
 # Changelog
 
 ## Last Changes
+
 - [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling buttons: refactored animation for busy state
 - [#51](https://github.com/LaxarJS/laxar_uikit/issues/51): Remove some obsolete NPM `devDependencies`.
 - [#50](https://github.com/LaxarJS/laxar_uikit/issues/50): Removed expensive layout polling from axConfirmButton
@@ -8,7 +9,9 @@
 - [#48](https://github.com/LaxarJS/laxar_uikit/issues/48): Styling icons: customized icon size independent from font size
 - [#47](https://github.com/LaxarJS/laxar_uikit/issues/47): added missing require path mapping for jjv and jjve.
 
+
 ## v0.11.0
+
 - [#46](https://github.com/LaxarJS/laxar_uikit/issues/46): axDatePicker: Fixed wrong regional settings in Internet Explorer.
 - [#44](https://github.com/LaxarJS/laxar_uikit/issues/44): axInput: added support for checkboxes.
 - [#42](https://github.com/LaxarJS/laxar_uikit/issues/42): Styling global IE10: Fixed layout problems with input clear button
@@ -24,7 +27,9 @@
   NEW FEATURE: see ticket for details
 - [#34](https://github.com/LaxarJS/laxar_uikit/issues/34): Fixed `axDatepicker`, which was breaking MSIE8 by trying to set the type attribute.
 
+
 ## v0.10.0
+
 - [#33](https://github.com/LaxarJS/laxar_uikit/issues/33): Improved styling of an input field with an unit sign
 - [#31](https://github.com/LaxarJS/laxar_uikit/issues/31): Added new validation behavior: display of errors to the user can now be deferred.
   NEW FEATURE: see ticket for details
