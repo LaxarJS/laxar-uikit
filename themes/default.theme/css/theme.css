@@ -9494,20 +9494,8 @@ fieldset[disabled] .btn-inverse.ax-active {
 .btn-xs .fa,
 .btn-xs .ax-icon {
   width: 14px;
-  height: 14px;
   font-size: 14px;
   line-height: 1;
-}
-
-.btn .fa:before,
-.btn .ax-icon:before,
-.btn-lg .fa:before,
-.btn-lg .ax-icon:before,
-.btn-sm .fa:before,
-.btn-sm .ax-icon:before,
-.btn-xs .fa:before,
-.btn-xs .ax-icon:before {
-  display: inline-block;
 }
 
 .btn-lg .fa,
@@ -9515,7 +9503,6 @@ fieldset[disabled] .btn-inverse.ax-active {
 .btn-lg .ax-icon,
 .btn-group-lg > .btn .ax-icon {
   width: 18px;
-  height: 18px;
   font-size: 18px;
 }
 
@@ -9524,7 +9511,6 @@ fieldset[disabled] .btn-inverse.ax-active {
 .btn-sm .ax-icon,
 .btn-group-sm > .btn .ax-icon {
   width: 12px;
-  height: 12px;
   font-size: 12px;
 }
 
@@ -9533,12 +9519,11 @@ fieldset[disabled] .btn-inverse.ax-active {
 .btn-xs .ax-icon,
 .btn-group-xs > .btn .ax-icon {
   width: 12px;
-  height: 12px;
   font-size: 12px;
 }
 
-.cssanimations .ax-busy .fa,
-.cssanimations .ax-busy .ax-icon {
+.cssanimations .ax-busy .fa:before,
+.cssanimations .ax-busy .ax-icon:before {
   -webkit-animation-name: ax-spin-around;
   -moz-animation-name: ax-spin-around;
   animation-name: ax-spin-around;
@@ -9554,89 +9539,10 @@ fieldset[disabled] .btn-inverse.ax-active {
   -webkit-animation-delay: 0s;
   -moz-animation-delay: 0s;
   animation-delay: 0s;
-}
-
-.cssanimations .ax-busy .fa:before,
-.cssanimations .ax-busy .fa:after,
-.cssanimations .ax-busy .ax-icon:before,
-.cssanimations .ax-busy .ax-icon:after {
+  display: block;
   content: "\f021";
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
   line-height: 1;
   vertical-align: top;
-}
-
-.cssanimations .ax-busy .fa:after,
-.cssanimations .ax-busy .ax-icon:after {
-  opacity: 0;
-  -webkit-animation-name: ax-pulse;
-  -moz-animation-name: ax-pulse;
-  animation-name: ax-pulse;
-  -webkit-animation-duration: 3s;
-  -moz-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-  content: '';
-  position: absolute;
-  z-index: 0;
-  top: 0px;
-  left: 0px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: inherit;
-  border-radius: 14px;
-}
-
-.cssanimations .ax-busy.btn-lg .fa:before,
-.cssanimations .btn-group-lg > .ax-busy.btn .fa:before,
-.cssanimations .ax-busy.btn-lg .fa:after,
-.cssanimations .btn-group-lg > .ax-busy.btn .fa:after,
-.cssanimations .ax-busy.btn-lg .ax-icon:before,
-.cssanimations .btn-group-lg > .ax-busy.btn .ax-icon:before,
-.cssanimations .ax-busy.btn-lg .ax-icon:after,
-.cssanimations .btn-group-lg > .ax-busy.btn .ax-icon:after {
-  font-size: 18px;
-  width: 18px;
-  height: 18px;
-  border-radius: 18px;
-}
-
-.cssanimations .ax-busy.btn-sm .fa:before,
-.cssanimations .btn-group-sm > .ax-busy.btn .fa:before,
-.cssanimations .ax-busy.btn-sm .fa:after,
-.cssanimations .btn-group-sm > .ax-busy.btn .fa:after,
-.cssanimations .ax-busy.btn-sm .ax-icon:before,
-.cssanimations .btn-group-sm > .ax-busy.btn .ax-icon:before,
-.cssanimations .ax-busy.btn-sm .ax-icon:after,
-.cssanimations .btn-group-sm > .ax-busy.btn .ax-icon:after {
-  font-size: 12px;
-  width: 12px;
-  height: 12px;
-  border-radius: 12px;
-}
-
-.cssanimations .ax-busy.btn-xs .fa:before,
-.cssanimations .btn-group-xs > .ax-busy.btn .fa:before,
-.cssanimations .ax-busy.btn-xs .fa:after,
-.cssanimations .btn-group-xs > .ax-busy.btn .fa:after,
-.cssanimations .ax-busy.btn-xs .ax-icon:before,
-.cssanimations .btn-group-xs > .ax-busy.btn .ax-icon:before,
-.cssanimations .ax-busy.btn-xs .ax-icon:after,
-.cssanimations .btn-group-xs > .ax-busy.btn .ax-icon:after {
-  font-size: 12px;
-  width: 12px;
-  height: 12px;
-  border-radius: 12px;
 }
 
 select,
