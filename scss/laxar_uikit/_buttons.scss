@@ -12,12 +12,8 @@
 
 %btn-icon-setup {
    width: $ax-icon-font-size-base;
-   height: $ax-icon-font-size-base;
    font-size: $ax-icon-font-size-base;
    line-height: 1;
-   &:before {
-      display: inline-block;
-   }
 }
 
 .btn {
@@ -32,7 +28,6 @@
    .ax-icon {
       @extend %btn-icon-setup;
       width: $ax-icon-font-size-large;
-      height: $ax-icon-font-size-large;
       font-size: $ax-icon-font-size-large;
    }
 }
@@ -41,7 +36,6 @@
    .ax-icon {
       @extend %btn-icon-setup;
       width: $ax-icon-font-size-small;
-      height: $ax-icon-font-size-small;
       font-size: $ax-icon-font-size-small;
    }
 }
@@ -50,7 +44,6 @@
    .ax-icon {
       @extend %btn-icon-setup;
       width: $ax-icon-font-size-mini;
-      height: $ax-icon-font-size-mini;
       font-size: $ax-icon-font-size-mini;
    }
 }
@@ -59,70 +52,12 @@
    .ax-busy {
       .fa,
       .ax-icon {
-         @include ax-spin-animation;
-         &:before,
-         &:after {
-            // display: inline-block;
+         &:before {
+            @include ax-spin-animation;
+            display: block;
             content: $ax-icon-busy;
-            font-size: $ax-icon-font-size-base;
-            width: $ax-icon-font-size-base;
-            height: $ax-icon-font-size-base;
             line-height: 1;
             vertical-align: top;
-         }
-
-         &:after {
-            @include ax-pulse;
-            content: '';
-            // display: block;
-            position: absolute;
-            z-index: 0;
-            top: 0px;
-            left: 0px;
-            border-width: $ax-state-busy-border-width;
-            border-style: solid;
-            border-color: $ax-state-busy-border-color;
-            border-radius: $ax-icon-font-size-base;
-         }
-      }
-
-      &.btn-lg {
-         .fa,
-         .ax-icon {
-            &:before,
-            &:after {
-               font-size: $ax-icon-font-size-large;
-               width: $ax-icon-font-size-large;
-               height: $ax-icon-font-size-large;
-               // line-height: $ax-icon-font-size-large;
-               border-radius: $ax-icon-font-size-large;
-            }
-         }
-      }
-      &.btn-sm {
-         .fa,
-         .ax-icon {
-            &:before,
-            &:after {
-               font-size: $ax-icon-font-size-small;
-               width: $ax-icon-font-size-small;
-               height: $ax-icon-font-size-small;
-               // line-height: $ax-icon-font-size-small;
-               border-radius: $ax-icon-font-size-small;
-            }
-         }
-      }
-      &.btn-xs {
-         .fa,
-         .ax-icon {
-            &:before,
-            &:after {
-               font-size: $ax-icon-font-size-mini;
-               width: $ax-icon-font-size-mini;
-               height: $ax-icon-font-size-mini;
-               // line-height: $ax-icon-font-size-mini;
-               border-radius: $ax-icon-font-size-mini;
-            }
          }
       }
    }
