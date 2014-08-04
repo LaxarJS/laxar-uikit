@@ -52,15 +52,16 @@ input::-ms-clear {
 
 
 //
-// Input Field with unit sight
+// Input Field with unit sign
 // -----------------------------------------------------------------------------------------------------------
 
-// <div class="ax-form-amount">
+// <div class=".ax-input-with-unit-sign-helper">
 //    <input class="ax-value"
 //           type="text"><span class="ax-unit">..</span>
 // </div>
 
-.ax-form-amount {
+.ax-form-amount, // deprecated use the class below
+.ax-input-with-unit-sign-helper {
    display: table;
    width: 100%;
 
