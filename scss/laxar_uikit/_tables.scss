@@ -262,18 +262,22 @@ td {
    }
 
    .ax-form,
-   .table-row-button-widget,
-   [data-table-column="DELETE_COLUMN"] {
+   .table-row-button-widget {
       position: relative;
-      padding-top: $ax-form-padding-top !important;
-      padding-bottom: $ax-form-padding-bottom !important;
+      padding-top: $ax-table-cell-form-padding-vertical !important;
+      padding-bottom: $ax-table-cell-form-padding-vertical !important;
 
       .btn-sm {
-         margin-top: $ax-form-button-sm-margin-top;
+         margin-top: $ax-table-cell-form-button-sm-margin-top;
       }
 
       .btn-xs {
-         margin-top: $ax-form-button-xs-margin-top;
+         margin-top: $ax-table-cell-form-button-xs-margin-top;
+      }
+
+      span.ax-value {
+         position: relative;
+         top: $ax-table-cell-padding-vertical - $ax-table-cell-form-padding-vertical;
       }
    }
 

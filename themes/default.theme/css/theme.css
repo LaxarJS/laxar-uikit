@@ -9590,12 +9590,14 @@ input::-ms-clear {
   display: none;
 }
 
-.ax-form-amount {
+.ax-form-amount,
+.ax-input-with-unit-sign-helper {
   display: table;
   width: 100%;
 }
 
-.ax-form-amount > * {
+.ax-form-amount > *,
+.ax-input-with-unit-sign-helper > * {
   display: table-cell;
   vertical-align: middle;
 }
@@ -9742,9 +9744,9 @@ td.ax-amount {
   line-height: 1.428571429;
   text-align: left;
   vertical-align: top;
-  padding-top: 8px;
+  padding-top: 9px;
   padding-right: 6px;
-  padding-bottom: 8px;
+  padding-bottom: 9px;
   padding-left: 6px;
   border-top-width: 0px;
   border-top-style: solid;
@@ -9779,9 +9781,9 @@ td.ax-amount {
   line-height: 1.428571429;
   text-align: left;
   vertical-align: top;
-  padding-top: 8px;
+  padding-top: 9px;
   padding-right: 6px;
-  padding-bottom: 8px;
+  padding-bottom: 9px;
   padding-left: 6px;
   border-top-width: 0px;
   border-top-style: solid;
@@ -9880,9 +9882,9 @@ td.ax-amount {
   line-height: 1.428571429;
   text-align: left;
   vertical-align: top;
-  padding-top: 8px;
+  padding-top: 9px;
   padding-right: 6px;
-  padding-bottom: 8px;
+  padding-bottom: 9px;
   padding-left: 6px;
   border-top-width: 1px;
   border-top-style: solid;
@@ -9905,29 +9907,30 @@ td.ax-amount {
 }
 
 .table .ax-form,
-.table .table-row-button-widget,
-.table [data-table-column="DELETE_COLUMN"] {
+.table .table-row-button-widget {
   position: relative;
-  padding-top: 1px !important;
-  padding-bottom: 1px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
 }
 
 .table .ax-form .btn-sm,
 .table .ax-form .btn-group-sm > .btn,
 .table .table-row-button-widget .btn-sm,
-.table .table-row-button-widget .btn-group-sm > .btn,
-.table [data-table-column="DELETE_COLUMN"] .btn-sm,
-.table [data-table-column="DELETE_COLUMN"] .btn-group-sm > .btn {
+.table .table-row-button-widget .btn-group-sm > .btn {
   margin-top: 2px;
 }
 
 .table .ax-form .btn-xs,
 .table .ax-form .btn-group-xs > .btn,
 .table .table-row-button-widget .btn-xs,
-.table .table-row-button-widget .btn-group-xs > .btn,
-.table [data-table-column="DELETE_COLUMN"] .btn-xs,
-.table [data-table-column="DELETE_COLUMN"] .btn-group-xs > .btn {
+.table .table-row-button-widget .btn-group-xs > .btn {
   margin-top: 6px;
+}
+
+.table .ax-form span.ax-value,
+.table .table-row-button-widget span.ax-value {
+  position: relative;
+  top: 7px;
 }
 
 .table .ax-amount {
