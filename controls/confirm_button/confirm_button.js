@@ -19,7 +19,8 @@ define( [
    };
 
    var htmlTemplate =
-      '<div data-ng-class="{ \'btn-group\': waiting }">' +
+      '<div class="ax-confirm-wrapper"' +
+           'data-ng-class="{ \'btn-group\': waiting }">' +
          '<button type="button" class="ax-confirm-placeholder"' +
                  'data-ng-class="classes.confirm" data-ng-if="!waiting" ' +
                  'data-ng-bind-html="labels.htmlConfirm"></button>' +
