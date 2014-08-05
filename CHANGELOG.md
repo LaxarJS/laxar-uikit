@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#54](https://github.com/LaxarJS/laxar_uikit/issues/54): Styling confirm control: fixed unnecessary linebreak
 - [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling table: Refactored table cells with form elements
 - [#52](https://github.com/LaxarJS/laxar_uikit/issues/52): Styling buttons: refactored animation for busy state
 - [#51](https://github.com/LaxarJS/laxar_uikit/issues/51): Remove some obsolete NPM `devDependencies`.
