@@ -8,3 +8,7 @@
   height: 0;
   overflow: hidden;
 }
+
+.ax-confirm-wrapper {
+  white-space: nowrap;
+}
