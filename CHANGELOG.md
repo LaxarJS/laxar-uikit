@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#56](https://github.com/LaxarJS/laxar_uikit/issues/56): axConfirmButton: fixed initialization of html label
 - [#54](https://github.com/LaxarJS/laxar_uikit/issues/54): Styling confirm control: fixed unnecessary linebreak
 - [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling table: Refactored table cells with form elements
 - [#52](https://github.com/LaxarJS/laxar_uikit/issues/52): Styling buttons: refactored animation for busy state
