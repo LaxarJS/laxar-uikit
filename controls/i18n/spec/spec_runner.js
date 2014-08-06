@@ -10,6 +10,7 @@
       tests: [
          'i18n_spec'
       ],
-      requireConfig: {}
+      requireConfig: {},
+      widgetJson: false
    };
 })( this );

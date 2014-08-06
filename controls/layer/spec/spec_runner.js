@@ -10,6 +10,7 @@
       tests: [
          'layer_spec'
       ],
-      requireConfig: {}
+      requireConfig: {},
+      widgetJson: false
    };
 })( this );
