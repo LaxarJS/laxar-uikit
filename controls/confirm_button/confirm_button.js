@@ -86,8 +86,7 @@ define( [
             } );
 
             Object.keys( $scope.labels ).forEach(function( labelName ) {
-               $scope.$watch( labelName + 'Label', function( newLabel, previousLabel ) {
-                  if( newLabel === previousLabel ) { return; }
+               $scope.$watch( labelName + 'Label', function( newLabel ) {
                   $scope.labels[ labelName ] = newLabel || defaultLabels[ labelName ];
                } );
             } );
