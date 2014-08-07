@@ -5,6 +5,7 @@
 ## v0.11.2
 
 - [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling buttons: refactored animation for busy state
+- [#55](https://github.com/LaxarJS/laxar_uikit/issues/55): don't try to load `widget.json` in laxar_uikit specs.
 - [#51](https://github.com/LaxarJS/laxar_uikit/issues/51): Remove some obsolete NPM `devDependencies`.
 - [#48](https://github.com/LaxarJS/laxar_uikit/issues/48): Styling icons: customized icon size independent from font size
 

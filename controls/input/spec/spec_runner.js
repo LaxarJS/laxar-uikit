@@ -13,6 +13,7 @@
          'input_spec',
          'parsers_spec'
       ],
-      requireConfig: {}
+      requireConfig: {},
+      widgetJson: false
    };
 })( this );
