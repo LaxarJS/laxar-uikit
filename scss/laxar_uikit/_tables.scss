@@ -303,3 +303,22 @@ td {
       box-shadow: none;
    }
 }
+
+// Table without any styling
+.table.ax-table-skeletal {
+   border: none;
+
+   > thead > tr > th,
+   > tbody > tr > td,
+   > tfoot > tr > td {
+      background-color: transparent;
+      border: none;
+
+      &:first-child {
+         padding-left: 0;
+      }
+      &:last-child {
+         padding-right: 0;
+      }
+   }
+}
