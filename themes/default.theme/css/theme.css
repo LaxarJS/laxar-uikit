@@ -9955,6 +9955,29 @@ td.ax-amount {
   box-shadow: none;
 }
 
+.table.ax-table-skeletal {
+  border: none;
+}
+
+.table.ax-table-skeletal > thead > tr > th,
+.table.ax-table-skeletal > tbody > tr > td,
+.table.ax-table-skeletal > tfoot > tr > td {
+  background-color: transparent;
+  border: none;
+}
+
+.table.ax-table-skeletal > thead > tr > th:first-child,
+.table.ax-table-skeletal > tbody > tr > td:first-child,
+.table.ax-table-skeletal > tfoot > tr > td:first-child {
+  padding-left: 0;
+}
+
+.table.ax-table-skeletal > thead > tr > th:last-child,
+.table.ax-table-skeletal > tbody > tr > td:last-child,
+.table.ax-table-skeletal > tfoot > tr > td:last-child {
+  padding-right: 0;
+}
+
 .table-widget .ax-table-lead-in > tr > td,
 .table-widget .ax-table-lead-out > tr > td {
   padding-top: 0 !important;
@@ -10021,6 +10044,12 @@ td.ax-amount {
 .table.table-hover > tbody > tr:hover > th {
   color: white;
   background-color: #428bca;
+}
+
+.ax-text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .well {
