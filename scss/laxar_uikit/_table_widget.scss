@@ -8,7 +8,7 @@
       }
    }
 
-   tr[data-table-selection] > td {
+   tbody > tr[data-table-selection] > td {
       color: $ax-tbody-selected-color;
       background: $ax-tbody-selected-background;
    }

@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#58](https://github.com/LaxarJS/laxar_uikit/issues/58): Styling table: fixed row selecton is not visible
+
+
 ## v0.12.0
 
 - [#55](https://github.com/LaxarJS/laxar_uikit/issues/55): don't try to load `widget.json` in laxar_uikit specs.
