@@ -9984,7 +9984,7 @@ td.ax-amount {
   padding-bottom: 0 !important;
 }
 
-.table-widget tr[data-table-selection] > td {
+.table-widget tbody > tr[data-table-selection] > td {
   color: white;
   background: #92bce0;
 }
