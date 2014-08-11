@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#58](https://github.com/LaxarJS/laxar_uikit/issues/58): Styling table: Fixed row selecton is not visible
 - [#57](https://github.com/LaxarJS/laxar_uikit/issues/57): Styling table: Added new table style (skeletal)
 
 
