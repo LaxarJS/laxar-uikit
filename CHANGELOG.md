@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#58](https://github.com/LaxarJS/laxar_uikit/issues/58): Styling table: fixed row selecton is not visible
+
+
 ## v0.11.2
 
 - [#53](https://github.com/LaxarJS/laxar_uikit/issues/53): Styling buttons: refactored animation for busy state
