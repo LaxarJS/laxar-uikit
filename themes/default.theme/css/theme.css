@@ -8965,10 +8965,12 @@ button.close {
 
 .col:first-child:last-child {
   float: none;
+  width: auto;
 }
 
 .col.first.last {
   float: none;
+  width: auto;
 }
 
 .ax-align-col-content-vertical-middle,
