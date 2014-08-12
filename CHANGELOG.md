@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#59](https://github.com/LaxarJS/laxar_uikit/issues/59): Fixed width of a single col in a row
 - [#58](https://github.com/LaxarJS/laxar_uikit/issues/58): Styling table: fixed row selecton is not visible
 
 
