@@ -8965,12 +8965,10 @@ button.close {
 
 .col:first-child:last-child {
   float: none;
-  width: auto;
 }
 
 .col.first.last {
   float: none;
-  width: auto;
 }
 
 .ax-align-col-content-vertical-middle,
@@ -9031,6 +9029,14 @@ button.close {
   padding-right: 13px;
 }
 
+.ax-indent-first-last-col .col:first-child:last-child {
+  width: auto;
+}
+
+.ax-indent-first-last-col .col.first.last {
+  width: auto;
+}
+
 .ax-indent-first-last-col-2x .col.first,
 .ax-indent-first-last-col-2x .col:first-child {
   margin-left: -13px;
@@ -9047,6 +9053,14 @@ button.close {
   padding-right: 26px;
 }
 
+.ax-indent-first-last-col-2x .col:first-child:last-child {
+  width: auto;
+}
+
+.ax-indent-first-last-col-2x .col.first.last {
+  width: auto;
+}
+
 .ax-indent-first-last-col-3x .col.first,
 .ax-indent-first-last-col-3x .col:first-child {
   margin-left: -13px;
@@ -9061,6 +9075,14 @@ button.close {
 .ax-indent-first-last-col-3x .col:last-child {
   margin-right: -13px;
   padding-right: 39px;
+}
+
+.ax-indent-first-last-col-3x .col:first-child:last-child {
+  width: auto;
+}
+
+.ax-indent-first-last-col-3x .col.first.last {
+  width: auto;
 }
 
 .ax-increased-space-between-cols .col.first,

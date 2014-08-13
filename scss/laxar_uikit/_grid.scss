@@ -111,13 +111,11 @@
 .col {
    &:first-child:last-child {
       float: none;
-      width: auto;
    }
 }
 .col {
    &.first.last {
       float: none;
-      width: auto;
    }
 }
 
@@ -207,6 +205,13 @@
    &:last-child {
       margin-right:  floor( $ax-grid-gutter-width / 2 ) * ( -1 );
       padding-right: floor( $ax-grid-gutter-width / 2 ) * $ax-indent-level;
+   }
+
+   &:first-child:last-child {
+      width: auto;
+   }
+   &.first.last {
+      width: auto;
    }
 }
 
