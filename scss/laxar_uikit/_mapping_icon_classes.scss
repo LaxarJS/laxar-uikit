@@ -30,14 +30,3 @@
 .ax-icon-warn:before             { content: $ax-icon-warn; }
 .ax-icon-help:before             { content: $ax-icon-help; }
 .ax-icon-print:before            { content: $ax-icon-print; }
-
-
-//
-// Status Colors
-// -----------------------------------------------------------------------------------------------------------
-
-.ax-icon-primary { color: $brand-primary; }
-.ax-icon-success { color: $brand-success; }
-.ax-icon-info    { color: $brand-info; }
-.ax-icon-warning { color: $brand-warning; }
-.ax-icon-danger  { color: $brand-danger; }
