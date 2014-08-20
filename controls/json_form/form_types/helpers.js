@@ -47,7 +47,7 @@ define( [
       function() {
          return {
             restrict: 'A',
-            template: '<i class="ax-icon-warn" title=""></i>',
+            template: '<i class="fa ax-icon-warn" title=""></i>',
             replace: true,
             link: function( scope, element, attrs ) {
                scope.$watch( attrs[ warningIconDirectiveName ], function( newValue ) {
