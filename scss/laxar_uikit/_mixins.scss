@@ -104,5 +104,44 @@
          width: $ax-col-width;
          // Assign the background-style in the specific layout theme
       }
+
+      &:first-child:before,
+      &:last-child:before {
+         width: $ax-col-width - $ax-unit-horizontal;
+      }
+   }
+}
+
+// This mixin expect a sass list with col widths.
+// For example:
+// $cols: $col-lg-6 $col-lg-3 $col-lg-3;
+// @include ax-equal-cols-height( $cols );
+@mixin ax-equal-cols-height( $ax-cols ) {
+
+   position: relative;
+
+   > .col {
+      &:before {
+         content:'';
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         z-index: -1;
+         // Assign the background-style in the specific layout theme
+      }
+   }
+
+   $length: length( $ax-cols );
+
+   @for $i from 1 through $length {
+
+      .col:nth-child( #{$i} ):before {
+
+         @if $i == 1 or $i == $length {
+            width: ( nth( $ax-cols, $i ) - $ax-unit-horizontal );
+         } @else {
+            width: nth( $ax-cols, $i );
+         }
+      }
    }
 }
