@@ -9420,26 +9420,6 @@ input[type="text"].ax-error {
   content: "\f02f";
 }
 
-.ax-icon-primary {
-  color: #428bca;
-}
-
-.ax-icon-success {
-  color: #5cb85c;
-}
-
-.ax-icon-info {
-  color: #5bc0de;
-}
-
-.ax-icon-warning {
-  color: #ffbf21;
-}
-
-.ax-icon-danger {
-  color: #e8273b;
-}
-
 .btn-inverse {
   color: white;
   background-color: #333333;
