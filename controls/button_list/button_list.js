@@ -4,8 +4,9 @@
  * http://laxarjs.org/license
  */
 define( [
+   'underscore',
    'text!./default.theme/button_list.html'
-], function( buttonTemplate ) {
+], function( _, buttonTemplate ) {
    'use strict';
 
    /**
@@ -22,7 +23,6 @@ define( [
     * * When the rendering has finished the directive disconnects from future updates to the list. Thus all
     *   changes made to the list won't be reflected in the rendered button list. Changes to items within in
     *   the button will nevertheless be updated in the view thanks to AngularJS' scopes.
-    * Take a look at the HeadlineWidget or the CommandBarWidget for uses of this directive.
     *
     * Usage:
     * ------
@@ -51,6 +51,7 @@ define( [
     */
 
 
+   var DEBOUNCE_TIME_MS = 300;
    var directiveName = 'axButtonList';
    var directive = [ '$compile', '$parse', function( $compile, $parse ) {
 
@@ -60,13 +61,13 @@ define( [
          link: function( scope, element, attrs ) {
             var $off = scope.$watch( attrs[ directiveName ], function( newValue ) {
                if( newValue && newValue.length ) {
-                  
+
                   newValue.forEach( function( button ) {
                      var buttonScope = scope.$new();
                      buttonScope.button = button;
-                     buttonScope.buttonClicked = function() {
+                     buttonScope.buttonClicked = _.debounce( function() {
                         buttonScope.$eval( attrs.axButtonListClick );
-                     };
+                     }, DEBOUNCE_TIME_MS, true );
 
                      element.append( $compile( buttonTemplate )( buttonScope ) );
                   } );
