@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#62](https://github.com/LaxarJS/laxar_uikit/issues/62): Styling: extend mixin to equal col height for different widths
 - [#61](https://github.com/LaxarJS/laxar_uikit/issues/61): axButtonList: fixed double click handling with debounce function
 
 
