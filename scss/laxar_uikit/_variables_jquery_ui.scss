@@ -137,6 +137,9 @@ $ui-datepicker-day-background-hover: $ax-gray-lightest !default;
 $ui-datepicker-day-font-weight-hover: bold !default;
 $ui-datepicker-day-font-color-hover: $link-hover-color !default;
 
+$ui-datepicker-day-background-highlight: darken($ax-gray-light, 15%) !default;
+$ui-datepicker-day-font-color-highlight: white !default;
+
 $ui-datepicker-day-border-active: none !default;
 $ui-datepicker-day-background-active: $ax-blue !default;
 $ui-datepicker-day-font-weight-active: bold !default;
