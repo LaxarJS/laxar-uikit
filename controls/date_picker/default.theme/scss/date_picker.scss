@@ -204,21 +204,27 @@
          text-decoration: none;
       }
 
-      a.ui-state-default {
+      .ui-state-default {
          color: $ui-datepicker-day-font-color;
          background: $ui-datepicker-day-background;
          text-decoration: none;
       }
 
-      a.ui-state-active {
+      .ui-state-highlight {
+         background: $ui-datepicker-day-background-highlight;
+         color: $ui-datepicker-day-font-color-highlight;
+         font-weight: bold;
+      }
+
+      .ui-state-active {
          border: $ui-datepicker-day-border-active;
          background: $ui-datepicker-day-background-active;
          font-weight: $ui-datepicker-day-font-weight-hover;
          color: $ui-datepicker-day-font-color-active;
       }
 
-      a.ui-state-default:hover,
-      a.ui-state-active:hover {
+      .ui-state-default:hover,
+      .ui-state-active:hover {
          color: $ui-datepicker-day-font-color-hover;
          background: $ui-datepicker-day-background-hover;
          outline: 1px solid $ui-datepicker-day-font-color-hover;
@@ -228,6 +234,9 @@
       &.ui-datepicker-week-end {
          .ui-state-default {
             background: $ui-datepicker-day-background-weekend;
+         }
+         .ui-state-highlight {
+            background: $ui-datepicker-day-background-highlight;
          }
          .ui-state-active {
             background: $ui-datepicker-day-background-active;
