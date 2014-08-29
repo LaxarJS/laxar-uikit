@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.14.0
+
 - [#60](https://github.com/LaxarJS/laxar_uikit/issues/60): portal, dom: deprecated dom.ensureRenderingAndApplyFunction and removed usage
 - [#64](https://github.com/LaxarJS/laxar_uikit/issues/64): tests: make sure PhantomJS is installed properly, before running spec tests.
 - [#63](https://github.com/LaxarJS/laxar_uikit/issues/63): Styling DatePicker: Highlighted current day
