@@ -91,7 +91,7 @@ define( [
                      html +=
                         '<tr>' +
                         '<td colspan="2">Properties matching Pattern: ' + pattern + '</td>' +
-                        '<td><button type="button" data-ng-click="addItem( ' + patternIndex + ' )" class="btn"><i class="icon-plus"></i></button></td>' +
+                        '<td><button type="button" data-ng-click="addItem( ' + patternIndex + ' )" class="btn"><i class="fa ax-icon-plus"></i></button></td>' +
                         '</tr>';
 
                      var schemaBinding = 'patternPropertySchemas.' + patternIndex;
@@ -119,7 +119,7 @@ define( [
                         '<tr data-ng-repeat="item in patternPropertyData.' + patternIndex + '">' +
                         '<td class="ax-object-key"><input data-ng-model="item.key" type="text" pattern="' + pattern + '"></td>' +
                         '<td class="ax-object-value">' + jsonFormTypeSwitch( schemaBinding, dataBinding ) + '</td>' +
-                        '<td><button type="button" data-ng-click="deleteItemAtIndex( ' + patternIndex + ', $index )" class="btn"><i class="icon-trash"></i></button></td>' +
+                        '<td><button type="button" data-ng-click="deleteItemAtIndex( ' + patternIndex + ', $index )" class="btn"><i class="fa ax-icon-delete"></i></button></td>' +
                         '</tr>';
 
                      scope.$watch( 'patternPropertyData.' + patternIndex, function( newValue, oldValue ) {

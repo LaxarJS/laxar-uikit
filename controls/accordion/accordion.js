@@ -5,92 +5,94 @@
  */
 define( [
    'angular',
-   'underscore',
+   'laxar',
    'laxar_uikit',
    'jquery_ui/accordion'
-], function( angular, _, axUi ) {
+], function( ng, ax, axUi ) {
    'use strict';
 
    var directiveName = 'axAccordion';
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var directive = [ '$compile', '$parse', function( $compile, $parse ) {
+   var directive = [
+      '$compile', '$parse', '$window',
+      function( $compile, $parse, $window ) {
       return {
          restrict: 'A',
          link: function( scope, element, attrs ) {
+
             var parsedOnBeforeActivate = function() { return true; };
             if( attrs.axAccordionOnBeforeActivate ) {
                parsedOnBeforeActivate = $parse( attrs.axAccordionOnBeforeActivate );
             }
 
-            var options = _.defaults( scope.$eval( attrs[ directiveName ] ) || {}, {
-               duration: 400
+            // stay hidden until the jQuery accordion control has been instantiated
+            element.addClass( 'ax-invisible' );
+            var uiIndex = -1;
+
+            var getSelectedPanel = $parse( attrs.axAccordionSelectedPanel );
+            var setSelectedPanel = getSelectedPanel.assign || function() {};
+
+            var refresh = ax.fn.debounce( function() { element.accordion( refresh ); }, 100 );
+            var options = ax.object.options( scope.$eval( attrs[ directiveName ] ), {
+               duration: 400,
+               active: getSelectedPanel( scope ) || 0
             } );
 
-            var cachedHeightOfHeaders = null;
-            options.beforeActivate = function( event, ui ) {
-               var index = element.find( element.accordion( 'option', 'header' ) ).index( ui.newHeader );
-               var result = parsedOnBeforeActivate( scope, { index: index, scope: scope } );
-               if( result === false ) {
-                  event.preventDefault();
-                  return;
-               }
+            var animate = options.animate || options.duration;
+            options.animate = false;
+            options.beforeActivate = beforeActivate;
 
-               var newPanelHeight = axUi.dom.ensureRenderingAndApplyFunction( element[0], function() {
-                  if( cachedHeightOfHeaders == null ) {
-                     cachedHeightOfHeaders = calculatePanelHeadersHeight();
+            // one-off $watch to make sure contents (e.g. other widgets) are attached to the dom and linked
+            var doneInitializing = scope.$watch( function() {
+               doneInitializing();
+
+               element.accordion( options );
+               element.removeClass( 'ax-invisible' );
+
+               $window.setTimeout( function() {
+                  // re-enable animations after initial selection has taken place
+                  element.accordion( 'option', 'animate', animate );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               scope.$watch( attrs.axAccordionSelectedPanel, function( newIndex ) {
+                  if( newIndex !== uiIndex ) {
+                     element.accordion( 'option', 'active', newIndex );
                   }
-
-                  return ui.newPanel.outerHeight( true );
                } );
 
-               // we need to animate resizing of the accordion element manually to prevent from flickering of
-               // siblings below the accordion (for example a command bar).
-               var newAccordionHeight = cachedHeightOfHeaders + newPanelHeight;
-               element.stop( true, true );
-               element.animate( {
-                  height: newAccordionHeight + 'px'
-               }, options.duration, function() {
-                  element.height( 'auto' );
+               scope.$on( 'axAccordion.refresh', refresh );
+
+               scope.$on( 'axAccordion.options', function( event, options ) {
+                  ng.forEach( options, function( value, key ) {
+                     element.accordion( 'option', key, value );
+                  } );
                } );
-            };
 
-            element.accordion( options );
-
-            scope.$watch( attrs.axAccordionSelectedPanel, function( newIndex ) {
-               element.accordion( 'option', 'active', newIndex );
-            } );
-
-            scope.$on( 'axAccordion.refresh', function() {
-               cachedHeightOfHeaders = null;
-
-               element.accordion( 'refresh' );
-               element.accordion( 'option', 'active', scope.$eval( attrs.axAccordionSelectedPanel ) );
-            } );
-
-            scope.$on( 'axAccordion.options', function( event, options ) {
-               _.each( options, function( value, key ) {
-                  element.accordion( 'option', key, value );
-               } );
             } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            function calculatePanelHeadersHeight() {
-               var headers = element.find( element.accordion( 'option', 'header' ) );
-               return _.reduce( headers, function( height, header ) {
-                  var hElem = angular.element( header );
-                  var elemHeight = hElem.outerHeight( true );
-                  var pElem = hElem.parent();
-                  while( !pElem.is( element ) ) {
-                     elemHeight += pElem.outerHeight( true ) - pElem.height();
-                     pElem = pElem.parent();
-                  }
+            function beforeActivate( event, ui ) {
+               var index = element.find( element.accordion( 'option', 'header' ) ).index( ui.newHeader );
+               if( uiIndex === index ) {
+                  return;
+               }
 
-                  return elemHeight + height;
-               }, 0 );
+               var result = parsedOnBeforeActivate( scope, { index: index, scope: scope } );
+               if( result === false ) {
+                  event.preventDefault();
+               }
+               else {
+                  uiIndex = index;
+                  setSelectedPanel( scope, index );
+                  scope.$apply();
+               }
             }
+
          }
       };
    } ];

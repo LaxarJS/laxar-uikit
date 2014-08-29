@@ -28,7 +28,7 @@ define( [
             },
             template: '<div>' +
                '<button type="button" ng-click="addItem()" class="btn" data-ng-disabled="schema.maxItems <= viewData.length">' +
-               '<i class="ax-icon-add"></i> {{ messages.ADD_ITEM }}</button>' +
+               '<i class="fa ax-icon-add"></i> {{ messages.ADD_ITEM }}</button>' +
                '<i data-ax-warning-icon="validationErrors"></i>' +
                '</div>',
             link: function( scope, element, attrs ) {
@@ -124,7 +124,7 @@ define( [
                var html ='<ul><li data-ng-repeat="item in viewData">' +
                   '<span>{{ $index }}:</span>' +
                   jsonFormTypeSwitch( 'schema.items', 'item.value', 'formConfiguration[\'*\']' ) +
-                  '<button type="button" data-ng-click="deleteItemAtIndex( $index )" class="btn"><i class="icon-trash"></i></button>' +
+                  '<button type="button" data-ng-click="deleteItemAtIndex( $index )" class="btn"><i class="fa ax-icon-delete"></i></button>' +
                   '</li></ul>';
 
                element.append( $compile( html )( scope ) );

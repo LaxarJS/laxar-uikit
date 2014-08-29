@@ -80,7 +80,7 @@ define( [
          return {
             scope: true,
             template: '<form novalidate>' +
-               '<span><i class="ax-icon-warn"></i> Das Formular wird auf Grund eines fehlerhaften JSON-Strings nicht aktualisiert.</span>' +
+               '<span><i class="fa ax-icon-warn"></i> Das Formular wird auf Grund eines fehlerhaften JSON-Strings nicht aktualisiert.</span>' +
                '</form>',
             require: 'ngModel',
             replace: true,
@@ -137,7 +137,7 @@ define( [
                ///////////////////////////////////////////////////////////////////////////////////////////////
 
                scope.$watch( attrs.axSchema, function( newValue, oldValue ) {
-                  if( newValue === oldValue ) { return; }
+                  if( !newValue ) { return; }
 
                   showWarningMessage( false );
                   element.children( 'div:last' ).remove();

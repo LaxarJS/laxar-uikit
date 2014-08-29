@@ -20,7 +20,7 @@ define( [
                formConfiguration: '=axFormConfiguration'
             },
             template: '<div><textarea data-ng-model="dataAsJson"></textarea>' +
-               '<i class="icon-warning-sign" title="{{ messages.NOT_UPDATING_THE_MODEL }}"></i>' +
+               '<i class="fa ax-icon-warn" title="{{ messages.NOT_UPDATING_THE_MODEL }}"></i>' +
                '</div>',
             replace: true,
             link: function( scope, element, attrs ) {
