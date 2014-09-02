@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
+
 
 # v0.14.0
 
