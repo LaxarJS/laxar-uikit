@@ -8,7 +8,7 @@ define( [
    'laxar',
    'laxar_uikit',
    'jquery_ui/accordion'
-], function( ng, ax, axUi ) {
+], function( ng, ax ) {
    'use strict';
 
    var directiveName = 'axAccordion';
@@ -89,7 +89,11 @@ define( [
                else {
                   uiIndex = index;
                   setSelectedPanel( scope, index );
-                  scope.$apply();
+                  // Guarded apply: `beforeActivate` may be triggered indirectly by $digest, or by a primitive
+                  // DOM event-handler (set by jQuery UI) that is not hooked into AngularJS.
+                  if( !scope.$$phase ) {
+                     scope.$apply();
+                  }
                }
             }
 
