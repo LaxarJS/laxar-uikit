@@ -9271,15 +9271,6 @@ a:focus,
 }
 
 [readonly],
-.ax-readonly,
-[disabled],
-.ax-disabled,
-.ax-error {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-[readonly],
 .ax-readonly {
   color: #cccccc !important;
   cursor: default !important;
@@ -9321,14 +9312,6 @@ textarea.ax-error,
 input[type="text"].ax-error {
   background: transparent;
   border-color: #de182c;
-}
-
-.table [readonly],
-.table .ax-readonly,
-.table [disabled],
-.table .ax-disabled {
-  color: inherit !important;
-  background-color: inherit !important;
 }
 
 .table .ax-error {
