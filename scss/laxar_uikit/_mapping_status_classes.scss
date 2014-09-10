@@ -51,7 +51,7 @@
 
 [readonly],
 .ax-readonly {
-   @extend %font;
+   // @extend %font;
    color: $ax-state-readonly-color !important;
    cursor: default !important;
 }
@@ -59,14 +59,14 @@
 [disabled],
 .ax-disabled {
    @extend .disabled;
-   @extend %font;
+   // @extend %font;
    cursor: default !important;
    pointer-events: none;
    color: $ax-state-disabled-color !important;
 }
 
 .ax-error {
-   @extend %font;
+   // @extend %font;
    color: $ax-state-error-color !important;
 }
 
@@ -93,14 +93,6 @@ input[type="text"] {
 }
 
 .table {
-   [readonly],
-   .ax-readonly,
-   [disabled],
-   .ax-disabled {
-      color: inherit !important;
-      background-color: inherit !important;
-   }
-
    .ax-error {
       color: $ax-state-error-color !important;
    }
