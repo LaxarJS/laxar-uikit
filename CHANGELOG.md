@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed font-size can change depending on disabled- or error-state
+
 # v0.14.1
 
 - [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
