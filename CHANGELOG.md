@@ -2,14 +2,16 @@
 
 ## Last Changes
 
+- [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
 - [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed font-size can change depending on disabled- or error-state
 
-# v0.14.1
+
+## v0.14.1
 
 - [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
 
 
-# v0.14.0
+## v0.14.0
 
 - [#60](https://github.com/LaxarJS/laxar_uikit/issues/60): portal, dom: deprecated dom.ensureRenderingAndApplyFunction and removed usage
 - [#64](https://github.com/LaxarJS/laxar_uikit/issues/64): tests: make sure PhantomJS is installed properly, before running spec tests.
