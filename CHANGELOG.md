@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
 - [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed ont-size can change depending on disabled- or error-state 
 - [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
 
