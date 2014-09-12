@@ -88,7 +88,8 @@ define( [
             contentAreaSelector: null,
             positioning: 'centered',
             whenPositioned: _.identity,
-            whenClosed: _.identity
+            whenClosed: _.identity,
+            preventBodyScrolling: false
          } );
          this.hidden = true;
       },
@@ -186,6 +187,10 @@ define( [
 
             $layer.addClass( 'ax-showing' );
          } );
+
+         if( this.configuration_.preventBodyScrolling ) {
+            $( 'body' ).css( 'overflow', 'hidden' );
+         }
       },
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +223,9 @@ define( [
          } );
          if( this.configuration_.arrowElementId ) {
             $( '#' + this.configuration_.arrowElementId ).fadeOut( 'fast' );
+         }
+         if( this.configuration_.preventBodyScrolling ) {
+            $( 'body' ).css( 'overflow', '' );
          }
 
          this.hidden = true;

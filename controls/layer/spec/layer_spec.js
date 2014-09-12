@@ -226,23 +226,23 @@ define( [
             } );
 
          } );
-         
+
          /////////////////////////////////////////////////////////////////////////////////////////////////////
-         
+
          describe( 'but the space at the bottom is larger', function() {
 
             beforeEach( function() {
                $.mockResult( 'height', window, 1500 );
             } );
-            
+
             //////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
             it( 'draws the layer at the bottom of the anchor', function() {
                showLayerViaDirectiveBinding();
 
                expect( $( '#myLayer' ).css( 'top' ) ).toEqual( '600px' );
             } );
-            
+
          } );
 
       } );
@@ -368,13 +368,13 @@ define( [
          } );
 
       } );
-      
+
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
+
       describe( 'when there is not enough space anywhere', function() {
-         
+
          // NEEDS FIX B: implement and test what needs to be done in this case.
-         
+
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -515,6 +515,59 @@ define( [
             runs( function() {
                jasmine.Clock.tick( 0 );
                expect( scope().layer.hide ).toHaveBeenCalledWith( true );
+            } );
+
+         } );
+
+      } );
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      describe( 'when feature preventBodyScrolling is enabled', function() {
+
+         var currentOverflowValue;
+
+         beforeEach( function() {
+            $rootScope.layerConfiguration = {
+               layerElementSelector: '#myLayer',
+               anchorElementSelector: '#myAnchor',
+               preventBodyScrolling: true
+            };
+
+            // IE initially has 'scroll', while chrome has 'auto'. Thus simply remember the current state.
+            currentOverflowValue =  $( 'body' ).css( 'overflow' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'when shown', function() {
+
+            beforeEach( function() {
+               runFunction( showLayerViaDirectiveBinding );
+               wait( 'show the layer' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'sets overflow hidden on the body element', function() {
+               expect( $( 'body' ).css( 'overflow' ) ).toEqual( 'hidden' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            describe( 'when hidden again', function() {
+
+               beforeEach( function() {
+                  runFunction( hideLayerViaDirectiveBinding );
+                  wait( 'hide the layer' );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'sets overflow hidden on the body element', function() {
+                  expect( $( 'body' ).css( 'overflow' ) ).toEqual( currentOverflowValue );
+               } );
+
             } );
 
          } );
