@@ -1,5 +1,51 @@
 @import "variables_all";
-@import "laxar_uikit/jquery_ui";
+@import "laxar_uikit/optional/jquery_ui";
+
+$ui-accordion-margin: 0 0 $ax-unit-vertical-half !default;
+
+// State Icons
+// --------------
+$ui-accordion-state-icon-margin: 0 $ax-unit-horizontal 0 0 !default;
+$ui-accordion-state-default-icon: $fa-var-chevron-right !default;
+$ui-accordion-state-active-icon : $fa-var-chevron-down !default;
+
+// Group
+// -----
+$ui-accordion-group-margin-bottom: 2px !default;
+
+// Header
+// ------
+$ui-accordion-header-color        : $link-color !default;
+$ui-accordion-header-background   : white !default;
+$ui-accordion-header-font-size    : inherit !default;
+$ui-accordion-header-font-weight  : inherit !default;
+$ui-accordion-header-font-family  : inherit !default;
+
+$ui-accordion-header-border-width : $ax-base-border-width !default;
+$ui-accordion-header-border-style : $ax-base-border-style !default;
+$ui-accordion-header-border-color : $ax-base-border-color !default;
+$ui-accordion-header-border      : $ui-accordion-header-border-width $ui-accordion-header-border-style $ui-accordion-header-border-color !default;
+$ui-accordion-header-border-radius: $ax-base-border-radius !default;
+
+$ui-accordion-header-padding     : ($ax-unit-vertical - $ui-accordion-header-border-width) ($ax-unit-horizontal - $ui-accordion-header-border-width) !default;
+
+$ui-accordion-header-focus-border-color  : lighten($link-color, 10%) !default;
+
+$ui-accordion-header-active-color       : white !default;
+$ui-accordion-header-active-background  : $ui-accordion-header-focus-border-color !default;
+$ui-accordion-header-active-border-color : $ui-accordion-header-focus-border-color !default;
+$ui-accordion-header-active-border-radius: $ax-base-border-radius $ax-base-border-radius 0 0 !default;
+
+$ui-accordion-header-active-focus-border-color  : darken($ui-accordion-header-focus-border-color, 20%);
+
+$ui-accordion-header-hover-color        : $link-hover-color !default;
+$ui-accordion-header-hover-background   : white !default;
+
+// Content
+// -------
+$ui-accordion-content-padding: $ui-accordion-header-padding !default;
+$ui-accordion-content-border : $ui-accordion-header-border !default;
+$ui-accordion-content-border-radius : 0 0 $ax-base-border-radius $ax-base-border-radius !default;
 
 .ui-accordion {
 
