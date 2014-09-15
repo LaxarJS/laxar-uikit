@@ -1,55 +1,57 @@
 //
-// Grid Modul
-// ===========================================================================================================
-
-// Set the grid values
-// ----------------------
-$ax-grid-margin      : 13px  !default;
-$ax-grid-columns     : 12    !default;
-$ax-grid-column-width: 78px  !default;
-$ax-grid-gutter-width: 26px  !default;
-
-$ax-application-width: $ax-grid-column-width * $ax-grid-columns +
-                       $ax-grid-gutter-width * ($ax-grid-columns - 1) !default;
-
-$col-lg-1:  (($ax-grid-column-width * 1) +  ($ax-grid-gutter-width * 0 )) !default;
-$col-lg-2:  (($ax-grid-column-width * 2) +  ($ax-grid-gutter-width * 1 )) !default;
-$col-lg-3:  (($ax-grid-column-width * 3) +  ($ax-grid-gutter-width * 2 )) !default;
-$col-lg-4:  (($ax-grid-column-width * 4) +  ($ax-grid-gutter-width * 3 )) !default;
-$col-lg-5:  (($ax-grid-column-width * 5) +  ($ax-grid-gutter-width * 4 )) !default;
-$col-lg-6:  (($ax-grid-column-width * 6) +  ($ax-grid-gutter-width * 5 )) !default;
-$col-lg-7:  (($ax-grid-column-width * 7) +  ($ax-grid-gutter-width * 6 )) !default;
-$col-lg-8:  (($ax-grid-column-width * 8) +  ($ax-grid-gutter-width * 7 )) !default;
-$col-lg-9:  (($ax-grid-column-width * 9) +  ($ax-grid-gutter-width * 8 )) !default;
-$col-lg-10: (($ax-grid-column-width * 10) + ($ax-grid-gutter-width * 9 )) !default;
-$col-lg-11: (($ax-grid-column-width * 11) + ($ax-grid-gutter-width * 10 )) !default;
-$col-lg-12: (($ax-grid-column-width * 12) + ($ax-grid-gutter-width * 11 )) !default;
-$col-lg-13: (($ax-grid-column-width * 13) + ($ax-grid-gutter-width * 12 )) !default;
-$col-lg-14: (($ax-grid-column-width * 14) + ($ax-grid-gutter-width * 13 )) !default;
-$col-lg-15: (($ax-grid-column-width * 15) + ($ax-grid-gutter-width * 14 )) !default;
-$col-lg-16: (($ax-grid-column-width * 16) + ($ax-grid-gutter-width * 15 )) !default;
-
-//
-// Units
+// Fonts
 // -----------------------------------------------------------------------------------------------------------
 
-$ax-unit-horizontal-double: $ax-grid-gutter-width !default;
-$ax-unit-horizontal       : round( $ax-unit-horizontal-double / 2) !default;
-$ax-unit-horizontal-half  : round( $ax-unit-horizontal-double / 4) !default;
+// Link the font relative to the compiled theme.css
+$fa-font-path: "../fonts" !default;
 
-$ax-unit-vertical-double  : $line-height-computed !default;
-$ax-unit-vertical         : round( $ax-unit-vertical-double / 2) !default;
-$ax-unit-vertical-half    : round( $ax-unit-vertical-double / 4) !default;
 
 //
-// Grid rows
+// Base Icons
 // -----------------------------------------------------------------------------------------------------------
 
-$ax-row-space-top: $ax-unit-vertical-double !default;
+$ax-icon-close-width: 30px !default;
+
+
+$ax-icon-close           : $fa-var-times !default;
+$ax-icon-previous        : $fa-var-arrow-circle-left !default;
+$ax-icon-previous-primary: $fa-var-arrow-circle-left !default;
+$ax-icon-next            : $fa-var-arrow-circle-right !default;
+$ax-icon-next-primary    : $fa-var-arrow-circle-right !default;
+$ax-icon-add             : $fa-var-plus !default;
+$ax-icon-delete          : $fa-var-times-circle !default;
+$ax-icon-ok              : $fa-var-check-circle !default;
+$ax-icon-apply           : $fa-var-check-circle !default;
+$ax-icon-cancel          : $fa-var-times-circle !default;
+$ax-icon-yes             : $fa-var-check-circle !default;
+$ax-icon-no              : $fa-var-times-circle !default;
+$ax-icon-finish          : $fa-var-check-circle !default;
+$ax-icon-info            : $fa-var-info-circle !default;
+$ax-icon-warn            : $fa-var-exclamation-triangle !default;
+$ax-icon-help            : $fa-var-question-circle !default;
+$ax-icon-print           : $fa-var-print !default;
+$ax-icon-busy            : $fa-var-refresh !default;
+
 
 //
-// Base Style
-// ===========================================================================================================
+// Base Status
+// -----------------------------------------------------------------------------------------------------------
+
+$ax-state-busy-border-width: 2px !default;
+$ax-state-busy-border-color: inherit !default;
+
+$ax-state-readonly-color: $gray !default;
+$ax-state-readonly-background: $gray-light !default;
+$ax-state-readonly-border-color: $ax-state-readonly-color !default;
+
+$ax-state-disabled-color: $gray !default;
+$ax-state-disabled-background: $gray-light !default;
+$ax-state-disabled-border-color: $ax-state-disabled-color !default;
+
+$ax-state-error-color: $state-danger-text !default;
+$ax-state-error-background: $state-danger-bg !default;
+$ax-state-error-border-color: $ax-state-error-color !default;
+
 
 //
 // Base Border
@@ -57,77 +59,14 @@ $ax-row-space-top: $ax-unit-vertical-double !default;
 
 $ax-base-border-width: 1px !default;
 $ax-base-border-style: solid !default;
-$ax-base-border-color: $ax-gray-light !default;
+$ax-base-border-color: $gray-light !default;
 $ax-base-border: $ax-base-border-width $ax-base-border-style $ax-base-border-color !default;
 $ax-base-border-radius: $border-radius-base !default;
 
-//
-// Base Shadow
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-base-box-shadow: 2px 5px 10px rgba(0,0,0,.2) !default;
-
-//
-// Link the sprite images
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-sprite-path: "sprites/*.png" !default;
-
-//
-// Base Icons
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-icon-close: $fa-var-times !default;
-$ax-icon-close-width: 30px !default;
-
-$ax-icon-previous:         $fa-var-arrow-circle-left !default;
-$ax-icon-previous-primary: $fa-var-arrow-circle-left !default;
-$ax-icon-next:             $fa-var-arrow-circle-right !default;
-$ax-icon-next-primary:     $fa-var-arrow-circle-right !default;
-$ax-icon-add:              $fa-var-plus !default;
-$ax-icon-delete:           $fa-var-times-circle !default;
-$ax-icon-ok:               $fa-var-check-circle !default;
-$ax-icon-apply:            $fa-var-check-circle !default;
-$ax-icon-cancel:           $fa-var-times-circle !default;
-$ax-icon-yes:              $fa-var-check-circle !default;
-$ax-icon-no:               $fa-var-times-circle !default;
-$ax-icon-finish:           $fa-var-check-circle !default;
-$ax-icon-info:             $fa-var-info-circle !default;
-$ax-icon-warn:             $fa-var-exclamation-triangle !default;
-$ax-icon-help:             $fa-var-question-circle !default;
-$ax-icon-print:            $fa-var-print !default;
-$ax-icon-busy:             $fa-var-refresh !default;
-
-// Sometimes you want bigger or smaller icons than the reading font
-
-$ax-icon-font-size-base : $font-size-base !default;
-$ax-icon-font-size-large: $font-size-large !default;
-$ax-icon-font-size-small: $font-size-small !default;
-$ax-icon-font-size-mini : $font-size-small !default;
-$ax-icon-font-additional: "Brand Icon" !default;
-
-//
-// Base Status
-// ===========================================================================================================
-
-$ax-state-busy-border-width: 2px !default;
-$ax-state-busy-border-color: inherit !default;
-
-$ax-state-readonly-color: $ax-gray !default;
-$ax-state-readonly-background: $ax-gray-light !default;
-$ax-state-readonly-border-color: $ax-state-readonly-color !default;
-
-$ax-state-disabled-color: $ax-gray !default;
-$ax-state-disabled-background: $ax-gray-light !default;
-$ax-state-disabled-border-color: $ax-state-disabled-color !default;
-
-$ax-state-error-color: $state-danger-text !default;
-$ax-state-error-background: $state-danger-bg !default;
-$ax-state-error-border-color: $ax-state-error-color !default;
 
 //
 // Z-Index
-// ===========================================================================================================
+// -----------------------------------------------------------------------------------------------------------
 
 $zindex-navbar:            40;
 $zindex-navbar-fixed:      50;
@@ -136,247 +75,18 @@ $zindex-modal:             50;
 $zindex-popover:           60;
 $zindex-dropdown:          70;
 $zindex-tooltip:           70;
+
 $ax-zindex-page-blocker:  100 !default;
 $ax-zindex-popup-on-top:  200 !default;
 
 //
-// Typo
-// ===========================================================================================================
-
-$ax-label-font-weight: bold !default;
-$ax-link-hover-text-decoration: none !default;
-
-//
-// Default Style
-// ===========================================================================================================
-
-//
-// Tables
+// Units
 // -----------------------------------------------------------------------------------------------------------
 
-$ax-table-margin-bottom: $line-height-computed !default;
+$ax-unit-horizontal-double: 26px !default;
+$ax-unit-horizontal       : round( $ax-unit-horizontal-double / 2) !default;
+$ax-unit-horizontal-half  : round( $ax-unit-horizontal-double / 4) !default;
 
-$ax-table-border-width   : 1px !default;
-$ax-table-border-color   : $ax-base-border-color !default;
-$ax-table-border-radius  : $border-radius-base $border-radius-base 0 0 !default;
-$ax-table-border-collapse: separate !default;
-
-$ax-table-expander-color : $text-color !default;
-$ax-table-expander-width : 12px !default;
-$ax-table-expander-height: $line-height-computed !default;
-$ax-table-expander-margin: 0px !default;
-$ax-table-icon-collapsed : $fa-var-caret-right !default;
-$ax-table-icon-expanded  : $fa-var-caret-down !default;
-
-
-// $input-height-base contains the border-width of form elements allready!
-$ax-table-cell-form-padding-vertical: 2px !default;
-$ax-table-cell-base-height: $input-height-base + $ax-table-cell-form-padding-vertical * 2 !default;
-
-$ax-table-cell-padding-vertical: floor( ( $ax-table-cell-base-height - $line-height-computed ) / 2 ) !default;
-$ax-table-cell-padding-horizontal: floor( $ax-unit-horizontal / 2 ) !default;
-
-$ax-table-cell-form-button-sm-margin-top: floor( ( $input-height-base - $input-height-small ) / 2 ) !default;
-$ax-table-cell-form-button-xs-margin-top: floor( ( $input-height-base - $input-height-xs ) / 2 ) !default;
-
-$ax-input-padding-left: 5px !default;
-$ax-input-padding-right: 5px !default;
-
-// Table Header
-// ------------
-$ax-thead-color                        : $text-color !default;
-$ax-thead-background                   : $ax-table-border-color !default;
-$ax-thead-font-size                    : $font-size-base !default;
-$ax-thead-font-weight                  : bold !default;
-$ax-thead-font-family                  : $font-family-base !default;
-$ax-thead-line-height                  : $line-height-base !default;
-
-$ax-thead-padding-top                  : $ax-table-cell-padding-vertical !default;
-$ax-thead-padding-right                : $ax-table-cell-padding-horizontal !default;
-$ax-thead-padding-bottom               : $ax-table-cell-padding-vertical !default;
-$ax-thead-padding-left                 : $ax-table-cell-padding-horizontal !default;
-
-$ax-thead-border-width                 : 0px !default;
-
-$ax-thead-border-top-width             : $ax-thead-border-width !default;
-$ax-thead-border-top-style             : solid !default;
-$ax-thead-border-top-color             : $ax-table-border-color !default;
-
-$ax-thead-border-left-width            : $ax-thead-border-width !default;
-$ax-thead-border-left-style            : solid !default;
-$ax-thead-border-left-color            : $ax-table-border-color !default;
-
-$ax-thead-first-child-border-left-width: $ax-thead-border-width !default;
-$ax-thead-first-child-border-top-width : $ax-thead-border-width !default;
-
-$ax-thead-sub-row-border-top-width     : $ax-thead-border-top-width !default;
-$ax-thead-sub-row-border-top-style     : $ax-thead-border-top-style !default;
-$ax-thead-sub-row-border-top-color     : $ax-thead-border-top-color !default;
-
-
-// Table Body
-// ----------
-
-$ax-tbody-font-size                    : $font-size-base !default;
-$ax-tbody-font-weight                  : normal !default;
-$ax-tbody-font-family                  : $font-family-base !default;
-$ax-tbody-line-height                  : $line-height-base !default;
-
-$ax-tbody-padding-top                  : $ax-table-cell-padding-vertical !default;
-$ax-tbody-padding-right                : $ax-table-cell-padding-horizontal !default;
-$ax-tbody-padding-bottom               : $ax-table-cell-padding-vertical !default;
-$ax-tbody-padding-left                 : $ax-table-cell-padding-horizontal !default;
-
-$ax-tbody-border-width                 : 0px !default;
-
-$ax-tbody-border-top-width             : $ax-tbody-border-width !default;
-$ax-tbody-border-top-style             : solid !default;
-$ax-tbody-border-top-color             : $ax-table-border-color !default;
-
-$ax-tbody-border-left-width            : $ax-tbody-border-width !default;
-$ax-tbody-border-left-style            : solid !default;
-$ax-tbody-border-left-color            : $ax-table-border-color !default;
-
-$ax-tbody-first-child-border-left-width: $ax-tbody-border-width !default;
-$ax-tbody-first-child-border-top-width : $ax-tbody-border-width !default;
-
-$ax-tbody-color                        : $text-color !default;
-$ax-tbody-background                   : transparent !default;
-
-$ax-tbody-level-0-color                : $text-color !default;
-$ax-tbody-level-0-background           : lighten( $ax-thead-background, 4%) !default;
-$ax-tbody-level-0-border-top-width     : $ax-base-border-width !default;
-$ax-tbody-level-0-border-top-style     : solid !default;
-$ax-tbody-level-0-border-top-color     : white !default;
-$ax-tbody-level-0-first-child-border-top-width: $ax-tbody-level-0-border-top-width !default;
-
-$ax-tbody-level-1-color                : $text-color !default;
-$ax-tbody-level-1-background           : lighten( $ax-thead-background, 8%) !default;
-$ax-tbody-level-1-border-top-width     : $ax-base-border-width !default;
-$ax-tbody-level-1-border-top-style     : solid !default;
-$ax-tbody-level-1-border-top-color     : white !default;
-$ax-tbody-level-1-first-child-border-top-width: $ax-tbody-level-1-border-top-width !default;
-
-$ax-tbody-level-2-color                : $text-color !default;
-$ax-tbody-level-2-background           : lighten( $ax-thead-background, 12%) !default;
-$ax-tbody-level-2-border-top-width     : $ax-base-border-width !default;
-$ax-tbody-level-2-border-top-style     : solid !default;
-$ax-tbody-level-2-border-top-color     : $ax-tbody-border-top-color !default;
-$ax-tbody-level-2-border-top-color     : $ax-tbody-border-top-color !default;
-$ax-tbody-level-2-first-child-border-top-width: 0 !default;
-
-$ax-tbody-odd-color                    : $text-color !default;
-$ax-tbody-odd-background               : transparent !default;
-
-$ax-tbody-even-color                   : $text-color !default;
-$ax-tbody-even-background              : $ax-gray-lighter !default;
-
-$ax-tbody-readonly-color               : $ax-gray !default;
-$ax-tbody-readonly-background          : $ax-gray-light !default;
-
-$ax-tbody-info-color                   : $state-info-text !default;
-$ax-tbody-info-background              : $state-info-bg !default;
-
-$ax-tbody-success-color                : $state-success-text !default;
-$ax-tbody-success-background           : $state-success-bg !default;
-
-$ax-tbody-warning-color                : $state-warning-text !default;
-$ax-tbody-warning-background           : $state-warning-bg !default;
-
-$ax-tbody-error-color                  : $state-danger-text !default;
-$ax-tbody-error-background             : $state-danger-bg !default;
-
-$ax-tbody-selected-color               : white !default;
-$ax-tbody-selected-background          : lighten( $ax-blue, 20%) !default;
-
-$ax-tbody-hover-color                  : white !default;
-$ax-tbody-hover-background             : $ax-blue !default;
-
-$ax-tbody-sub-row-border-top-width     : $ax-tbody-border-top-width !default;
-$ax-tbody-sub-row-border-top-style     : $ax-tbody-border-top-style !default;
-$ax-tbody-sub-row-border-top-color     : $ax-tbody-border-top-color !default;
-
-// Table Footer
-// ------------
-
-
-$ax-tfoot-color                        : $ax-thead-color !default;
-$ax-tfoot-background                   : $ax-thead-background !default;
-$ax-tfoot-font-size                    : $font-size-base !default;
-$ax-tfoot-font-weight                  : bold !default;
-$ax-tfoot-font-family                  : $font-family-base !default;
-$ax-tfoot-line-height                  : $line-height-base !default;
-
-$ax-tfoot-padding-top                  : $ax-table-cell-padding-vertical !default;
-$ax-tfoot-padding-right                : $ax-table-cell-padding-horizontal !default;
-$ax-tfoot-padding-bottom               : $ax-table-cell-padding-vertical !default;
-$ax-tfoot-padding-left                 : $ax-table-cell-padding-horizontal !default;
-
-$ax-tfoot-border-width                 : 0px !default;
-
-$ax-tfoot-border-top-width             : 1px !default;
-$ax-tfoot-border-top-style             : solid !default;
-$ax-tfoot-border-top-color             : white !default;
-
-$ax-tfoot-border-left-width            : $ax-tfoot-border-width !default;
-$ax-tfoot-border-left-style            : solid !default;
-$ax-tfoot-border-left-color            : $ax-table-border-color !default;
-
-$ax-tfoot-first-child-border-left-width: $ax-tfoot-border-width !default;
-$ax-tfoot-first-child-border-top-width : $ax-tfoot-border-width !default;
-
-$ax-tfoot-sub-row-border-top-width     : $ax-tfoot-border-top-width !default;
-$ax-tfoot-sub-row-border-top-style     : $ax-tfoot-border-top-style !default;
-$ax-tfoot-sub-row-border-top-color     : $ax-tfoot-border-top-color !default;
-
-//
-// Headlines
-// -----------------------------------------------------------------------------------------------------------
-
-//
-// Popover
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-popover-close-icon: $ax-icon-close !default;
-$ax-popover-width: auto !default;
-$ax-popover-max-width: none !default;
-$ax-popover-padding: 1px !default;
-$ax-popover-border-width: $ax-base-border-width !default;
-$ax-popover-border-radius: 3px !default;
-$ax-popover-box-shadow: $ax-base-box-shadow !default;
-$ax-popover-arrow-width: 10px !default;
-$ax-popover-offset: 3px !default;
-
-$ax-popover-title-font-size   : $font-size-base !default;
-$ax-popover-title-font-weight : normal !default;
-$ax-popover-tilte-line-height : $line-height-base !default;
-
-$ax-popover-title-background : $popover-title-bg !default;
-$ax-popover-title-border     : 1px solid darken($popover-title-bg, 5%) !default;
-
-//
-// Popup/Modal
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-popup-close-icon: $ax-icon-close !default;
-$ax-popup-close-width: $ax-icon-close-width !default;
-$ax-popup-close-top: 10px !default;
-$ax-popup-close-right: 20px !default;
-
-$ax-popup-padding: 15px 20px !default;
-$ax-popup-box-shadow: $ax-base-box-shadow !default;
-$ax-popup-show-transition: height 400ms ease-in-out !default;
-
-$ax-popup-border-width: $ax-base-border-width !default;
-$ax-popup-border-radius: $border-radius-large !default;
-
-$ax-popup-backdrop-background: $modal-backdrop-bg !default;
-$ax-popup-backdrop-opacity: 0.5 !default;
-
-//
-// Buttons
-// -----------------------------------------------------------------------------------------------------------
-
-$ax-btn-inverse-color: #fff !default;
-$ax-btn-inverse-background: #333 !default;
-$ax-btn-inverse-border: darken($ax-btn-inverse-background, 5%) !default;
+$ax-unit-vertical-double  : 20px !default;
+$ax-unit-vertical         : round( $ax-unit-vertical-double / 2) !default;
+$ax-unit-vertical-half    : round( $ax-unit-vertical-double / 4) !default;

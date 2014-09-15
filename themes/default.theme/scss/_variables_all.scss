@@ -1,17 +1,11 @@
 // Export variables for widgets, layouts and controls
-@import "variables_color_scheme";
-
-@import "bootstrap/variables";
-@import "variables_bootstrap";
+// @import "variables_color_scheme";
 
 @import "font-awesome/scss/variables";
-@import "variables_font_awesome";
-
+@import "bootstrap/variables";
 @import "laxar_uikit/variables";
-@import "variables_laxar";
+@import "variables";
 
-@import "laxar_uikit/variables_jquery_ui";
-@import "variables_jquery_ui";
 
 // Export helper functions
 @import "bootstrap/mixins";

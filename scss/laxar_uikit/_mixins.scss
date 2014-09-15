@@ -1,18 +1,4 @@
 //
-// Application
-// -----------------------------------------------------------------------------------------------------------
-
-@mixin ax-application {
-
-   width: $ax-application-width;
-   margin: 0 auto;
-   padding: 0 $ax-grid-margin;
-
-   box-sizing: content-box;
-   position: relative;
-}
-
-//
 // Icons
 // -----------------------------------------------------------------------------------------------------------
 
@@ -37,11 +23,14 @@
    content: $ax-icon-code;
 }
 
-// Addiitonal icons for font-awesome, or to overwrite some fa icons.
-@mixin ax-set-icon-font-additional {
-   font-family: $ax-icon-font;
-   font-size: $ax-icon-font-size-base;
-   width: $ax-icon-font-size-base;
+
+//
+// Text ellipsis for a single line (Don't work with multiple lines!)
+// ------------------------------------------------------
+@mixin ax-text-ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 
@@ -64,14 +53,6 @@
    }
 }
 
-//
-// Text ellipsis for a single line (Don't work with multiple lines!)
-// ------------------------------------------------------
-@mixin ax-text-ellipsis {
-   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
-}
 
 //
 // Equal hight of columns

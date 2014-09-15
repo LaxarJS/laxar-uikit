@@ -1,6 +1,32 @@
 @import "variables_all";
-@import "laxar_uikit/jquery_ui";
-@import "laxar_uikit/jquery_ui_bootstrap";
+@import "laxar_uikit/optional/jquery_ui";
+@import "laxar_uikit/optional/jquery_ui_bootstrap";
+
+// Should the slider buttons look like the default ones?
+$ui-slider-extend-default-button: true !default;
+
+$ui-slider-horizontal-height: 6px !default;
+$ui-slider-vertical-height: 100px !default;
+$ui-slider-vertical-width: 6px !default;
+
+$ui-slider-handle-height: 15px !default;
+$ui-slider-handle-width: 15px !default;
+
+$ui-slider-handle-horizontal-top: round(($ui-slider-handle-height - $ui-slider-horizontal-height) / 2) !default;
+$ui-slider-handle-horizontal-margin-left: round($ui-slider-handle-width / 2) !default;
+
+$ui-slider-handle-vertical-margin-bottom: round(($ui-slider-handle-height - $ui-slider-horizontal-height) / 2) !default;
+$ui-slider-handle-vertical-left: round($ui-slider-handle-width / 2) !default;
+
+
+$ui-slider-border-width: $ax-base-border-width !default;
+$ui-slider-border-style: $ax-base-border-style !default;
+$ui-slider-border-color: $ax-gray !default;
+
+$ui-slider-border: $ui-slider-border-width $ui-slider-border-style $ui-slider-border-color !default;
+
+$ui-slider-background: $ax-gray-light !default;
+$ui-slider-range-background: $ax-blue !default;
 
 .ui-slider {
    position: relative;

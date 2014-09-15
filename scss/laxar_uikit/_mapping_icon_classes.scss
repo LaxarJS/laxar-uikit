@@ -1,18 +1,8 @@
 // Name mapping
 
-//
-// Commandbar
-// -----------------------------------------------------------------------------------------------------------
-
-.ax-icon {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// .ax-icon {
+//    @extend .fa;
+// }
 
 .ax-icon-previous:before         { content: $ax-icon-previous; }
 .ax-icon-previous-primary:before { content: $ax-icon-previous-primary; }
