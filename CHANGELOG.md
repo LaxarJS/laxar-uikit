@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+## v0.15.0
+
 - [#67](https://github.com/LaxarJS/laxar_uikit/issues/67): Styling: refactored default.theme
 - [#69](https://github.com/LaxarJS/laxar_uikit/issues/69): layer: allowed prevention of scrolling the body when showing.
   NEW FEATURE: see ticket for details
