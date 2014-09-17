@@ -2,7 +2,7 @@
 
 ## Last Changes
 
-- [#67](https://github.com/LaxarJS/laxar_uikit/issues/67): laxar uikit: refactored default.theme
+- [#67](https://github.com/LaxarJS/laxar_uikit/issues/67): Styling: refactored default.theme
 - [#69](https://github.com/LaxarJS/laxar_uikit/issues/69): layer: allowed prevention of scrolling the body when showing.
   NEW FEATURE: see ticket for details
 - [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
