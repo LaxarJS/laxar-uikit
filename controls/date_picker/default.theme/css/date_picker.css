@@ -85,7 +85,7 @@
 }
 
 .ax-date-picker.input-group .form-control.ax-error + button {
-  border-color: #de182c !important;
+  border-color: #a94442 !important;
 }
 
 .ax-date-picker.input-group .ui-datepicker-trigger {
@@ -132,8 +132,7 @@
   background: #eeeeee;
   padding: 10px 13px;
   border: none;
-  border-top: 1px solid #dddddd;
-  border-radius: 4px;
+  border-top: 1px solid #eeeeee;
   text-align: right;
 }
 
