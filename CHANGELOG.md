@@ -4,6 +4,7 @@
 
 ## v0.14.2
 
+- [#71](https://github.com/LaxarJS/laxar_uikit/issues/71): Styling DatePicker: Fixed color definitions.
 - [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
 - [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed font-size can change depending on disabled- or error-state
 

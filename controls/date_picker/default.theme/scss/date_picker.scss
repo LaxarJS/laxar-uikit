@@ -1,8 +1,75 @@
 @import "variables_all";
-@import "laxar_uikit/jquery_ui";
-@import "laxar_uikit/jquery_ui_bootstrap";
+@import "laxar_uikit/optional/jquery_ui";
+@import "laxar_uikit/optional/jquery_ui_bootstrap";
 
-// These variables
+// Input Field + Button
+$ui-datepicker-input-width: 100px !default;
+$ui-datepicker-input-border-radius: $ax-base-border-radius !default;
+
+// Calendar Layer
+$ui-datepicker-layer-zindex: $zindex-popover;
+$ui-datepicker-font-family: $font-family-base !default;
+
+$ui-datepicker-grid-columns: 3;
+$ui-datepicker-width: 286px !default;
+$ui-datepicker-padding: 0 !default;
+$ui-datepicker-border-radius: $ax-base-border-radius !default;
+$ui-datepicker-border-width: $ax-base-border-width !default;
+
+$ui-datepicker-title-line-height: $line-height-computed !default;
+$ui-datepicker-title-select-font-size: $font-size-base !default;
+$ui-datepicker-title-select-margin-vertical: 1px !default;
+$ui-datepicker-title-button-color: $text-color !default;
+
+$ui-datepicker-content-border: $ax-base-border-width solid $modal-content-fallback-border-color !default;
+$ui-datepicker-content-background: white !default;
+$ui-datepicker-content-font-color: $text-color !default;
+
+$ui-datepicker-table-width: $ui-datepicker-width - 2*$ax-unit-horizontal !default;
+$ui-datepicker-table-margin: 0 $ax-unit-horizontal $ax-unit-vertical $ax-unit-horizontal !default;
+
+$ui-datepicker-table-title-cell-padding: $ax-unit-vertical ( $ax-unit-horizontal / 4 ) !default;
+$ui-datepicker-table-title-cell-text-align: right !default;
+$ui-datepicker-table-title-cell-font-weight: bold !default;
+$ui-datepicker-table-font-size: $font-size-base !default;
+$ui-datepicker-table-cell-padding: 1px !default;
+$ui-datepicker-table-cell-content-padding: $ax-unit-vertical-half ( $ax-unit-horizontal / 4 ) ($ax-unit-vertical - 1px + $ax-unit-vertical-half) ($ax-unit-horizontal - ( $ax-unit-horizontal / 4 )) !default;
+
+$ui-datepicker-day-border: none !default;
+$ui-datepicker-day-background: $gray-lighter !default;
+$ui-datepicker-day-background-weekend: #ddd !default;
+
+$ui-datepicker-day-font-weight: bold !default;
+$ui-datepicker-day-font-color: $text-color !default;
+
+$ui-datepicker-day-border-hover: none !default;
+$ui-datepicker-day-background-hover: whitesmoke !default;
+$ui-datepicker-day-font-weight-hover: bold !default;
+$ui-datepicker-day-font-color-hover: $link-hover-color !default;
+
+$ui-datepicker-day-background-highlight: darken(#ddd, 15%) !default;
+$ui-datepicker-day-font-color-highlight: white !default;
+
+$ui-datepicker-day-border-active: none !default;
+$ui-datepicker-day-background-active: $brand-primary !default;
+$ui-datepicker-day-font-weight-active: bold !default;
+$ui-datepicker-day-font-color-active: white !default;
+
+$ui-datepicker-header-title-width: 188px !default;
+$ui-datepicker-header-title-button-width: 35px !default;
+$ui-datepicker-header-title-button-prev-icon: $fa-var-chevron-left !default;
+$ui-datepicker-header-title-button-next-icon: $fa-var-chevron-right !default;
+$ui-datepicker-header-title-border-width: 1px !default;
+$ui-datepicker-header-title-border: $ui-datepicker-header-title-border-width solid $ax-base-border-color !default;
+$ui-datepicker-header-border: none !default;
+$ui-datepicker-header-background: transparent !default;
+$ui-datepicker-header-font-color: $text-color !default;
+$ui-datepicker-header-font-weight: bold !default;
+
+$ui-datepicker-footer-border: none !default;
+$ui-datepicker-footer-border-top: 1px solid $gray-lighter !default;
+$ui-datepicker-footer-background: $gray-lighter !default;
+$ui-datepicker-footer-button-alignment: right !default;
 
 //
 // Date Picker: Input Field and Button
@@ -76,7 +143,6 @@
       padding: $ax-unit-vertical $ax-unit-horizontal;
       border: $ui-datepicker-footer-border;
       border-top: $ui-datepicker-footer-border-top;
-      border-radius: $ui-datepicker-border-radius;
       text-align: $ui-datepicker-footer-button-alignment;
    }
 
