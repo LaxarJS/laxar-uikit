@@ -11,7 +11,7 @@ $ui-datepicker-layer-zindex: $zindex-popover;
 $ui-datepicker-font-family: $font-family-base !default;
 
 $ui-datepicker-grid-columns: 3;
-$ui-datepicker-width: ((($ax-grid-column-width) * $ui-datepicker-grid-columns) + ($ax-grid-gutter-width * ($ui-datepicker-grid-columns - 1))) !default;
+$ui-datepicker-width: 286px !default;
 $ui-datepicker-padding: 0 !default;
 $ui-datepicker-border-radius: $ax-base-border-radius !default;
 $ui-datepicker-border-width: $ax-base-border-width !default;
@@ -21,7 +21,7 @@ $ui-datepicker-title-select-font-size: $font-size-base !default;
 $ui-datepicker-title-select-margin-vertical: 1px !default;
 $ui-datepicker-title-button-color: $text-color !default;
 
-$ui-datepicker-content-border: $ax-popup-border-width solid $modal-content-fallback-border-color !default;
+$ui-datepicker-content-border: $ax-base-border-width solid $modal-content-fallback-border-color !default;
 $ui-datepicker-content-background: white !default;
 $ui-datepicker-content-font-color: $text-color !default;
 
@@ -36,22 +36,22 @@ $ui-datepicker-table-cell-padding: 1px !default;
 $ui-datepicker-table-cell-content-padding: $ax-unit-vertical-half ( $ax-unit-horizontal / 4 ) ($ax-unit-vertical - 1px + $ax-unit-vertical-half) ($ax-unit-horizontal - ( $ax-unit-horizontal / 4 )) !default;
 
 $ui-datepicker-day-border: none !default;
-$ui-datepicker-day-background: $ax-gray-lighter !default;
-$ui-datepicker-day-background-weekend:  $ax-gray-light!default;
+$ui-datepicker-day-background: $gray-lighter !default;
+$ui-datepicker-day-background-weekend: #ddd !default;
 
 $ui-datepicker-day-font-weight: bold !default;
 $ui-datepicker-day-font-color: $text-color !default;
 
 $ui-datepicker-day-border-hover: none !default;
-$ui-datepicker-day-background-hover: $ax-gray-lightest !default;
+$ui-datepicker-day-background-hover: whitesmoke !default;
 $ui-datepicker-day-font-weight-hover: bold !default;
 $ui-datepicker-day-font-color-hover: $link-hover-color !default;
 
-$ui-datepicker-day-background-highlight: darken($ax-gray-light, 15%) !default;
+$ui-datepicker-day-background-highlight: darken(#ddd, 15%) !default;
 $ui-datepicker-day-font-color-highlight: white !default;
 
 $ui-datepicker-day-border-active: none !default;
-$ui-datepicker-day-background-active: $ax-blue !default;
+$ui-datepicker-day-background-active: $brand-primary !default;
 $ui-datepicker-day-font-weight-active: bold !default;
 $ui-datepicker-day-font-color-active: white !default;
 
@@ -67,8 +67,8 @@ $ui-datepicker-header-font-color: $text-color !default;
 $ui-datepicker-header-font-weight: bold !default;
 
 $ui-datepicker-footer-border: none !default;
-$ui-datepicker-footer-border-top: 1px solid $ax-base-border-color !default;
-$ui-datepicker-footer-background: $ax-gray-lighter !default;
+$ui-datepicker-footer-border-top: 1px solid $gray-lighter !default;
+$ui-datepicker-footer-background: $gray-lighter !default;
 $ui-datepicker-footer-button-alignment: right !default;
 
 //
@@ -143,7 +143,6 @@ $ui-datepicker-footer-button-alignment: right !default;
       padding: $ax-unit-vertical $ax-unit-horizontal;
       border: $ui-datepicker-footer-border;
       border-top: $ui-datepicker-footer-border-top;
-      border-radius: $ui-datepicker-border-radius;
       text-align: $ui-datepicker-footer-button-alignment;
    }
 
