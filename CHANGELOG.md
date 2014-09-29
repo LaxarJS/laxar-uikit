@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#72](https://github.com/LaxarJS/laxar_uikit/issues/72): Styling: Updated font awesome (v4.2) and bootstrap (v3.2)
+
+
 ## v0.15.0
 
 - [#71](https://github.com/LaxarJS/laxar_uikit/issues/71): Styling DatePicker: Fixed color definitions.
