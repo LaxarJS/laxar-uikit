@@ -64,7 +64,7 @@ var require = {
       }
    ],
    paths: {
-      'bootstrap-tooltip': 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip',
+      'bootstrap-tooltip': 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
       underscore: 'bower_components/underscore/underscore',
       text: 'bower_components/requirejs-plugins/lib/text',
       requirejs: 'bower_components/requirejs/require',
