@@ -56,7 +56,7 @@ add_import_path base_dir + 'scss/'
 add_import_path base_dir + '../../scss/'
 # Find Third party SCSS
 # - Bootstrap
-add_import_path bower_dir + 'bootstrap-sass-official/vendor/assets/stylesheets/'
+add_import_path bower_dir + 'bootstrap-sass-official/assets/stylesheets/'
 # - Font Awesome (use bower_components directory so that imports have a prefix)
 add_import_path bower_dir
 
