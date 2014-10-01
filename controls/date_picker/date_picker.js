@@ -91,6 +91,10 @@ define( [
             var ngModel = controllers[0];
             var axInput = controllers[1] || null;
             var languageTag;
+            var state = {
+               disabled: false,
+               readonly: false
+            };
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -155,7 +159,7 @@ define( [
                   element.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
                }
 
-               wrapper.children( 'button' ).addClass( MISSING_BUTTON_CLASSES );
+               restoreButtonState();
 
                var calendar = element.datepicker( 'widget' );
                element.on( 'axDatePickerUpdated', function() {
@@ -173,6 +177,7 @@ define( [
                   } );
                } );
 
+               watchInputState();
                updateLocale();
             }, 0 );
 
@@ -207,10 +212,37 @@ define( [
                      element.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
                   }
 
-                  // changing the locale re-renders the button and thus deletes all manually set css classes.
-                  // Hence we add them again here.
-                  wrapper.children( 'button' ).addClass( MISSING_BUTTON_CLASSES );
+                  restoreButtonState();
                }
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function watchInputState() {
+               if( attrs.ngDisabled ) {
+                  scope.$watch( attrs.ngDisabled, function( attributeValue ) {
+                     state.disabled = !!attributeValue;
+                     element.datepicker( 'option', 'disabled', state.readonly || state.disabled );
+                     restoreButtonState();
+                  } );
+               }
+               if( attrs.ngReadonly ) {
+                  scope.$watch( attrs.ngReadonly, function( attributeValue ) {
+                     state.readonly = !!attributeValue;
+                     element.datepicker( 'option', 'disabled', state.readonly || state.disabled );
+                     restoreButtonState();
+                  } );
+               }
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function restoreButtonState() {
+               // Making changes to the date picker always re-renders the picker button. Afterwards all custom
+               // css classes and states are gone. Thus we can reset the correct state using this function.
+               wrapper.children( 'button' ).addClass( MISSING_BUTTON_CLASSES );
+               wrapper.children( 'button' ).attr( 'disabled', state.disabled );
+               wrapper.children( 'button' ).attr( 'readonly', state.readonly );
             }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
