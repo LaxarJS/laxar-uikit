@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#74](https://github.com/LaxarJS/laxar_uikit/issues/74): DatePicker: Fixed support for ngReadonly and ngDisabled.
+
+
 ## v0.15.0
 
 - [#67](https://github.com/LaxarJS/laxar_uikit/issues/67): Styling: refactored default.theme
