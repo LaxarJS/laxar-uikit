@@ -19,17 +19,17 @@ module.exports = function (grunt) {
 
    function karma(control) {
       var options = {
-         files: [
-            { pattern: 'bower_components/**', included: false },
-            { pattern: 'lib/**', included: false },
-            { pattern: 'controls/**', included: false},
-         ],
          laxar: {
             specRunner: 'controls/' + control + '/spec/spec_runner.js',
             requireConfig: src.require
          },
          junitReporter: {
-            outputFile: 'controls/' + control + '/junit.xml'
+            outputFile: 'controls/' + control + '/spec/test-results.xml'
+         },
+         coverageReporter: {
+            type: 'lcovonly',
+            dir: 'controls/' + control + '/spec',
+            file: 'lcov.info'
          }
       };
 
@@ -71,27 +71,56 @@ module.exports = function (grunt) {
          options: {
             basePath: '.',
             frameworks: ['laxar'],
-            reporters: ['junit', 'progress'],
+            reporters: ['junit', 'coverage', 'progress'],
             browsers: ['PhantomJS'],
-            singleRun: true
+            singleRun: true,
+            preprocessors: {
+               'lib/**/*.js': 'coverage'
+            },
+            proxies: {},
+            files: [
+               { pattern: 'bower_components/**', included: false },
+               { pattern: 'lib/**', included: false },
+               { pattern: 'controls/**', included: false },
+               { pattern: '*.js', included: false }
+            ]
          },
          laxar_uikit: {
             options: {
                files: [
                   { pattern: 'bower_components/**', included: false },
-                  { pattern: 'lib/**', included: false }
+                  { pattern: 'lib/**', included: false },
+                  { pattern: '*.js', included: false }
                ],
                laxar: {
                   specRunner: 'lib/spec/spec_runner.js',
                   requireConfig: src.require
                },
                junitReporter: {
-                  outputFile: 'lib/junit.xml'
+                  outputFile: 'lib/spec/test-results.xml'
+               },
+               coverageReporter: {
+                  type: 'lcovonly',
+                  dir: 'lib/spec',
+                  file: 'lcov.info'
                }
             }
          },
          'controls-input': karma('input'),
+         'controls-i18n': karma('i18n'),
          'controls-layer': karma('layer')
+      },
+      test_results_merger: {
+         laxar: {
+            src: [ 'lib/spec/test-results.xml', 'controls/*/spec/test-results.xml' ],
+            dest: 'test-results.xml'
+         }
+      },
+      lcov_info_merger: {
+         laxar: {
+            src: [ 'lib/spec/*/lcov.info', 'controls/*/spec/*/lcov.info' ],
+            dest: 'lcov.info'
+         }
       },
       markdown: {
          docs: {
@@ -142,6 +171,6 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-markdown');
 
    grunt.registerTask('build', ['requirejs']);
-   grunt.registerTask('test', ['karma', 'jshint']);
+   grunt.registerTask('test', ['karma', 'test_results_merger', 'lcov_info_merger', 'jshint']);
    grunt.registerTask('default', ['build', 'test']);
 };
