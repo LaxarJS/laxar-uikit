@@ -5,11 +5,12 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/text_ellipsis/text_ellipsis'
+   'laxar_uikit/controls/text_ellipsis/text_ellipsis',
+   'angular-sanitize'
 ], function( ng, axTextEllipsis ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.text_ellipsis', [] );
+   var module = ng.module( 'laxar_uikit.controls.text_ellipsis', [ 'ngSanitize' ] );
    axTextEllipsis.createForModule( module );
 
    return module;

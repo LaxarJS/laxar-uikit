@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#76](https://github.com/LaxarJS/laxar_uikit/issues/76): Implemented directives for dynamic text truncation.
+  NEW FEATURE: see ticket for details
 - [#74](https://github.com/LaxarJS/laxar_uikit/issues/74): DatePicker: Fixed support for ngReadonly and ngDisabled.
 - [#72](https://github.com/LaxarJS/laxar_uikit/issues/72): Styling: Updated font awesome (v4.2) and bootstrap (v3.2)
 - [#71](https://github.com/LaxarJS/laxar_uikit/issues/71): Styling DatePicker: Fixed color definitions.
