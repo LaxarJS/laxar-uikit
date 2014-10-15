@@ -2,6 +2,10 @@
 
 ## Last Changes
 
+- [#73](https://github.com/LaxarJS/laxar_uikit/issues/73): Updated jQuery UI to 1.11.1 and removed touch punch.
+  BREAKING CHANGE: see ticket for details
+
+
 ## v0.16.0
 
 - [#76](https://github.com/LaxarJS/laxar_uikit/issues/76): Implemented directives for dynamic text truncation.

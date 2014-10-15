@@ -6,8 +6,7 @@
 define( [
    'angular',
    'jquery',
-   'jquery_ui/slider',
-   'jquery_ui/touch-punch'
+   'jquery_ui/slider'
 ], function( ng, $ ) {
    'use strict';
 

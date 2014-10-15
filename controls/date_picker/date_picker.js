@@ -10,7 +10,7 @@ define( [
    'moment',
    '../../lib/i18n',
    'jquery_ui/datepicker',
-   'jquery_ui/datepicker-de'
+   'jquery_ui/i18n/datepicker-de'
 ], function( ng, ax, $, moment, i18n ) {
    'use strict';
 
@@ -274,7 +274,7 @@ define( [
          }
 
          var deferred = $q.defer();
-         require( [ 'jquery_ui/datepicker-' + currentTag ], function() {
+         require( [ 'jquery_ui/i18n/datepicker-' + currentTag ], function() {
             if( !( currentTag in $.datepicker.regional ) ) {
                // Fix for IE: Although IE could not load the file, it claims to have done so. We know that IE
                // is a liar, if the language tag is not present in the region map
