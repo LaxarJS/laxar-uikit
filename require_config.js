@@ -77,7 +77,7 @@ var require = {
       'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
       angular: 'bower_components/angular/angular',
       trunk8: 'bower_components/trunk8/trunk8',
-      jquery_ui: 'bower_components/jquery_ui',
+      jquery_ui: 'bower_components/jquery_ui/ui',
       q_mock: 'bower_components/q_mock/q',
 
       jasmine: 'bower_components/jasmine/lib/jasmine-core/jasmine'
