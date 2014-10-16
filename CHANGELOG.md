@@ -3,6 +3,7 @@
 ## Last Changes
 
 - [#77](https://github.com/LaxarJS/laxar_uikit/issues/77): Added affix control
+  NEW FEATURE: see ticket for details
 - [#73](https://github.com/LaxarJS/laxar_uikit/issues/73): Updated jQuery UI to 1.11.1 and removed touch punch.
   BREAKING CHANGE: see ticket for details
 
