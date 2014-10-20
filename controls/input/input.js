@@ -59,7 +59,7 @@ define( [
     * * groupingSeparator (default: `.`): Grouping seperator for decimal and integer values
     * * decimalSeparator (default: `,`): Decimal separator for decimal values
     * * decimalPlaces (default: 2): Number of decimal places to display. Applies rounding if necessary.
-    * * dateFormat (default: `DD.MM.YYYY`): Format for date values
+    * * dateFormat (default: `MM/DD/YYYY`): Format for date values
     * * timeFormat: (default: 'HH:mm`): Format for time values
     * * dateFallbackFormats: an array of formats to try parsing the value when using `dateFormat` fails
     * * timeFallbackFormats: an array of formats to try parsing the value when using `timeFormat` fails
@@ -98,7 +98,7 @@ define( [
       decimalSeparator: '.',
       decimalPlaces: 2,
       dateFormat: 'MM/DD/YYYY',
-      dateFallbackFormats: [ 'YYYY', 'MM.YY', 'MM.YYYY', 'YYYY-MM-DD' ],
+      dateFallbackFormats: [ 'MM/DD/YY', 'DD.MM.YY', 'YYYY-MM-DD' ],
       timeFormat: 'HH:mm',
       timeFallbackFormats: [ 'HH', 'HHmm' ]
    };
