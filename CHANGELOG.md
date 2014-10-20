@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#78](https://github.com/LaxarJS/laxar_uikit/issues/78): axInput: be more strict when parsing dates
+
 
 ## v0.17.0
 
