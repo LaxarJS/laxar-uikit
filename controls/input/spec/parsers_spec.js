@@ -134,7 +134,7 @@ define( [
          beforeEach( function() {
             parse = parsers.create( 'date', {
                dateFormat: 'DD.MM.YYYY',
-               dateFallbackFormats: [ 'YY', 'YYYY', 'MM.YY', 'MM.YYYY', 'DD.MM.YY' ]
+               dateFallbackFormats: [ 'DD.MM.YY' ]
             } );
          } );
 
@@ -152,6 +152,12 @@ define( [
             expect( parse( '6_6_6' ) ).toEqual( error() );
             expect( parse( '6,4,1' ) ).toEqual( error() );
             expect( parse( 'true' ) ).toEqual( error() );
+            expect( parse( '53' ) ).toEqual( error() );
+            expect( parse( '96' ) ).toEqual( error() );
+            expect( parse( '2013' ) ).toEqual( error() );
+            expect( parse( '9.13' ) ).toEqual( error() );
+            expect( parse( '9.2013' ) ).toEqual( error() );
+            expect( parse( '2.14.2013' ) ).toEqual( error() );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,12 +169,9 @@ define( [
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'returns success for dates matching a fallback format', function() {
-            expect( parse( '53' ) ).toEqual( success( '2053-01-01' ) );
-            expect( parse( '96' ) ).toEqual( success( '1996-01-01' ) );
-            expect( parse( '2013' ) ).toEqual( success( '2013-01-01' ) );
-            expect( parse( '9.13' ) ).toEqual( success( '2013-09-01' ) );
-            expect( parse( '9.2013' ) ).toEqual( success( '2013-09-01' ) );
             expect( parse( '6.9.13' ) ).toEqual( success( '2013-09-06' ) );
+            expect( parse( '6.9.83' ) ).toEqual( success( '1983-09-06' ) );
+            expect( parse( '1.9.1983' ) ).toEqual( success( '1983-09-01' ) );
          } );
 
       } );
