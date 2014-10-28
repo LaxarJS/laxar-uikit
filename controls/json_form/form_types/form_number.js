@@ -49,31 +49,27 @@ define( [
 
                   if( _.isNumber( scope.schema.minimum ) ) {
                      if( scope.schema.exclusiveMinimum && scope.data <= scope.schema.minimum ) {
-                        scope.validationErrors.push(
-                           ax.text.format( scope.messages.INPUT_MUST_BE_GREATER_THAN, scope.schema.minimum )
-                        );
+                        scope.validationErrors.push( ax.string.format(
+                              scope.messages.INPUT_MUST_BE_GREATER_THAN, [ scope.schema.minimum ]
+                        ) );
                      }
                      else if( scope.data < scope.schema.minimum ) {
-                        scope.validationErrors.push(
-                           ax.text.format(
-                              scope.messages.INPUT_MUST_BE_GREATER_THAN_OR_EQUAL, scope.schema.minimum
-                           )
-                        );
+                        scope.validationErrors.push( ax.string.format(
+                           scope.messages.INPUT_MUST_BE_GREATER_THAN_OR_EQUAL, [ scope.schema.minimum ]
+                        ) );
                      }
                   }
 
                   if( _.isNumber( scope.schema.maximum ) ) {
                      if( scope.schema.exclusiveMaximum && scope.data >= scope.schema.maximum ) {
-                        scope.validationErrors.push(
-                           ax.text.format( scope.messages.INPUT_MUST_BE_LESS_THAN, scope.schema.maximum )
-                        );
+                        scope.validationErrors.push( ax.string.format(
+                           scope.messages.INPUT_MUST_BE_LESS_THAN, [ scope.schema.maximum ]
+                        ) );
                      }
                      else if( scope.data > scope.schema.maximum ) {
-                        scope.validationErrors.push(
-                           ax.text.format(
-                              scope.messages.INPUT_MUST_BE_LESS_THAN_OR_EQUAL, scope.schema.maximum
-                           )
-                        );
+                        scope.validationErrors.push( ax.string.format(
+                           scope.messages.INPUT_MUST_BE_LESS_THAN_OR_EQUAL, [ scope.schema.maximum ]
+                        ) );
                      }
                   }
 
