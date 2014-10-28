@@ -57,22 +57,22 @@ define( [
 
                   if( scope.schema.pattern ) {
                      if( !new RegExp( scope.schema.pattern ).test( scope.data || '' ) ) {
-                        scope.validationErrors.push(
-                           ax.text.format( scope.messages.INPUT_MUST_MATCH_PATTERN, scope.schema.pattern )
-                        );
+                        scope.validationErrors.push( ax.string.format(
+                           scope.messages.INPUT_MUST_MATCH_PATTERN, [ scope.schema.pattern ]
+                        ) );
                      }
                   }
 
                   if( scope.schema.minLength > 0 && ( !scope.data || scope.data.length < scope.schema.minLength ) ) {
-                     scope.validationErrors.push(
-                        ax.text.format( scope.messages.INPUT_LENGTH_MUST_BE_AT_LEAST, scope.schema.minLength )
-                     );
+                     scope.validationErrors.push( ax.string.format(
+                        scope.messages.INPUT_LENGTH_MUST_BE_AT_LEAST, [ scope.schema.minLength ]
+                     ) );
                   }
 
                   if( scope.schema.maxLength > 0 && scope.data && scope.data.length > scope.schema.maxLength ) {
-                     scope.validationErrors.push(
-                        ax.text.format( scope.messages.INPUT_LENGTH_MUST_BE_AT_MOST, scope.schema.maxLength )
-                     );
+                     scope.validationErrors.push( ax.string.format(
+                        scope.messages.INPUT_LENGTH_MUST_BE_AT_MOST, [ scope.schema.maxLength ]
+                     ) );
                   }
 
                   scope.$emit( 'axJsonFormValidationResult', {
