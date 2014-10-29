@@ -5,9 +5,8 @@
  */
 define( [
    'angular',
-   'underscore',
    './helpers'
-], function( ng, _, helpers ) {
+], function( ng, helpers ) {
    'use strict';
 
    var directiveName = 'axJsonFormArray';
@@ -31,13 +30,13 @@ define( [
                '<i class="fa ax-icon-add"></i> {{ messages.ADD_ITEM }}</button>' +
                '<i data-ax-warning-icon="validationErrors"></i>' +
                '</div>',
-            link: function( scope, element, attrs ) {
+            link: function( scope, element ) {
 
                var directiveId = directiveName + '_' + directiveCounter++;
 
                // We need to wrap each primitive value in an object to prevent from focus stealing problems.
                // https://groups.google.com/d/msg/angular/eB19TlFHFVE/Rlh--XImXeYJ
-               scope.viewData = _.map( scope.data, function( value ) {
+               scope.viewData = ( scope.data || [] ).map( function( value ) {
                   return { value: value };
                } );
 
@@ -64,7 +63,7 @@ define( [
                scope.$watch( 'viewData', function( newValue, oldValue ) {
                   if( newValue === oldValue ) { return; }
 
-                  scope.data = _.map( newValue, function( item ) {
+                  scope.data = ( newValue || [] ).map( function( item ) {
                      return item.value;
                   } );
 
@@ -76,16 +75,16 @@ define( [
                   scope.validationErrors = [];
                   if( scope.schema.uniqueItems && [ 'object', 'array' ].indexOf( scope.schema.items.type ) === -1 ) {
                      // only apply uniqueItems on primitive types. Comparing complex objects would be to much work.
-                     if( _.uniq( scope.data ).length < scope.data.length ) {
+                     if( unique( scope.data ).length < scope.data.length ) {
                         scope.validationErrors.push( 'Es darf keine doppelten Einträge geben.' );
                      }
                   }
 
-                  if( _.isNumber( scope.schema.minItems ) && scope.data.length < scope.schema.minItems ) {
+                  if( ng.isNumber( scope.schema.minItems ) && scope.data.length < scope.schema.minItems ) {
                      scope.validationErrors.push( 'Es muss mindestens ' + pluEntry( scope.schema.minItems ) + ' geben.' );
                   }
 
-                  if( _.isNumber( scope.schema.maxItems ) && scope.data.length > scope.schema.maxItems ) {
+                  if( ng.isNumber( scope.schema.maxItems ) && scope.data.length > scope.schema.maxItems ) {
                      scope.validationErrors.push( 'Es darf höchstens ' + pluEntry( scope.schema.maxItems ) + ' geben.' );
                   }
 
@@ -93,6 +92,17 @@ define( [
                      id: directiveId,
                      errors: scope.validationErrors
                   } );
+
+                  ////////////////////////////////////////////////////////////////////////////////////////////
+
+                  function unique( array ) {
+                     var seen = {};
+                     return array.filter( function( item ) {
+                        var omit = !seen.hasOwnProperty( item );
+                        seen[ item ] = true;
+                        return omit;
+                     } );
+                  }
                }
 
                scope.$on( 'axJsonFormValidate', function() {

@@ -59,7 +59,6 @@ module.exports = function (grunt) {
                exclude: [
                   'angular',
                   'jquery',
-                  'underscore',
                   'q_mock'
                ],
                name: pkg.name,

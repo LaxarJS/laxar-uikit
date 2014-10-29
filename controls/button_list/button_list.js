@@ -4,9 +4,9 @@
  * http://laxarjs.org/license
  */
 define( [
-   'underscore',
+   'laxar',
    'text!./default.theme/button_list.html'
-], function( _, buttonTemplate ) {
+], function( ax, buttonTemplate ) {
    'use strict';
 
    /**
@@ -65,7 +65,7 @@ define( [
                   newValue.forEach( function( button ) {
                      var buttonScope = scope.$new();
                      buttonScope.button = button;
-                     buttonScope.buttonClicked = _.debounce( function() {
+                     buttonScope.buttonClicked = ax.fn.debounce( function() {
                         buttonScope.$eval( attrs.axButtonListClick );
                      }, DEBOUNCE_TIME_MS, true );
 

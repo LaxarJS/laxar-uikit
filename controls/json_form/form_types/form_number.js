@@ -4,9 +4,9 @@
  * http://laxarjs.org/license
  */
 define( [
-   'underscore',
+   'angular',
    'laxar'
-], function( _, ax ) {
+], function( ng, ax ) {
    'use strict';
 
    var directiveName = 'axJsonFormNumber';
@@ -36,7 +36,7 @@ define( [
                scope.requiredAttribute = scope.schema.required ? 'required' : '';
                scope.step = scope.schema.type === 'integer' ? '1' : 'any';
 
-               if( !_.isNumber( scope.data ) && scope.schema[ 'default' ] ) {
+               if( !ng.isNumber( scope.data ) && scope.schema[ 'default' ] ) {
                   scope.data = scope.schema[ 'default' ];
                }
 
@@ -47,7 +47,7 @@ define( [
                      scope.validationErrors.push( scope.messages.INPUT_REQUIRED );
                   }
 
-                  if( _.isNumber( scope.schema.minimum ) ) {
+                  if( ng.isNumber( scope.schema.minimum ) ) {
                      if( scope.schema.exclusiveMinimum && scope.data <= scope.schema.minimum ) {
                         scope.validationErrors.push( ax.string.format(
                               scope.messages.INPUT_MUST_BE_GREATER_THAN, [ scope.schema.minimum ]
@@ -60,7 +60,7 @@ define( [
                      }
                   }
 
-                  if( _.isNumber( scope.schema.maximum ) ) {
+                  if( ng.isNumber( scope.schema.maximum ) ) {
                      if( scope.schema.exclusiveMaximum && scope.data >= scope.schema.maximum ) {
                         scope.validationErrors.push( ax.string.format(
                            scope.messages.INPUT_MUST_BE_LESS_THAN, [ scope.schema.maximum ]
