@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.18.0
+
 - [#79](https://github.com/LaxarJS/laxar_uikit/issues/79): refactoring: use `laxar.string` instead of `laxar.text` 
 - [#78](https://github.com/LaxarJS/laxar_uikit/issues/78): axInput: be more strict when parsing dates
 
