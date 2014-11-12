@@ -329,9 +329,11 @@ define( [
 
             var hasFocus = false;
             element.on( 'focusin', function() {
+               console.log( 'FOCUS', ngModelController.$invalid, mustDisplayErrors() ); // :TODO: Delete
+
                hasFocus = true;
                if( ngModelController.$invalid && mustDisplayErrors() ) {
-                  element.tooltip( 'show' );
+                  showTooltip();
                }
 
                if( [ 'decimal', 'integer' ].indexOf( valueType ) !== -1 ) {
@@ -339,18 +341,20 @@ define( [
                      removeGroupingAndKeepCursorPosition();
                   }
                }
+
+               element.on( 'focusout', function() {
+                  hasFocus = false;
+                  hideTooltip();
+                  if( valueType === 'select' ) {
+                     // Prevent reformatting of the value for select/radio because AngularJS takes care of them.
+                     return;
+                  }
+                  if( !ngModelController.$error[ ERROR_KEY_SYNTAX ] ) {
+                     element.val( axInputController.format( ngModelController.$modelValue ) );
+                  }
+               } );
             } );
-            element.on( 'focusout', function() {
-               hasFocus = false;
-               element.tooltip( 'hide' );
-               if( valueType === 'select' ) {
-                  // Prevent reformatting of the value for select/radio because AngularJS takes care of them.
-                  return;
-               }
-               if( !ngModelController.$error[ ERROR_KEY_SYNTAX ] ) {
-                  element.val( axInputController.format( ngModelController.$modelValue ) );
-               }
-            } );
+
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -464,35 +468,40 @@ define( [
             // Tooltip handling
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
+            var tooltipId;
             var tooltipVisible = false;
-            function toggleTooltip( value ) {
-               if( isRadio( element ) && radioGroup()[ 0 ] === element[ 0 ] ) {
-                  element.focus();
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function showTooltip() {
+               if( !tooltipId ) {
+                  tooltipId = createTooltip();
                }
-               if( ngModelController.$invalid && hasFocus && mustDisplayErrors() ) {
-                  if( !tooltipVisible || previousValidationMessage !== validationMessage ) {
-                     element.tooltip( 'show' );
-                  }
-               }
-               else {
-                  element.tooltip( 'hide' );
-               }
-               return value;
+               element.tooltip( 'show' );
             }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            var tooltipId = 'axInputErrorTooltip' + idCounter++;
-            element
-               .tooltip( {
+            function hideTooltip() {
+               if( tooltipId ) {
+                  element.tooltip( 'hide' );
+               }
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function createTooltip() {
+               var id = 'axInputErrorTooltip' + idCounter++;
+
+               element.tooltip( {
                   animation: true,
                   trigger: 'manual',
                   placement: isSelect( element ) ? 'top' : 'bottom',
                   template:
-                     '<div id="' + tooltipId + '" class="tooltip error">' +
-                     '<div class="tooltip-arrow"></div>' +
-                     '<div class="tooltip-inner"></div>' +
-                     '</div>',
+                  '<div id="' + id + '" class="tooltip error">' +
+                  '<div class="tooltip-arrow"></div>' +
+                  '<div class="tooltip-inner"></div>' +
+                  '</div>',
                   title: function() {
                      return validationMessage;
                   },
@@ -502,13 +511,44 @@ define( [
                   tooltipVisible = e.type === 'shown';
                } );
 
+               return id;
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function destroyTooltip() {
+               if( tooltipId ) {
+                  element.tooltip( 'hide' );
+                  element.tooltip( 'destroy' );
+               }
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function toggleTooltip( value ) {
+               if( isRadio( element ) && radioGroup()[ 0 ] === element[ 0 ] ) {
+                  element.focus();
+               }
+               if( ngModelController.$invalid && hasFocus && mustDisplayErrors() ) {
+                  if( !tooltipVisible || previousValidationMessage !== validationMessage ) {
+                     showTooltip();
+                  }
+               }
+               else {
+                  hideTooltip();
+               }
+               return value;
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             scope.$on( '$destroy', function() {
                try {
                   element.off( 'focusin focusout shown hidden' );
-                  element.tooltip( 'hide' );
-                  element.tooltip( 'destroy' );
+                  destroyTooltip();
                }
                catch( e ) {
                   // Ignore. DOM node has been destroyed before the directive.

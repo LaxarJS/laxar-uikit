@@ -419,6 +419,12 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
+            it( 'does not create a tooltip unless needed', function() {
+               expect( $.fn.tooltip ).not.toHaveBeenCalled();
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
             it( 'shows a tooltip on focus', function() {
                $.fn.tooltip.reset();
 
@@ -582,8 +588,24 @@ define( [
 
       describe( 'for type select', function() {
 
+         var scope;
          beforeEach( function() {
-            $compile( '<select ax-input ng-model="someValue"></select>' )( $rootScope.$new() );
+            scope = $rootScope.$new();
+            scope.$apply( function() {
+               scope.showImmediately = false;
+               scope.opts = [ 'A', 'B', 'C' ];
+               scope.someValue = 'A';
+            } );
+         } );
+
+         var $element;
+         beforeEach( function() {
+            scope.$apply( function() {
+               $element = $compile( '<select ax-input ax-input-required="true" ' +
+                                    ' ng-model="scope.someValue" ng-options="value for value in opts"><option value="">Nothing</option></select>' )( scope );
+               $element.appendTo( 'body' );
+            } );
+            $element.trigger( 'focus' );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
