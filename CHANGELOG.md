@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#81](https://github.com/LaxarJS/laxar_uikit/issues/81): axInput: performance: build tooltip lazily 
+
 
 ## v0.18.0
 
