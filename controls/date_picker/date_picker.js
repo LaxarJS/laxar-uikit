@@ -14,12 +14,6 @@ define( [
 ], function( ng, ax, $, moment, i18n ) {
    'use strict';
 
-   var MISSING_BUTTON_CLASSES = 'btn btn-default';
-   var ISO_DATE_FORMAT = 'YYYY-MM-DD';
-
-   // shared global state: identifies the currently visible date picker by its input field
-   var currentlyVisiblePicker = null;
-
    /**
     * This DatePicker directive is based on the jQuery-UI DatePicker, but behaves in some ways different than
     * the original implementation:
@@ -316,13 +310,21 @@ define( [
 
       };
 
+
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       function loadLanguage( tagParts ) {
+
          var currentTag = tagParts.join( '-' );
          if( currentTag in $.datepicker.regional ) {
             return $q.when( currentTag );
          }
+
+         if( tagParts.length > 1 && COUNTRY_SENSITIVE_TAGS.indexOf( currentTag ) === -1 ) {
+            return loadLanguage( [ tagParts[ 0 ] ] );
+         }
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          var deferred = $q.defer();
          require( [ 'jquery_ui/i18n/datepicker-' + currentTag ], function() {
@@ -351,6 +353,18 @@ define( [
    } ];
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   // Based on what jQuery UI supports, if our country code is not in this list, localize by tag only:
+   var COUNTRY_SENSITIVE_TAGS = [
+      'ar-DZ', 'cy-GB', 'en-AU', 'en-GB', 'en-NZ', 'fr-CA', 'fr-CH', 'it-CH', 'nl-BE', 'pt-BR',
+      'zh-CN', 'zh-HK', 'zh-TW'
+   ];
+
+   var MISSING_BUTTON_CLASSES = 'btn btn-default';
+   var ISO_DATE_FORMAT = 'YYYY-MM-DD';
+
+   // shared global state: identifies the currently visible date picker by its input field
+   var currentlyVisiblePicker = null;
 
    return {
       createForModule: function( module ) {
