@@ -17,6 +17,9 @@ define( [
    var MISSING_BUTTON_CLASSES = 'btn btn-default';
    var ISO_DATE_FORMAT = 'YYYY-MM-DD';
 
+   // shared global state: identifies the currently visible date picker by its input field
+   var currentlyVisiblePicker = null;
+
    /**
     * This DatePicker directive is based on the jQuery-UI DatePicker, but behaves in some ways different than
     * the original implementation:
@@ -36,7 +39,7 @@ define( [
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    var directiveName = 'axDatePicker';
-   var directive = [ '$q', function( $q ) {
+   var directive = [ '$q', '$window', function( $q, $window ) {
 
       var additionalCalendarClassesRules = {
          '.ui-datepicker': 'popover',
@@ -83,10 +86,15 @@ define( [
       return {
          restrict: 'A',
          require: [ 'ngModel', '?axInput' ],
-         link: function( scope, element, attrs, controllers ) {
+         link: function( scope, textField, attrs, controllers ) {
 
-            var wrapper = $( '<div class="ax-date-picker input-group"></div>' ).insertBefore( element );
-            element.detach().appendTo( wrapper ).addClass( 'form-control' );
+            // Augment the textField DOM.
+            var wrapper = $( '<div class="ax-date-picker input-group"></div>' ).insertBefore( textField );
+            textField.detach().appendTo( wrapper ).addClass( 'form-control' );
+            var button = $( '<button type="button" class="ui-datepicker-trigger btn btn-default">' );
+            button.on( 'click', showDatePickerDialog );
+            textField.on( 'focus', showDatePickerDialog );
+            wrapper.append( button );
 
             var ngModel = controllers[0];
             var axInput = controllers[1] || null;
@@ -96,6 +104,9 @@ define( [
                readonly: false
             };
 
+            watchInputState();
+            updateLocale();
+
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             var options = ax.object.options( scope.$eval( attrs[ directiveName ] ), {
@@ -104,7 +115,13 @@ define( [
                changeYear: true,
                constrainInput: false,
                showButtonPanel: true,
-               showOn: 'button',
+               showOn: 'focus',
+               onClose: function() {
+                  currentlyVisiblePicker = null;
+               },
+               beforeShow: function() {
+                  currentlyVisiblePicker = textField;
+               },
                onSelect: function( dateStr ) {
                   scope.$apply( function() {
                      ngModel.$setViewValue( dateStr );
@@ -149,37 +166,64 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            // jQuery uses the id attribute of the input as selector when attaching the date picker. As this
-            // most probably contains a binding (i.e. {{id('datePicker')}}) the DOM node later isn't found
-            // anymore. We thus wait a tick and attach the date picker shortly after linking. Since don't need
-            // a $digest cycle here, we use a simple setTimeout call which is cheaper than $timeout.
-            window.setTimeout( function() {
-               element.datepicker( options );
-               if( ngModel.$modelValue ) {
-                  element.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
+            var dialogCreated = false;
+            var dialogBeingShown = false;
+
+            function showDatePickerDialog() {
+
+               if( dialogBeingShown ) {
+                  return;
                }
+               else if( dialogCreated && currentlyVisiblePicker === textField ) {
+                  // MSIE10 will re-focus & re-open immediately otherwise...
+                  $window.setTimeout( function() {
+                     textField.datepicker( 'hide' );
+                  }, 0 );
+                  return;
+               }
+               dialogBeingShown = true;
 
-               restoreButtonState();
-
-               var calendar = element.datepicker( 'widget' );
-               element.on( 'axDatePickerUpdated', function() {
-                  // When the calendar is drawn, we add some bootstrap css classes. We otherwise would need to
-                  // extend in the scss files, which leads to twice the number of lines in the css file.
-                  $.each( additionalCalendarClassesRules, function( selector, classes ) {
-                     calendar.find( selector ).addClass( classes );
-                     if( calendar.is( selector ) ) {
-                        calendar.addClass( classes );
-                     }
-                  } );
-
-                  calendar.find( 'a' ).on( 'click', function( event ) {
-                     event.preventDefault();
-                  } );
+               updateLocale().then( function( language ) {
+                  if( !dialogCreated ) {
+                     textField.off( 'focus', showDatePickerDialog );
+                     createDatePickerDialog( language );
+                     dialogCreated = true;
+                     textField.datepicker( 'show' );
+                  }
+                  else {
+                     textField.trigger( 'focus' );
+                  }
+                  dialogBeingShown = false;
                } );
 
-               watchInputState();
-               updateLocale();
-            }, 0 );
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               function createDatePickerDialog( language ) {
+
+                  textField.datepicker( ax.object.options( {
+                     disabled: state.readonly || state.disabled
+                  }, options ) );
+                  updateDialogLanguage( language );
+
+                  var calendar = textField.datepicker( 'widget' );
+                  textField.on( 'axDatePickerUpdated', function() {
+                     // When the calendar is drawn, we add some bootstrap css classes. We otherwise would need to
+                     // extend in the scss files, which leads to twice the number of lines in the css file.
+                     $.each( additionalCalendarClassesRules, function( selector, classes ) {
+                        calendar.find( selector ).addClass( classes );
+                        if( calendar.is( selector ) ) {
+                           calendar.addClass( classes );
+                        }
+                     } );
+
+                     calendar.find( 'a' ).on( 'click', function( event ) {
+                        event.preventDefault();
+                     } );
+                  } );
+
+               }
+
+            }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
             // Localization
@@ -195,24 +239,36 @@ define( [
 
                return loadLanguage( languageTag.split( '_' ) )
                   .then( function( loadedLanguage ) {
-                     selectLanguage( loadedLanguage );
+                     return dialogCreated ? updateDialogLanguage( loadedLanguage ) : loadedLanguage;
                   }, function() {
-                     selectLanguage( 'en' );
-                     ax.log.error( 'Unsupported language "[0]". Falling back to "en".', languageTag );
+                     ax.log.error( 'Unsupported language tag "[0]". Falling back to "en".', languageTag );
+                     return dialogCreated ? updateDialogLanguage( 'en' ) : 'en';
                   } );
 
-               function selectLanguage( language ) {
-                  if( !language ) {
-                     ax.log.warn( 'No specific language found. Thus using "en".' );
-                  }
+            }
 
-                  element.datepicker( 'option', $.datepicker.regional[ language ] );
-                  // datepicker resets view value on initialization:
-                  if( ngModel.$modelValue ) {
-                     element.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
-                  }
+            //////////////////////////////////////////////////////////////////////////////////////////////////
 
-                  restoreButtonState();
+            function updateDialogLanguage( language ) {
+               if( !language ) {
+                  ax.log.warn( 'No specific language found. Thus using "en".' );
+                  language = 'en';
+               }
+
+               textField.datepicker( 'option', $.datepicker.regional[ language ] );
+               // jQuery date picker resets view value on initialization:
+               if( ngModel.$modelValue ) {
+                  textField.datepicker( 'setDate', moment( ngModel.$modelValue, ISO_DATE_FORMAT ).toDate() );
+               }
+
+               return language;
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function updateDialogState() {
+               if( dialogCreated ) {
+                  textField.datepicker( 'option', 'disabled', state.readonly || state.disabled );
                }
             }
 
@@ -222,34 +278,29 @@ define( [
                if( attrs.ngDisabled ) {
                   scope.$watch( attrs.ngDisabled, function( attributeValue ) {
                      state.disabled = !!attributeValue;
-                     element.datepicker( 'option', 'disabled', state.readonly || state.disabled );
-                     restoreButtonState();
+                     updateDialogState();
+                     button.attr( 'disabled', state.disabled );
                   } );
                }
                if( attrs.ngReadonly ) {
                   scope.$watch( attrs.ngReadonly, function( attributeValue ) {
                      state.readonly = !!attributeValue;
-                     element.datepicker( 'option', 'disabled', state.readonly || state.disabled );
-                     restoreButtonState();
+                     updateDialogState();
+                     button.attr( 'readonly', state.readonly );
                   } );
                }
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            function restoreButtonState() {
-               // Making changes to the date picker always re-renders the picker button. Afterwards all custom
-               // css classes and states are gone. Thus we can reset the correct state using this function.
-               wrapper.children( 'button' ).addClass( MISSING_BUTTON_CLASSES );
-               wrapper.children( 'button' ).attr( 'disabled', state.disabled );
-               wrapper.children( 'button' ).attr( 'readonly', state.readonly );
             }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             scope.$on( '$destroy', function() {
                try {
-                  element.datepicker( 'destroy' );
+                  textField.datepicker( 'destroy' );
+                  textField.off( 'focus', showDatePickerDialog );
+                  button.off( 'click' );
+                  if( currentlyVisiblePicker === textField ) {
+                     currentlyVisiblePicker = null;
+                  }
                }
                catch( e ) {
                   // Ignore. DOM node has been destroyed before the directive.
@@ -258,7 +309,7 @@ define( [
                ngModel.$formatters = [];
                ngModel.$parsers = [];
                ngModel = null;
-               element = null;
+               textField = null;
                wrapper = null;
             } );
          }

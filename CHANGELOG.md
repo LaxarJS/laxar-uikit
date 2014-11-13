@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#83](https://github.com/LaxarJS/laxar_uikit/issues/83): axDatePicker: performance: build calendar lazily 
 - [#82](https://github.com/LaxarJS/laxar_uikit/issues/82): fix: removed console.log statement 
 - [#81](https://github.com/LaxarJS/laxar_uikit/issues/81): axInput: performance: build tooltip lazily 
 
