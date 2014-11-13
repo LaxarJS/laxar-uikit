@@ -329,7 +329,6 @@ define( [
 
             var hasFocus = false;
             element.on( 'focusin', function() {
-               console.log( 'FOCUS', ngModelController.$invalid, mustDisplayErrors() ); // :TODO: Delete
 
                hasFocus = true;
                if( ngModelController.$invalid && mustDisplayErrors() ) {
