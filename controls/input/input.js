@@ -341,7 +341,7 @@ define( [
                   }
                }
 
-               element.on( 'focusout', function() {
+               element.one( 'focusout', function() {
                   hasFocus = false;
                   hideTooltip();
                   if( valueType === 'select' ) {
