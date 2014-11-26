@@ -26,8 +26,10 @@ define( [
             return success( null );
          }
 
-         while( val.indexOf( options.groupingSeparator ) !== -1 ) {
-            val = val.replace( options.groupingSeparator, '' );
+         if( options.groupingSeparator ) {
+            while( val.indexOf( options.groupingSeparator ) !== -1 ) {
+               val = val.replace( options.groupingSeparator, '' );
+            }
          }
          val = val.replace( options.decimalSeparator, '.' );
 
