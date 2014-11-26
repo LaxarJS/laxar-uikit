@@ -419,9 +419,12 @@ define( [
                      return;
                   }
 
-                  var noOfSeparators = elementValue.substr( 0, selection.end )
-                     .split( formattingOptions.groupingSeparator ).length - 1;
-                  var newSelection = selection.end - noOfSeparators;
+                  var newSelection = selection.end;
+                  if( formattingOptions.groupingSeparator ) {
+                     var noOfSeparators = elementValue.substr( 0, selection.end )
+                           .split( formattingOptions.groupingSeparator ).length - 1;
+                     newSelection -= noOfSeparators;
+                  }
 
                   helpers.setSelectionRange( element[0], newSelection, newSelection );
                }, 0 );

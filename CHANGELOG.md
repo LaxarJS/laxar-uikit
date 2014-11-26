@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
+
 
 ## v0.18.0
 
