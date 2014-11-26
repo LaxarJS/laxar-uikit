@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
 - [#84](https://github.com/LaxarJS/laxar_uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n 
 - [#83](https://github.com/LaxarJS/laxar_uikit/issues/83): axDatePicker: performance: build calendar lazily 
 - [#82](https://github.com/LaxarJS/laxar_uikit/issues/82): fix: removed console.log statement 
