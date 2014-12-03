@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#87](https://github.com/LaxarJS/laxar_uikit/issues/87): axInput: Changed controller implementation to be compatible with AngularJS 1.3.
 - [#86](https://github.com/LaxarJS/laxar_uikit/issues/86): axInput: Fixed attaching multiple focusout handlers.
 - [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
 - [#84](https://github.com/LaxarJS/laxar_uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n 
