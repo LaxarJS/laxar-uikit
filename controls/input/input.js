@@ -117,7 +117,8 @@ define( [
    var controller = [ function() {
       var validators = [];
 
-      return {
+      ax.object.extend( this, {
+
          initialize: function( type, formattingOptions ) {
             assert.state(
                KNOWN_TYPES.indexOf( type ) !== -1,
@@ -164,7 +165,8 @@ define( [
             } );
             return validationMessages;
          }
-      };
+
+      } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
