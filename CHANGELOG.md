@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.19.1
+
 - [#88](https://github.com/LaxarJS/laxar_uikit/issues/88): default.theme: Fixed auto-prefixer configuration
 
 
