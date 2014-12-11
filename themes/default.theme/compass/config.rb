@@ -28,11 +28,11 @@ Sass::Script::Number.precision=10
 # opera for Opera.
 # safari for desktop Safari.
 
-browsers = ["ff >= 10", "chrome >= 10", "ie >= 8"]
+browsers = ["ff >= 10", "chrome >= 10", "safari >= 3", "ie >= 8"]
 
 on_stylesheet_saved do |file|
    css = File.read(file)
-   File.open(file, 'w') { |io| io << AutoprefixerRails.compile(css, browsers) }
+   File.open(file, 'w') { |io| io << AutoprefixerRails.process(css, { :browsers => browsers } ) }
 end
 
 
@@ -40,15 +40,20 @@ end
 # Import Path
 # -----------
 
-# Variable
-base_dir = File.dirname(__FILE__) + '/../'
-
-# Assume that we are installed as a bower component:
-bower_dir = base_dir + '../../../'
-# Respect theme-local bower installation if there ist one:
-if File.directory? (base_dir + '../../bower_components/')
-   bower_dir = base_dir + '../../bower_components/'
+def find_bower_dir( base_dir )
+   relative_bower_dir = '../bower_components/'
+   limit = 10
+   until File.directory? (base_dir + relative_bower_dir)
+      relative_bower_dir = '../' + relative_bower_dir
+      limit -= 1
+      if limit === 0 then abort( 'laxar_uikit default.theme: bower_components seems to be missing!' ) end
+   end
+   return File.expand_path( base_dir + relative_bower_dir ) + '/'
 end
+
+base_dir = File.dirname(__FILE__) + '/../'
+bower_dir = find_bower_dir( base_dir )
+puts 'laxar_uikit default.theme: using bower_components at ' + bower_dir
 
 # Find SCSS in theme (from widgets, controls and layouts)
 add_import_path base_dir + 'scss/'
