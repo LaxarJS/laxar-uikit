@@ -32,7 +32,8 @@ define( [
             throw new TypeError( 'Expected argument of type number, but got "' +
                typeof number + '". Value: ' + number );
          }
-         var numberParts = toFixed( number, options.decimalPlaces ).split( '.' );
+
+         var numberParts = toPrecision( number, options.decimalPlaces, options.decimalTruncation ).split( '.' );
          var integerPart = numberParts[0].replace( /^[\-+]/, '' );
          var fractionPart = numberParts[1] || '';
 
@@ -42,7 +43,7 @@ define( [
             return str + digit + ( pos % 3 === 0 && pos !== 0 ? options.groupingSeparator : '' );
          }, number < 0 ? '-' : '' );
 
-         return front + ( options.decimalPlaces > 0 ? options.decimalSeparator + fractionPart : '' );
+         return front + ( fractionPart.length > 0 ? options.decimalSeparator + fractionPart : '' );
       },
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,15 +85,38 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   function toFixed( number, places ) {
+   function toPrecision( number, places, truncation ) {
+      // Define a maximum precision for truncation=NONE, taking into account 32bit machine limits.
+      // We cannot use Number.toFixed because of rounding errors in MSIE8.
+      var MAX_SIGNIFICANT_PLACES = 14;
+      if( truncation === 'NONE' ) {
+         places = MAX_SIGNIFICANT_PLACES;
+      }
+
       if( places === 0 ) {
          return '' + Math.round( number );
       }
 
       var multiplier = Math.pow( 10, places );
       var str = '' + ( Math.round( number * multiplier ) / multiplier );
-      var tmp = str.split( '.' );
 
+      // Detect and avoid scientific notation for numbers x where |x| << 10^(-5)
+      // A heuristic is used to avoid unnecessary string operations for "regular" numbers
+      var absNumber = Math.abs( number );
+      if( absNumber < 0.0001 ) {
+         var exponent = parseInt( str.split( 'e-' )[ 1 ], 10 );
+         if( exponent ) {
+            var base = '' + Math.pow( 10, exponent - 1 ) * Math.round( absNumber * multiplier ) / multiplier;
+            str = number < 0 ? '-' : '';
+            str += '0.' + ( zeros( exponent - 1 ) + base.substring( 2 ) );
+         }
+      }
+
+      if( truncation === 'BOUNDED' || truncation === 'NONE' ) {
+         return str;
+      }
+
+      var tmp = str.split( '.' );
       if( tmp.length === 1 ) {
          return str + '.' + zeros( places );
       }
