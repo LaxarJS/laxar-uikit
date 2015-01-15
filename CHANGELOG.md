@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#92](https://github.com/LaxarJS/laxar_uikit/issues/92): axInput: decimalTruncation (variable length format)
+    + NEW FEATURE: see ticket for details
 - [#88](https://github.com/LaxarJS/laxar_uikit/issues/88): default.theme: Fixed auto-prefixer configuration
 - [#87](https://github.com/LaxarJS/laxar_uikit/issues/87): axInput: Changed controller implementation to be compatible with AngularJS 1.3.
 - [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.

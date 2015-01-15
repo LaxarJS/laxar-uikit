@@ -59,6 +59,10 @@ define( [
     * * groupingSeparator (default: `.`): Grouping seperator for decimal and integer values
     * * decimalSeparator (default: `,`): Decimal separator for decimal values
     * * decimalPlaces (default: 2): Number of decimal places to display. Applies rounding if necessary.
+    * * decimalTruncation (default: 'FIXED'): How to treat insignificant decimal places (trailing zeros):
+    *   - `FIXED`: uses a fraction length of exactly `decimalPlaces`, padding with zeros
+    *   - `BOUNDED`: uses a fraction length up to `decimalPlaces`, no padding
+    *   - `NONE`: unbounded fraction length (only limited by numeric precision), no padding
     * * dateFormat (default: `MM/DD/YYYY`): Format for date values
     * * timeFormat: (default: 'HH:mm`): Format for time values
     * * dateFallbackFormats: an array of formats to try parsing the value when using `dateFormat` fails
@@ -97,6 +101,7 @@ define( [
       groupingSeparator: ',',
       decimalSeparator: '.',
       decimalPlaces: 2,
+      decimalTruncation: 'FIXED',
       dateFormat: 'MM/DD/YYYY',
       dateFallbackFormats: [ 'MM/DD/YY', 'DD.MM.YY', 'YYYY-MM-DD' ],
       timeFormat: 'HH:mm',

@@ -627,6 +627,7 @@ define( [
          groupingSeparator: '.',
          decimalSeparator: ',',
          decimalPlaces: 2,
+         decimalTruncation: 'FIXED',
          dateFormat: 'DD.MM.YYYY',
          dateFallbackFormats: [ 'YY', 'YYYY', 'MM.YY', 'MM.YYYY', 'DD.MM.YY', 'YYYY-MM-DD' ],
          timeFormat: 'HH:mm',
