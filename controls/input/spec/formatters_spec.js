@@ -43,7 +43,8 @@ define( [
             format = formatters.create( 'decimal', {
                groupingSeparator: '.',
                decimalSeparator: ',',
-               decimalPlaces: 2
+               decimalPlaces: 2,
+               decimalTruncation: 'FIXED'
             } );
          } );
 
@@ -82,6 +83,169 @@ define( [
             expect( format( '-12.345' ) ).toEqual( '-12,34' );
             expect( format( '+12.345' ) ).toEqual( '12,35' );
             expect( format( '12.345' ) ).toEqual( '12,35' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with fixed precision and many decimal places', function() {
+
+            beforeEach( function() {
+               format = formatters.create( 'decimal', {
+                  groupingSeparator: '.',
+                  decimalSeparator: ',',
+                  decimalPlaces: 10,
+                  decimalTruncation: 'FIXED'
+               } );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should avoid scientific notation', function() {
+               expect( format( '-0.000000010' ) ).toEqual( '-0,0000000100' );
+               expect( format( '+0.000000010' ) ).toEqual( '0,0000000100' );
+               expect( format(  '0.000000010' ) ).toEqual( '0,0000000100' );
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'with bounded precision', function() {
+
+            beforeEach( function() {
+               format = formatters.create( 'decimal', {
+                  groupingSeparator: '.',
+                  decimalSeparator: ',',
+                  decimalPlaces: 4,
+                  decimalTruncation: 'BOUNDED'
+               } );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should format numbers according to the given format options', function() {
+               expect( format( 12 ) ).toEqual( '12' );
+               expect( format( 12.345 ) ).toEqual( '12,345' );
+               expect( format( 5123789.34567 ) ).toEqual( '5.123.789,3457' );
+
+               expect( format( -12 ) ).toEqual( '-12' );
+               expect( format( -12.345 ) ).toEqual( '-12,345' );
+               expect( format( -5123789.34567 ) ).toEqual( '-5.123.789,3457' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should format numerical strings according to the given format options', function() {
+               expect( format( '-12.345' ) ).toEqual( '-12,345' );
+               expect( format( '+12.345' ) ).toEqual( '12,345' );
+               expect( format( '12.345' ) ).toEqual( '12,345' );
+
+               expect( format( '-12.34567' ) ).toEqual( '-12,3457' );
+               expect( format( '+12.34567' ) ).toEqual( '12,3457' );
+               expect( format( '12.34567' ) ).toEqual( '12,3457' );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            describe( 'but many decimal places', function() {
+
+               beforeEach( function() {
+                  format = formatters.create( 'decimal', {
+                     groupingSeparator: '.',
+                     decimalSeparator: ',',
+                     decimalPlaces: 8,
+                     decimalTruncation: 'BOUNDED'
+                  } );
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'should format numerical strings according to the given format options', function() {
+                  expect( format( '-12.345' ) ).toEqual( '-12,345' );
+                  expect( format( '+12.345' ) ).toEqual( '12,345' );
+                  expect( format( '12.345' ) ).toEqual( '12,345' );
+
+                  expect( format( '-12.3456789' ) ).toEqual( '-12,3456789' );
+                  expect( format( '+12.3456789' ) ).toEqual( '12,3456789' );
+                  expect( format( '12.3456789' ) ).toEqual( '12,3456789' );
+
+                  expect( format( '-0.0000010' ) ).toEqual( '-0,000001' );
+                  expect( format( '+0.0000010' ) ).toEqual( '0,000001' );
+                  expect( format( '0.0000010' ) ).toEqual( '0,000001' );
+
+               } );
+
+               ///////////////////////////////////////////////////////////////////////////////////////////////
+
+               it( 'should avoid scientific notation', function() {
+                  expect( format( '-0.00000012345' ) ).toEqual( '-0,00000012' );
+                  expect( format( '+0.00000012345' ) ).toEqual( '0,00000012' );
+                  expect( format( '-0.000000010' ) ).toEqual( '-0,00000001' );
+                  expect( format( '+0.000000010' ) ).toEqual( '0,00000001' );
+
+                  expect( format( '-10000000000' ) ).toEqual( '-10.000.000.000' );
+                  expect( format( '+10000000000' ) ).toEqual( '10.000.000.000' );
+                  expect( format( '10000000000' ) ).toEqual( '10.000.000.000' );
+               } );
+
+            } );
+
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'without decimal truncation', function() {
+
+            beforeEach( function() {
+               format = formatters.create( 'decimal', {
+                  groupingSeparator: '.',
+                  decimalSeparator: ',',
+                  decimalPlaces: 2,
+                  decimalTruncation: 'NONE'
+               } );
+            } );
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should format numbers according to the given format options', function() {
+               expect( format( 12 ) ).toEqual( '12' );
+               expect( format( 12.345 ) ).toEqual( '12,345' );
+               expect( format( 5123789.34567 ) ).toEqual( '5.123.789,34567' );
+
+               expect( format( -12 ) ).toEqual( '-12' );
+               expect( format( -12.345 ) ).toEqual( '-12,345' );
+               expect( format( -5123789.34567 ) ).toEqual( '-5.123.789,34567' );
+            } );
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should format numerical strings according to the given format options', function() {
+               expect( format( '-12.345' ) ).toEqual( '-12,345' );
+               expect( format( '+12.345' ) ).toEqual( '12,345' );
+               expect( format( '12.345' ) ).toEqual( '12,345' );
+
+               expect( format( '-12.3456789' ) ).toEqual( '-12,3456789' );
+               expect( format( '+12.3456789' ) ).toEqual( '12,3456789' );
+               expect( format( '12.3456789' ) ).toEqual( '12,3456789' );
+
+               expect( format( '-0.0000010' ) ).toEqual( '-0,000001' );
+               expect( format( '+0.0000010' ) ).toEqual( '0,000001' );
+               expect( format( '0.0000010' ) ).toEqual( '0,000001' );
+
+            } );
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'should avoid scientific notation', function() {
+               expect( format( '-0.000000010' ) ).toEqual( '-0,00000001' );
+               expect( format( '+0.000000010' ) ).toEqual( '0,00000001' );
+               expect( format( '0.000000010' ) ).toEqual( '0,00000001' );
+
+               expect( format( '-10000000000' ) ).toEqual( '-10.000.000.000' );
+               expect( format( '+10000000000' ) ).toEqual( '10.000.000.000' );
+               expect( format( '10000000000' ) ).toEqual( '10.000.000.000' );
+            } );
+
          } );
 
       } );

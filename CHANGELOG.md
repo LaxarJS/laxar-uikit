@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#92](https://github.com/LaxarJS/laxar_uikit/issues/92): axInput: decimalTruncation (variable length format)
+    + NEW FEATURE: see ticket for details
 - [#88](https://github.com/LaxarJS/laxar_uikit/issues/88): default.theme: Fixed auto-prefixer configuration
 
 
