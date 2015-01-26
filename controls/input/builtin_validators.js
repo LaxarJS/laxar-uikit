@@ -166,6 +166,35 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+   var minimumLengthDirectiveName = 'axInputMinimumLength';
+   var minimumLengthDirective = [ function() {
+      return {
+         restrict: 'A',
+         require: 'axInput',
+         priority: 10, // ensure linking after axInput and required validation
+         link: function( scope, element, attrs, axInputController ) {
+
+            function minimumLength() {
+               return parseInt( scope.$eval( attrs[ minimumLengthDirectiveName ] ), 10 );
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            axInputController.addSemanticValidator(
+               function( value ) { return value.length >= minimumLength(); },
+               function() {
+                  return helpers.substitute(
+                     message( scope, 'SEMANTIC_MINIMUM_LENGTH_STRING' ),
+                     { minimumLength: axInputController.format( minimumLength() ) }
+                  );
+               }
+            );
+         }
+      };
+   } ];
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
    var maximumLengthDirectiveName = 'axInputMaximumLength';
    var maximumLengthDirective = [ function() {
       return {
@@ -184,7 +213,7 @@ define( [
                function( value ) { return value.length <= maximumLength(); },
                function() {
                   return helpers.substitute(
-                     message( scope, 'SEMANTIC_LENGTH_STRING' ),
+                     message( scope, 'SEMANTIC_MAXIMUM_LENGTH_STRING' ),
                      { maximumLength: axInputController.format( maximumLength() ) }
                   );
                }
@@ -216,6 +245,7 @@ define( [
          module.directive( maximumDirectiveName, maximumDirective );
          module.directive( minimumDirectiveName, minimumDirective );
          module.directive( rangeDirectiveName, rangeDirective );
+         module.directive( minimumLengthDirectiveName, minimumLengthDirective );
          module.directive( maximumLengthDirectiveName, maximumLengthDirective );
       }
    };
