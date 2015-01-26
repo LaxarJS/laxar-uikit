@@ -43,6 +43,8 @@ define( [
     *   to $minimum AND below or equal to $maximum
     * * `ax-input-maximum-length="$maximumLength"` (string only): requires the string's length to be below or
     *   equal to $maximumLength
+    * * `ax-input-minimum-length="$minimumLength"` (string only): requires the string's length to be greater
+    *   than or equal to $minimumLength
     * * `ax-input-display-errors-immediately="$immediately"`: If $immediately evaluates to `true`, validation
     *   errors are presented to the user immediately by CSS styling and tooltip. Otherwise, errors are only
     *   shown when the field has been changed (ngModelController.$dirty) or when the event `axInput.validate`
