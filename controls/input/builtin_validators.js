@@ -181,7 +181,7 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             axInputController.addSemanticValidator(
-               function( value ) { return value.length >= minimumLength(); },
+               function( value ) { return value && value.length >= minimumLength(); },
                function() {
                   return helpers.substitute(
                      message( scope, 'SEMANTIC_MINIMUM_LENGTH_STRING' ),
@@ -210,7 +210,7 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             axInputController.addSemanticValidator(
-               function( value ) { return value.length <= maximumLength(); },
+               function( value ) { return !value || value.length <= maximumLength(); },
                function() {
                   return helpers.substitute(
                      message( scope, 'SEMANTIC_MAXIMUM_LENGTH_STRING' ),
