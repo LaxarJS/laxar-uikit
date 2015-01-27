@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#91](https://github.com/LaxarJS/laxar_uikit/issues/91): axInput: fixed null-pointer in string length validation
 - [#90](https://github.com/LaxarJS/laxar_uikit/issues/90): axInput: added minimumLength validator for string values
     + NEW FEATURE: see ticket for details
 - [#92](https://github.com/LaxarJS/laxar_uikit/issues/92): axInput: decimalTruncation (variable length format)
