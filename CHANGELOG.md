@@ -2,13 +2,21 @@
 
 ## Last Changes
 
+
+## v0.20.0
+
 - [#91](https://github.com/LaxarJS/laxar_uikit/issues/91): axInput: fixed null-pointer in string length validation
 - [#90](https://github.com/LaxarJS/laxar_uikit/issues/90): axInput: added minimumLength validator for string values
     + NEW FEATURE: see ticket for details
 - [#92](https://github.com/LaxarJS/laxar_uikit/issues/92): axInput: decimalTruncation (variable length format)
     + NEW FEATURE: see ticket for details
 - [#88](https://github.com/LaxarJS/laxar_uikit/issues/88): default.theme: Fixed auto-prefixer configuration
+
+
+## v0.19.0
+
 - [#87](https://github.com/LaxarJS/laxar_uikit/issues/87): axInput: Changed controller implementation to be compatible with AngularJS 1.3.
+- [#86](https://github.com/LaxarJS/laxar_uikit/issues/86): axInput: Fixed attaching multiple focusout handlers.
 - [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
 - [#84](https://github.com/LaxarJS/laxar_uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n 
 - [#83](https://github.com/LaxarJS/laxar_uikit/issues/83): axDatePicker: performance: build calendar lazily 
