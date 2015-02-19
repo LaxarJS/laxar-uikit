@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#94](https://github.com/LaxarJS/laxar_uikit/issues/94): axAffix: added missing require-configuration
 - [#93](https://github.com/LaxarJS/laxar_uikit/issues/93): default.theme: changed external encoding to `utf-8`
     + NEW FEATURE: see ticket for details
 
