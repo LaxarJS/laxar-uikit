@@ -1,3 +1,6 @@
+# Set default SCSS file encoding to override system default
+Encoding.default_external = "utf-8"
+
 # Global compass configuration for the default.theme
 # -----
 require 'autoprefixer-rails'

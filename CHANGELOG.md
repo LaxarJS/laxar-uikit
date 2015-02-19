@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#93](https://github.com/LaxarJS/laxar_uikit/issues/93): default.theme: changed external encoding to `utf-8`
+    + NEW FEATURE: see ticket for details
+
 
 ## v0.20.0
 
