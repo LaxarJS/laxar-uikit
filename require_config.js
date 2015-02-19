@@ -44,6 +44,11 @@ var require = {
             'use strict';
             return this._.noConflict();
          }
+      },
+      'bootstrap-affix': {
+         deps: [
+            'jquery'
+         ]
       }
    },
    packages: [
@@ -65,6 +70,7 @@ var require = {
    ],
    paths: {
       'bootstrap-tooltip': 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
+      'bootstrap-affix': 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
       underscore: 'bower_components/underscore/underscore',
       text: 'bower_components/requirejs-plugins/lib/text',
       requirejs: 'bower_components/requirejs/require',
