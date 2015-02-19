@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#94](https://github.com/LaxarJS/laxar_uikit/issues/94): axAffix: added missing require-configuration
+
 
 ## v0.20.0
 
