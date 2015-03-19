@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#99](https://github.com/LaxarJS/laxar_uikit/issues/99): require_config: added jquery dependency shims for trunk8 and bootstrap-tooltip
+
 
 ## v0.21.0
 
