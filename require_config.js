@@ -38,17 +38,27 @@ var require = {
             return angular;
          }
       },
+      'bootstrap-affix': {
+         deps: [
+            'jquery'
+         ]
+      },
+      'bootstrap-tooltip': {
+         deps: [
+            'jquery'
+         ]
+      },
+      'trunk8': {
+         deps: [
+            'jquery'
+         ]
+      },
       underscore: {
          exports: '_',
          init: function () {
             'use strict';
             return this._.noConflict();
          }
-      },
-      'bootstrap-affix': {
-         deps: [
-            'jquery'
-         ]
       }
    },
    packages: [
