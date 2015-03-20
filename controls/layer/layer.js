@@ -531,7 +531,7 @@ define( [
 
    function getTabbableNodes( $layer ) {
       var nodes = [];
-      $layer.find( 'input,a,button,textarea,select,[tabindex]' ).each( function() {
+      $layer.find( 'input,a,button,textarea,select,[tabindex]' ).each( function( index ) {
          if( this.nodeType !== 1 || this.disabled ) {
             return;
          }
@@ -550,14 +550,24 @@ define( [
             tabindex = 0;
          }
          if( tabindex >= 0 ) {
-            this.aixigo__tabindexForSorting = parseInt( tabindex, 10 );
+            this.ax__tabindexForSorting = parseInt( tabindex, 10 );
+            this.ax__indexForSorting = index;
             nodes.push( this );
          }
       } );
 
-      nodes.sort( function( nodeA, nodeB ) {
-         return nodeA.aixigo__tabindexForSorting - nodeB.aixigo__tabindexForSorting;
-      } );
+      nodes
+         .sort( function( nodeA, nodeB ) {
+            if( nodeA.ax__tabindexForSorting === nodeB.ax__tabindexForSorting ) {
+               return nodeA.ax__indexForSorting - nodeB.ax__indexForSorting;
+            }
+
+            return nodeA.ax__tabindexForSorting - nodeB.ax__tabindexForSorting;
+         } )
+         .forEach( function( node ) {
+            delete node.ax__tabindexForSorting;
+            delete node.ax__indexForSorting;
+         } );
 
       return nodes;
    }

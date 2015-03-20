@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#101](https://github.com/LaxarJS/laxar_uikit/issues/101): layer: fixed random order of tabbable nodes.
 - [#100](https://github.com/LaxarJS/laxar_uikit/issues/100): axInput: fixed missing error class on syntax error when using AngularJS 1.3.
 - [#99](https://github.com/LaxarJS/laxar_uikit/issues/99): require_config: added jquery dependency shims for trunk8 and bootstrap-tooltip
 
