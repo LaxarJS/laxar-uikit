@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#100](https://github.com/LaxarJS/laxar_uikit/issues/100): axInput: fixed missing error class on syntax error when using AngularJS 1.3.
+
 
 ## v0.21.1
 
