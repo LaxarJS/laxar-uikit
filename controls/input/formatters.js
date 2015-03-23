@@ -4,10 +4,10 @@
  * http://laxarjs.org/license
  */
 define( [
-   'underscore',
+   'laxar',
    'moment',
    './constants'
-], function( _, moment, constants ) {
+], function( ax, moment, constants ) {
    'use strict';
 
    var NUMERICAL_STRING_REGEXP = /^(\+|\-)?\d+(\.\d+)?$/;
@@ -49,7 +49,7 @@ define( [
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       integer: function( options, number ) {
-         var integerOptions = _.extend( _.clone( options ), { decimalPlaces: 0 } );
+         var integerOptions = ax.object.options( { decimalPlaces: 0 }, options );
          return formatters.decimal( integerOptions, number );
       },
 
@@ -134,7 +134,7 @@ define( [
 
    return {
       create: function( type, options ) {
-         return _.partial( formatters[ type ], options );
+         return formatters[ type ].bind( formatters, options );
       }
    };
 

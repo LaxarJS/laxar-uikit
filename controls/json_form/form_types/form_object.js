@@ -4,9 +4,9 @@
  * http://laxarjs.org/license
  */
 define( [
-   'underscore',
+   'angular',
    './helpers'
-], function( _, helpers ) {
+], function( ng, helpers ) {
    'use strict';
 
    var directiveName = 'axJsonFormObject';
@@ -29,7 +29,7 @@ define( [
                var html = '';
                var fixedObjectKeys = [];
 
-               if( _.isObject( scope.schema.properties ) ) {
+               if( ng.isObject( scope.schema.properties ) ) {
                   var properties = Object.keys( scope.schema.properties );
                   if( scope.formConfiguration ) {
                      var conf = scope.formConfiguration;
@@ -68,7 +68,7 @@ define( [
                   } );
                }
 
-               if( _.isObject( scope.schema.patternProperties ) ) {
+               if( ng.isObject( scope.schema.patternProperties ) ) {
 
                   scope.addItem = function( patternIndex ) {
                      scope.patternPropertyData[ patternIndex ].push( {
@@ -82,7 +82,7 @@ define( [
                   };
 
                   // we map patterns to indices to make it easier in angular bindings
-                  var patterns = _.keys( scope.schema.patternProperties );
+                  var patterns = Object.keys( scope.schema.patternProperties );
                   scope.patternPropertyData = [];
                   scope.patternPropertySchemas = [];
 
@@ -100,7 +100,7 @@ define( [
 
                      scope.patternPropertySchemas[ patternIndex ] = scope.schema.patternProperties[ pattern ];
                      scope.patternPropertyData[ patternIndex ] = [];
-                     _.each( scope.data, function( value, key ) {
+                     ng.forEach( scope.data, function( value, key ) {
                         if( fixedObjectKeys.indexOf( key ) > -1 || key.indexOf( '$' ) > -1 ) {
                            // Filter fixed keys and angular properties
                            return;
@@ -128,12 +128,12 @@ define( [
                         }
 
                         var foundKeys = [];
-                        _.each( newValue || [], function( property ) {
+                        ( newValue || [] ).forEach( function( property ) {
                            foundKeys.push( property.key );
                            scope.data[ property.key ] = property.value ;
                         } );
 
-                        _.each( oldValue || [], function( property ) {
+                        ( oldValue || [] ).forEach( function( property ) {
                            if( foundKeys.indexOf( property.key ) === -1 ) {
                               delete scope.data[ property.key ];
                            }

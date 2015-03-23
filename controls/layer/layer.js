@@ -4,7 +4,6 @@
  * http://laxarjs.org/license
  */
 define( [
-   'underscore',
    'jquery',
    'laxar',
    '../../lib/dom',
@@ -12,7 +11,7 @@ define( [
    './layer_anchor_positioning',
    './layer_fixed_positioning',
    './layer_absolute_positioning'
-], function( _, $, ax, dom, layerUtils, layerAnchorPositioning, layerFixedPositioning, layerAbsolutePositioning ) {
+], function( $, ax, dom, layerUtils, layerAnchorPositioning, layerFixedPositioning, layerAbsolutePositioning ) {
    'use strict';
 
    var assert = ax.assert;
@@ -77,7 +76,7 @@ define( [
    Layer.prototype = {
 
       setConfiguration: function( configuration ) {
-         this.configuration_ = _.defaults( configuration || {}, {
+         this.configuration_ = ax.object.options( configuration, {
             allowedPositions: [ 'top', 'right', 'bottom', 'left' ],
             arrowWidth: 0,
             arrowHeight: 0,
@@ -87,8 +86,8 @@ define( [
             closeByOutsideClick: true,
             contentAreaSelector: null,
             positioning: 'centered',
-            whenPositioned: _.identity,
-            whenClosed: _.identity,
+            whenPositioned: function() {},
+            whenClosed: function() {},
             preventBodyScrolling: false
          } );
          this.hidden = true;
@@ -303,7 +302,7 @@ define( [
 
       var domData = layerUtils.calculateDomData( self, $layer );
       var result = self.positioningStrategy.calculate( domData );
-      var fadeInArrow = _.identity;
+      var fadeInArrow = function() {};
       if( result.arrowOffsets ) {
          var $arrow = $( '#' + self.configuration_.arrowElementId );
 
