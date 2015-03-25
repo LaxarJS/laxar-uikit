@@ -9,7 +9,7 @@ define( [
 ], function( ng, axAffix ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.affix', [] );
+   var module = ng.module( 'axAffix', [] );
    axAffix.createForModule( module );
 
    return module;

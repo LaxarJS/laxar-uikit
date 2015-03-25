@@ -9,7 +9,7 @@ define( [
 ], function( ng, axConfirmButton ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.confirm_button', [] );
+   var module = ng.module( 'axConfirmButton', [] );
    axConfirmButton.createForModule( module );
 
    return module;

@@ -9,7 +9,7 @@ define( [
 ], function( ng, axAccordion ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.accordion', [] );
+   var module = ng.module( 'axAccordion', [] );
    axAccordion.createForModule( module );
 
    return module;

@@ -9,7 +9,7 @@ define( [
 ], function( ng, axSlider ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.slider', [] );
+   var module = ng.module( 'axSlider', [] );
    axSlider.createForModule( module );
 
    return module;

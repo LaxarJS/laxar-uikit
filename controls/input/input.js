@@ -120,7 +120,7 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var controllerName = 'axInputController';
+   var controllerName = 'AxInputController';
    var controller = [ function() {
       var validators = [];
 
@@ -212,7 +212,7 @@ define( [
       return {
          restrict: 'A',
          priority: 8,
-         controller: 'axInputController',
+         controller: controllerName,
          require: [ 'ngModel', 'axInput' ],
          link: function( scope, element, attrs, controllers ) {
             var validationMessage = '';

@@ -9,7 +9,7 @@ define( [
 ], function( ng, axDatePicker ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.date_picker', [] );
+   var module = ng.module( 'axDatePicker', [] );
    axDatePicker.createForModule( module );
 
    return module;

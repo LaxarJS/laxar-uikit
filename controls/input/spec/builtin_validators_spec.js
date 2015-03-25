@@ -19,7 +19,7 @@ define( [
       var scope;
       var ngModel;
 
-      beforeEach( angularMocks.module( 'laxar_uikit.controls.input' ) );
+      beforeEach( angularMocks.module( inputModule.name ) );
       beforeEach( angularMocks.inject( function( _$compile_, _$rootScope_ ) {
          $compile = _$compile_;
          $rootScope = _$rootScope_;

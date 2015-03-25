@@ -9,7 +9,7 @@ define( [
 ], function( ng, axTooltip ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.tooltip', [] );
+   var module = ng.module( 'axTooltip', [] );
    axTooltip.createForModule( module );
 
    return module;

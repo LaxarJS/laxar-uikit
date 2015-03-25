@@ -9,7 +9,7 @@ define( [
 ], function( ng, axJsonForm ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.json_form', [] );
+   var module = ng.module( 'axJsonForm', [] );
    axJsonForm.createForModule( module );
 
    return module;
