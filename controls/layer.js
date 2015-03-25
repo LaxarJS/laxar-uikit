@@ -9,7 +9,7 @@ define( [
 ], function( ng, axLayer ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.layer', [] );
+   var module = ng.module( 'axLayer', [] );
    axLayer.createForModule( module );
 
    return module;

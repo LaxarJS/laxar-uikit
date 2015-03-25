@@ -14,7 +14,7 @@ define( [
       var $compile;
       var $rootScope;
 
-      beforeEach( angularMocks.module( 'laxar_uikit.controls.i18n' ) );
+      beforeEach( angularMocks.module( i18nModule.name ) );
       beforeEach( angularMocks.inject( function( _$compile_, _$rootScope_ ) {
          $compile = _$compile_;
          $rootScope = _$rootScope_;

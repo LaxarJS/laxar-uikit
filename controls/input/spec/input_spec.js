@@ -18,7 +18,7 @@ define( [
       var $compile;
       var $rootScope;
 
-      beforeEach( angularMocks.module( 'laxar_uikit.controls.input' ) );
+      beforeEach( angularMocks.module( inputModule.name ) );
       beforeEach( angularMocks.inject( function( _$compile_, _$rootScope_ ) {
          $compile = _$compile_;
          $rootScope = _$rootScope_;
@@ -621,7 +621,7 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   describe( 'An axInputController', function() {
+   describe( 'An AxInputController', function() {
 
       var DEFAULT_FORMATTING = {
          groupingSeparator: '.',
@@ -635,9 +635,9 @@ define( [
       };
       var controller;
 
-      beforeEach( angularMocks.module( 'laxar_uikit.controls.input' ) );
+      beforeEach( angularMocks.module( inputModule.name ) );
       beforeEach( angularMocks.inject( function( $controller ) {
-         controller = $controller( 'axInputController' );
+         controller = $controller( 'AxInputController' );
       } ) );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////

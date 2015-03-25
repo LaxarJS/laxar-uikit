@@ -9,7 +9,7 @@ define( [
 ], function( ng, axButtonList ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.i18n', [] );
+   var module = ng.module( 'axI18n', [] );
    axButtonList.createForModule( module );
 
    return module;

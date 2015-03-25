@@ -9,7 +9,7 @@ define( [
 ], function( ng, axInput ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.input', [] );
+   var module = ng.module( 'axInput', [] );
    axInput.createForModule( module );
 
    return module;

@@ -14,7 +14,7 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   var axHtmlAttributeFactory = [ '$sanitize', 'i18n', function( $sanitize, i18n ) {
+   var axHtmlAttributeFactory = [ '$sanitize', 'axI18n', function( $sanitize, i18n ) {
 
       /**
        * Allows to put HTML content into arbitrary attributes.

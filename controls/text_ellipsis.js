@@ -10,7 +10,7 @@ define( [
 ], function( ng, axTextEllipsis ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.text_ellipsis', [ 'ngSanitize' ] );
+   var module = ng.module( 'axTextEllipsis', [ 'ngSanitize' ] );
    axTextEllipsis.createForModule( module );
 
    return module;

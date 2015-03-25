@@ -9,7 +9,7 @@ define( [
 ], function( ng, axHtmlAttribute ) {
    'use strict';
 
-   var module = ng.module( 'laxar_uikit.controls.html_attribute', [] );
+   var module = ng.module( 'axHtmlAttribute', [] );
    axHtmlAttribute.createForModule( module );
 
    return module;
