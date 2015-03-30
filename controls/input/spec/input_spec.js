@@ -37,6 +37,12 @@ define( [
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+      afterEach( function() {
+         window.scrollTo( 0, 0 );
+      } );
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       it( 'needs a model controller', function() {
          expect( function() { $compile( '<input data-ax-input/>' )( $rootScope.$new() ); } )
             .toThrow();
@@ -62,6 +68,23 @@ define( [
 
       describe( 'for the model controller', function() {
 
+         function formatterByName( name ) {
+            return ngModelController.$formatters.filter( function( formatter ) {
+               return formatter.name === name;
+            } )[0];
+         }
+
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         function parserByName( name ) {
+            return ngModelController.$parsers.filter( function( formatter ) {
+               return formatter.name === name;
+            } )[0];
+         }
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
          var ngModelController;
          var axInputController;
 
@@ -82,7 +105,7 @@ define( [
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'adds a simple value formatter', function() {
-            expect( ngModelController.$formatters[2]( 12345.56 ) ).toEqual( '12.345,56' );
+            expect( formatterByName( 'valueFormatter' )( 12345.56 ) ).toEqual( '12.345,56' );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +113,7 @@ define( [
          it( 'adds a formatter that does semantic validation', function() {
             expect( axInputController.performSemanticValidations ).not.toHaveBeenCalled();
 
-            ngModelController.$formatters[3]( 12345.56 );
+            formatterByName( 'semanticValidation' )( 12345.56 );
 
             expect( axInputController.performSemanticValidations ).toHaveBeenCalledWith( 12345.56 );
          } );
@@ -103,7 +126,7 @@ define( [
             var parsedValue;
 
             beforeEach( function() {
-               parsedValue = ngModelController.$parsers[0]( '12.345,56' );
+               parsedValue = parserByName( 'valueParser' )( '12.345,56' );
             } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,14 +138,14 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'returns the last valid value on parser error', function() {
-               expect( ngModelController.$parsers[0]( 'vsa' ) ).toEqual( parsedValue );
+               expect( parserByName( 'valueParser' )( 'vsa' ) ).toEqual( parsedValue );
             } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'sets an error for key "syntax" in the ngModelController', function() {
-               expect( ngModelController.$error.syntax ).toBe( false );
-               ngModelController.$parsers[0]( 'vsa' );
+               expect( ngModelController.$error.syntax ).toBeUndefined();
+               parserByName( 'valueParser' )( 'vsa' );
                expect( ngModelController.$error.syntax ).toBe( true );
             } );
 
@@ -133,8 +156,10 @@ define( [
          describe( 'adds a parser that does semantic validation', function() {
 
             beforeEach( function() {
-               ngModelController.$parsers[1]( 12345.56 );
+               parserByName( 'semanticValidation' )( 12345.56 );
             } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'that delegates to axInputController.performSemanticValidations', function() {
                expect( axInputController.performSemanticValidations ).toHaveBeenCalledWith(  12345.56 );
@@ -143,7 +168,7 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'that sets an error for key "semantic" in the ngModelController', function() {
-               expect( ngModelController.$error.semantic ).toBe( false );
+               expect( ngModelController.$error.semantic ).toBeUndefined();
                ngModelController.$parsers[1]( 52345.56 );
                expect( ngModelController.$error.semantic ).toBe( true );
             } );
@@ -197,19 +222,19 @@ define( [
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'removes the grouping separators on focus and re-adds them on blur', function() {
-            $element.trigger( 'focus' );
+            $element.trigger( 'focusin' );
             jasmine.Clock.tick( 0 );
 
             expect( $element.val() ).toEqual( '1231442' );
 
-            $element.trigger( 'blur' );
+            $element.trigger( 'focusout' );
             expect( $element.val() ).toEqual( '1.231.442' );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'adjusts the cursor position correctly after removing the grouping separators', function() {
-            $element.trigger( 'focus' );
+            $element.trigger( 'focusin' );
             jasmine.Clock.tick( 0 );
 
             expect( helpers.getSelectionRange ).toHaveBeenCalled();
@@ -219,7 +244,7 @@ define( [
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'doesn\'t adjust the cursor position if the element already lost focus (jira ATP-7910)', function() {
-            $element.trigger( 'focus' );
+            $element.trigger( 'focusin' );
             helpers.isActiveElement.andReturn( false );
             jasmine.Clock.tick( 0 );
 
@@ -230,7 +255,7 @@ define( [
 
          it( 'selects everything when the user tabs into the input (jira ATP-8210)', function() {
             helpers.getSelectionRange.andReturn( { start: 0, end: $element.val().length } );
-            $element.trigger( 'focus' );
+            $element.trigger( 'focusin' );
             jasmine.Clock.tick( 0 );
 
             expect( helpers.setSelectionRange ).toHaveBeenCalledWith( $element[0], 0, 7 );
@@ -290,6 +315,8 @@ define( [
                $element = $compile( html.replace( /NG_MODEL_OPTIONS/, 'keypress' ) )( scope );
                $element.appendTo( 'body' );
             } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'updates its validation state on keypress', function() {
                $element[0].value = '50';
@@ -459,7 +486,7 @@ define( [
             describe( 'and the field becomes valid again', function() {
 
                beforeEach( function() {
-                  $element.focus();
+                  $element.trigger( 'focusin' );
                   $.fn.tooltip.reset();
                   scope.$apply( function() {
                      scope.someValue = 1200;
@@ -605,7 +632,7 @@ define( [
                                     ' ng-model="scope.someValue" ng-options="value for value in opts"><option value="">Nothing</option></select>' )( scope );
                $element.appendTo( 'body' );
             } );
-            $element.trigger( 'focus' );
+            $element.trigger( 'focusin' );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////

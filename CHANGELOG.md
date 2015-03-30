@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#98](https://github.com/LaxarJS/laxar_uikit/issues/98): axInput: fixed tests for upcoming usage of Angular 1.3.
 - [#102](https://github.com/LaxarJS/laxar_uikit/issues/102): refactoring: normalized AngularJS module and injection names
 - [#80](https://github.com/LaxarJS/laxar_uikit/issues/80): footprint: removed underscore dependency
 - [#101](https://github.com/LaxarJS/laxar_uikit/issues/101): layer: fixed random order of tabbable nodes.

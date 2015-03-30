@@ -133,8 +133,8 @@ define( [
 
          beforeEach( function() {
             parse = parsers.create( 'date', {
-               dateFormat: 'DD.MM.YYYY',
-               dateFallbackFormats: [ 'DD.MM.YY' ]
+               dateFormat: 'D.M.YYYY',
+               dateFallbackFormats: [ 'D.M.YY' ]
             } );
          } );
 
@@ -182,8 +182,8 @@ define( [
 
          beforeEach( function() {
             parse = parsers.create( 'time', {
-               timeFormat: 'HH:mm:ss',
-               timeFallbackFormats: [ 'HH', 'HH:mm' ]
+               timeFormat: 'H:m:s',
+               timeFallbackFormats: [ 'H', 'H:m' ]
             } );
          } );
 
