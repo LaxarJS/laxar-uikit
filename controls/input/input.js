@@ -368,9 +368,7 @@ define( [
 
             ngModelController.$formatters.push( toggleErrorClass );
             ngModelController.$formatters.push( toggleTooltip );
-            ngModelController.$formatters.push( function( value ) {
-               return axInputController.format( value );
-            } );
+            ngModelController.$formatters.push( valueFormatter);
             ngModelController.$formatters.push( semanticValidation );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -379,7 +377,13 @@ define( [
             ngModelController.$parsers.unshift( toggleErrorClass );
             ngModelController.$parsers.unshift( toggleTooltip );
             ngModelController.$parsers.unshift( semanticValidation );
-            ngModelController.$parsers.unshift( function( value ) {
+            ngModelController.$parsers.unshift( valueParser );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Using named functions for formatters and parsers here for three reasons:
+            // better readability, easier testing and better debugging.
+            function valueParser( value ) {
                var result = axInputController.parse( value );
                ngModelController.$setValidity( ERROR_KEY_SYNTAX, result.ok );
                previousValidationMessage = validationMessage;
@@ -391,7 +395,13 @@ define( [
                   validationMessage = messages.de[ 'SYNTAX_TYPE_' + valueType.toUpperCase() ];
                }
                return lastValidValue;
-            } );
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            function valueFormatter( value ) {
+               return axInputController.format( value );
+            }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
