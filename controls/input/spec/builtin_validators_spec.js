@@ -69,7 +69,7 @@ define( [
                   it( 'accepts the valid input ' + testGroup.validInput, function() {
                      enter( $input, testGroup.validInput );
 
-                     expect( ngModel.$error.semantic ).toBe( false );
+                     expect( ngModel.$error.semantic ).toBeUndefined();
                      expect( scope.modelValue ).toEqual( testGroup.validExpected );
                   } );
 
@@ -139,7 +139,7 @@ define( [
 
                   it( 'applies its new value on validation (jira ATP-8140)', function() {
                      enter( $input, testGroup.invalidValue );
-                     expect( ngModel.$error.semantic ).toBe( false,
+                     expect( ngModel.$error.semantic ).toBeUndefined(
                         'Constraint: ' + testGroup.constraint +
                            ', Value: ' + testGroup.invalidValue +
                            ', new constraint value: ' + testGroup.secondConstraintValue
