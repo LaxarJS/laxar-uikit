@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#96](https://github.com/LaxarJS/laxar_uikit/issues/96): axInput: added possibility to configure how a two digit year is interpreted.
+    + **BREAKING CHANGE:** see ticket for details
 - [#98](https://github.com/LaxarJS/laxar_uikit/issues/98): axInput: fixed tests for upcoming usage of Angular 1.3.
 - [#102](https://github.com/LaxarJS/laxar_uikit/issues/102): refactoring: normalized AngularJS module and injection names
 - [#80](https://github.com/LaxarJS/laxar_uikit/issues/80): footprint: removed underscore dependency
