@@ -174,6 +174,18 @@ define( [
             expect( parse( '1.9.1983' ) ).toEqual( success( '1983-09-01' ) );
          } );
 
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'can be configured to wrap two digits dates at a different number (#96)', function() {
+            parse = parsers.create( 'date', {
+               dateFormat: 'D.M.YY',
+               dateTwoDigitYearWrap: 10
+            } );
+
+            expect( parse( '6.9.13' ) ).toEqual( success( '1913-09-06' ) );
+            expect( parse( '6.9.09' ) ).toEqual( success( '2009-09-06' ) );
+         } );
+
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////

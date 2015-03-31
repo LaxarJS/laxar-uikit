@@ -83,7 +83,7 @@ define( [
             formats = options[ fallbackFormatsKey ].concat( formats );
          }
 
-         var mDate = moment( str, formats, true );
+         var mDate = momentParse( str, formats, options );
          return mDate.isValid() ? success( mDate.format( isoFormat ) ) : error();
       };
    }
@@ -103,6 +103,26 @@ define( [
       return {
          ok: false
       };
+   }
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   function momentParse( str, formats, options ) {
+      var origParseTwoDigitYear = moment.parseTwoDigitYear;
+      if( options.dateTwoDigitYearWrap > -1 && options.dateTwoDigitYearWrap < 100 ) {
+         moment.parseTwoDigitYear = function( input ) {
+            var int = parseInt( input, 10 );
+            int = isNaN( int ) ? 0 : int;
+            return int + ( int > options.dateTwoDigitYearWrap ? 1900 : 2000 );
+         };
+      }
+
+      try {
+         return moment( str, formats, true );
+      }
+      finally {
+         moment.parseTwoDigitYear = origParseTwoDigitYear;
+      }
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -66,6 +66,7 @@ define( [
     *   - `BOUNDED`: uses a fraction length up to `decimalPlaces`, no padding
     *   - `NONE`: unbounded fraction length (only limited by numeric precision), no padding
     * * dateFormat (default: `MM/DD/YYYY`): Format for date values
+    * * dateTwoDigitYearWrap (default: 68): the two digit year value where below or equal 20xx is assumed and above 19xx
     * * timeFormat: (default: 'HH:mm`): Format for time values
     * * dateFallbackFormats: an array of formats to try parsing the value when using `dateFormat` fails
     * * timeFallbackFormats: an array of formats to try parsing the value when using `timeFormat` fails
@@ -104,10 +105,11 @@ define( [
       decimalSeparator: '.',
       decimalPlaces: 2,
       decimalTruncation: 'FIXED',
-      dateFormat: 'MM/DD/YYYY',
-      dateFallbackFormats: [ 'MM/DD/YY', 'DD.MM.YY', 'YYYY-MM-DD' ],
-      timeFormat: 'HH:mm',
-      timeFallbackFormats: [ 'HH', 'HHmm' ]
+      dateFormat: 'M/D/YYYY',
+      dateFallbackFormats: [ 'M/D/YY', 'D.M.YY', 'D.M.YYYY', 'YYYY-M-D' ],
+      dateTwoDigitYearWrap: 68,
+      timeFormat: 'H:m',
+      timeFallbackFormats: [ 'H', 'HHmm' ]
    };
 
    var KNOWN_TYPES = [ 'date', 'time', 'decimal', 'integer', 'string', 'select' ];
