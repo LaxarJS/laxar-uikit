@@ -375,7 +375,7 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            var lastValidValue;
+            var lastValidValue = null;
             ngModelController.$parsers.unshift( toggleErrorClass );
             ngModelController.$parsers.unshift( toggleTooltip );
             ngModelController.$parsers.unshift( semanticValidation );
