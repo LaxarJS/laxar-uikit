@@ -7,11 +7,11 @@
 - [#98](https://github.com/LaxarJS/laxar_uikit/issues/98): axInput: fixed tests for upcoming usage of Angular 1.3.
 - [#102](https://github.com/LaxarJS/laxar_uikit/issues/102): refactoring: normalized AngularJS module and injection names
 - [#80](https://github.com/LaxarJS/laxar_uikit/issues/80): footprint: removed underscore dependency
+
+- [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
 - [#101](https://github.com/LaxarJS/laxar_uikit/issues/101): layer: fixed random order of tabbable nodes.
 - [#100](https://github.com/LaxarJS/laxar_uikit/issues/100): axInput: fixed missing error class on syntax error when using AngularJS 1.3.
 - [#99](https://github.com/LaxarJS/laxar_uikit/issues/99): require_config: added jquery dependency shims for trunk8 and bootstrap-tooltip
-
-- [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
 
 
 ## v0.21.0
