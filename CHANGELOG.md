@@ -11,6 +11,8 @@
 - [#100](https://github.com/LaxarJS/laxar_uikit/issues/100): axInput: fixed missing error class on syntax error when using AngularJS 1.3.
 - [#99](https://github.com/LaxarJS/laxar_uikit/issues/99): require_config: added jquery dependency shims for trunk8 and bootstrap-tooltip
 
+- [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
+
 
 ## v0.21.0
 
