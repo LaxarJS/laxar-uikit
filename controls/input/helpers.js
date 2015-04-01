@@ -94,7 +94,7 @@ define( [
             var mMinimum = toMoment( valueType, minimum );
             var mValue = toMoment( valueType, value );
 
-            return mMinimum.isBefore( mValue ) || mMinimum.isSame( value );
+            return mMinimum.isBefore( mValue ) || mMinimum.isSame( mValue );
 
          default:
             throw new Error( 'Unsupported type for comparisons: ' + valueType );
@@ -152,5 +152,5 @@ define( [
       isSmallerOrEqual: isSmallerOrEqual,
       substitute: substitute
    };
-   
+
 } );
