@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#70](https://github.com/LaxarJS/laxar_uikit/issues/70): layer: remove requirement for jQuery UI.
 - [#109](https://github.com/LaxarJS/laxar_uikit/issues/109): axInput: fixed another moment creation from string
 - [#107](https://github.com/LaxarJS/laxar_uikit/issues/107): cleanup: removed dist-task fragments from grunt- and package configuration
 - [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
