@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#70](https://github.com/LaxarJS/laxar_uikit/issues/70): layer: remove requirement for jQuery UI.
 - [#96](https://github.com/LaxarJS/laxar_uikit/issues/96): axInput: added possibility to configure how a two digit year is interpreted.
     + **BREAKING CHANGE:** see ticket for details
 - [#98](https://github.com/LaxarJS/laxar_uikit/issues/98): axInput: fixed tests for upcoming usage of Angular 1.3.
