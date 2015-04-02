@@ -5,6 +5,7 @@
  */
 define( [
    'jquery',
+   'angular',
    'laxar',
    'bootstrap-tooltip',
    '../../lib/i18n',
@@ -15,7 +16,7 @@ define( [
    // Overly specific import to avoid conflict with relative json-imports:
    // https://github.com/LaxarJS/laxar_uikit/issues/30
    'json!../input/messages.json'
-], function( $, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, builtinValidators, messages ) {
+], function( $, ng, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, builtinValidators, messages ) {
    'use strict';
 
    var assert = ax.assert;
@@ -207,9 +208,7 @@ define( [
    var directive = [ function() {
 
       var idCounter = 0;
-
       var defaultDisplayErrorsImmediately = configValue( 'displayErrorsImmediately', true );
-      var defaultNgModelOptions = configValue( 'ngModelOptions', {} );
 
       return {
          restrict: 'A',
@@ -242,8 +241,6 @@ define( [
             axInputController.initialize( valueType, formattingOptions );
 
             initializeDisplayErrors();
-
-            initializeNgModelOptions();
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -302,38 +299,7 @@ define( [
             function mustDisplayErrors() {
                return !axInputController.waitingForBlur && (
                   ngModelController.$dirty || !axInputController.validationPending
-               );
-            }
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-            // interpret ngModelOptions.updateOn
-            // when moving to AngularJS 1.3, this should be changed to just apply the configuration and let
-            // the ngModelOptionsDirective do the rest.
-            function initializeNgModelOptions() {
-               if( !isText( element ) ) {
-                  return;
-               }
-
-               var ON_UPDATE_DEFAULT_MATCHER = /(\s+|^)default(\s+|$)/;
-
-               var key = 'ngModelOptions';
-               var ngModelOptions = ax.object.options( scope.$eval( attrs[ key ] ), defaultNgModelOptions );
-               var updateOn = ngModelOptions.updateOn;
-               if( updateOn && updateOn !== 'default' ) {
-                  if( !ON_UPDATE_DEFAULT_MATCHER.test( updateOn ) ) {
-                     element.unbind( 'input' ).unbind( 'keydown' ).unbind( 'change' );
-                  }
-                  else {
-                     updateOn = updateOn.replace( ON_UPDATE_DEFAULT_MATCHER, ' ' );
-                  }
-
-                  element.bind( updateOn, function() {
-                     scope.$apply( function() {
-                        ngModelController.$setViewValue( element.val() );
-                     } );
-                  } );
-               }
+                  );
             }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -614,6 +580,43 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+   // ngModelOptions: Forward application-wide defaults to the ngModel controller (if they have not been
+   // overridden locally). To achieve this, the ngModel directive is decorated:
+   // http://www.jonsamwell.com/angularjs-set-default-blur-behaviour-on-ngmodeloptions
+   var configureNgModelOptions = [ '$provide', function( $provide ) {
+      $provide.decorator( 'ngModelDirective', [ '$delegate', function( $delegate ) {
+         var defaultNgModelOptions = configValue( 'ngModelOptions', {} );
+         var directive = $delegate[ 0 ];
+         var compile = directive.compile;
+         directive.compile = function() {
+            var link = compile.apply( this, arguments );
+            return {
+               pre: function( scope, element, attributes, controllers ) {
+                  link.pre.apply( this, arguments );
+                  if( !attributes[ directiveName ] || !isText( element ) ) {
+                     return;
+                  }
+
+                  var ngModelController = controllers[ 0 ];
+                  ng.forEach( defaultNgModelOptions, function( value, key ) {
+                     // if the option is specified by the developer, leave it unmodified:
+                     ngModelController.$options = ngModelController.$options || {};
+                     if( !( key in ngModelController.$options ) ) {
+                        ngModelController.$options[ key ] = ax.object.deepClone( value );
+                     }
+                  } );
+               },
+               post: function() {
+                  link.post.apply( this, arguments );
+               }
+            };
+         };
+         return $delegate;
+      } ] );
+   } ];
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
    function isText( element ) {
       var el = element[0];
       return el.nodeName.toLowerCase() === 'input' && el.type === 'text' || !el.type;
@@ -641,6 +644,7 @@ define( [
 
    return {
       createForModule: function( module ) {
+         module.config( configureNgModelOptions );
          module.controller( controllerName, controller );
          module.directive( directiveName, directive );
 

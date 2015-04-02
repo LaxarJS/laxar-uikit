@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#97](https://github.com/LaxarJS/laxar_uikit/issues/97): axInput: implemented ngModelOptions defaults for AngularJS 1.3.x
 - [#70](https://github.com/LaxarJS/laxar_uikit/issues/70): layer: remove requirement for jQuery UI.
 - [#96](https://github.com/LaxarJS/laxar_uikit/issues/96): axInput: added possibility to configure how a two digit year is interpreted.
     + **BREAKING CHANGE:** see ticket for details
