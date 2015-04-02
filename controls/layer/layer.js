@@ -458,8 +458,8 @@ define( [
             return true;
          }
       }
-      var zNode = $( node ).zIndex();
-      var zLayer = $layerElement.zIndex();
+      var zNode = zIndex( node );
+      var zLayer = zIndex( $layerElement );
       if( zNode !== zLayer ) {
          return zNode > zLayer;
       }
@@ -590,6 +590,39 @@ define( [
       catch( e ) {
          // ignore exceptions in IE  when focussing hidden DOM nodes
       }
+   }
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   /**
+    * Copy of jQuerry UIs `zIndex` method, as it is deprecated there since 1.11.0:
+    * http://jqueryui.com/upgrade-guide/1.11/#deprecated-zindex
+    *
+    * @private
+    */
+   function zIndex( element ) {
+      var $element = $( element );
+      var position;
+      var value;
+      while( $element.length && $element[ 0 ] !== document ) {
+         // Ignore z-index if position is set to a value where z-index is ignored by the browser
+         // This makes behavior of this function consistent across browsers
+         // WebKit always returns auto if the element is positioned
+         position = $element.css( 'position' );
+         if( position === 'absolute' || position === 'relative' || position === 'fixed' ) {
+            // IE returns 0 when zIndex is not specified
+            // other browsers return a string
+            // we ignore the case of nested elements with an explicit value of 0
+            // <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
+            value = parseInt( $element.css( 'zIndex' ), 10 );
+            if( !isNaN( value ) && value !== 0 ) {
+               return value;
+            }
+         }
+         $element = $element.parent();
+      }
+
+      return 0;
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
