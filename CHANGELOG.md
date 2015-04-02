@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.21.3
+
 - [#70](https://github.com/LaxarJS/laxar_uikit/issues/70): layer: remove requirement for jQuery UI.
 
 
