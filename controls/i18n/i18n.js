@@ -62,12 +62,17 @@ define( [
    var axLocalizeFactory = [ function() {
       /**
        * Localize the given value, based on the given i18n state.
+       * Primitive i18n values will be displayed as they are, independent of the presence of any language tag.
        *
        * @param {*} i18nValue  A value to localize.
-       * @param {{locale: String, tags: Map<String, String>}} i18n
+       * @param {{locale: String, tags: Object<String, String>}} i18n
        *   The information based on which to localize, usually $scope.i18n.
        */
       return function axLocalize( i18nValue, i18n /* args... */ ) {
+         if( typeof i18nValue !== 'object' ) {
+            return arguments.length > 2 ? format( ax.string, arguments ) : i18nValue;
+         }
+
          if( !i18n || !i18n.locale || !i18n.tags ) {
             return undefined;
          }
@@ -76,11 +81,16 @@ define( [
             return undefined;
          }
          if( arguments.length > 2 ) {
-            var localizer = i18n_.localizer( languageTag );
-            var args = [ i18nValue ].concat( slice.call( arguments, 2 ) );
-            return localizer.format.apply( localizer, args );
+            return format( i18n_.localizer( languageTag ), arguments );
          }
          return i18n_.localize( languageTag, i18nValue );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         function format( formatter, args ) {
+            var formatArguments = [ i18nValue ].concat( [ slice.call( args, 2 ) ] );
+            return formatter.format.apply( formatter, formatArguments );
+         }
       };
    } ];
 
