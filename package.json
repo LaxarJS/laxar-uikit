@@ -1,6 +1,6 @@
 {
    "name": "laxar_uikit",
-   "version": "1.0.0-pre",
+   "version": "1.0.0-alpha.3",
    "description": "User interface controls for LaxarJS",
    "authors": [],
    "license": "MIT",

@@ -2,12 +2,23 @@
 
 ## Last Changes
 
+
+## v1.0.0-alpha.3
+
 - [#45](https://github.com/LaxarJS/laxar_uikit/issues/45): axLocalize: do not require a localization when filtering primitive values
     + NEW FEATURE: see ticket for details
 - [#97](https://github.com/LaxarJS/laxar_uikit/issues/97): axInput: implemented ngModelOptions defaults for AngularJS 1.3.x
 - [#70](https://github.com/LaxarJS/laxar_uikit/issues/70): layer: remove requirement for jQuery UI.
+
+
+## v1.0.0-alpha.2
+
 - [#96](https://github.com/LaxarJS/laxar_uikit/issues/96): axInput: added possibility to configure how a two digit year is interpreted.
     + **BREAKING CHANGE:** see ticket for details
+
+
+## v1.0.0-alpha.1
+
 - [#98](https://github.com/LaxarJS/laxar_uikit/issues/98): axInput: fixed tests for upcoming usage of Angular 1.3.
 - [#102](https://github.com/LaxarJS/laxar_uikit/issues/102): refactoring: normalized AngularJS module and injection names
 - [#80](https://github.com/LaxarJS/laxar_uikit/issues/80): footprint: removed underscore dependency
