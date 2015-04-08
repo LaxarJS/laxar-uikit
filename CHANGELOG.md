@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#107](https://github.com/LaxarJS/laxar_uikit/issues/107): cleanup: removed dist-task fragments from grunt- and package configuration
+
 
 ## v1.0.0-alpha.3
 
