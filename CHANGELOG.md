@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#106](https://github.com/LaxarJS/laxar_uikit/issues/106): footprint: removed `dom.ensureRenderingAndApply`
+    + **BREAKING CHANGE:** see ticket for details
 - [#107](https://github.com/LaxarJS/laxar_uikit/issues/107): cleanup: removed dist-task fragments from grunt- and package configuration
 
 
