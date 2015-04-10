@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#109](https://github.com/LaxarJS/laxar_uikit/issues/109): axInput: fixed another moment creation from string
+
 
 ## v0.21.3
 

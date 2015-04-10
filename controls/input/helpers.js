@@ -114,7 +114,7 @@ define( [
             var mMaximum = toMoment( valueType, maximum );
             var mValue = toMoment( valueType, value );
 
-            return mMaximum.isAfter( mValue ) || mMaximum.isSame( value );
+            return mMaximum.isAfter( mValue ) || mMaximum.isSame( mValue );
 
          default:
             throw new Error( 'Unsupported type for comparisons: ' + valueType );
