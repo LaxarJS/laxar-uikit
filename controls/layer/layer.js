@@ -433,7 +433,7 @@ define( [
    /** Check if target is visually in front of the layer */
    function isOnTopOf( target, $layerElement ) {
       var node = target;
-      var position = dom.getComputedStyle( target, 'position' );
+      var position = window.getComputedStyle( target, 'position' );
       if( node.offsetParent === document.body && ( position === 'static' || position === 'auto' ) ) {
          return false;
       }
