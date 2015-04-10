@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#109](https://github.com/LaxarJS/laxar_uikit/issues/109): axInput: fixed another moment creation from string
 - [#107](https://github.com/LaxarJS/laxar_uikit/issues/107): cleanup: removed dist-task fragments from grunt- and package configuration
 - [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
 - [#101](https://github.com/LaxarJS/laxar_uikit/issues/101): layer: fixed random order of tabbable nodes.
