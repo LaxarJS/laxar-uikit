@@ -6,7 +6,6 @@
     + **BREAKING CHANGE:** see ticket for details
 - [#106](https://github.com/LaxarJS/laxar_uikit/issues/106): footprint: removed `dom.ensureRenderingAndApply`
     + **BREAKING CHANGE:** see ticket for details
-
 - [#107](https://github.com/LaxarJS/laxar_uikit/issues/107): cleanup: removed dist-task fragments from grunt- and package configuration
 
 
@@ -30,6 +29,7 @@
 - [#102](https://github.com/LaxarJS/laxar_uikit/issues/102): refactoring: normalized AngularJS module and injection names
 - [#80](https://github.com/LaxarJS/laxar_uikit/issues/80): footprint: removed underscore dependency
 
+- [#109](https://github.com/LaxarJS/laxar_uikit/issues/109): axInput: fixed another moment creation from string
 - [#104](https://github.com/LaxarJS/laxar_uikit/issues/104): axInput: fixed moment creation from string
 - [#101](https://github.com/LaxarJS/laxar_uikit/issues/101): layer: fixed random order of tabbable nodes.
 - [#100](https://github.com/LaxarJS/laxar_uikit/issues/100): axInput: fixed missing error class on syntax error when using AngularJS 1.3.
