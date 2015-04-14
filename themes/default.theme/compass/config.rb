@@ -31,11 +31,11 @@ Sass::Script::Number.precision=10
 # opera for Opera.
 # safari for desktop Safari.
 
-browsers = ["ff >= 10", "chrome >= 10", "safari >= 3", "ie >= 8"]
+options = { :browsers => ["ff >= 20", "chrome >= 20", "ie >= 9"] }
 
 on_stylesheet_saved do |file|
    css = File.read(file)
-   File.open(file, 'w') { |io| io << AutoprefixerRails.process(css, { :browsers => browsers } ) }
+   File.open(file, 'w') { |io| io << AutoprefixerRails.process(css, options) }
 end
 
 

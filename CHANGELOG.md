@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#110](https://github.com/LaxarJS/laxar_uikit/issues/110): styling: updated `FontAwesome (v4.3)` and `Bootstrap (v3.3)`
 - [#108](https://github.com/LaxarJS/laxar_uikit/issues/108): footprint: removed `dom.getComputedStyle`
     + **BREAKING CHANGE:** see ticket for details
 - [#106](https://github.com/LaxarJS/laxar_uikit/issues/106): footprint: removed `dom.ensureRenderingAndApply`

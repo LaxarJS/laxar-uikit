@@ -13,8 +13,8 @@
       "docs"
    ],
    "dependencies": {
-      "bootstrap-sass-official": "twbs/bootstrap-sass#3.2.x",
-      "font-awesome": "FortAwesome/Font-Awesome#4.2.x",
+      "bootstrap-sass-official": "twbs/bootstrap-sass#3.3.x",
+      "font-awesome": "FortAwesome/Font-Awesome#4.3.x",
       "jquery_ui": "components/jqueryui#1.11.x",
       "laxar": "LaxarJS/laxar#^1.0.0-alpha.3",
       "moment": "moment/moment#2.9.x",
