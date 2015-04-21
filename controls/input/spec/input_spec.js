@@ -30,7 +30,8 @@ define( [
             }
          };
 
-         $.fn.tooltip = jasmine.createSpy( 'tooltip' ).andReturn( { on: function() {} } );
+         var minTooltipApi = { on: function() { return minTooltipApi; } };
+         $.fn.tooltip = jasmine.createSpy( 'tooltip' ).andReturn( minTooltipApi );
 
          jasmine.Clock.useMock();
       } ) );

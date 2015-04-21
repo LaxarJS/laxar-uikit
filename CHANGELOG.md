@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#112](https://github.com/LaxarJS/laxar_uikit/issues/112): axInput, axTooltip: tooltip now reflects position change of anchor element.
+
+
 ## v1.0.0-alpha.4
 
 - [#110](https://github.com/LaxarJS/laxar_uikit/issues/110): styling: updated `FontAwesome (v4.3)` and `Bootstrap (v3.3)`
