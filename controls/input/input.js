@@ -502,24 +502,58 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function createTooltip() {
+               var tooltipPositionTimeout = null;
                var id = 'axInputErrorTooltip' + idCounter++;
 
                element.tooltip( {
                   animation: true,
                   trigger: 'manual',
-                  placement: isSelect( element ) ? 'top' : 'bottom',
+                  placement: isSelect( element ) ? 'top' : function( tooltipEl, anchor ) {
+                     var anchorOffset = $( anchor ).offset();
+                     var anchorHeight = $( anchor ).outerHeight( true );
+                     var documentHeight = $( document ).outerHeight( true );
+                     if( anchorOffset.top + anchorHeight + 150 > documentHeight ) {
+                        return 'auto';
+                     }
+
+                     return 'bottom';
+                  },
                   template:
-                  '<div id="' + id + '" class="tooltip error">' +
-                  '<div class="tooltip-arrow"></div>' +
-                  '<div class="tooltip-inner"></div>' +
-                  '</div>',
+                     '<div id="' + id + '" class="tooltip error">' +
+                     '<div class="tooltip-arrow"></div>' +
+                     '<div class="tooltip-inner"></div>' +
+                     '</div>',
                   title: function() {
                      return validationMessage;
                   },
                   container: 'body'
                } )
-               .on( 'shown hidden', function( e ) {
+               .on( 'show.bs.tooltip hide.bs.tooltip', function( e ) {
                   tooltipVisible = e.type === 'shown';
+               } )
+               .on( 'shown.bs.tooltip', function() {
+                  var lastElementPosition = element.offset();
+                  var lastElementPositionString = lastElementPosition.left + '_' + lastElementPosition.top;
+                  var pending = false;
+                  tooltipPositionTimeout = setInterval( function(  ) {
+                     var newPosition = element.offset();
+                     var newPositionString = newPosition.left + '_' + newPosition.top;
+
+                     if( lastElementPositionString !== newPositionString ) {
+                        pending = true;
+                     }
+                     else if( pending ) {
+                        pending = false;
+                        clearInterval( tooltipPositionTimeout );
+                        element.tooltip( 'show' );
+                     }
+                     lastElementPosition = newPosition;
+                     lastElementPositionString = newPositionString;
+                  }, 200 );
+               } )
+               .on( 'hide.bs.tooltip', function() {
+                  clearInterval( tooltipPositionTimeout );
+                  tooltipPositionTimeout = null;
                } );
 
                return id;
