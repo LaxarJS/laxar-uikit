@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   './button_list/button_list'
+   'laxar_uikit/controls/button_list/button_list'
 ], function( ng, axButtonList ) {
    'use strict';
 

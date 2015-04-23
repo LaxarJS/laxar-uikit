@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   './html_attribute/html_attribute'
+   'laxar_uikit/controls/html_attribute/html_attribute'
 ], function( ng, axHtmlAttribute ) {
    'use strict';
 
