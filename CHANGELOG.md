@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#113](https://github.com/LaxarJS/laxar_uikit/issues/113): axPageFade: added axPageFade which had been removed from LaxarJS core (LaxarJS/laxar#181)
+    + NEW FEATURE: see ticket for details
 - [#112](https://github.com/LaxarJS/laxar_uikit/issues/112): axInput, axTooltip: tooltip now reflects position change of anchor element.
 
 

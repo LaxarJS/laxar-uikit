@@ -5,12 +5,12 @@
  */
 define( [
    'angular',
-   './i18n/i18n'
-], function( ng, axButtonList ) {
+   'laxar_uikit/controls/i18n/i18n'
+], function( ng, axI18n ) {
    'use strict';
 
    var module = ng.module( 'axI18n', [] );
-   axButtonList.createForModule( module );
+   axI18n.createForModule( module );
 
    return module;
 } );
