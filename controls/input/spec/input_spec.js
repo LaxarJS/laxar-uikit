@@ -7,10 +7,9 @@ define( [
    'laxar/laxar_testing',
    'laxar_uikit/controls/input',
    'laxar_uikit/controls/input/parsers',
-   'laxar_uikit/controls/input/helpers',
    'angular-mocks',
    'jquery'
-], function( ax, inputModule, parsers, helpers, angularMocks, $ ) {
+], function( ax, inputModule, parsers, angularMocks, $ ) {
    'use strict';
 
    describe( 'An axInput control', function() {
@@ -202,10 +201,6 @@ define( [
             scope.$apply( function() {
                scope.someValue = 1231442;
             } );
-
-            spyOn( helpers, 'getSelectionRange' ).andReturn( { start: 7, end: 7 } );
-            spyOn( helpers, 'isActiveElement' ).andReturn( true );
-            spyOn( helpers, 'setSelectionRange' );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -230,36 +225,6 @@ define( [
 
             $element.trigger( 'focusout' );
             expect( $element.val() ).toEqual( '1.231.442' );
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         it( 'adjusts the cursor position correctly after removing the grouping separators', function() {
-            $element.trigger( 'focusin' );
-            jasmine.Clock.tick( 0 );
-
-            expect( helpers.getSelectionRange ).toHaveBeenCalled();
-            expect( helpers.setSelectionRange ).toHaveBeenCalledWith( $element[0], 5, 5 );
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         it( 'doesn\'t adjust the cursor position if the element already lost focus (jira ATP-7910)', function() {
-            $element.trigger( 'focusin' );
-            helpers.isActiveElement.andReturn( false );
-            jasmine.Clock.tick( 0 );
-
-            expect( helpers.setSelectionRange ).not.toHaveBeenCalled();
-         } );
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-         it( 'selects everything when the user tabs into the input (jira ATP-8210)', function() {
-            helpers.getSelectionRange.andReturn( { start: 0, end: $element.val().length } );
-            $element.trigger( 'focusin' );
-            jasmine.Clock.tick( 0 );
-
-            expect( helpers.setSelectionRange ).toHaveBeenCalledWith( $element[0], 0, 7 );
          } );
 
       } );
