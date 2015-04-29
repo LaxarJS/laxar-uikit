@@ -297,9 +297,8 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function mustDisplayErrors() {
-               return !axInputController.waitingForBlur && (
-                  ngModelController.$dirty || !axInputController.validationPending
-                  );
+               return !axInputController.waitingForBlur &&
+                  ( ngModelController.$dirty || !axInputController.validationPending );
             }
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -394,7 +393,10 @@ define( [
 
                // We need to do this asynchronously because of Google Chrome.
                setTimeout( function() {
-                  var selection = helpers.getSelectionRange( element[0] );
+                  var selection = {
+                     start: element[0].selectionStart,
+                     end: element[0].selectionEnd
+                  };
                   var elementValue = element.val();
                   var wasProbablyTabbed = selection.start === 0 && selection.end === element.val().length;
 
@@ -405,7 +407,7 @@ define( [
                   }
 
                   if( wasProbablyTabbed ) {
-                     helpers.setSelectionRange( element[0], 0, element.val().length );
+                     element[0].setSelectionRange( 0, element.val().length );
                      return;
                   }
 
@@ -416,7 +418,7 @@ define( [
                      newSelection -= noOfSeparators;
                   }
 
-                  helpers.setSelectionRange( element[0], newSelection, newSelection );
+                  element[0].setSelectionRange( newSelection, newSelection );
                }, 0 );
             }
 
@@ -565,9 +567,6 @@ define( [
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
             scope.$on( '$destroy', function() {
                try {
                   element.off( 'focusin focusout shown hidden' );
@@ -585,10 +584,14 @@ define( [
                element = null;
             } );
 
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
             function radioGroup() {
-               var selector = [ 'ng\\:model', 'x-ng-model', 'ng-model', 'data-ng-model' ].map( function( attribute ) {
-                  return 'input[type="radio"][' + attribute + '="' + attrs.ngModel + '"]';
-               } ).join( ', ' );
+               var selector = [ 'ng\\:model', 'x-ng-model', 'ng-model', 'data-ng-model' ]
+                  .map( function( attribute ) {
+                     return 'input[type="radio"][' + attribute + '="' + attrs.ngModel + '"]';
+                  } )
+                  .join( ', ' );
                return $( selector );
             }
          }
