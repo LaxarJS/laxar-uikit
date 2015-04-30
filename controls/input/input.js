@@ -9,14 +9,14 @@ define( [
    'laxar',
    'bootstrap-tooltip',
    '../../lib/i18n',
-   './formatters',
-   './parsers',
+   '../../lib/formatter',
+   '../../lib/parser',
    './helpers',
    './builtin_validators',
    // Overly specific import to avoid conflict with relative json-imports:
    // https://github.com/LaxarJS/laxar_uikit/issues/30
    'json!../input/messages.json'
-], function( $, ng, ax, bootstrapTooltip, i18n, formatters, parsers, helpers, builtinValidators, messages ) {
+], function( $, ng, ax, bootstrapTooltip, i18n, formatter, parser, helpers, builtinValidators, messages ) {
    'use strict';
 
    var assert = ax.assert;
@@ -183,10 +183,10 @@ define( [
       function createParser( type, formattingOptions ) {
          if( type === 'select' ) {
             return function( value ) {
-               return parsers.success( value );
+               return parser.success( value );
             };
          }
-         return parsers.create( type, formattingOptions );
+         return parser.create( type, formattingOptions );
       }
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,7 +197,7 @@ define( [
                return value;
             };
          }
-         return formatters.create( type, formattingOptions );
+         return formatter.create( type, formattingOptions );
       }
 
    } ];
@@ -387,7 +387,7 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function removeGroupingAndKeepCursorPosition() {
-               var focusFormat = formatters.create( valueType, ax.object.options( {
+               var focusFormat = formatter.create( valueType, ax.object.options( {
                   groupingSeparator: ''
                }, formattingOptions ) );
 

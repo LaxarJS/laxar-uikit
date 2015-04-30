@@ -4,12 +4,16 @@
  * http://laxarjs.org/license
  */
 define( [
-   './lib/dom'
-], function( dom ) {
+   './lib/dom',
+   './lib/formatter',
+   './lib/parser'
+], function( dom, formatter, parser ) {
    'use strict';
 
    return {
-      dom: dom
+      dom: dom,
+      formatter: formatter,
+      parser: parser
    };
 
 } );
