@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v1.0.0-alpha.5
+
 - [#115](https://github.com/LaxarJS/laxar_uikit/issues/115): axInput: exposed formatter and parser as public api of laxar uikit
     + NEW FEATURE: see ticket for details
 - [#114](https://github.com/LaxarJS/laxar_uikit/issues/114): axInput: removed some ie8 specific code
