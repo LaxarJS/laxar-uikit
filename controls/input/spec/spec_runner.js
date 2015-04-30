@@ -9,9 +9,7 @@
       title: 'Input Specification',
       tests: [
          'builtin_validators_spec',
-         'formatters_spec',
-         'input_spec',
-         'parsers_spec'
+         'input_spec'
       ],
       requireConfig: {},
       widgetJson: false

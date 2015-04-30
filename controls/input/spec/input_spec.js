@@ -6,10 +6,9 @@
 define( [
    'laxar/laxar_testing',
    'laxar_uikit/controls/input',
-   'laxar_uikit/controls/input/parsers',
    'angular-mocks',
    'jquery'
-], function( ax, inputModule, parsers, angularMocks, $ ) {
+], function( ax, inputModule, angularMocks, $ ) {
    'use strict';
 
    describe( 'An axInput control', function() {
@@ -17,10 +16,12 @@ define( [
       var $compile;
       var $rootScope;
 
-      beforeEach( angularMocks.module( inputModule.name ) );
-      beforeEach( angularMocks.inject( function( _$compile_, _$rootScope_ ) {
-         $compile = _$compile_;
-         $rootScope = _$rootScope_;
+      beforeEach( function() {
+         angularMocks.module( inputModule.name );
+         angularMocks.inject( function( _$compile_, _$rootScope_ ) {
+            $compile = _$compile_;
+            $rootScope = _$rootScope_;
+         } );
 
          $rootScope.i18n = {
             locale: 'default',
@@ -33,7 +34,7 @@ define( [
          $.fn.tooltip = jasmine.createSpy( 'tooltip' ).andReturn( minTooltipApi );
 
          jasmine.Clock.useMock();
-      } ) );
+      } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -387,7 +388,11 @@ define( [
          beforeEach( function() {
             scope = $rootScope.$new();
 
-            $element = $compile( '<input ax-input="integer" ng-model="someValue" data-ax-input-display-errors-immediately="showImmediately" ax-input-minimum-value="1000"/>' )( scope );
+            $element = $compile( '<input ' +
+               'ng-model="someValue" ' +
+               'ax-input="integer" ' +
+               'ax-input-display-errors-immediately="showImmediately" ' +
+               'ax-input-minimum-value="1000"/>' )( scope );
             $element.appendTo( 'body' );
             scope.$apply( function() {
                scope.someValue = 12;
@@ -674,8 +679,9 @@ define( [
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
          it( 'instantiates a parser for the given type', function() {
-            expect( controller.parse( '12.345,12' ) ).toEqual( parsers.success( 12345.12 ) );
-            expect( controller.parse( 'Hi' ) ).toEqual( parsers.error() );
+            expect( controller.parse( '12.345,12' ) )
+               .toEqual( { ok: true, value: 12345.12 } );
+            expect( controller.parse( 'Hi' ) ).toEqual( { ok: false } );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -700,7 +706,7 @@ define( [
 
          it( 'creates a parser simply returning the identity of the input (jira ATP-7858)', function() {
             expect( controller.parse( { my: 'object' } ) )
-               .toEqual( parsers.success( { my: 'object' } ) );
+               .toEqual( { ok: true, value: { my: 'object' } } );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////

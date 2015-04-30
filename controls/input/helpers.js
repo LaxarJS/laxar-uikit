@@ -4,10 +4,12 @@
  * http://laxarjs.org/license
  */
 define( [
-   'moment',
-   './constants'
-], function( moment, constants ) {
+   'moment'
+], function( moment ) {
    'use strict';
+
+   var ISO_DATE_FORMAT = 'YYYY-MM-DD';
+   var ISO_TIME_FORMAT = 'HH:mm:ss';
 
    function isActiveElement( element ) {
       return element === document.activeElement;
@@ -74,9 +76,9 @@ define( [
       if( !value || value.toLowerCase() === 'now' ) {
          // just returning `moment()` isn't sufficient, as for dates the time is expected to be 00:00:00.
          // We thus take this rather pragmatic approach.
-         value = moment().format( valueType === 'time' ? constants.ISO_TIME_FORMAT : constants.ISO_DATE_FORMAT );
+         value = moment().format( valueType === 'time' ? ISO_TIME_FORMAT : ISO_DATE_FORMAT );
       }
-      return moment( value, valueType === 'time' ? constants.ISO_TIME_FORMAT : constants.ISO_DATE_FORMAT );
+      return moment( value, valueType === 'time' ? ISO_TIME_FORMAT : ISO_DATE_FORMAT );
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
