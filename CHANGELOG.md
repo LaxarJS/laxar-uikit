@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#117](https://github.com/LaxarJS/laxar_uikit/issues/117): project: added missing license
+
 
 ## v1.0.0-alpha.5
 
