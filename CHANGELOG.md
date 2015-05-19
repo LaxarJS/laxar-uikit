@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#122](https://github.com/LaxarJS/laxar_uikit/issues/122): require_config, bower: removed deps field and updated grunt-laxar
+
 
 ## v1.0.0-alpha.6
 
