@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#118](https://github.com/LaxarJS/laxar_uikit/issues/118): i18n: added as export to module
 - [#117](https://github.com/LaxarJS/laxar_uikit/issues/117): project: added missing license
 
 
