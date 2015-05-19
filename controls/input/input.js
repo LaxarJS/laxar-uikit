@@ -535,6 +535,7 @@ define( [
                   var lastElementPosition = element.offset();
                   var lastElementPositionString = lastElementPosition.left + '_' + lastElementPosition.top;
                   var pending = false;
+                  clearInterval( tooltipPositionTimeout );
                   tooltipPositionTimeout = setInterval( function(  ) {
                      var newPosition = element.offset();
                      var newPositionString = newPosition.left + '_' + newPosition.top;
