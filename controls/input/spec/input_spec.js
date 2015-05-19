@@ -5,7 +5,7 @@
  */
 define( [
    'laxar/laxar_testing',
-   'laxar_uikit/controls/input',
+   'laxar-uikit/controls/input',
    'angular-mocks',
    'jquery'
 ], function( ax, inputModule, angularMocks, $ ) {
@@ -324,7 +324,7 @@ define( [
             var html = '<input data-ax-input="integer" data-ng-model="someValue" ' +
                        'data-ax-input-display-errors-immediately="true" ax-input-minimum-value="100"/>';
 
-            var configKey = 'lib.laxar_uikit.controls.input.ngModelOptions';
+            var configKey = 'lib.laxar-uikit.controls.input.ngModelOptions';
             var configValue;
 
             beforeEach( function() {

@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/page_fade/page_fade'
+   'laxar-uikit/controls/page_fade/page_fade'
 ], function( ng, axPageFade ) {
    'use strict';
 

@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/affix/affix'
+   'laxar-uikit/controls/affix/affix'
 ], function( ng, axAffix ) {
    'use strict';
 

@@ -57,9 +57,9 @@ var require = {
          main: 'laxar'
       },
       {
-         name: 'laxar_uikit',
+         name: 'laxar-uikit',
          location: '.',
-         main: 'laxar_uikit'
+         main: 'laxar-uikit'
       },
       {
          name: 'moment',

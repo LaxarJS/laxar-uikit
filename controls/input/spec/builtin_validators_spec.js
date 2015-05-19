@@ -4,7 +4,7 @@
  * http://laxarjs.org/license
  */
 define( [
-   'laxar_uikit/controls/input',
+   'laxar-uikit/controls/input',
    'angular-mocks',
    'jquery',
    './builtin_validators_spec_data'

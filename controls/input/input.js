@@ -14,7 +14,7 @@ define( [
    './helpers',
    './builtin_validators',
    // Overly specific import to avoid conflict with relative json-imports:
-   // https://github.com/LaxarJS/laxar_uikit/issues/30
+   // https://github.com/LaxarJS/laxar-uikit/issues/30
    'json!../input/messages.json'
 ], function( $, ng, ax, bootstrapTooltip, i18n, formatter, parser, helpers, builtinValidators, messages ) {
    'use strict';
@@ -50,7 +50,7 @@ define( [
     *   errors are presented to the user immediately by CSS styling and tooltip. Otherwise, errors are only
     *   shown when the field has been changed (ngModelController.$dirty) or when the event `axInput.validate`
     *   has been received. The default is `true` but will be changed to `false` in future major releases. It
-    *   can be changed using the configuration 'lib.laxar_uikit.controls.input.displayErrorsImmediately'.
+    *   can be changed using the configuration 'lib.laxar-uikit.controls.input.displayErrorsImmediately'.
     *
     * Writing an own semantic validator is as easy as writing a directive requiring the axInputController and
     * calling `addSemanticValidator` with the validator function as first argument and an error message
@@ -118,7 +118,7 @@ define( [
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function configValue( key, fallback ) {
-      return ax.configuration.get( 'lib.laxar_uikit.controls.input.' + key, fallback );
+      return ax.configuration.get( 'lib.laxar-uikit.controls.input.' + key, fallback );
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////

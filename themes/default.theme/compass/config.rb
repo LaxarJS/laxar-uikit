@@ -49,14 +49,14 @@ def find_bower_dir( base_dir )
    until File.directory? (base_dir + relative_bower_dir)
       relative_bower_dir = '../' + relative_bower_dir
       limit -= 1
-      if limit === 0 then abort( 'laxar_uikit default.theme: bower_components seems to be missing!' ) end
+      if limit === 0 then abort( 'laxar-uikit default.theme: bower_components seems to be missing!' ) end
    end
    return File.expand_path( base_dir + relative_bower_dir ) + '/'
 end
 
 base_dir = File.dirname(__FILE__) + '/../'
 bower_dir = find_bower_dir( base_dir )
-puts 'laxar_uikit default.theme: using bower_components at ' + bower_dir
+puts 'laxar-uikit default.theme: using bower_components at ' + bower_dir
 
 # Find SCSS in theme (from widgets, controls and layouts)
 add_import_path base_dir + 'scss/'

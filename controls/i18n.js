@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/i18n/i18n'
+   'laxar-uikit/controls/i18n/i18n'
 ], function( ng, axI18n ) {
    'use strict';
 

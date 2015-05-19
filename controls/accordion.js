@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/accordion/accordion'
+   'laxar-uikit/controls/accordion/accordion'
 ], function( ng, axAccordion ) {
    'use strict';
 

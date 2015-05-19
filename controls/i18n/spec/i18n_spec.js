@@ -4,7 +4,7 @@
  * http://laxarjs.org/license
  */
 define( [
-   'laxar_uikit/controls/i18n',
+   'laxar-uikit/controls/i18n',
    'angular-mocks'
 ], function( i18nModule, angularMocks ) {
    'use strict';

@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/date_picker/date_picker'
+   'laxar-uikit/controls/date_picker/date_picker'
 ], function( ng, axDatePicker ) {
    'use strict';
 

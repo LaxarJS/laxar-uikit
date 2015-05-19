@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/slider/slider'
+   'laxar-uikit/controls/slider/slider'
 ], function( ng, axSlider ) {
    'use strict';
 
