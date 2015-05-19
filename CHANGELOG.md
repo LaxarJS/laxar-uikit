@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#119](https://github.com/LaxarJS/laxar_uikit/issues/119): axInput, axTooltip: fixed possible endless interval of position calculation.
 - [#112](https://github.com/LaxarJS/laxar_uikit/issues/112): axInput, axTooltip: tooltip now reflects position change of anchor element.
 
 
