@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/json_form/json_form'
+   'laxar-uikit/controls/json_form/json_form'
 ], function( ng, axJsonForm ) {
    'use strict';
 

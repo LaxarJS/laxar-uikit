@@ -1,10 +1,10 @@
 {
-   "name": "laxar_uikit",
+   "name": "laxar-uikit",
    "version": "1.0.0-alpha.6",
    "description": "Standard UI controls and stylesheets for LaxarJS widgets",
    "authors": [],
    "license": "MIT",
-   "main": "laxar_uikit.js",
+   "main": "laxar-uikit.js",
    "ignore": [
       ".*",
       "Gruntfile.js",

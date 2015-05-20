@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/tooltip/tooltip'
+   'laxar-uikit/controls/tooltip/tooltip'
 ], function( ng, axTooltip ) {
    'use strict';
 

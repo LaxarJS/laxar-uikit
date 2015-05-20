@@ -5,8 +5,8 @@
  */
 /*global jQuery,runs,waitsFor*/
 define( [
-   'laxar_uikit/controls/layer',
-   'laxar_uikit/controls/layer/layer_utils',
+   'laxar-uikit/controls/layer',
+   'laxar-uikit/controls/layer/layer_utils',
    'laxar/laxar_testing',
    'angular-mocks',
    'text!./html/simple_layer.html'

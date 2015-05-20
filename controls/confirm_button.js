@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/confirm_button/confirm_button'
+   'laxar-uikit/controls/confirm_button/confirm_button'
 ], function( ng, axConfirmButton ) {
    'use strict';
 

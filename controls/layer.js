@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/layer/layer'
+   'laxar-uikit/controls/layer/layer'
 ], function( ng, axLayer ) {
    'use strict';
 

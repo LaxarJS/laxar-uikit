@@ -8,7 +8,7 @@ define( [
    '../../lib/i18n',
    './helpers',
    // Overly specific import to avoid conflict with relative json-imports:
-   // https://github.com/LaxarJS/laxar_uikit/issues/30
+   // https://github.com/LaxarJS/laxar-uikit/issues/30
    'json!../input/messages.json'
 ], function( ax, i18n, helpers, messages ) {
    'use strict';

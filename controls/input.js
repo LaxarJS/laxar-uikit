@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/input/input'
+   'laxar-uikit/controls/input/input'
 ], function( ng, axInput ) {
    'use strict';
 

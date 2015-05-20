@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+//
+// Link font awesome and bootstrap sources with laxar
+// -----------------------------------------------------------------------------------------------------------
+
+@import "laxar-uikit/variables";
+@import "laxar-uikit/functions";
+@import "laxar-uikit/animations";
+@import "laxar-uikit/mixins";
+
+@import "laxar-uikit/mapping_status_classes";
+@import "laxar-uikit/mapping_icon_classes";
+
+@import "laxar-uikit/type";

@@ -5,7 +5,7 @@
  */
 define( [
    'angular',
-   'laxar_uikit/controls/text_ellipsis/text_ellipsis',
+   'laxar-uikit/controls/text_ellipsis/text_ellipsis',
    'angular-sanitize'
 ], function( ng, axTextEllipsis ) {
    'use strict';

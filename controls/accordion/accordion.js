@@ -6,7 +6,6 @@
 define( [
    'angular',
    'laxar',
-   'laxar_uikit',
    'jquery_ui/accordion'
 ], function( ng, ax ) {
    'use strict';

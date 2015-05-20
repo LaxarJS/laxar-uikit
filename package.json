@@ -1,12 +1,12 @@
 {
-   "name": "laxar_uikit",
+   "name": "laxar-uikit",
    "version": "1.0.0-alpha.6",
    "description": "User interface controls for LaxarJS",
    "authors": [],
    "license": "MIT",
    "repository": {
       "type": "git",
-      "url": "https://github.com/LaxarJS/laxar_uikit.git"
+      "url": "https://github.com/LaxarJS/laxar-uikit.git"
    },
    "scripts": {
       "test": "grunt test --continue",

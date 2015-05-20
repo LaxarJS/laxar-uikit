@@ -16,7 +16,7 @@ define( [
    './form_types/form_object',
    './form_types/form_string',
    // Overly specific import to avoid conflict with relative json-imports:
-   // https://github.com/LaxarJS/laxar_uikit/issues/30
+   // https://github.com/LaxarJS/laxar-uikit/issues/30
    'json!../json_form/messages.json'
 ], function( require,
              angular,

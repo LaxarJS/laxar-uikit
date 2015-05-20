@@ -11,7 +11,7 @@ module.exports = function( grunt ) {
    var src = {
       gruntfile: 'Gruntfile.js',
       require: 'require_config.js',
-      laxar_uikit: [
+      'laxar-uikit': [
          pkg.name + '.js',
          'lib/**/*.js',
          '!lib/**/spec/**/*.js',
@@ -49,7 +49,7 @@ module.exports = function( grunt ) {
             options: { node: true },
             src: src.gruntfile
          },
-         laxar_uikit: { src: src.laxar_uikit },
+         'laxar-uikit': { src: src[ pkg.name ] },
          specs: { src: src.specs }
       },
       karma: {
@@ -70,7 +70,7 @@ module.exports = function( grunt ) {
                { pattern: '*.js', included: false }
             ]
          },
-         laxar_uikit: {
+         'laxar-uikit': {
             options: {
                files: [
                   { pattern: 'bower_components/**', included: false },
@@ -112,9 +112,9 @@ module.exports = function( grunt ) {
             files: src.gruntfile,
             tasks: [ 'jshint:gruntfile' ]
          },
-         laxar_uikit: {
-            files: src.laxar_uikit,
-            tasks: [ 'jshint:laxar_uikit', 'karma' ]
+         'laxar-uikit': {
+            files: src[ pkg.name ],
+            tasks: [ 'jshint:laxar-uikit', 'karma' ]
          },
          specs: {
             files: src.specs,
