@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#105](https://github.com/LaxarJS/laxar-uikit/issues/105): project: removed now-standalone controls
 - [#121](https://github.com/LaxarJS/laxar-uikit/issues/121): project: renamed to laxar-uikit
 - [#122](https://github.com/LaxarJS/laxar-uikit/issues/122): require_config, bower: removed deps field and updated grunt-laxar
 

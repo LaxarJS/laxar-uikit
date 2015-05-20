@@ -96,12 +96,8 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   return {
-      createForModule: function( module ) {
-         module
-            .directive( axBindLocaleName, axBindLocaleFactory )
-            .filter( axLocalizeName, axLocalizeFactory );
-      }
-   };
+   return ng.module( 'axI18nControl', [] )
+      .directive( axBindLocaleName, axBindLocaleFactory )
+      .filter( axLocalizeName, axLocalizeFactory );
 
 } );
