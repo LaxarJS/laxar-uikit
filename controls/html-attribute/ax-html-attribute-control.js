@@ -6,7 +6,7 @@
 define( [
    'angular',
    'angular-sanitize'
-], function() {
+], function( ng ) {
    'use strict';
 
    var axHtmlAttributeName = 'axHtmlAttribute';
@@ -74,11 +74,8 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   return {
-      createForModule: function( module ) {
-         module.directive( axHtmlAttributeName, axHtmlAttributeFactory );
-         module.directive( axI18nHtmlAttributeName, axHtmlAttributeFactory );
-      }
-   };
+   return ng.module( 'axHtmlAttributeControl', [] )
+      .directive( axHtmlAttributeName, axHtmlAttributeFactory )
+      .directive( axI18nHtmlAttributeName, axHtmlAttributeFactory );
 
 } );

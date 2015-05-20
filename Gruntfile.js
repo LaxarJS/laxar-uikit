@@ -90,10 +90,7 @@ module.exports = function( grunt ) {
                   file: 'lcov.info'
                }
             }
-         },
-         'controls-input': karma( 'input' ),
-         'controls-i18n': karma( 'i18n' ),
-         'controls-layer': karma( 'layer' )
+         }
       },
       test_results_merger: {
          laxar: {
