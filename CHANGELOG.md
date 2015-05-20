@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v1.0.0-alpha.7
+
 - [#105](https://github.com/LaxarJS/laxar-uikit/issues/105): project: removed now-standalone controls
     + **BREAKING CHANGE:** see ticket for details
 - [#121](https://github.com/LaxarJS/laxar-uikit/issues/121): project: renamed to laxar-uikit

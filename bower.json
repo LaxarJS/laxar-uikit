@@ -1,7 +1,7 @@
 {
    "name": "laxar-uikit",
-   "version": "1.0.0-alpha.6",
-   "description": "Standard UI controls and stylesheets for LaxarJS widgets",
+   "version": "1.0.0-alpha.7",
+   "description": "Bootstrap-compatible base styles for LaxarJS widgets, plus a few basic controls.",
    "authors": [],
    "license": "MIT",
    "main": "laxar-uikit.js",
