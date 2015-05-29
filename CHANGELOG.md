@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v1.0.0-beta.0
+
 - [#116](https://github.com/LaxarJS/laxar-uikit/issues/116):  documentation: provided updated API doc for relevant modules
 
 
