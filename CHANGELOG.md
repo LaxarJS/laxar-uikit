@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#123](https://github.com/LaxarJS/laxar_patterns/issues/123): documentation: fixed some minor issues
+
 
 ## v1.0.0-beta.0
 
