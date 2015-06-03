@@ -1,6 +1,3 @@
-[<< return to index](../../README.md)
-
-Manuals
-=======
+# Manuals
 
 * [Configuration Options](configuration.md)
