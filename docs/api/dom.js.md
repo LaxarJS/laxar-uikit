@@ -16,4 +16,4 @@ result of the first call is cached and returned on the next call.
 ##### Returns
 | Type | Description |
 | ---- | ----------- |
-| `String` | the correct name for the `transform` CSS property |
+| `String` |  the correct name for the `transform` CSS property |
