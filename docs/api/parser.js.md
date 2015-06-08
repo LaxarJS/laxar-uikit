@@ -41,20 +41,20 @@ parse( 'laxar' ); // -> { ok: false }
 ##### Parameters
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| type | `String` | the value type to create the parser for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
-| _optionalOptions_ | `Object` | different options depending on the selected `type` |
-| _optionalOptions.groupingSeparator_ | `String` | the character used for thousands separation. Applicable to types `decimal` and `integer` only. Default: `','` |
-| _optionalOptions.decimalSeparator_ | `String` | the character used for fraction part separation. Applicable to type `decimal` only. Default: `'.'` |
-| _optionalOptions.dateFormat_ | `String` | the expected format for dates to parse. If the input doesn't match this format, the `optionalOptions.dateFallbackFormats` are tried. Applicable to type `date` only. Default: `'M/D/YYYY'` |
-| _optionalOptions.dateFallbackFormats_ | `String` | formats to try, when parsing with the `optionalOptions.dateFormat` failed. Applicable to type `date` only. Default: `[ 'M/D/YY' ]` |
-| _optionalOptions.dateTwoDigitYearWrap_ | `Number` | the value to decide when parsing a two digit year, if the resulting year starts with `19` or with `20`. Any value below or equal to this number results in a year of the form 20xx, whereas any value above results in a year of the form 19xx. Applicable to type `date` only. Default: `68` |
-| _optionalOptions.timeFormat_ | `String` | the expected format for times to parse. If the input doesn't match this format, the `optionalOptions.timeFallbackFormats` are tried. Applicable to type `time` only. Default: `'H:m'` |
-| _optionalOptions.timeFallbackFormats_ | `String` | formats to try, when parsing with the `optionalOptions.timeFormat` failed. Applicable to type `time` only. Default: `[ 'H', 'HHmm' ]` |
+| type | `String` |  the value type to create the parser for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
+| _optionalOptions_ | `Object` |  different options depending on the selected `type` |
+| _optionalOptions.groupingSeparator_ | `String` |  the character used for thousands separation. Applicable to types `decimal` and `integer` only. Default: `','` |
+| _optionalOptions.decimalSeparator_ | `String` |  the character used for fraction part separation. Applicable to type `decimal` only. Default: `'.'` |
+| _optionalOptions.dateFormat_ | `String` |  the expected format for dates to parse. If the input doesn't match this format, the `optionalOptions.dateFallbackFormats` are tried. Applicable to type `date` only. Default: `'M/D/YYYY'` |
+| _optionalOptions.dateFallbackFormats_ | `String` |  formats to try, when parsing with the `optionalOptions.dateFormat` failed. Applicable to type `date` only. Default: `[ 'M/D/YY' ]` |
+| _optionalOptions.dateTwoDigitYearWrap_ | `Number` |  the value to decide when parsing a two digit year, if the resulting year starts with `19` or with `20`. Any value below or equal to this number results in a year of the form 20xx, whereas any value above results in a year of the form 19xx. Applicable to type `date` only. Default: `68` |
+| _optionalOptions.timeFormat_ | `String` |  the expected format for times to parse. If the input doesn't match this format, the `optionalOptions.timeFallbackFormats` are tried. Applicable to type `time` only. Default: `'H:m'` |
+| _optionalOptions.timeFallbackFormats_ | `String` |  formats to try, when parsing with the `optionalOptions.timeFormat` failed. Applicable to type `time` only. Default: `[ 'H', 'HHmm' ]` |
 
 ##### Returns
 | Type | Description |
 | ---- | ----------- |
-| `Function` | the parsing function as described above |
+| `Function` |  the parsing function as described above |
 
 #### <a name="success"></a>success( value )
 Creates a successful parsing result. This is useful e.g. when writing tests.
@@ -62,12 +62,12 @@ Creates a successful parsing result. This is useful e.g. when writing tests.
 ##### Parameters
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| value | `*` | the parsing result |
+| value | `*` |  the parsing result |
 
 ##### Returns
 | Type | Description |
 | ---- | ----------- |
-| `Object` | the parsing result object of form `{ ok: true, value: value }` |
+| `Object` |  the parsing result object of form `{ ok: true, value: value }` |
 
 #### <a name="error"></a>error()
 Creates a failed parsing result. This is useful e.g. when writing tests.
@@ -75,4 +75,4 @@ Creates a failed parsing result. This is useful e.g. when writing tests.
 ##### Returns
 | Type | Description |
 | ---- | ----------- |
-| `Object` | the parsing result object of form `{ ok: false }` |
+| `Object` |  the parsing result object of form `{ ok: false }` |
