@@ -24,16 +24,16 @@ and `undefined` result in the empty string.
 ##### Parameters
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| type | `String` | the value type to create the formatter for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
-| _optionalOptions_ | `Object` | different options depending on the selected `type` |
-| _optionalOptions.groupingSeparator_ | `String` | the character used for thousands separation. Applicable to types `decimal` and `integer` only. Default: `','` |
-| _optionalOptions.decimalSeparator_ | `String` | the character used for fraction part separation. Applicable to type `decimal` only. Default: `'.'` |
-| _optionalOptions.decimalPlaces_ | `Number` | number of decimal places to keep in the formatted value. Applies rounding if necessary. Applicable to type `decimal` only. Default: `2` |
-| _optionalOptions.decimalTruncation_ | `String` | how to treat insignificant decimal places (trailing zeros): - `'FIXED'`: uses a fraction length of exactly `decimalPlaces`, padding with zeros - `'BOUNDED'`: uses a fraction length up to `decimalPlaces`, no padding - `'NONE'`: unbounded fraction length (only limited by numeric precision), no padding Applicable to type `decimal` only. Default: `'FIXED'` |
-| _optionalOptions.dateFormat_ | `String` | the format used to format date values with. Applicable to type `date` only. Default: `'M/D/YYYY'` |
-| _optionalOptions.timeFormat_ | `String` | the format used to format time values with. Applicable to type `time` only. Default: `'H:m'` |
+| type | `String` |  the value type to create the formatter for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
+| _optionalOptions_ | `Object` |  different options depending on the selected `type` |
+| _optionalOptions.groupingSeparator_ | `String` |  the character used for thousands separation. Applicable to types `decimal` and `integer` only. Default: `','` |
+| _optionalOptions.decimalSeparator_ | `String` |  the character used for fraction part separation. Applicable to type `decimal` only. Default: `'.'` |
+| _optionalOptions.decimalPlaces_ | `Number` |  number of decimal places to keep in the formatted value. Applies rounding if necessary. Applicable to type `decimal` only. Default: `2` |
+| _optionalOptions.decimalTruncation_ | `String` |  how to treat insignificant decimal places (trailing zeros):<br>- `'FIXED'`: uses a fraction length of exactly `decimalPlaces`, padding with zeros<br>- `'BOUNDED'`: uses a fraction length up to `decimalPlaces`, no padding<br>- `'NONE'`: unbounded fraction length (only limited by numeric precision), no padding Applicable to type `decimal` only. Default: `'FIXED'` |
+| _optionalOptions.dateFormat_ | `String` |  the format used to format date values with. Applicable to type `date` only. Default: `'M/D/YYYY'` |
+| _optionalOptions.timeFormat_ | `String` |  the format used to format time values with. Applicable to type `time` only. Default: `'H:m'` |
 
 ##### Returns
 | Type | Description |
 | ---- | ----------- |
-| `Function` | the format function as described above. Throws a `TypeError` if the provided value cannot be formatted using the configured `type` |
+| `Function` |  the format function as described above. Throws a `TypeError` if the provided value cannot be formatted using the configured `type` |
