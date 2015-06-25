@@ -53,6 +53,9 @@ define( [
                clearTimeout( waitAnimationsTimeout );
                clearTimeout( checkSizeTimeout );
                clearTimeout( hideElementOutsideTabTimeout );
+               $( window.document ).off( namespaced( 'keyup' ), escapeKeyHandler );
+               $( window.document ).off( namespaced( 'click' ), outsideClickHandler );
+
                try {
                   scope.layer.hide();
                }
