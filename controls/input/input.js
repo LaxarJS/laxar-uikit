@@ -215,6 +215,8 @@ define( [
          controller: 'axInputController',
          require: [ 'ngModel', 'axInput' ],
          link: function( scope, element, attrs, controllers ) {
+            var removeGroupingAndKeepCursorPositionTimeout;
+            var tooltipPositionInterval;
             var validationMessage = '';
             var previousValidationMessage = '';
 
@@ -236,6 +238,11 @@ define( [
 
             var valueType = ( isCheckbox( element ) || isRadio( element ) || isSelect( element ) ) ?
                'select' : attrs[ directiveName ] || 'string';
+
+            scope.$on( '$destroy', function() {
+               clearTimeout( removeGroupingAndKeepCursorPositionTimeout );
+               clearInterval( tooltipPositionInterval );
+            } );
 
             axInputController.initialize( valueType, formattingOptions );
 
@@ -415,7 +422,8 @@ define( [
                }, formattingOptions ) );
 
                // We need to do this asynchronously because of Google Chrome.
-               setTimeout( function() {
+               clearTimeout( removeGroupingAndKeepCursorPositionTimeout );
+               removeGroupingAndKeepCursorPositionTimeout = setTimeout( function() {
                   var selection = helpers.getSelectionRange( element[0] );
                   var elementValue = element.val();
                   var wasProbablyTabbed = selection.start === 0 && selection.end === element.val().length;
@@ -502,7 +510,6 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             function createTooltip() {
-               var tooltipPositionTimeout = null;
                var id = 'axInputErrorTooltip' + idCounter++;
 
                element.tooltip( {
@@ -535,8 +542,8 @@ define( [
                   var lastElementPosition = element.offset();
                   var lastElementPositionString = lastElementPosition.left + '_' + lastElementPosition.top;
                   var pending = false;
-                  clearInterval( tooltipPositionTimeout );
-                  tooltipPositionTimeout = setInterval( function(  ) {
+                  clearInterval( tooltipPositionInterval );
+                  tooltipPositionInterval = setInterval( function(  ) {
                      var newPosition = element.offset();
                      var newPositionString = newPosition.left + '_' + newPosition.top;
 
@@ -545,7 +552,7 @@ define( [
                      }
                      else if( pending ) {
                         pending = false;
-                        clearInterval( tooltipPositionTimeout );
+                        clearInterval( tooltipPositionInterval );
                         element.tooltip( 'show' );
                      }
                      lastElementPosition = newPosition;
@@ -553,8 +560,8 @@ define( [
                   }, 200 );
                } )
                .on( 'hide.bs.tooltip', function() {
-                  clearInterval( tooltipPositionTimeout );
-                  tooltipPositionTimeout = null;
+                  clearInterval( tooltipPositionInterval );
+                  tooltipPositionInterval = null;
                } );
 
                return id;

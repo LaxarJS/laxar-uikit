@@ -22,6 +22,7 @@ define( [
          restrict: 'A',
          link: function( scope, element, attrs ) {
 
+            var enableAnimationTimeout;
             var parsedOnBeforeActivate = function() { return true; };
             if( attrs.axAccordionOnBeforeActivate ) {
                parsedOnBeforeActivate = $parse( attrs.axAccordionOnBeforeActivate );
@@ -51,7 +52,8 @@ define( [
                element.accordion( options );
                element.removeClass( 'ax-invisible' );
 
-               $window.setTimeout( function() {
+               $window.clearTimeout( enableAnimationTimeout );
+               enableAnimationTimeout = $window.setTimeout( function() {
                   // re-enable animations after initial selection has taken place
                   element.accordion( 'option', 'animate', animate );
                } );
@@ -72,6 +74,9 @@ define( [
                   } );
                } );
 
+               scope.$on( '$destroy', function() {
+                  $window.clearTimeout( enableAnimationTimeout );
+               } );
             } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////

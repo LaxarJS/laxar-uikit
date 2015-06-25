@@ -74,6 +74,11 @@ define( [
             $scope.cancel = cancel;
             $scope.confirm = confirm;
 
+            $scope.$on( '$destroy', function() {
+               $document.off( 'click', handleKeyUp );
+               $document.off( 'keyup', handleDocumentClick );
+            } );
+
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             Object.keys( $scope.classes ).forEach( function( buttonName ) {

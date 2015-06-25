@@ -19,6 +19,7 @@ define( [
       return {
          restrict: 'A',
          link: function( scope, element, attrs ) {
+            var tooltipPositionInterval = null;
             var $element = $( element[ 0 ] );
 
             // Workarounds to prevent a sticky tooltip on navigation
@@ -34,6 +35,7 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             scope.$on( '$destroy', function() {
+               clearInterval( tooltipPositionInterval );
                try {
                   $element.tooltip( 'destroy' );
                   $container.remove();
@@ -53,13 +55,13 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             // Handling for moving anchor element
-            var tooltipPositionTimeout = null;
+
             $element
                .on( 'shown.bs.tooltip', function() {
                   var lastElementPosition = element.offset();
                   var lastElementPositionString = lastElementPosition.left + '_' + lastElementPosition.top;
                   var pending = false;
-                  tooltipPositionTimeout = setInterval( function(  ) {
+                  tooltipPositionInterval = setInterval( function(  ) {
                      var newPosition = element.offset();
                      var newPositionString = newPosition.left + '_' + newPosition.top;
 
@@ -68,7 +70,7 @@ define( [
                      }
                      else if( pending ) {
                         pending = false;
-                        clearInterval( tooltipPositionTimeout );
+                        clearInterval( tooltipPositionInterval );
                         element.tooltip( 'show' );
                      }
                      lastElementPosition = newPosition;
@@ -76,8 +78,8 @@ define( [
                   }, 200 );
                } )
                .on( 'hide.bs.tooltip', function() {
-                  clearInterval( tooltipPositionTimeout );
-                  tooltipPositionTimeout = null;
+                  clearInterval( tooltipPositionInterval );
+                  tooltipPositionInterval = null;
                } );
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
