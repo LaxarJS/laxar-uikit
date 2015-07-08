@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v1.0.1
+
 - [#124](https://github.com/LaxarJS/laxar-uikit/issues/124): api-doc: update generated api doc
 
 
