@@ -1,4 +1,4 @@
-# LaxarJS UiKit
+# LaxarJS UiKit [![Build Status](https://travis-ci.org/LaxarJS/laxar-uikit.svg?branch=master)](https://travis-ci.org/LaxarJS/laxar-uikit)
 
 > Bootstrap-compatible base styles for LaxarJS widgets, plus a few basic controls. 
 
