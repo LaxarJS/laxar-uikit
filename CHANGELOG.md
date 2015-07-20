@@ -2,7 +2,7 @@
 
 ## Last Changes
 
-- [#128](https://github.com/LaxarJS/laxar/issues/128): added Travis-CI build integration
+- [#128](https://github.com/LaxarJS/laxar-uikit/issues/128): added Travis-CI build integration
     + NEW FEATURE: see ticket for details
 - [#124](https://github.com/LaxarJS/laxar-uikit/issues/124): api-doc: update generated api doc
 
