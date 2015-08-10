@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#130](https://github.com/LaxarJS/laxar-uikit/issues/130): styling: updated `FontAwesome (v4.4)`
+    + NEW FEATURE: see ticket for details
 - [#129](https://github.com/LaxarJS/laxar-uikit/issues/129): tests: allow to execute spec-tests using a project RequireJS configuration
     + NEW FEATURE: see ticket for details
 - [#128](https://github.com/LaxarJS/laxar-uikit/issues/128): added Travis-CI build integration
