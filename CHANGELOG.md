@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#131](https://github.com/LaxarJS/laxar_uikit/issues/131): axDatePicker: fixed showing default date when date value in input is invalid
+
 
 ## v0.22.0
 
@@ -51,15 +53,15 @@
 ## v0.17.0
 
 - [#77](https://github.com/LaxarJS/laxar_uikit/issues/77): Added affix control
-  NEW FEATURE: see ticket for details
+    + NEW FEATURE: see ticket for details
 - [#73](https://github.com/LaxarJS/laxar_uikit/issues/73): Updated jQuery UI to 1.11.1 and removed touch punch.
-  BREAKING CHANGE: see ticket for details
+    + **BREAKING CHANGE:** see ticket for details
 
 
 ## v0.16.0
 
 - [#76](https://github.com/LaxarJS/laxar_uikit/issues/76): Implemented directives for dynamic text truncation.
-  NEW FEATURE: see ticket for details
+    + NEW FEATURE: see ticket for details
 - [#74](https://github.com/LaxarJS/laxar_uikit/issues/74): DatePicker: Fixed support for ngReadonly and ngDisabled.
 - [#72](https://github.com/LaxarJS/laxar_uikit/issues/72): Styling: Updated font awesome (v4.2) and bootstrap (v3.2)
 - [#71](https://github.com/LaxarJS/laxar_uikit/issues/71): Styling DatePicker: Fixed color definitions.
@@ -69,7 +71,7 @@
 
 - [#67](https://github.com/LaxarJS/laxar_uikit/issues/67): Styling: refactored default.theme
 - [#69](https://github.com/LaxarJS/laxar_uikit/issues/69): layer: allowed prevention of scrolling the body when showing.
-  NEW FEATURE: see ticket for details
+    + NEW FEATURE: see ticket for details
 - [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
 - [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed ont-size can change depending on disabled- or error-state 
 - [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
@@ -119,7 +121,7 @@
 - [#36](https://github.com/LaxarJS/laxar_uikit/issues/36): axInput: documented configuration options under docs/manuals/configuration.md
 - [#35](https://github.com/LaxarJS/laxar_uikit/issues/35): Refactored third party dependencies
 - [#32](https://github.com/LaxarJS/laxar_uikit/issues/32): axInput: Allow to validate on focusout instead of on keypress
-  NEW FEATURE: see ticket for details
+    + NEW FEATURE: see ticket for details
 - [#34](https://github.com/LaxarJS/laxar_uikit/issues/34): Fixed `axDatepicker`, which was breaking MSIE8 by trying to set the type attribute.
 
 
@@ -127,7 +129,7 @@
 
 - [#33](https://github.com/LaxarJS/laxar_uikit/issues/33): Improved styling of an input field with an unit sign
 - [#31](https://github.com/LaxarJS/laxar_uikit/issues/31): Added new validation behavior: display of errors to the user can now be deferred.
-  NEW FEATURE: see ticket for details
+    + NEW FEATURE: see ticket for details
 - [#30](https://github.com/LaxarJS/laxar_uikit/issues/30): Fix relative json messages imports (workaround for bug in requirejs-json plugin)
 - [#29](https://github.com/LaxarJS/laxar_uikit/issues/29): Added additional css class to increase space between cols
 - [#28](https://github.com/LaxarJS/laxar_uikit/issues/28): Added additional css class for two column layout
