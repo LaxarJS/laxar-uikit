@@ -110,16 +110,14 @@ define( [
                constrainInput: false,
                showButtonPanel: true,
                showOn: 'focus',
-               onClose: function() {
+               onClose: function( dateStr ) {
                   currentlyVisiblePicker = null;
-               },
-               beforeShow: function() {
-                  currentlyVisiblePicker = textField;
-               },
-               onSelect: function( dateStr ) {
                   scope.$apply( function() {
                      ngModel.$setViewValue( dateStr );
                   } );
+               },
+               beforeShow: function() {
+                  currentlyVisiblePicker = textField;
                }
             } );
 
@@ -150,11 +148,13 @@ define( [
 
                ngModel.$parsers.push( function( viewValue ) {
                   var momentFormat = i18n.momentFormatForLanguageTag( languageTag );
-                  if( !viewValue ) {
-                     return null;
+                  if( viewValue ) {
+                     var momentDate = moment( viewValue, momentFormat.date );
+                     if( momentDate.isValid() ) {
+                        return momentDate.format( ISO_DATE_FORMAT );
+                     }
                   }
-
-                  return moment( viewValue, momentFormat.date ).format( ISO_DATE_FORMAT );
+                  return null;
                } );
             }
 
