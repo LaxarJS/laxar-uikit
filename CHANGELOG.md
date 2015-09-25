@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.22.1
+
 - [#131](https://github.com/LaxarJS/laxar_uikit/issues/131): axDatePicker: fixed showing default date when date value in input is invalid
 
 
