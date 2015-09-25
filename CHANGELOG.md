@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#131](https://github.com/LaxarJS/laxar_uikit/issues/131): axDatePicker: fixed showing default date when date value in input is invalid
 - [#126](https://github.com/LaxarJS/laxar_uikit/issues/126): controls (axAccordion, axConfirmButton, axInput, axTooltip, axLayer): cleaned callbacks
 - [#125](https://github.com/LaxarJS/laxar_uikit/issues/125): axLayer: clearing timeouts properly
 - [#119](https://github.com/LaxarJS/laxar_uikit/issues/119): axInput, axTooltip: fixed possible endless interval of position calculation.
