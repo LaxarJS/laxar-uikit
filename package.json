@@ -1,27 +1,42 @@
 {
-   "name": "laxar-uikit",
-   "version": "1.2.0-pre",
-   "description": "User interface controls for LaxarJS",
-   "authors": [],
-   "license": "MIT",
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/LaxarJS/laxar-uikit.git"
-   },
-   "scripts": {
-      "test": "grunt test --continue",
-      "prepublish": "fixinstall && bower install"
-   },
-   "devDependencies": {
-      "bower": "~1.3.3",
-      "grunt": "~0.4.4",
-      "grunt-cli": "~0.1.13",
-      "grunt-contrib-clean": "~0.6.0",
-      "grunt-contrib-watch": "~0.5.3",
-      "grunt-contrib-jshint": "~0.8.0",
-      "grunt-bower-requirejs": "~0.8.4",
-      "grunt-contrib-requirejs": "~0.4.1",
-      "grunt-markdown": "~0.5.0",
-      "grunt-laxar": "~1.0.0"
-   }
+  "name": "laxar-uikit",
+  "version": "1.2.0-pre",
+  "description": "User interface controls for LaxarJS",
+  "authors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LaxarJS/laxar-uikit.git"
+  },
+  "scripts": {
+    "test": "grunt test --continue",
+    "build": "node build.js",
+    "prepublish": "fixinstall && bower install"
+  },
+  "devDependencies": {
+    "bower": "~1.3.3",
+    "grunt": "~0.4.4",
+    "grunt-bower-requirejs": "~0.8.4",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-laxar": "~1.0.0",
+    "grunt-markdown": "~0.5.0",
+    "systemjs-builder": "^0.15.3"
+  },
+  "jspm": {
+    "configFile": "system.config.js",
+    "dependencies": {
+      "bootstrap-sass-official": "github:twbs/bootstrap-sass@3.3",
+      "font-awesome": "npm:font-awesome@4.4",
+      "moment": "npm:moment@^2.11.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
 }
