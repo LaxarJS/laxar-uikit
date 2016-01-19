@@ -29,8 +29,13 @@
   "jspm": {
     "configFile": "system.config.js",
     "dependencies": {
+      "angular": "npm:angular@~1.4.8",
+      "angular-route": "npm:angular-route@~1.4.8",
+      "angular-sanitize": "npm:angular-sanitize@~1.4.8",
       "bootstrap-sass-official": "github:twbs/bootstrap-sass@3.3",
       "font-awesome": "npm:font-awesome@4.4",
+      "laxar": "github:LaxarJS/laxar@2.0.0-pre.246",
+      "laxar-jasmine-runner": "github:LaxarJS/laxar-jasmine-runner@^0.1.1",
       "moment": "npm:moment@^2.11.1"
     },
     "devDependencies": {
