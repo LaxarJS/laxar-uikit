@@ -34,7 +34,7 @@ module.exports = function( grunt ) {
                 }
             }
          },
-         single: {
+         unit: {
             singleRun: true,
             files: [ {
                src: 'lib/spec/*_spec.js'
@@ -67,11 +67,10 @@ module.exports = function( grunt ) {
 
 
    grunt.loadNpmTasks( 'grunt-contrib-clean' );
-   grunt.loadNpmTasks( 'grunt-laxar' );
    grunt.loadNpmTasks( 'grunt-karma' );
    grunt.loadNpmTasks( 'gruntify-eslint' );
 
-   grunt.registerTask( 'test', [ 'karma', 'eslint' ] );
+   grunt.registerTask( 'test', [ 'eslint', 'karma' ] );
    grunt.registerTask( 'apidoc', [ 'clean:apidoc', 'laxar_dox' ] );
 
    grunt.registerTask( 'default', [ 'test', 'apidoc' ] );
