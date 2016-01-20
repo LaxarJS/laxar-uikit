@@ -71,7 +71,7 @@ module.exports = function( grunt ) {
    grunt.loadNpmTasks( 'grunt-karma' );
    grunt.loadNpmTasks( 'gruntify-eslint' );
 
-   grunt.registerTask( 'test', [ 'karma', 'test_results_merger', 'lcov_info_merger', 'eslint' ] );
+   grunt.registerTask( 'test', [ 'karma', 'eslint' ] );
    grunt.registerTask( 'apidoc', [ 'clean:apidoc', 'laxar_dox' ] );
 
    grunt.registerTask( 'default', [ 'test', 'apidoc' ] );
