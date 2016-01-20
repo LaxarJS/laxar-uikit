@@ -15,23 +15,49 @@ module.exports = function( grunt ) {
       karma: {
          options: {
             browsers: [ 'PhantomJS' ],
+            plugins: [
+               'karma-systemjs',
+               'karma-jasmine',
+               'karma-coverage',
+               'karma-junit-reporter',
+               'karma-phantomjs-launcher'
+            ],
+            reporters: [ 'progress', 'coverage', 'junit' ],
+            preprocessors: {
+               'lib/*.js': [ 'coverage' ]
+            },
+            junitReporter: {
+               outputDir: 'karma-output/'
+            },
+            coverageReporter: {
+               type : 'lcov',
+               dir : 'karma-output/',
+               // configure the reporter to use isparta for JavaScript coverage
+               // Only on { "karma-coverage": "douglasduteil/karma-coverage#next" }
+               instrumenters: { isparta: require( 'isparta' ) },
+               instrumenter: {
+                  '**/*.js': 'isparta'
+               },
+               instrumenterOptions: {
+                  isparta: { babel: { presets: 'es2015' } }
+               }
+            },
             frameworks: [ 'systemjs', 'jasmine' ],
-            plugins: [ 'karma-systemjs', 'karma-jasmine', 'karma-phantomjs-launcher' ],
             systemjs: {
-                configFile: 'system.config.js',
-                serveFiles: [
-                   'lib/**/*.js',
-                   'jspm_packages/**/*.js',
-                ],
-                config: {
-                   paths: {
-                      'babel': 'node_modules/babel-core/browser.js',
-                      'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
-                      'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js',
-                      'systemjs': 'node_modules/systemjs/dist/system.js',
-                      'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
-                   }
-                }
+               configFile: 'system.config.js',
+               serveFiles: [
+                  'lib/**/*.js',
+                  'jspm_packages/**/*.js',
+               ],
+               config: {
+                  paths: {
+                     'babel': 'node_modules/babel-core/browser.js',
+                     'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
+                     'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js',
+                     'systemjs': 'node_modules/systemjs/dist/system.js',
+                     'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+                  }
+               }
             }
          },
          unit: {
@@ -64,7 +90,6 @@ module.exports = function( grunt ) {
       }
 
    } );
-
 
    grunt.loadNpmTasks( 'grunt-contrib-clean' );
    grunt.loadNpmTasks( 'grunt-karma' );
