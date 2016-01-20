@@ -8,115 +8,44 @@ module.exports = function( grunt ) {
    'use strict';
 
    var pkg = grunt.file.readJSON( 'package.json' );
-   var src = {
-      gruntfile: 'Gruntfile.js',
-      require: 'require_config.js',
-      'laxar-uikit': [
-         pkg.name + '.js',
-         'lib/**/*.js',
-         '!lib/**/spec/**/*.js',
-         'controls/**/*.js',
-         '!controls/**/spec/**/*.js'
-      ],
-      specs: [ 'lib/**/spec/**/*.js', 'controls/**/spec/*.js' ]
-   };
-
-   function karma( control ) {
-      var options = {
-         laxar: {
-            specRunner: 'controls/' + control + '/spec/spec_runner.js',
-            requireConfig: src.require
-         },
-         junitReporter: {
-            outputFile: 'controls/' + control + '/spec/test-results.xml'
-         },
-         coverageReporter: {
-            type: 'lcovonly',
-            dir: 'controls/' + control + '/spec',
-            file: 'lcov.info'
-         }
-      };
-
-      return {options: options};
-   }
 
    grunt.initConfig( {
-      jshint: {
-         options: {
-            jshintrc: '.jshintrc'
-         },
-         gruntfile: {
-            options: { node: true },
-            src: src.gruntfile
-         },
-         'laxar-uikit': { src: src[ pkg.name ] },
-         specs: { src: src.specs }
-      },
+      pkg: pkg,
+      pkgFile: 'package.json',
       karma: {
          options: {
-            basePath: '.',
-            frameworks: [ 'laxar' ],
-            reporters: [ 'junit', 'coverage', 'progress' ],
             browsers: [ 'PhantomJS' ],
-            singleRun: true,
-            preprocessors: {
-               'lib/**/*.js': 'coverage'
-            },
-            proxies: {},
-            files: [
-               { pattern: 'bower_components/**', included: false },
-               { pattern: 'lib/**', included: false },
-               { pattern: 'controls/**', included: false },
-               { pattern: '*.js', included: false }
-            ]
-         },
-         'laxar-uikit': {
-            options: {
-               files: [
-                  { pattern: 'bower_components/**', included: false },
-                  { pattern: 'lib/**', included: false },
-                  { pattern: '*.js', included: false }
-               ],
-               laxar: {
-                  specRunner: 'lib/spec/spec_runner.js',
-                  requireConfig: src.require
-               },
-               junitReporter: {
-                  outputFile: 'lib/spec/test-results.xml'
-               },
-               coverageReporter: {
-                  type: 'lcovonly',
-                  dir: 'lib/spec',
-                  file: 'lcov.info'
-               }
+            frameworks: [ 'systemjs', 'jasmine' ],
+            plugins: [ 'karma-systemjs', 'karma-jasmine', 'karma-phantomjs-launcher' ],
+            systemjs: {
+                configFile: 'system.config.js',
+                serveFiles: [
+                   'lib/**/*.js',
+                   'jspm_packages/**/*.js',
+                ],
+                config: {
+                   paths: {
+                      'babel': 'node_modules/babel-core/browser.js',
+                      'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
+                      'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js',
+                      'systemjs': 'node_modules/systemjs/dist/system.js',
+                      'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+                   }
+                }
             }
-         }
-      },
-      test_results_merger: {
-         laxar: {
-            src: [ 'lib/spec/test-results.xml', 'controls/*/spec/test-results.xml' ],
-            dest: 'test-results.xml'
-         }
-      },
-      lcov_info_merger: {
-         laxar: {
-            src: [ 'lib/spec/*/lcov.info', 'controls/*/spec/*/lcov.info' ],
-            dest: 'lcov.info'
-         }
-      },
-      watch: {
-         gruntfile: {
-            files: src.gruntfile,
-            tasks: [ 'jshint:gruntfile' ]
          },
-         'laxar-uikit': {
-            files: src[ pkg.name ],
-            tasks: [ 'jshint:laxar-uikit', 'karma' ]
-         },
-         specs: {
-            files: src.specs,
-            tasks: [ 'jshint:specs', 'karma' ]
+         single: {
+            singleRun: true,
+            files: [ {
+               src: 'lib/spec/*_spec.js'
+            } ]
          }
+      },
+      eslint: {
+         options: {
+            config: '.eslintrc'
+         },
+         src: [ 'lib/**/*.js' ]
       },
       clean: {
          apidoc: {
@@ -133,15 +62,18 @@ module.exports = function( grunt ) {
             } ]
          }
       }
+
    } );
 
-   grunt.loadNpmTasks( 'grunt-contrib-clean' );
-   grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-   grunt.loadNpmTasks( 'grunt-contrib-watch' );
-   grunt.loadNpmTasks( 'grunt-laxar' );
 
-   grunt.registerTask( 'test', [ 'karma', 'test_results_merger', 'lcov_info_merger', 'jshint' ] );
+   grunt.loadNpmTasks( 'grunt-contrib-clean' );
+   grunt.loadNpmTasks( 'grunt-laxar' );
+   grunt.loadNpmTasks( 'grunt-karma' );
+   grunt.loadNpmTasks( 'gruntify-eslint' );
+
+   grunt.registerTask( 'test', [ 'karma', 'test_results_merger', 'lcov_info_merger', 'eslint' ] );
    grunt.registerTask( 'apidoc', [ 'clean:apidoc', 'laxar_dox' ] );
 
    grunt.registerTask( 'default', [ 'test', 'apidoc' ] );
+
 };
