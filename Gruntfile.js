@@ -14,57 +14,39 @@ module.exports = function( grunt ) {
       pkgFile: 'package.json',
       karma: {
          options: {
+            basePath: '',
             browsers: [ 'PhantomJS' ],
+            browserNoActivityTimeout: 100000,
             plugins: [
-               'karma-systemjs',
+               'karma-jspm',
                'karma-jasmine',
-               'karma-coverage',
                'karma-junit-reporter',
-               'karma-phantomjs-launcher'
+               'karma-phantomjs-launcher',
+               'karma-chrome-launcher'
             ],
-            reporters: [ 'progress', 'coverage', 'junit' ],
-            preprocessors: {
-               'lib/*.js': [ 'coverage' ]
-            },
+            reporters: [ 'progress', 'junit' ],
             junitReporter: {
                outputDir: 'karma-output/'
             },
-            coverageReporter: {
-               type : 'lcov',
-               dir : 'karma-output/',
-               // configure the reporter to use isparta for JavaScript coverage
-               // Only on { "karma-coverage": "douglasduteil/karma-coverage#next" }
-               instrumenters: { isparta: require( 'isparta' ) },
-               instrumenter: {
-                  '**/*.js': 'isparta'
-               },
-               instrumenterOptions: {
-                  isparta: { babel: { presets: 'es2015' } }
-               }
+            frameworks: [ 'jspm', 'jasmine' ],
+            proxies: {
+               '/lib/': '/base/lib/',
+               '/static/': '/base/static/',
+               '/jspm_packages/': '/base/jspm_packages/'
             },
-            frameworks: [ 'systemjs', 'jasmine' ],
-            systemjs: {
-               configFile: 'system.config.js',
-               serveFiles: [
-                  'lib/**/*.js',
-                  'jspm_packages/**/*.js',
+            jspm: {
+               config: 'system.config.js',
+               loadFiles: [
+                  'lib/**/*_spec.js',
                ],
-               config: {
-                  paths: {
-                     'babel': 'node_modules/babel-core/browser.js',
-                     'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
-                     'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js',
-                     'systemjs': 'node_modules/systemjs/dist/system.js',
-                     'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
-                  }
-               }
+               serveFiles: [
+                  'lib/**/!(*_spec).js',
+                  'jspm_packages/**/*.js',
+               ]
             }
          },
          unit: {
             singleRun: true,
-            files: [ {
-               src: 'lib/spec/*_spec.js'
-            } ]
          }
       },
       eslint: {
