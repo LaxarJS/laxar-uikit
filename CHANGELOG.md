@@ -2,6 +2,10 @@
 
 ## Last Changes
 
+- [#133](https://github.com/LaxarJS/laxar-uikit/issues/133): testing: updated spec runners to Jasmine 2.4
+- [#132](https://github.com/LaxarJS/laxar-uikit/issues/132): transformed AMD modules to es2015 modules
+    + **BREAKING CHANGE:** see ticket for details
+    
 
 ## v1.1.0
 
@@ -107,15 +111,15 @@
 - [#87](https://github.com/LaxarJS/laxar-uikit/issues/87): axInput: Changed controller implementation to be compatible with AngularJS 1.3.
 - [#86](https://github.com/LaxarJS/laxar-uikit/issues/86): axInput: Fixed attaching multiple focusout handlers.
 - [#85](https://github.com/LaxarJS/laxar-uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
-- [#84](https://github.com/LaxarJS/laxar-uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n 
-- [#83](https://github.com/LaxarJS/laxar-uikit/issues/83): axDatePicker: performance: build calendar lazily 
-- [#82](https://github.com/LaxarJS/laxar-uikit/issues/82): fix: removed console.log statement 
-- [#81](https://github.com/LaxarJS/laxar-uikit/issues/81): axInput: performance: build tooltip lazily 
+- [#84](https://github.com/LaxarJS/laxar-uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n
+- [#83](https://github.com/LaxarJS/laxar-uikit/issues/83): axDatePicker: performance: build calendar lazily
+- [#82](https://github.com/LaxarJS/laxar-uikit/issues/82): fix: removed console.log statement
+- [#81](https://github.com/LaxarJS/laxar-uikit/issues/81): axInput: performance: build tooltip lazily
 
 
 ## v0.18.0
 
-- [#79](https://github.com/LaxarJS/laxar-uikit/issues/79): refactoring: use `laxar.string` instead of `laxar.text` 
+- [#79](https://github.com/LaxarJS/laxar-uikit/issues/79): refactoring: use `laxar.string` instead of `laxar.text`
 - [#78](https://github.com/LaxarJS/laxar-uikit/issues/78): axInput: be more strict when parsing dates
 
 
@@ -142,7 +146,7 @@
 - [#69](https://github.com/LaxarJS/laxar-uikit/issues/69): layer: allowed prevention of scrolling the body when showing.
     + NEW FEATURE: see ticket for details
 - [#68](https://github.com/LaxarJS/laxar-uikit/issues/68): fixed wrongly global assert in jshintrc.
-- [#66](https://github.com/LaxarJS/laxar-uikit/issues/66): fixed ont-size can change depending on disabled- or error-state 
+- [#66](https://github.com/LaxarJS/laxar-uikit/issues/66): fixed ont-size can change depending on disabled- or error-state
 - [#65](https://github.com/LaxarJS/laxar-uikit/issues/65): axAccordion: fixed unchecked call to $apply
 
 
