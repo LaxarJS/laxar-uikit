@@ -3,19 +3,14 @@
  * Released under the MIT license.
  * http://laxarjs.org/license
  */
-define( [
-   './lib/dom',
-   './lib/formatter',
-   './lib/i18n',
-   './lib/parser'
-], function( dom, formatter, i18n, parser ) {
-   'use strict';
+import * as dom from 'lib/dom';
+import * as formatter from 'lib/formatter';
+import * as i18n from 'lib/i18n';
+import * as parser from 'lib/parser';
 
-   return {
-      dom: dom,
-      formatter: formatter,
-      i18n: i18n,
-      parser: parser
-   };
-
-} );
+export {
+   dom,
+   formatter,
+   i18n,
+   parser
+};
