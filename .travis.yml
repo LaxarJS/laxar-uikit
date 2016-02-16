@@ -1,15 +1,15 @@
 language: node_js
 sudo: false
 env:
-   global:
-   - secure: en+zpjwZaPFMVO6M0ilOIOVehlbCKiQeZq2yV9nS02xjgia2fDPTAirrqhUIZ9jwxdVofTGINpcKWChxd+N1UvmE9LHaMpeBly9CriPA8W64Q4ahY8PtzmPoXpy1fYHwT6IBe6q3z6WSZt9rgCSYJjwFTZ8ocfT2i8RrPlWjJMA=
+  global:
+    secure: jpwm9B8YazejjVIa1/FC5hMJBneGWk+rDN14UjgzX9UwN2Wk3GCjM+hv4i4StWjmedO78JP3nHho7GkHbDFK6aWTopdcdvu9oalyYuueH0hOzR/QnTa9ORzDIsjbSZ6xSic2Dt2UelUiAWZAykjZJ0kmzbeZEmaEEAMybGZb6Yc=
 before_install:
 - npm install -g jspm
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 node_js:
-   - "0.12"
-   - "0.10"
+- '0.12'
+- '0.10'
 notifications:
-   irc:
-      channels: "chat.freenode.net#laxarjs"
-      template: "%{repository_slug} (%{commit}) [%{branch}]: %{message}"
+  irc:
+    channels: chat.freenode.net#laxarjs
+    template: '%{repository_slug} (%{commit}) [%{branch}]: %{message}'

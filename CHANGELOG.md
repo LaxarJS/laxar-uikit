@@ -2,10 +2,11 @@
 
 ## Last Changes
 
+- [#134](https://github.com/LaxarJS/laxar-uikit/issues/134): using locally installed jspm
 - [#133](https://github.com/LaxarJS/laxar-uikit/issues/133): testing: updated spec runners to Jasmine 2.4
 - [#132](https://github.com/LaxarJS/laxar-uikit/issues/132): transformed AMD modules to es2015 modules
     + **BREAKING CHANGE:** see ticket for details
-    
+
 
 ## v1.1.0
 
