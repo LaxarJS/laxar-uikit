@@ -23,7 +23,7 @@ System.config({
     "bootstrap-sass-official": "github:twbs/bootstrap-sass@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "font-awesome": "npm:font-awesome@4.4.0",
-    "laxar": "github:LaxarJS/laxar@2.0.0-pre.246",
+    "laxar": "github:LaxarJS/laxar@2.0.0-alpha.0",
     "laxar-jasmine-runner": "github:LaxarJS/laxar-jasmine-runner@0.1.1",
     "moment": "npm:moment@2.11.1",
     "github:LaxarJS/laxar-jasmine-runner@0.1.1": {
@@ -31,12 +31,10 @@ System.config({
       "image": "github:systemjs/plugin-image@0.1.0",
       "jasmine-core": "npm:jasmine-core@2.4.1"
     },
-    "github:LaxarJS/laxar@2.0.0-pre.246": {
-      "angular": "npm:angular@1.4.8",
-      "angular-route": "npm:angular-route@1.4.8",
-      "angular-sanitize": "npm:angular-sanitize@1.4.8",
+    "github:LaxarJS/laxar@2.0.0-alpha.0": {
       "jjv": "npm:jjv@1.0.2",
-      "jjve": "npm:jjve@0.5.1"
+      "jjve": "npm:jjve@0.5.1",
+      "page": "npm:page@1.6.4"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -82,8 +80,15 @@ System.config({
     "npm:moment@2.11.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:page@1.6.4": {
+      "path-to-regexp": "npm:path-to-regexp@1.2.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:path-to-regexp@1.2.1": {
+      "isarray": "npm:isarray@0.0.1"
     },
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
