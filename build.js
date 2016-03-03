@@ -1,4 +1,5 @@
-var path = require('path');
+/*eslint-env node*/
+/*eslint no-var:0*/
 var Builder = require('systemjs-builder');
 
 // optional constructor options
@@ -13,12 +14,6 @@ builder.config({
       'moment': {
          build: false
       }
-   },
-   map: {
-      'laxar-uikit': 'laxar-uikit.js'
-   },
-   paths: {
-      'laxar-uikit': 'laxar-uikit.js'
    }
 });
 
