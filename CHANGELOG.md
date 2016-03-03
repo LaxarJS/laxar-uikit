@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0-alpha.0
+
 - [#135](https://github.com/LaxarJS/laxar-uikit/issues/135): adapted to changes due to removing angular in LaxarJS
     + **BREAKING CHANGE:** see ticket for details
 - [#134](https://github.com/LaxarJS/laxar-uikit/issues/134): using locally installed jspm

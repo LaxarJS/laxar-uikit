@@ -15,9 +15,6 @@ System.config({
   },
 
   map: {
-    "angular": "npm:angular@1.4.8",
-    "angular-route": "npm:angular-route@1.4.8",
-    "angular-sanitize": "npm:angular-sanitize@1.4.8",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "bootstrap-sass-official": "github:twbs/bootstrap-sass@3.3.6",
@@ -47,9 +44,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "npm:angular@1.4.8": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
