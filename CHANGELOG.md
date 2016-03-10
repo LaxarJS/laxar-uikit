@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#136](https://github.com/LaxarJS/laxar_uikit/issues/136): axInput: implemented support for custom validation messages
+    + NEW FEATURE: see ticket for details
 - [#131](https://github.com/LaxarJS/laxar_uikit/issues/131): axDatePicker: fixed showing default date when date value in input is invalid
 - [#126](https://github.com/LaxarJS/laxar_uikit/issues/126): controls (axAccordion, axConfirmButton, axInput, axTooltip, axLayer): cleaned callbacks
 - [#125](https://github.com/LaxarJS/laxar_uikit/issues/125): axLayer: clearing timeouts properly
@@ -42,15 +44,15 @@
 - [#87](https://github.com/LaxarJS/laxar_uikit/issues/87): axInput: Changed controller implementation to be compatible with AngularJS 1.3.
 - [#86](https://github.com/LaxarJS/laxar_uikit/issues/86): axInput: Fixed attaching multiple focusout handlers.
 - [#85](https://github.com/LaxarJS/laxar_uikit/issues/85): axInput: Fixed endless loop if grouping separator was set to empty.
-- [#84](https://github.com/LaxarJS/laxar_uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n 
-- [#83](https://github.com/LaxarJS/laxar_uikit/issues/83): axDatePicker: performance: build calendar lazily 
-- [#82](https://github.com/LaxarJS/laxar_uikit/issues/82): fix: removed console.log statement 
-- [#81](https://github.com/LaxarJS/laxar_uikit/issues/81): axInput: performance: build tooltip lazily 
+- [#84](https://github.com/LaxarJS/laxar_uikit/issues/84): axDatePicker: avoid unnecessary 404 requests for i18n
+- [#83](https://github.com/LaxarJS/laxar_uikit/issues/83): axDatePicker: performance: build calendar lazily
+- [#82](https://github.com/LaxarJS/laxar_uikit/issues/82): fix: removed console.log statement
+- [#81](https://github.com/LaxarJS/laxar_uikit/issues/81): axInput: performance: build tooltip lazily
 
 
 ## v0.18.0
 
-- [#79](https://github.com/LaxarJS/laxar_uikit/issues/79): refactoring: use `laxar.string` instead of `laxar.text` 
+- [#79](https://github.com/LaxarJS/laxar_uikit/issues/79): refactoring: use `laxar.string` instead of `laxar.text`
 - [#78](https://github.com/LaxarJS/laxar_uikit/issues/78): axInput: be more strict when parsing dates
 
 
@@ -77,7 +79,7 @@
 - [#69](https://github.com/LaxarJS/laxar_uikit/issues/69): layer: allowed prevention of scrolling the body when showing.
     + NEW FEATURE: see ticket for details
 - [#68](https://github.com/LaxarJS/laxar_uikit/issues/68): fixed wrongly global assert in jshintrc.
-- [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed ont-size can change depending on disabled- or error-state 
+- [#66](https://github.com/LaxarJS/laxar_uikit/issues/66): fixed ont-size can change depending on disabled- or error-state
 - [#65](https://github.com/LaxarJS/laxar_uikit/issues/65): axAccordion: fixed unchecked call to $apply
 
 

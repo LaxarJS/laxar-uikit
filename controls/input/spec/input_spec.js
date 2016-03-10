@@ -786,6 +786,74 @@ define( [
 
       } );
 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      describe( 'with custom, localized validation messages', function() {
+
+         beforeEach( function() {
+            controller.setCustomValidationMessages( {
+               de: {
+                  SYNTAX_TYPE_DATE: 'Falsches Datum! Bitte korrigieren!'
+               }
+            } );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses the custom message for existing key and languageTag', function() {
+            expect( controller.validationMessage( 'de', 'SYNTAX_TYPE_DATE' ) )
+               .toEqual( 'Falsches Datum! Bitte korrigieren!' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses a default message for unknown languageTag', function() {
+            expect( controller.validationMessage( 'en', 'SYNTAX_TYPE_DATE' ) )
+               .toEqual( 'Please enter a valid date in the form MM/DD/YYYY.' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses a default message for unknown key', function() {
+            expect( controller.validationMessage( 'de', 'SYNTAX_TYPE_TIME' ) )
+               .toEqual( 'Bitte geben Sie eine gültige Zeit im Format SS:MM an.' );
+         } );
+
+      } );
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      describe( 'with custom, non-localized validation messages', function() {
+
+         beforeEach( function() {
+            controller.setCustomValidationMessages( {
+               SYNTAX_TYPE_DATE: 'Falsches Datum! Bitte korrigieren!'
+            } );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses the custom message for existing key and languageTag', function() {
+            expect( controller.validationMessage( 'de', 'SYNTAX_TYPE_DATE' ) )
+               .toEqual( 'Falsches Datum! Bitte korrigieren!' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses the custom message for another languageTag', function() {
+            expect( controller.validationMessage( 'en', 'SYNTAX_TYPE_DATE' ) )
+               .toEqual( 'Falsches Datum! Bitte korrigieren!' );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         it( 'uses a default message for unknown key', function() {
+            expect( controller.validationMessage( 'de', 'SYNTAX_TYPE_TIME' ) )
+               .toEqual( 'Bitte geben Sie eine gültige Zeit im Format SS:MM an.' );
+         } );
+
+      } );
+
    } );
 
 } );

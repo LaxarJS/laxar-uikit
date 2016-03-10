@@ -50,6 +50,11 @@ define( [
     *   shown when the field has been changed (ngModelController.$dirty) or when the event `axInput.validate`
     *   has been received. The default is `true` but will be changed to `false` in future major releases. It
     *   can be changed using the configuration 'lib.laxar_uikit.controls.input.displayErrorsImmediately'.
+    * * `ax-input-i18n-messages="$messages"`: Overwrites error messages from the internal messages.json with
+    *   custom messages. The map needs to be a map of error key to message, just as in the messages.json file.
+    *   Alternatively a map of maps can be used instead, where the first level keys are the language tags and
+    *   the values the aforementioned maps from error keys to messages. If a message cannot be found, the
+    *   value is taken from the messages.json.
     *
     * Writing an own semantic validator is as easy as writing a directive requiring the axInputController and
     * calling `addSemanticValidator` with the validator function as first argument and an error message
@@ -123,6 +128,7 @@ define( [
    var controllerName = 'axInputController';
    var controller = [ function() {
       var validators = [];
+      var customValidationMessages = {};
 
       ax.object.extend( this, {
 
@@ -171,6 +177,31 @@ define( [
                }
             } );
             return validationMessages;
+         },
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         setCustomValidationMessages: function( messages ) {
+            customValidationMessages = messages || {};
+         },
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         validationMessage: function( languageTag, key ) {
+            var customMessages = customValidationMessages;
+            var customKeys = Object.keys( customMessages );
+            if( customKeys.length && typeof customMessages[ customKeys[0] ] === 'object' ) {
+               // seems that custom messages are localized. So use the correct locale
+               customMessages = ax.i18n.localizeRelaxed( languageTag, customMessages ) || {};
+            }
+            var messagesForLanguage = ax.i18n.localizeRelaxed( languageTag, messages ) || {};
+            var message = customMessages.hasOwnProperty( key ) ?
+               customMessages[ key ] : messagesForLanguage[ key ];
+            if( typeof message !== 'string' ) {
+               return 'No message found for language tag "' + languageTag + '" and key "' + key + '".';
+            }
+
+            return message;
          }
 
       } );
@@ -223,6 +254,9 @@ define( [
             var ngModelController = controllers[0];
             var axInputController = controllers[1];
             var formattingOptions = getFormattingOptions( scope, attrs );
+
+            axInputController
+               .setCustomValidationMessages( scope.$eval( attrs[ directiveName + 'I18nMessages' ] ) );
 
             scope.$watch( 'i18n', updateFormatting, true );
             scope.$watch( attrs.axInputFormatting, updateFormatting, true );
@@ -395,7 +429,8 @@ define( [
                   validationMessage = '';
                }
                else {
-                  validationMessage = messages.de[ 'SYNTAX_TYPE_' + valueType.toUpperCase() ];
+                  validationMessage =
+                     axInputController.validationMessage( 'de', 'SYNTAX_TYPE_' + valueType.toUpperCase() );
                }
                return lastValidValue;
             } );
