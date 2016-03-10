@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.23.0
+
 - [#136](https://github.com/LaxarJS/laxar_uikit/issues/136): axInput: implemented support for custom validation messages
     + NEW FEATURE: see ticket for details
 - [#131](https://github.com/LaxarJS/laxar_uikit/issues/131): axDatePicker: fixed showing default date when date value in input is invalid
