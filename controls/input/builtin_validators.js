@@ -34,7 +34,7 @@ define( [
                   if( axInputController.valueType === 'select' ) {
                      msgKey += '_' + axInputController.valueType.toUpperCase();
                   }
-                  return message( scope, msgKey );
+                  return message( axInputController, scope, msgKey );
                }
             );
 
@@ -72,7 +72,7 @@ define( [
                      msgKey += '_NOW';
                   }
                   return helpers.substitute(
-                     message( scope, msgKey ),
+                     message( axInputController, scope, msgKey ),
                      { maximumValue: axInputController.format( maximum() ) }
                   );
                }
@@ -108,7 +108,7 @@ define( [
                      msgKey += '_NOW';
                   }
                   return helpers.substitute(
-                     message( scope, msgKey ),
+                     message( axInputController, scope, msgKey ),
                      { minimumValue: axInputController.format( minimum() ) }
                   );
                }
@@ -152,8 +152,9 @@ define( [
                   return isInRange( currentRange.from, currentRange.to, value );
                },
                function() {
+                  var key = 'SEMANTIC_RANGE_' + axInputController.valueType.toUpperCase();
                   return helpers.substitute(
-                     message( scope, 'SEMANTIC_RANGE_' + axInputController.valueType.toUpperCase() ), {
+                     message( axInputController, scope, key ), {
                         minimumValue: axInputController.format( range().from ),
                         maximumValue: axInputController.format( range().to )
                      }
@@ -184,7 +185,7 @@ define( [
                function( value ) { return value && value.length >= minimumLength(); },
                function() {
                   return helpers.substitute(
-                     message( scope, 'SEMANTIC_MINIMUM_LENGTH_STRING' ),
+                     message( axInputController, scope, 'SEMANTIC_MINIMUM_LENGTH_STRING' ),
                      { minimumLength: axInputController.format( minimumLength() ) }
                   );
                }
@@ -213,7 +214,7 @@ define( [
                function( value ) { return !value || value.length <= maximumLength(); },
                function() {
                   return helpers.substitute(
-                     message( scope, 'SEMANTIC_MAXIMUM_LENGTH_STRING' ),
+                     message( axInputController, scope, 'SEMANTIC_MAXIMUM_LENGTH_STRING' ),
                      { maximumLength: axInputController.format( maximumLength() ) }
                   );
                }
@@ -224,17 +225,8 @@ define( [
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   function message( scope, key ) {
-      var languageTag = i18n.languageTagFromScope( scope );
-      var messagesForLanguage = ax.i18n.localizeRelaxed( languageTag, messages );
-      if( !messagesForLanguage ) {
-         return 'No translations found for language tag "' + languageTag + '" (Translating "' + key + '").';
-      }
-      if( !messagesForLanguage.hasOwnProperty( key ) ) {
-         return 'No message found for language tag "' + languageTag + '" and key "' + key + '".';
-      }
-
-      return messagesForLanguage[ key ];
+   function message( inputController, scope, key ) {
+      return inputController.validationMessage( i18n.languageTagFromScope( scope ), key );
    }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
