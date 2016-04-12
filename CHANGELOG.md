@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#137](https://github.com/LaxarJS/laxar_uikit/issues/137): axTooltip: fixed displaying multiple tooltips when scrolling
+    
 
 ## v0.23.0
 
