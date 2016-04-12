@@ -1,6 +1,6 @@
 {
    "name": "laxar_uikit",
-   "version": "0.23.0",
+   "version": "0.23.1",
    "description": "Standard UI controls and stylesheets for LaxarJS widgets",
    "authors": [],
    "license": "MIT",
