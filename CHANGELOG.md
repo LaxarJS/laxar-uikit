@@ -2,7 +2,9 @@
 
 ## Last Changes
 
-
+- [#137](https://github.com/LaxarJS/laxar_uikit/issues/137): axTooltip: fixed displaying multiple tooltips when scrolling
+   
+   
 ## v0.23.0
 
 - [#136](https://github.com/LaxarJS/laxar_uikit/issues/136): axInput: implemented support for custom validation messages

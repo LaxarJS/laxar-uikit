@@ -58,24 +58,20 @@ define( [
 
             $element
                .on( 'shown.bs.tooltip', function() {
+                  if( tooltipPositionInterval !== null ) { return; }
                   var lastElementPosition = element.offset();
                   var lastElementPositionString = lastElementPosition.left + '_' + lastElementPosition.top;
-                  var pending = false;
-                  tooltipPositionInterval = setInterval( function(  ) {
+                  tooltipPositionInterval = setInterval( function() {
                      var newPosition = element.offset();
                      var newPositionString = newPosition.left + '_' + newPosition.top;
 
                      if( lastElementPositionString !== newPositionString ) {
-                        pending = true;
-                     }
-                     else if( pending ) {
-                        pending = false;
-                        clearInterval( tooltipPositionInterval );
                         element.tooltip( 'show' );
                      }
                      lastElementPosition = newPosition;
                      lastElementPositionString = newPositionString;
                   }, 200 );
+
                } )
                .on( 'hide.bs.tooltip', function() {
                   clearInterval( tooltipPositionInterval );
