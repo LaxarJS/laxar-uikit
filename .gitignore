@@ -5,5 +5,6 @@
 /bower_components
 /dist
 /karma-output
+/spec-output
 npm-debug.log
 .sass-cache

@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#138](https://github.com/LaxarJS/laxar-uikit/issues/138): adapted to changes due to removing angular in LaxarJS
+    + **BREAKING CHANGE:** see ticket for details
+
 
 ## v2.0.0-alpha.0
 
