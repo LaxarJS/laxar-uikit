@@ -1,15 +1,17 @@
 language: node_js
 sudo: false
-env:
-  global:
-    secure: jpwm9B8YazejjVIa1/FC5hMJBneGWk+rDN14UjgzX9UwN2Wk3GCjM+hv4i4StWjmedO78JP3nHho7GkHbDFK6aWTopdcdvu9oalyYuueH0hOzR/QnTa9ORzDIsjbSZ6xSic2Dt2UelUiAWZAykjZJ0kmzbeZEmaEEAMybGZb6Yc=
-before_install:
-- npm install -g jspm
-- jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 node_js:
-- '0.12'
-- '0.10'
+  - '4'
+  - '6'
+before_script:
+  - "export CHROME_BIN=chromium-browser"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+branches:
+   except:
+      - /^feature\/.*$/
 notifications:
   irc:
-    channels: chat.freenode.net#laxarjs
+    channels: 'chat.freenode.net#laxarjs'
     template: '%{repository_slug} (%{commit}) [%{branch}]: %{message}'
