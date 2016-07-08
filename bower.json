@@ -15,10 +15,7 @@
    "dependencies": {
       "bootstrap-sass-official": "3.3.x",
       "font-awesome": "4.4.x",
-      "laxar": "^1.0.0",
-      "moment": "2.9.x"
-   },
-   "devDependencies": {
-      "jasmine": "~1.3.x"
+      "laxar": "^2.0.0",
+      "moment": "^2.14.1"
    }
 }
