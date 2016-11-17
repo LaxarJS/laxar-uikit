@@ -6,5 +6,7 @@
 /dist
 /karma-output
 /spec-output
+/themes/default.theme/css/test.css
+/themes/default.theme/css/test.css.map
 npm-debug.log
 .sass-cache

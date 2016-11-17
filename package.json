@@ -11,13 +11,15 @@
     "url": "https://github.com/LaxarJS/laxar-uikit.git"
   },
   "scripts": {
-    "prepublish": "webpack && npm run sass && npm run postcss",
-    "test": "npm run karma && npm run eslint",
+    "prepublish": "webpack && npm run styles-scss",
+    "test": "npm run karma && npm run eslint && npm run styles-test",
     "karma": "karma start karma.config.js",
     "eslint": "eslint laxar-uikit.js lib",
     "browser-spec": "webpack --config webpack.browser-spec.config.js && webpack-dev-server --port 8083 --inline --config webpack.browser-spec.config.js",
-    "sass": "node-sass --precision 10 --output-style expanded --include-path themes/default.theme/scss/ --include-path scss/ --include-path bower_components/bootstrap-sass-official/assets/stylesheets/ --include-path bower_components/ --output themes/default.theme/css/ themes/default.theme/scss/",
-    "postcss": "postcss --log --replace --use autoprefixer --autoprefixer.browsers 'firefox >= 20, chrome >= 20, ie >= 9' themes/default.theme/css/theme.css"
+    "styles-scss": "npm run sass themes/default.theme/scss/theme.scss && npm run postcss themes/default.theme/css/theme.css",
+    "styles-test": "npm run sass themes/default.theme/scss/test.scss && rm themes/default.theme/css/test.css themes/default.theme/css/test.css.map",
+    "sass": "node-sass --precision 10 --output-style expanded --source-map true --source-map-contents --include-path themes/default.theme/scss/ --include-path scss/ --include-path bower_components/bootstrap-sass-official/assets/stylesheets/ --include-path bower_components/ --output themes/default.theme/css/",
+    "postcss": "postcss --log --replace --use autoprefixer --autoprefixer.browsers 'firefox >= 20, chrome >= 20, ie >= 9'"
   },
   "dependencies": {
     "fast-json-patch": "~0.5.2",
