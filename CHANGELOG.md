@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#140](https://github.com/LaxarJS/laxar-uikit/issues/140): added missing glyphicons fonts to enable building from SCSS sources
 - [#138](https://github.com/LaxarJS/laxar-uikit/issues/138): adapted to changes due to removing angular in LaxarJS
     + **BREAKING CHANGE:** see ticket for details
 
