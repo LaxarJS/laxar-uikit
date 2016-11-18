@@ -18,10 +18,12 @@
     "browser-spec": "webpack --config webpack.browser-spec.config.js && webpack-dev-server --port 8083 --inline --config webpack.browser-spec.config.js",
     "styles-scss": "npm run sass themes/default.theme/scss/theme.scss && npm run postcss themes/default.theme/css/theme.css",
     "styles-test": "npm run sass themes/default.theme/scss/test.scss && rm themes/default.theme/css/test.css themes/default.theme/css/test.css.map",
-    "sass": "node-sass --precision 10 --output-style expanded --source-map true --source-map-contents --include-path themes/default.theme/scss/ --include-path scss/ --include-path bower_components/bootstrap-sass-official/assets/stylesheets/ --include-path bower_components/ --output themes/default.theme/css/",
+    "sass": "node-sass --precision 10 --output-style expanded --source-map true --source-map-contents --include-path themes/default.theme/scss/ --include-path scss/ --include-path node_modules/bootstrap-sass/assets/stylesheets/ --include-path node_modules/ --output themes/default.theme/css/",
     "postcss": "postcss --log --replace --use autoprefixer --autoprefixer.browsers 'firefox >= 20, chrome >= 20, ie >= 9'"
   },
   "dependencies": {
+    "font-awesome": "~4.4.0",
+    "bootstrap-sass": "~3.3.2",
     "fast-json-patch": "~0.5.2",
     "laxar": "^2.0.0-alpha.3",
     "moment": "^2.14.1"
