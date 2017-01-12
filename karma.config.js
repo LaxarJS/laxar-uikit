@@ -28,7 +28,7 @@ module.exports = function(config) {
          outputDir: 'karma-output/'
       },
       port: 9876,
-      browsers: browsers,
+      browsers,
       customLaunchers: {
          ChromeTravisCi: {
             base: 'Chrome',

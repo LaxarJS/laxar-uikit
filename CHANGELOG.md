@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#143](https://github.com/LaxarJS/laxar-uikit/issues/143): removed `i18n.languageTagFromScope`, fixed tests
+    + **BREAKING CHANGE:** see ticket for details
 - [#142](https://github.com/LaxarJS/laxar-uikit/issues/142): the compass dependency has been removed
     + **BREAKING CHANGE:** see ticket for details
 - [#140](https://github.com/LaxarJS/laxar-uikit/issues/140): added missing glyphicons fonts to enable building from SCSS sources
