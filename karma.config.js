@@ -1,8 +1,8 @@
 // Karma configuration for LaxarJS core
 /* eslint-env node */
 
-const webpackConfig = Object.assign( {}, require('./webpack.base.config' ) );
-delete webpackConfig.entry[ 'laxar-uikit' ];
+const webpackConfig = Object.assign( {}, require('./webpack.config' ) );
+delete webpackConfig.entry;
 delete webpackConfig.plugins;
 webpackConfig.devtool = 'inline-source-map';
 const polyfillPath = require.resolve( 'laxar/dist/polyfills' );
@@ -19,7 +19,7 @@ module.exports = function(config) {
          'lib/spec/spec-runner.js'
       ],
       preprocessors: {
-         '**/spec/spec-runner.js': [ 'webpack', 'sourcemap' ]
+         'lib/spec/spec-runner.js': [ 'webpack', 'sourcemap' ]
       },
       webpack: webpackConfig,
 

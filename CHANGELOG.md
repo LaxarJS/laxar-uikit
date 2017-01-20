@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#145](https://github.com/LaxarJS/laxar-uikit/issues/145): project: updated dev-dependencies, upgraded to webpack 2
 - [#139](https://github.com/LaxarJS/laxar-uikit/issues/139): removed `dom.cssTransformPropertyName` helper
     + **BREAKING CHANGE:** see ticket for details
 - [#143](https://github.com/LaxarJS/laxar-uikit/issues/143): removed `i18n.languageTagFromScope`, fixed tests
