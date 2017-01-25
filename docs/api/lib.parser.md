@@ -1,17 +1,46 @@
 
-# parser
+# <a id="parser"></a>parser
 
 A module for parsing strings to different value types.
 
 ## Contents
 
 **Module Members**
-- [create](#create)
-- [success](#success)
-- [error](#error)
+
+- [success()](#success)
+- [error()](#error)
+- [create()](#create)
 
 ## Module Members
-#### <a name="create"></a>create( type, optionalOptions )
+
+#### <a id="success"></a>success( value )
+
+Creates a successful parsing result. This is useful e.g. when writing tests.
+
+##### Parameters
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| value | `*` |  the parsing result |
+
+##### Returns
+
+| Type | Description |
+| ---- | ----------- |
+| `Object` |  the parsing result object of form `{ ok: true, value: value }` |
+
+#### <a id="error"></a>error()
+
+Creates a failed parsing result. This is useful e.g. when writing tests.
+
+##### Returns
+
+| Type | Description |
+| ---- | ----------- |
+| `Object` |  the parsing result object of form `{ ok: false }` |
+
+#### <a id="create"></a>create( type, optionalOptions )
+
 Creates a function for parsing strings to a value of the given type. The function only accepts the
 string to parse as argument and returns an object yielding success or failure. The outcome can be
 read from the object's attribute `ok` which is `true` in case parsing was successful, or `false`
@@ -29,16 +58,17 @@ Example:
 --------
 Successful parsing:
 ```js
-var parse = parser.create( 'decimal' );
+const parse = parser.create( 'decimal' );
 parse( '1,435.56' ); // -> { ok: true, value: 1435.56 }
 ```
 Failed parsing:
 ```js
-var parse = parser.create( 'date' );
+const parse = parser.create( 'date' );
 parse( 'laxar' ); // -> { ok: false }
 ```
 
 ##### Parameters
+
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | type | `String` |  the value type to create the parser for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
@@ -52,27 +82,7 @@ parse( 'laxar' ); // -> { ok: false }
 | _optionalOptions.timeFallbackFormats_ | `String` |  formats to try, when parsing with the `optionalOptions.timeFormat` failed. Applicable to type `time` only. Default: `[ 'H', 'HHmm' ]` |
 
 ##### Returns
+
 | Type | Description |
 | ---- | ----------- |
 | `Function` |  the parsing function as described above |
-
-#### <a name="success"></a>success( value )
-Creates a successful parsing result. This is useful e.g. when writing tests.
-
-##### Parameters
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| value | `*` |  the parsing result |
-
-##### Returns
-| Type | Description |
-| ---- | ----------- |
-| `Object` |  the parsing result object of form `{ ok: true, value: value }` |
-
-#### <a name="error"></a>error()
-Creates a failed parsing result. This is useful e.g. when writing tests.
-
-##### Returns
-| Type | Description |
-| ---- | ----------- |
-| `Object` |  the parsing result object of form `{ ok: false }` |

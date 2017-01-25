@@ -1,31 +1,19 @@
 
-# i18n
+# <a id="i18n"></a>i18n
 
 Some utilities for working with i18n and finding the correct formats based on the configured language.
 
 ## Contents
 
 **Module Members**
-- [languageTagFromScope](#languageTagFromScope)
-- [momentFormatForLanguageTag](#momentFormatForLanguageTag)
-- [numberFormatForLanguageTag](#numberFormatForLanguageTag)
+
+- [momentFormatForLanguageTag()](#momentFormatForLanguageTag)
+- [numberFormatForLanguageTag()](#numberFormatForLanguageTag)
 
 ## Module Members
-#### <a name="languageTagFromScope"></a>languageTagFromScope( scope )
-Tries to find the language tag that is set for the current AngularJS scope. If no language tag could be
-determined, `'en'` is returned.
 
-##### Parameters
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| scope | `Object` |  the scope to search for the `i18n` property |
+#### <a id="momentFormatForLanguageTag"></a>momentFormatForLanguageTag( languageTag )
 
-##### Returns
-| Type | Description |
-| ---- | ----------- |
-| `String` |  the language tag |
-
-#### <a name="momentFormatForLanguageTag"></a>momentFormatForLanguageTag( languageTag )
 Returns formats for usage with Moment.js for the given `languageTag`. The returned value is an object
 having the properties `date` and `time`, each with an according format string. If a language tag does
 not exist, `undefined` is returned instead.
@@ -38,16 +26,19 @@ i18n.momentFormatForLanguageTag( 'xy' ); // => undefined
 ```
 
 ##### Parameters
+
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | languageTag | `String` |  the language tag to return the moment format for |
 
 ##### Returns
+
 | Type | Description |
 | ---- | ----------- |
 | `Object` |  the moment format as defined above. `undefined` if not found |
 
-#### <a name="numberFormatForLanguageTag"></a>numberFormatForLanguageTag( languageTag )
+#### <a id="numberFormatForLanguageTag"></a>numberFormatForLanguageTag( languageTag )
+
 Returns number formatting characters for the given `languageTag`. The returned value is an object having
 the properties `g` (grouping separator) and `d` (decimal separator), each with the according character
 to use for that language tag. If a language tag does not exist, `undefined` is returned instead.
@@ -60,11 +51,13 @@ i18n.momentFormatForLanguageTag( 'xy' ); // => undefined
 ```
 
 ##### Parameters
+
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | languageTag | `String` |  the language tag to return the moment format for |
 
 ##### Returns
+
 | Type | Description |
 | ---- | ----------- |
 | `Object` |  the number formatting characters as defined above. `undefined` if not found |

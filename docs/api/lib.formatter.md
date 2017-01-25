@@ -1,15 +1,18 @@
 
-# formatter
+# <a id="formatter"></a>formatter
 
 A module for formatting values of different types to strings.
 
 ## Contents
 
 **Module Members**
-- [create](#create)
+
+- [create()](#create)
 
 ## Module Members
-#### <a name="create"></a>create( type, optionalOptions )
+
+#### <a id="create"></a>create( type, optionalOptions )
+
 Creates a function to format values of a given type to their according string representations. If a
 value has the wrong type to be formatted using the configured `type`, the format function throws a
 `TypeError`.
@@ -22,6 +25,7 @@ The formatter for type `'string'` simply triggers the `toString` method of the g
 and `undefined` result in the empty string.
 
 ##### Parameters
+
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | type | `String` |  the value type to create the formatter for. Can be one of `'string'`, `'integer'`, `'decimal'`, `'date'` and `'time'` |
@@ -34,6 +38,7 @@ and `undefined` result in the empty string.
 | _optionalOptions.timeFormat_ | `String` |  the format used to format time values with. Applicable to type `time` only. Default: `'H:m'` |
 
 ##### Returns
+
 | Type | Description |
 | ---- | ----------- |
 | `Function` |  the format function as described above. Throws a `TypeError` if the provided value cannot be formatted using the configured `type` |
