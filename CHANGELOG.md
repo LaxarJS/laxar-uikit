@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0-alpha.1
+
 - [#145](https://github.com/LaxarJS/laxar-uikit/issues/145): project: updated dev-dependencies, upgraded to webpack 2
 - [#139](https://github.com/LaxarJS/laxar-uikit/issues/139): removed `dom.cssTransformPropertyName` helper
     + **BREAKING CHANGE:** see ticket for details
