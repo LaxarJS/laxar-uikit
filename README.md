@@ -1,9 +1,9 @@
 # LaxarJS UiKit [![Build Status](https://travis-ci.org/LaxarJS/laxar-uikit.svg?branch=master)](https://travis-ci.org/LaxarJS/laxar-uikit)
 
-> Bootstrap 3 compatible base styles for LaxarJS widgets, plus a few basic controls.
+> Bootstrap 3 compatible base styles for LaxarJS widgets, plus a few i18n-UI helpers
 
 This is the home of the _default theme_ for LaxarJS.
-Based on the SCSS version of Bootstrap 3.3, it contains only a small number of additional classes.
+Based on the SCSS version of Bootstrap 3.3 together with Font Awesome 4.7, it contains only a small number of additional classes.
 
 Also, this repository contains a number of JavaScript library functions, which are too UI-specific to be included into LaxarJS core.
 They are mostly related to formatting and parsing of values (numbers, decimals, dates) in i18n applications.

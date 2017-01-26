@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#141](https://github.com/LaxarJS/laxar-uikit/issues/141): updated dependencies to bootstrap 3.3.7, font-awesome 4.7.0, and moment 2.17.1
 - [#142](https://github.com/LaxarJS/laxar-uikit/issues/142): project: improved README.md
 - [#146](https://github.com/LaxarJS/laxar-uikit/issues/146): default.theme: added `theme.json` descriptor
 

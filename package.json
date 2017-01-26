@@ -26,10 +26,10 @@
     "postcss": "postcss --log --replace --use autoprefixer --autoprefixer.browsers 'firefox >= 20, chrome >= 20, ie >= 9'"
   },
   "dependencies": {
-    "bootstrap-sass": "~3.3.2",
-    "font-awesome": "~4.4.0",
-    "laxar": "^2.0.0-alpha.13",
-    "moment": "^2.14.1"
+    "bootstrap-sass": "~3.3.7",
+    "font-awesome": "~4.7.0",
+    "laxar": "^2.0.0-alpha.14",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",

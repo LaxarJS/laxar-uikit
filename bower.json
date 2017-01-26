@@ -13,8 +13,8 @@
    ],
    "dependencies": {
       "bootstrap-sass-official": "3.3.x",
-      "font-awesome": "4.4.x",
+      "font-awesome": "4.7.x",
       "laxar": "^2.0.0",
-      "moment": "^2.14.1"
+      "moment": "^2.17.1"
    }
 }
