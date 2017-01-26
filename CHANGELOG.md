@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#146](https://github.com/LaxarJS/laxar-uikit/issues/146): default.theme: added `theme.json` descriptor
+
 
 ## v2.0.0-alpha.1
 
