@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#142](https://github.com/LaxarJS/laxar-uikit/issues/142): project: improved README.md
 - [#146](https://github.com/LaxarJS/laxar-uikit/issues/146): default.theme: added `theme.json` descriptor
 
 
