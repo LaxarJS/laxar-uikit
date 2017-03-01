@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0-alpha.3
+
 - [#148](https://github.com/LaxarJS/laxar-uikit/issues/148): include `dist/laxar-uikit.*` in NPM package, add `browser` field to `package.json`
 
 
