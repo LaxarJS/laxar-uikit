@@ -1,0 +1,11 @@
+/.idea
+/.grunt
+/jspm_packages
+/node_modules
+/bower_components
+/karma-output
+/spec-output
+/themes/default.theme/css/test.css
+/themes/default.theme/css/test.css.map
+npm-debug.log
+.sass-cache

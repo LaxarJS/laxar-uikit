@@ -4,6 +4,7 @@
   "description": "User interface controls for LaxarJS",
   "homepage": "http://laxarjs.org",
   "main": "laxar-uikit.js",
+  "browser": "dist/laxar-uikit.js",
   "authors": [],
   "license": "MIT",
   "repository": {
@@ -28,8 +29,10 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.7",
     "font-awesome": "~4.7.0",
-    "laxar": "^2.0.0-alpha.14",
     "moment": "^2.17.1"
+  },
+  "peerDependencies": {
+    "laxar": "^2.0.0-alpha.16"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
@@ -49,7 +52,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.1",
-    "laxar": "^2.0.0-alpha.13",
+    "laxar": "^2.0.0-alpha.16",
     "laxar-dox": "2.0.0-alpha.4",
     "node-sass": "^3.13.0",
     "postcss-cli": "^2.6.0",
