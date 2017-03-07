@@ -8,12 +8,18 @@
  * @module laxar-uikit
  */
 
-import * as formatter from './lib/formatter';
-import * as i18n from './lib/i18n';
-import * as parser from './lib/parser';
+import { create } from './lib/uikit';
+
+const {
+   formatter,
+   parser,
+   options,
+   localized
+} = create();
 
 export {
    formatter,
-   i18n,
-   parser
+   parser,
+   options,
+   localized
 };
