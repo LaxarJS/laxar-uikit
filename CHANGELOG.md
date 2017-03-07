@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#149](https://github.com/LaxarJS/laxar-uikit/issues/149): `i18n` now exports format maps for numbers and moment.js dates, and nothing else
+    + **BREAKING CHANGE:** see ticket for details
+
 
 ## v2.0.0-alpha.3
 

@@ -7,57 +7,44 @@ Some utilities for working with i18n and finding the correct formats based on th
 
 **Module Members**
 
-- [momentFormatForLanguageTag()](#momentFormatForLanguageTag)
-- [numberFormatForLanguageTag()](#numberFormatForLanguageTag)
+- [- unknown -](#- unknown -)
+- [- unknown -](#- unknown -)
 
 ## Module Members
 
-#### <a id="momentFormatForLanguageTag"></a>momentFormatForLanguageTag( languageTag )
+#### <a id="- unknown -"></a>- unknown - `undefined`
 
-Returns formats for usage with Moment.js for the given `languageTag`. The returned value is an object
-having the properties `date` and `time`, each with an according format string. If a language tag does
-not exist, `undefined` is returned instead.
+Contains formats for usage with Moment.js indexed by a `languageTag`. The stored values are objects having
+the properties `date` and `time`, each with an according format string.
 
 Example:
 ```js
-i18n.momentFormatForLanguageTag( 'de' ); // => { date: 'DD.MM.YYYY', time: 'HH:mm' }
-i18n.momentFormatForLanguageTag( 'en-gb' ); // => { date: 'DD/MM/YYYY', time: 'HH:mm' }
-i18n.momentFormatForLanguageTag( 'xy' ); // => undefined
+i18n.update( 'de' ).then( () => {
+   axI18n.localize( ui.i18n.momentFormats ); // => { date: 'DD.MM.YYYY', time: 'HH:mm' }
+} );
+i18n.update( 'en-gb' ).then( () => {
+   axI18n.localize( ui.i18n.momentFormats ); // => { date: 'DD/MM/YYYY', time: 'HH:mm' }
+} );
+i18n.update( 'xy' ).then( () => {
+  axI18n.localize( ui.i18n.momentFormats ); // => undefined
+} );
 ```
 
-##### Parameters
+#### <a id="- unknown -"></a>- unknown - `undefined`
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| languageTag | `String` |  the language tag to return the moment format for |
-
-##### Returns
-
-| Type | Description |
-| ---- | ----------- |
-| `Object` |  the moment format as defined above. `undefined` if not found |
-
-#### <a id="numberFormatForLanguageTag"></a>numberFormatForLanguageTag( languageTag )
-
-Returns number formatting characters for the given `languageTag`. The returned value is an object having
+Contains number formatting characters indexed by a `languageTag`. The stored values are objects having
 the properties `g` (grouping separator) and `d` (decimal separator), each with the according character
-to use for that language tag. If a language tag does not exist, `undefined` is returned instead.
+to use for that language tag.
 
 Example:
 ```js
-i18n.momentFormatForLanguageTag( 'de' ); // => { g: '.', d: ',' }
-i18n.momentFormatForLanguageTag( 'en-gb' ); // => { g: ',', d: '.' }
-i18n.momentFormatForLanguageTag( 'xy' ); // => undefined
+i18n.update( 'de' ).then( () => {
+   axI18n.localize( ui.i18n.numberFormats ); // => { g: '.', d: ',' }
+} );
+i18n.update( 'en-gb' ).then( () => {
+   axI18n.localize( ui.i18n.numberFormats ); // => { g: ',', d: '.' }
+} );
+i18n.update( 'xy' ).then( () => {
+   axI18n.localize( ui.i18n.numberFormats ); // => undefined
+} );
 ```
-
-##### Parameters
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| languageTag | `String` |  the language tag to return the moment format for |
-
-##### Returns
-
-| Type | Description |
-| ---- | ----------- |
-| `Object` |  the number formatting characters as defined above. `undefined` if not found |
