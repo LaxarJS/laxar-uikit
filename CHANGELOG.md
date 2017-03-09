@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#150](https://github.com/LaxarJS/laxar-uikit/issues/150): parser: added additional date fallback formats
+
 
 ## v2.0.0-alpha.4
 
