@@ -1,6 +1,6 @@
 {
   "name": "laxar-uikit",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "User interface controls for LaxarJS",
   "homepage": "http://laxarjs.org",
   "main": "laxar-uikit.js",
