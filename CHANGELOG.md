@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#147](https://github.com/LaxarJS/laxar-uikit/issues/147): documentation: added main module API docs
+
 
 ## v2.0.0-alpha.5
 

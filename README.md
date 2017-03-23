@@ -54,6 +54,17 @@ var formatter = require( 'laxar-uikit' ).formatter;
 // ...
 ```
 
+And, to use i18n:
+
+```js
+import { localized } from 'laxar-uikit';
+
+const axI18n = // ... obtained by widget injection, depends on the integration technology
+const format = localized( axI18n ).formatter.create( 'decimal' );
+// assuming the locale is "de"
+format( Math.PI ); // --> "3,14"
+```
+
 
 ## Using a custom default theme
 
