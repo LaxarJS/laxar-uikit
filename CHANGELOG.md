@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0-beta.1
+
 - [#151](https://github.com/LaxarJS/laxar-uikit/issues/151): default.theme: added sass-options
 
 
