@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#152](https://github.com/LaxarJS/laxar-uikit/issues/152): default.theme: revert `styleSource` to plain CSS
+
 
 ## v2.0.0-beta.1
 
