@@ -1,3 +1,4 @@
 {
-   "name": "default.theme"
+   "name": "default.theme",
+   "styleSource": "scss/theme.scss"
 }

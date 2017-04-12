@@ -20,23 +20,24 @@ However, to allow for reuse of artifacts in different applications, all artifact
 For example, if a widget called `my-widget` supports the default theme and the [cube theme](https://github.com/laxarjs/cube.theme), it will use two folders (`my-widget/default.theme` and `my-widget/cube.theme`), and each folder may contain a CSS file and an HTML file for the widget.
 
 Although it has a few extra classes (those starting with the `ax-` prefix), you may think of the default theme as _just Bootstrap 3._
-When creating custom themes, it is recommended to use a Bootstrap-compatible set of classes, so that widgets can be themed without duplicating their HTML markup.
+When creating custom themes, it is recommended to use a Bootstrap-compatible set of classes, so that any widget can be themed without having to create new HTML markup.
 Usually, only the folder `default.theme` will contain the widget HTML, and the other theme folders just specify custom CSS when needed.
-If your application is using a custom theme (such as the cube theme), not all widgets need to specify custom CSS for that theme, because LaxarJS will fall back to the default theme.
-Refer to the [LaxarJS manual on themes](https://laxarjs.org/docs/laxar-latest/manuals/creating_themes) for more information on themes.
+If your application is using a custom theme (such as the `cube.theme`), not all widgets need to specify custom CSS for that theme, because LaxarJS will always fall back to the default theme of a widget.
+Refer to the [LaxarJS manual on themes](https://laxarjs.org/docs/laxar-v2-latest/manuals/creating_themes) for more information on themes.
 
 
 ## Using LaxarJS UiKit in a project
 
 Including LaxarJS UiKit is currently recommended for any LaxarJS application, except if you're aiming to use a non-standard default theme (see below).
 
-Starting with LaxarJS v2, obtain the UiKit either by starting from the [Yeoman generator](https://github.com/LaxarJS/generator-laxarjs) or by using NPM:
+Starting with LaxarJS v2, obtain the UiKit either by starting from the [Yeoman generator](https://laxarjs.org/docs/generator-laxarjs2-v2-latest/) or by using NPM:
 
-```sh
+```console
 npm install --save laxar-uikit
 ```
 
-When using webpack and the [laxar-loader](https://github.com/LaxarJS/generator-loader), the default theme will now be available.
+
+### Using the Library
 
 To use the [parser](docs/api/lib.parser.md) and [formatter](docs/api/lib.formatter.md) library functions, import them into a widget or control:
 
@@ -63,6 +64,53 @@ const axI18n = // ... obtained by widget injection, depends on the integration t
 const format = localized( axI18n ).formatter.create( 'decimal' );
 // assuming the locale is "de"
 format( Math.PI ); // --> "3,14"
+```
+
+
+### Using the default.theme
+
+To load the default theme, your loader (webpack) needs to be setup correctly.
+This is already the case if you project was created using the LaxarJS v2 Yeoman generator.
+
+If creating a project from scratch, first make sure you have the dependencies:
+
+```console
+npm install --save-dev laxar-loader sass-loader
+```
+
+Then add a _resolve alias_ and a _rule configuration_ for the default.theme:
+
+```js
+// webpack.config.js
+resolve: {
+   // ...,
+   alias: {
+      // ...,
+      'default.theme': 'laxar-uikit/themes/default.theme'
+   }
+},
+module: {
+   rules: [
+      // ...,
+      {
+         test: /[/]default[.]theme[/].*[.]s[ac]ss$/,
+         loader: 'sass-loader',
+         options: require( 'laxar-uikit/themes/default.theme/sass-options' )
+      }
+   ]
+}
+```
+
+When using webpack and the [laxar-loader](https://laxarjs.org/docs/generator-laxarjs2-v2-latest/), the default theme will now be available for use in your application (through the `init.js`):
+
+```js
+// init.js
+import { create } from 'laxar';
+import artifacts from 'laxar-loader/artifacts?flow=main&theme=default';
+
+create( [ /* ... adapters ... */ ], artifacts, { /* ... configuration ... */ } )
+   .flow( 'main', document.querySelector( '[data-ax-page]' ) )
+   .bootstrap();
 ```
 
 
@@ -102,7 +150,7 @@ npm test
 To generate HTML spec runners for opening in your web browser, so that you can e.g. use the browser's developer tools:
 
 ```sh
-npm run browser-spec
+npm start
 ```
 
-Now you can select a spec-runner by browsing to http://localhost:8082/spec-output/.
+Now you can run the specs by browsing to http://localhost:8080/dist/lib/spec/laxar-uikit.spec.html.
