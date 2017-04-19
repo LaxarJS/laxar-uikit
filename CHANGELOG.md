@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#153](https://github.com/LaxarJS/laxar-uikit/issues/153): updated infrastructure (Travis-CI/sauce labs)
+
 
 ## v2.0.0-beta.2
 
