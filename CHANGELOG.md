@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#154](https://github.com/LaxarJS/laxar-uikit/issues/154): fixed dependencies in package.json
+
 
 ## v2.0.0-rc.0
 
