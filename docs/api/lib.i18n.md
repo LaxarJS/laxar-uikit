@@ -7,12 +7,12 @@ Some utilities for working with i18n and finding the correct formats based on th
 
 **Module Members**
 
-- [- unknown -](#- unknown -)
-- [- unknown -](#- unknown -)
+- [momentFormats()](#momentFormats)
+- [numberFormats()](#numberFormats)
 
 ## Module Members
 
-#### <a id="- unknown -"></a>- unknown - `undefined`
+#### <a id="momentFormats"></a>momentFormats()
 
 Contains formats for usage with Moment.js indexed by a `languageTag`. The stored values are objects having
 the properties `date` and `time`, each with an according format string.
@@ -30,7 +30,13 @@ i18n.update( 'xy' ).then( () => {
 } );
 ```
 
-#### <a id="- unknown -"></a>- unknown - `undefined`
+##### Returns
+
+| Type | Description |
+| ---- | ----------- |
+| `Object` |  a map from language tag to formatting rules |
+
+#### <a id="numberFormats"></a>numberFormats()
 
 Contains number formatting characters indexed by a `languageTag`. The stored values are objects having
 the properties `g` (grouping separator) and `d` (decimal separator), each with the according character
@@ -48,3 +54,9 @@ i18n.update( 'xy' ).then( () => {
    axI18n.localize( ui.i18n.numberFormats ); // => undefined
 } );
 ```
+
+##### Returns
+
+| Type | Description |
+| ---- | ----------- |
+| `Object` |  a map from language tag to formatting rules |
