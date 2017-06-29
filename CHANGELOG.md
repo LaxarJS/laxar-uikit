@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0
+
 - [#155](https://github.com/LaxarJS/laxar-uikit/issues/155): i18n helper: fixed doc comments
 
 
