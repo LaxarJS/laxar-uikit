@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.1.0
+
 - [#157](https://github.com/LaxarJS/laxar-uikit/issues/157): date/time formatter: support Date objects and full ISO-date as input
     + NEW FEATURE: see ticket for details
 
