@@ -13,16 +13,22 @@ A module for formatting values of different types to strings.
 
 #### <a id="create"></a>create( type, optionalOptions )
 
-Creates a function to format values of a given type to their according string representations. If a
+Creates a function to format values of a given type to a configurable string representations. If a
 value has the wrong type to be formatted using the configured `type`, the format function throws a
 `TypeError`.
 
-Note that date and time values are only accepted as simple
-[ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) strings. Possible input could thus be
-`'2014-03-12'` for a date and `'16:34:52'` for time, respectively.
+When formatting values for display as date or time, the full datetime should always be passed if
+available; either as a Date-object, or as a full [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) string,
+including timezone. To format a date without time or to format a time-of-day, the respective ISO-formatted
+portions can be passed instead, without TZ information.
+Finally, the string "NOW" can be used which always results in the current local date/time.
 
-The formatter for type `'string'` simply triggers the `toString` method of the given argument. `null`
-and `undefined` result in the empty string.
+Acceptable *input* values for
+   - date: `"NOW", new Date(), "2014-03-22T14:52:03.444Z", "2014-03-22"`
+   - time: `"NOW", new Date(), "2014-03-22T14:52:03.444Z", "14:52:03"`
+
+The formatter for type `'string'` simply triggers the `toString` method of the given argument, while
+`null` and `undefined` result in the empty string.
 
 ##### Parameters
 
