@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.1.1
+
 - [#158](https://github.com/LaxarJS/laxar-uikit/issues/158): date/time formatter: removed useless, possibly harmful global assignment
 
 
