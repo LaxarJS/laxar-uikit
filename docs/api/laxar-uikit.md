@@ -9,7 +9,7 @@ Provides utilities for localized parsing and formatting of values in LaxarJS app
 
 - [laxar-uikit](#laxar-uikit)
   - [laxar-uikit.formatter](#laxar-uikit.formatter)
-  - [laxar-uikit.formatter](#laxar-uikit.formatter)
+  - [laxar-uikit.parser](#laxar-uikit.parser)
   - [laxar-uikit.options](#laxar-uikit.options)
   - [laxar-uikit.localized()](#laxar-uikit.localized)
 
@@ -23,7 +23,7 @@ Provides access to the default (non-localized) formatter.
 Use `formatter.create()` to obtain a formatting function.
 
 For details, refer to the [formatter API](lib.formatter.md).
-#### <a id="laxar-uikit.formatter"></a>laxar-uikit.formatter `Object`
+#### <a id="laxar-uikit.parser"></a>laxar-uikit.parser `Object`
 
 Provides access to the default (non-localized) parser.
 Use `parser.create()` to obtain a formatting function.

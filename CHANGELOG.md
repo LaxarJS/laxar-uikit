@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#159](https://github.com/LaxarJS/laxar-uikit/issues/159): documentation: fixed identifier in top-level API doc
+
 
 ## v2.1.1
 

@@ -40,7 +40,7 @@ export {
     * For details, refer to the [parser API](lib.parser.md).
     *
     * @type {Object}
-    * @name formatter
+    * @name parser
     * @memberof laxar-uikit
     */
    parser,
