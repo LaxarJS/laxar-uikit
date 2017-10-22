@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.1.3
+
 - [#160](https://github.com/LaxarJS/laxar-uikit/issues/160): i18n: fixed overriding locale defaults
 
 
